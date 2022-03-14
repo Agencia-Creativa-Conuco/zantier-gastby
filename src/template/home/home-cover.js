@@ -30,7 +30,9 @@ const HomeCover = ({ page }) => {
           <FeaturedMedia
             media={data.featuredImage}
             size="80%"
-            position="0 -60% !important"
+            sizeMD="100%"
+            sizeXL="100%"
+            position="50% 0% !important"
           />
         </Media>
       </Container>
@@ -44,6 +46,18 @@ const Section = styled.section`
   background: #eaeef2;
   ${container}
   padding: 0;
+
+  &::after{
+        content: '';
+        position:absolute;
+        background: rgb(255,255,255);
+background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.6615021008403361) 41%, rgba(255,255,255,0.38699229691876746) 64%, rgba(255,255,255,0) 100%);
+        width: 100%;
+        min-height: 40%;
+        bottom: 0;
+        left: 0;
+        z-index: 2;
+    }
 `;
 
 const Container = styled.div`
