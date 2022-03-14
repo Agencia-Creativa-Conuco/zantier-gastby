@@ -107,7 +107,7 @@ const tipography = () => css`
   h6 {
     margin-bottom: 1rem;
     margin-top: 2rem;
-    color: ${colors.primary.dark};
+    color: #c02319;
     font-family: Source Sans Pro, sans-serif;
     line-height: 1;
   }

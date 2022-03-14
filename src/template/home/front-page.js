@@ -1,16 +1,13 @@
 import React from "react";
-
-
-
+import HomeCover from "./home-cover";
 
 
 
 const FrontPage = ({ page }) => {
 
-    // Load the post, but only if the data is ready.
     return (
       <>
-        Hello world
+       <HomeCover/>
       </>
     )
   }
