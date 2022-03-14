@@ -30,7 +30,7 @@ const HomeCover = ({ page }) => {
           <FeaturedMedia
             media={data.featuredImage}
             size="80%"
-            sizeMD="100%"
+            sizeMD="120%"
             sizeXL="100%"
             position="50% 0% !important"
           />
@@ -47,17 +47,23 @@ const Section = styled.section`
   ${container}
   padding: 0;
 
-  &::after{
-        content: '';
-        position:absolute;
-        background: rgb(255,255,255);
-background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.6615021008403361) 41%, rgba(255,255,255,0.38699229691876746) 64%, rgba(255,255,255,0) 100%);
-        width: 100%;
-        min-height: 40%;
-        bottom: 0;
-        left: 0;
-        z-index: 2;
-    }
+  &::after {
+    content: "";
+    position: absolute;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0.6615021008403361) 41%,
+      rgba(255, 255, 255, 0.38699229691876746) 64%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    width: 100%;
+    min-height: 40%;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+  }
 `;
 
 const Container = styled.div`
@@ -81,6 +87,7 @@ const Content = styled.div`
   align-self: center;
   max-width: 60rem;
   margin: 0 auto;
+  z-index: 5;
 `;
 
 const Title = styled.h1`
