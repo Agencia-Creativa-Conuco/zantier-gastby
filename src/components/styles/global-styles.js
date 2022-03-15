@@ -1,6 +1,8 @@
 import { css } from '@emotion/react'
 import typography from './tipography'
 import normalize from './normalize'
+import slickcss from 'slick-carousel/slick/slick.css'
+import slickcssTheme from 'slick-carousel/slick/slick-theme.css'
 
 import colors from './colors'
 

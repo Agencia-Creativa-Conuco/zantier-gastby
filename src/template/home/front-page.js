@@ -2,6 +2,7 @@ import React from "react";
 import HomeAbout from "./home-about";
 import HomeCover from "./home-cover";
 import HomeService from "./home-service";
+import HomeSlider from "./home-slider";
 import HomeTeam from "./home-team";
 
 
@@ -9,12 +10,13 @@ import HomeTeam from "./home-team";
 const FrontPage = () => {
 
     return (
-      <article>
+      <section>
        <HomeCover/>
        <HomeService/>
        <HomeAbout/>
        <HomeTeam/>
-      </article>
+       <HomeSlider/>
+      </section>
     )
   }
   

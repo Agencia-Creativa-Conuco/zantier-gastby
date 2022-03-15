@@ -14,7 +14,13 @@ const HomeTeam = () => {
       featuredImage: images.home.cover,
     },
     {
-      title: "Maria Celeste Arraraz",
+      title: "Robert Sosa",
+      copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+
+      featuredImage: images.home.cover,
+    },
+    {
+      title: "Robert Sosa",
       copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
 
       featuredImage: images.home.cover,
@@ -32,13 +38,7 @@ const HomeTeam = () => {
       featuredImage: images.home.cover,
     },
     {
-      title: "Maria Celeste Arraraz",
-      copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-
-      featuredImage: images.home.cover,
-    },
-    {
-      title: "Maria Celeste Arraraz",
+      title: "Robert Sosa",
       copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
 
       featuredImage: images.home.cover,
@@ -83,6 +83,12 @@ export default HomeTeam;
 
 const Section = styled.section`
   ${container}
+  margin-bottom: 6.6rem;
+
+${mq.md}{
+margin-bottom: 9.5rem;
+
+}
 `;
 
 
@@ -91,7 +97,7 @@ const Container = styled.div`
   position: relative;
   display: flex;
   padding: 0;
-  gap:5rem ;
+  gap:2rem 7rem;
   flex-wrap: wrap;
   justify-content: center;
   
@@ -99,8 +105,6 @@ const Container = styled.div`
       
       margin-top:-5rem;
 }
-
-
 
 
 
@@ -135,7 +139,7 @@ margin: -5rem auto 0;
 z-index: 2;
 
 
-padding: 3.5rem  3rem;
+padding: 3.5rem  4rem;
 border-radius: 3.5rem;
 ${mq.md}{
     max-width: 36rem;
