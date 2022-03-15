@@ -5,7 +5,7 @@ import FeaturedMedia from "../../components/featured-media";
 import { container, mq } from "../../components/layout/index";
 import useFiles from "../../hooks/useFiles";
 
-const HomeCover = ({ page }) => {
+const HomeCover = () => {
   const images = useFiles();
   const data = {
     title: "En zantier creemos que la felicidad viene de sonrisa en sonrisa",

@@ -8,7 +8,7 @@ import Carousel from "react-slick";
 import { css } from "@emotion/react";
 
 
-const HomeSlider = ({ page }) => {
+const HomeSlider = () => {
   const images = useFiles();
 
   const data = [

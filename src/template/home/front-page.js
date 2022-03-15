@@ -1,5 +1,6 @@
 import React from "react";
 import HomeAbout from "./home-about";
+import HomeContact from "./home-contact";
 import HomeCover from "./home-cover";
 import HomeService from "./home-service";
 import HomeSlider from "./home-slider";
@@ -16,6 +17,7 @@ const FrontPage = () => {
        <HomeAbout/>
        <HomeTeam/>
        <HomeSlider/>
+       <HomeContact/>
       </section>
     )
   }
