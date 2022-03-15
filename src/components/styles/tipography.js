@@ -1,6 +1,6 @@
 import { css } from '@emotion/react'
 import mq from '../layout/mq'
-import colors from './colors'
+// import colors from './colors'
 
 export const h1 = css`
   font-size: 2.2rem;
