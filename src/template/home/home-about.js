@@ -18,7 +18,7 @@ const HomeAbout = () => {
         <FeaturedMedia
           media={data.featuredImage}
           size="100%"
-          sizeMD="85%"
+          sizeMD="90%"
           sizeXL="54.25%"
         />
         <Card>
@@ -37,8 +37,6 @@ const Section = styled.section`
   background: #bc0e03;
   ${container}
   padding: 0;
-
-
 `;
 
 
