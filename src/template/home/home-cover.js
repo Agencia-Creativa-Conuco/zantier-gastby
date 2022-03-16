@@ -30,7 +30,7 @@ const HomeCover = () => {
           <FeaturedMedia
             media={data.featuredImage}
             size="80%"
-            sizeMD="120%"
+            sizeMD="125%"
             sizeXL="100%"
             position="50% 0% !important"
           />

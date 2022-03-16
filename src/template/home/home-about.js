@@ -19,7 +19,8 @@ const HomeAbout = () => {
           media={data.featuredImage}
           size="100%"
           sizeMD="90%"
-          sizeXL="54.25%"
+          sizeLG="75%"
+          sizeXL="80rem"
         />
         <Card>
           <Copy>{data.copy}</Copy>
@@ -42,6 +43,8 @@ const Section = styled.section`
 
 const Media = styled.div`
 position:relative ;
+width:100%;
+
 
   img {
     clip-path: ellipse(95% 100% at 50% 100%);

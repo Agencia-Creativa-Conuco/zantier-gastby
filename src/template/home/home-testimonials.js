@@ -118,13 +118,13 @@ const HomeTestimonials = () => {
 export default HomeTestimonials;
 
 const Section = styled.section`
-  padding-bottom: 6.6rem;
+  /* padding-bottom: 6.6rem; */
   padding-top: 6.6rem;
 
-  background: #bc0e03;
+  background-color: #bc0e03;
 
+  padding-bottom: 30rem;
   ${mq.md} {
-    padding-bottom: 9.5rem;
     padding-top: 9.5rem;
   }
 `;

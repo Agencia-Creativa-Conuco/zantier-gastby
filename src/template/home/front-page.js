@@ -3,6 +3,7 @@ import HomeAbout from "./home-about";
 import HomeContact from "./home-contact";
 import HomeCover from "./home-cover";
 import HomeDescription from "./home-description";
+import HomeForm from "./home-form";
 import HomeService from "./home-service";
 import HomeSlider from "./home-slider";
 import HomeTeam from "./home-team";
@@ -22,6 +23,7 @@ const FrontPage = () => {
        <HomeContact/>
        <HomeDescription/>
        <HomeTestimonials/>
+       <HomeForm/>
       </section>
     )
   }
