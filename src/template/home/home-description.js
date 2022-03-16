@@ -4,6 +4,8 @@ import FeaturedMedia from "../../components/featured-media";
 import { container, mq } from "../../components/layout/index";
 import useFiles from "../../hooks/useFiles";
 
+import Cta from "../../components/cta";
+
 const HomeDescription = () => {
   const images = useFiles();
   const data = {
@@ -12,6 +14,11 @@ const HomeDescription = () => {
     featuredImage: images.home.img2,
     otherCopy:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+
+    cta: {
+      title: "Conocer mas",
+      url: "/",
+    },
   };
 
   return (
@@ -21,15 +28,26 @@ const HomeDescription = () => {
           <FeaturedMedia
             media={data.featuredImage}
             size="70%"
-            sizeMD="90%"
+            // sizeMD="90%"
             sizeXL="54.25%"
           />
         </Media>
         <Card>
           <Copy>{data.copy}</Copy>
         </Card>
+        <Content>
+          <p>{data.otherCopy}</p>
+
+          <Cta
+            to={data.cta.url}
+            bgColor="white"
+            color="#bc0e03"
+            bgActiveColor="#dbd8d8"
+          >
+            {data.cta.title}
+          </Cta>
+        </Content>
       </Container>
-        {/* <p>{data.otherCopy}</p> */}
     </Section>
   );
 };
@@ -53,24 +71,29 @@ const Container = styled.div`
   padding-top:10rem;
   display: grid;
   grid-template-columns: 100%;
+  grid-template-areas:
+    "col_2"
+    "col_1"
+    "col_3";
 
-  ${mq.md} {
+  ${mq.lg} {
     grid-template-columns: 50% 50%;
-    div:first-of-type {
-      order: 2;
-    }
+    grid-template-areas:
+      "col_1 col_2"
+      "col_3 col_space";
   }
 `;
 
 const Media = styled.div`
   position: relative;
+  grid-area: col_2;
 
   img {
     border-radius: 40% 0 0% 0%;
 
     z-index: 2;
 
-    ${mq.md} {
+    ${mq.lg} {
       max-width: 40rem;
       border-radius: 40% 0 40% 40%;
     }
@@ -78,13 +101,11 @@ const Media = styled.div`
 `;
 
 const Card = styled.div`
-  max-height: 80%;
   position: relative;
-  /* background-color:white ; */
+  grid-area: col_1;
 
-  padding: 3rem 5rem;
+  padding: 3rem;
   ${mq.md} {
-    right: -2rem;
   }
   ${mq.lg} {
     padding: 6rem 5rem;
@@ -102,7 +123,7 @@ const Card = styled.div`
     background-color: white;
     border-radius: 0rem 0 2rem 2rem;
 
-    ${mq.md} {
+    ${mq.lg} {
       width: 140%;
 
       border-radius: 2rem 0 0 2rem;
@@ -115,8 +136,17 @@ padding: 0rem 0  ;
 color:#bc0e03 ;
 position: relative;
 z-index:2;
-
-
     }
 
+`;
+
+const Content = styled.div`
+  grid-area: col_3;
+
+  color: white;
+  margin-top: 2.5rem;
+
+  ${mq.lg} {
+    margin-top: -3.5rem;
+  }
 `;

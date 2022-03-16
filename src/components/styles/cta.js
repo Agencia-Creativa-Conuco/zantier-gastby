@@ -16,7 +16,7 @@ const ctas = ({bgColor="#bc0e03", bgActiveColor="#871a13", shadowColor="rgba(115
     cursor: pointer;
     text-decoration: none;
     transition: all 0.2s ease-in-out;
-    text-shadow: ${textShadow};
+    /* text-shadow: ${textShadow}; */
     &:focus{
         box-shadow: 0 0 0 0.32rem ${shadowColor};
     }
