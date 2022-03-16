@@ -37,27 +37,27 @@ const Form = ({
     scrollTo(`#${id}`);
   };
 
-  useEffect(() => {
-    const scripts = [
-      "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js",
-      "//js.hs-scripts.com/20627890.js",
-      "//js.hsforms.net/forms/shell.js",
-    ];
+  // useEffect(() => {
+  //   const scripts = [
+  //     "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js",
+  //     "//js.hs-scripts.com/20627890.js",
+  //     "//js.hsforms.net/forms/shell.js",
+  //   ];
 
-    scripts.map((url) => {
-      const script = document.createElement("script");
-      script.src = url;
-      let jqueryScript = document.getElementsByTagName("script");
-      let src = Array.from(jqueryScript).filter(
-        (item) => item.src === script.src
-      );
-      if (src.length === 0) {
-        document.body.appendChild(script);
-      }
+  //   scripts.map((url) => {
+  //     const script = document.createElement("script");
+  //     script.src = url;
+  //     let jqueryScript = document.getElementsByTagName("script");
+  //     let src = Array.from(jqueryScript).filter(
+  //       (item) => item.src === script.src
+  //     );
+  //     if (src.length === 0) {
+  //       document.body.appendChild(script);
+  //     }
 
-      return url;
-    });
-  }, []);
+  //     return url;
+  //   });
+  // }, []);
 
   return (
     <FormSwitcher id={id}>

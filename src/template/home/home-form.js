@@ -14,7 +14,6 @@ const HomeForm = () => {
           <Form formId="dd761710-e90b-4d87-a867-c8141db651ce"/>
         </Content>
       </Container>
-      );
     </Section>
   );
 };
