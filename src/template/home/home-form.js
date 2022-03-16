@@ -36,6 +36,7 @@ const Container = styled.div`
   grid-template-columns: 100%;
   padding:0;
   gap: 7rem;
+  padding: 2rem;
   ${mq.lg} {
     padding: 8rem;
     grid-template-columns: 45% 50%;

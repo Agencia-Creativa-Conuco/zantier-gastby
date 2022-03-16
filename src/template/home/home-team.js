@@ -146,7 +146,7 @@ const Title = styled.h3`
 const Copy = styled.p`
   padding: 0rem 0;
 
-  color: #9f9fa0;
+  color: #838383;
 `;
 
 

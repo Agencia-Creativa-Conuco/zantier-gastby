@@ -95,7 +95,7 @@ const Title = styled.h1`
 `;
 
 const Copy = styled.p`
-  color: gray;
+  color: #838383;
   margin-bottom: 3rem;
 `;
 
