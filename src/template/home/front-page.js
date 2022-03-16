@@ -6,6 +6,7 @@ import HomeDescription from "./home-description";
 import HomeService from "./home-service";
 import HomeSlider from "./home-slider";
 import HomeTeam from "./home-team";
+import HomeTestimonials from "./home-testimonials";
 
 
 
@@ -20,6 +21,7 @@ const FrontPage = () => {
        <HomeSlider/>
        <HomeContact/>
        <HomeDescription/>
+       <HomeTestimonials/>
       </section>
     )
   }
