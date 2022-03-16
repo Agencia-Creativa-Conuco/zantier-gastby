@@ -1,11 +1,9 @@
 import styled from "@emotion/styled";
 import React from "react";
-import FeaturedMedia from "../../components/featured-media";
+import Form from "../../components/form";
 import { container, mq } from "../../components/layout/index";
-import useFiles from "../../hooks/useFiles";
 
 const HomeForm = () => {
-  const images = useFiles();
 
   return (
     <Section>
@@ -13,6 +11,7 @@ const HomeForm = () => {
         <Deco />
         <Content>
           <Title>Contáctanos</Title>
+          <Form formId="dd761710-e90b-4d87-a867-c8141db651ce"/>
         </Content>
       </Container>
       );
@@ -34,18 +33,14 @@ const Container = styled.div`
   background: white;
   border-radius: 20rem 20rem 0 0;
   margin-top: -15rem;
-
+  justify-content: center;
   grid-template-columns: 100%;
-  padding-bottom: 6.6rem;
-  gap: 3rem;
-
+  padding:0;
+  gap: 7rem;
   ${mq.lg} {
+    padding: 8rem;
     grid-template-columns: 45% 50%;
-  }
 
-  img {
-    border-radius: ${(props) =>
-      props.direction ? "25%" : " 1.5rem 30% 30% 30%"};
   }
 `;
 
@@ -54,16 +49,22 @@ const Content = styled.div`
   align-self: center;
 `;
 
-const Copy = styled.p``;
 
 const Deco = styled.div`
-  width: 40rem;
-  height: 40rem;
-  border-radius: 30% 30% 30% 0;
+  width: 25rem;
+  height: 25rem;
+  border-radius: 40% 40% 40% 0;
   background-color: #dc4545;
-  margin: 7rem auto;
+  margin: 5rem auto 0;
+  ${mq.lg}{
+  margin: 0 auto ;
+
+    width: 40rem;
+  height: 45rem;
+  }
 `;
 
 
 const Title = styled.h1`
+    text-align: center;
 `

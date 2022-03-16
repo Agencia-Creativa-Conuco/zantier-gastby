@@ -10,7 +10,7 @@ module.exports = {
   //     // "url": ""
   //   }
   // }, 
-  "gatsby-plugin-styled-components", "gatsby-plugin-image", "gatsby-plugin-react-helmet", "gatsby-plugin-sitemap", 
+  "gatsby-plugin-styled-components", "gatsby-plugin-image", "gatsby-plugin-react-helmet", "gatsby-plugin-sitemap","gatsby-plugin-smoothscroll",
   "gatsby-plugin-sharp",
   {
     resolve: 'gatsby-plugin-sharp',

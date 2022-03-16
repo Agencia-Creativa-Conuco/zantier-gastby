@@ -6,7 +6,7 @@ import slickcssTheme from 'slick-carousel/slick/slick-theme.css'
 
 import colors from './colors'
 
-// const auxiliarCSS = ({ settings }) => {
+const auxiliarCSS = ({ settings }) => {
 //   // Get Gutenberg css url
 //   const apiURL = new URL(settings.url)
 
@@ -14,12 +14,11 @@ import colors from './colors'
 //     apiURL.origin + '/wp-includes/css/dist/block-library/style.min.css'
 //   // const blockTheme = apiURL.origin + "/wp-includes/css/dist/block-library/theme.min.css";
 
-//   return css`
-//     @import "${blockStyle}";
-//     ${slickcss}
-//     ${slickcssTheme}
-//   `
-// }
+  return css`
+    ${slickcss}
+    ${slickcssTheme}
+  `
+}
 
 const cssReset = css`
   html,
@@ -436,7 +435,7 @@ const tableStyles = () => css`
 
 const globalStyle = (props) =>
   css([
-    // auxiliarCSS(props),
+    auxiliarCSS(props),
     cssReset,
     normalize,
     documentSetup(),

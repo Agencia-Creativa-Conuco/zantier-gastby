@@ -149,9 +149,5 @@ const Copy = styled.p`
   color: #9f9fa0;
 `;
 
-const Deco = styled.div`
-position:relative ;
 
 
-}
-`;

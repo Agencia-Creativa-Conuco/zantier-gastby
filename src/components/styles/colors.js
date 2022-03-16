@@ -10,7 +10,7 @@ const colors = {
     hover: '#FFEB36',
   },
   primary: {
-    base: '#00A4E5',
+    base: '#dc4545',
     light: '#E6F6FD',
     dark: '#001F56',
   },

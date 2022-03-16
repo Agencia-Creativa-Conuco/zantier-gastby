@@ -48,7 +48,7 @@ const HomeTestimonials = () => {
           margin: 0 1rem;
         }
         ${mq.xl} {
-          margin: 0 -6rem;
+          margin: 0 -2%;
         }
         &:focus {
           background-color: ${bgColor};
