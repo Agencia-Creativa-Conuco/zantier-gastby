@@ -7,7 +7,6 @@ import useFiles from "../../hooks/useFiles";
 import Carousel from "react-slick";
 import { css } from "@emotion/react";
 
-
 const HomeSlider = () => {
   const images = useFiles();
 
@@ -86,7 +85,6 @@ export default HomeSlider;
 const Section = styled.section`
   padding-bottom: 6.6rem;
   padding-top: 6.6rem;
-
   background: #f4f7fc;
 
   ${mq.md} {

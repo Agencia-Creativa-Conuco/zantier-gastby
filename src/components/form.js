@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 import { mq } from "./layout/index";
@@ -37,27 +37,6 @@ const Form = ({
     scrollTo(`#${id}`);
   };
 
-  // useEffect(() => {
-  //   const scripts = [
-  //     "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js",
-  //     "//js.hs-scripts.com/20627890.js",
-  //     "//js.hsforms.net/forms/shell.js",
-  //   ];
-
-  //   scripts.map((url) => {
-  //     const script = document.createElement("script");
-  //     script.src = url;
-  //     let jqueryScript = document.getElementsByTagName("script");
-  //     let src = Array.from(jqueryScript).filter(
-  //       (item) => item.src === script.src
-  //     );
-  //     if (src.length === 0) {
-  //       document.body.appendChild(script);
-  //     }
-
-  //     return url;
-  //   });
-  // }, []);
 
   return (
     <FormSwitcher id={id}>
@@ -167,8 +146,8 @@ const FormContainer = styled.div`
           padding: 3rem 1.5rem;
           max-width: 60rem;
           margin: 0 auto;
-          box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.15);
-          border-radius: 2rem;
+          /* box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.15); */
+          /* border-radius: 2rem; */
           ${mq.sm} {
             border-radius: 4rem;
             padding: 3rem;

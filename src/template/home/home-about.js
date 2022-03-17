@@ -33,71 +33,57 @@ const HomeAbout = () => {
 
 export default HomeAbout;
 
-
 const Section = styled.section`
   background: #bc0e03;
   ${container}
   padding: 0;
 `;
 
-
 const Media = styled.div`
-position:relative ;
-width:100%;
-
-
+  position: relative;
+  width: 100%;
   img {
     clip-path: ellipse(95% 100% at 50% 100%);
   }
 `;
 
-
 const Card = styled.div`
-background-color:white ;
+  background-color: white;
 
-padding: 3rem  5rem;
-${mq.md}{
-    position:absolute;
-
+  padding: 3rem 5rem;
+  ${mq.md} {
+    position: absolute;
     max-width: 36rem;
     border-radius: 2rem;
     top: 25%;
     left: 13%;
-}
-
-
-
-`
+  }
+`;
 
 const Copy = styled.p`
-padding: 10rem 0  ;
-color:#bc0e03 ;
-
-
+  padding: 10rem 0;
+  color: #bc0e03;
 `;
-const  Deco = styled.div `
-position:relative  ;
+const Deco = styled.div`
+  position: relative;
 
-  &::before  {
+  &::before {
     content: "";
     position: absolute;
     background: #bc0e03;
-    width: 35%;
-    padding-bottom: 13%;
+    width: 9rem;
+    padding-bottom: 3.5rem;
     bottom: 0;
     border-radius: 2.8rem;
-}
-&::after {
+  }
+  &::after {
     content: "";
     position: absolute;
     background: #bc0e03;
-    width: 13%;
-    padding-bottom: 13%;
-    left: 37%;
+    width: 3.5rem;
+    padding-bottom: 3.5rem;
+    left: 10rem;
     bottom: 0;
     border-radius: 100%;
   }
-
-
-
-`
+`;

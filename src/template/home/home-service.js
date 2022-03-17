@@ -144,9 +144,7 @@ const Deco = styled.div`
     background: white;
     width: 15%;
     padding-bottom: 7%;
-
     left: 10%;
-
     ${mq.md} {
       ${(props) =>
         props.direction === 1 ? "right:10%; left:auto;" : " left:10%"};

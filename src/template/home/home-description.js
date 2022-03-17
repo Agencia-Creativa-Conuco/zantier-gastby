@@ -90,7 +90,6 @@ const Media = styled.div`
 
   img {
     border-radius: 40% 0 0% 0%;
-
     z-index: 2;
 
     ${mq.lg} {
@@ -103,13 +102,9 @@ const Media = styled.div`
 const Card = styled.div`
   position: relative;
   grid-area: col_1;
-
   padding: 3rem;
-  ${mq.md} {
-  }
   ${mq.lg} {
     padding: 6rem 5rem;
-
     max-height: 70%;
   }
 
@@ -125,19 +120,16 @@ const Card = styled.div`
 
     ${mq.lg} {
       width: 140%;
-
       border-radius: 2rem 0 0 2rem;
     }
   }
 `;
 
 const Copy = styled.p`
-padding: 0rem 0  ;
-color:#bc0e03 ;
-position: relative;
-z-index:2;
-    }
-
+  padding: 0rem 0;
+  color: #bc0e03;
+  position: relative;
+  z-index: 2;
 `;
 
 const Content = styled.div`

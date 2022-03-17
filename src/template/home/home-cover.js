@@ -43,10 +43,9 @@ const HomeCover = () => {
 export default HomeCover;
 
 const Section = styled.section`
-  background: #eaeef2;
   ${container}
+  background: #eaeef2;
   padding: 0;
-
   &::after {
     content: "";
     position: absolute;

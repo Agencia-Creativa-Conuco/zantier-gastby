@@ -95,7 +95,6 @@ const HomeTestimonials = () => {
                 slidesToShow: 1,
               },
             },
-
           ]}
         >
           {data.map((item) => {
@@ -118,7 +117,6 @@ const HomeTestimonials = () => {
 export default HomeTestimonials;
 
 const Section = styled.section`
-  /* padding-bottom: 6.6rem; */
   padding-top: 6.6rem;
 
   background-color: #bc0e03;

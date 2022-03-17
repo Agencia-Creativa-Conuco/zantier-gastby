@@ -4,14 +4,13 @@ import Form from "../../components/form";
 import { container, mq } from "../../components/layout/index";
 
 const HomeForm = () => {
-
   return (
     <Section>
       <Container>
         <Deco />
         <Content>
           <Title>Contáctanos</Title>
-          <Form formId="dd761710-e90b-4d87-a867-c8141db651ce"/>
+          <Form formId="dd761710-e90b-4d87-a867-c8141db651ce" />
         </Content>
       </Container>
     </Section>
@@ -34,13 +33,12 @@ const Container = styled.div`
   margin-top: -15rem;
   justify-content: center;
   grid-template-columns: 100%;
-  padding:0;
+  padding: 0;
   gap: 7rem;
   padding: 2rem;
   ${mq.lg} {
     padding: 8rem;
     grid-template-columns: 45% 50%;
-
   }
 `;
 
@@ -49,22 +47,20 @@ const Content = styled.div`
   align-self: center;
 `;
 
-
 const Deco = styled.div`
   width: 25rem;
   height: 25rem;
   border-radius: 40% 40% 40% 0;
   background-color: #dc4545;
   margin: 5rem auto 0;
-  ${mq.lg}{
-  margin: 0 auto ;
+  ${mq.lg} {
+    margin: 0 auto;
 
     width: 40rem;
-  height: 45rem;
+    height: 45rem;
   }
 `;
 
-
 const Title = styled.h1`
-    text-align: center;
-`
+  text-align: center;
+`;

@@ -30,7 +30,7 @@ const HomeContact = () => {
       fluid={data.featuredImage?.childImageSharp?.fluid}
       id="section_3"
     >
-      <Section as="div">
+      <Section>
         <Container>
           <Title>{data.title} </Title>
 
@@ -54,8 +54,7 @@ const BImage = styled(BackgroundImage)`
   overflow: hidden;
 `;
 
-const Section = styled.section`
-  /* background: rgb(239 228 228 / 35%); */
+const Section = styled.div`
   min-height: 45rem;
   padding-top: 5rem;
   padding-bottom: 10rem;
