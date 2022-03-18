@@ -76,8 +76,13 @@ const Container = styled.div`
     "col_1"
     "col_3";
 
-  ${mq.lg} {
+  ${mq.md} {
     grid-template-columns: 50% 50%;
+    grid-template-areas:
+      "col_1 col_2"
+      "col_3 col_3";
+  }
+  ${mq.lg} {
     grid-template-areas:
       "col_1 col_2"
       "col_3 col_space";
@@ -91,6 +96,11 @@ const Media = styled.div`
   img {
     border-radius: 40% 0 0% 0%;
     z-index: 2;
+
+    ${mq.md} {
+      max-width: 40rem;
+      border-radius: 0 2rem 2rem 0%;
+    }
 
     ${mq.lg} {
       max-width: 40rem;
@@ -118,7 +128,7 @@ const Card = styled.div`
     background-color: white;
     border-radius: 0rem 0 2rem 2rem;
 
-    ${mq.lg} {
+    ${mq.md} {
       width: 140%;
       border-radius: 2rem 0 0 2rem;
     }
