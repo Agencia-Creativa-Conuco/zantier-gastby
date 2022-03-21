@@ -34,9 +34,9 @@ const HomeContact = () => {
         <Container>
           <Title>{data.title} </Title>
 
-          {data.list.map((item) => {
+          {data.list.map((item, index) => {
             return (
-              <Content>
+              <Content key={index}>
                 <Deco />
                 <Copy>{item.title}</Copy>
               </Content>

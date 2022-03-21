@@ -7,6 +7,7 @@ const Cta = ({
     to, children, 
     color, bgColor, bgActiveColor, shadowColor, paddingX,
     download,
+    animation,
     ...other 
 }) => {
 
@@ -14,13 +15,13 @@ const Cta = ({
 
     return !isExternal? ( 
         <Link to={to} {...{download}} {...other}>
-            <Span {...{color, bgColor, bgActiveColor, shadowColor, paddingX,}} >
+            <Span {...{color, bgColor, bgActiveColor, shadowColor, paddingX,animation}} >
                 {children}
             </Span>
         </Link>
      ) : (
         <Anchor href={to} {...{download}} {...other}>
-            <Span {...{color, bgColor, bgActiveColor, shadowColor, paddingX,}} >
+            <Span {...{color, bgColor, bgActiveColor, shadowColor, paddingX,animation}} >
                 {children}
             </Span>
         </Anchor>

@@ -97,9 +97,9 @@ const HomeTestimonials = () => {
             },
           ]}
         >
-          {data.map((item) => {
+          {data.map((item, index) => {
             return (
-              <Card>
+              <Card key={index}>
                 <FeaturedMedia media={item.featuredImage} size="70.25%" />
 
                 <Content>

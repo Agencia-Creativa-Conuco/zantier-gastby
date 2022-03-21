@@ -71,8 +71,8 @@ const HomeSlider = () => {
             </Arrows>
           }
         >
-          {data.map((item) => {
-            return <FeaturedMedia media={item.featuredImage} size="60.25%" />;
+          {data.map((item, key) => {
+            return <FeaturedMedia key={key} media={item.featuredImage} size="60.25%" />;
           })}
         </Carousel>
       </Container>

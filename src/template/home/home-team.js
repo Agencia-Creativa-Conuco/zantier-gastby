@@ -52,11 +52,11 @@ const HomeTeam = () => {
   ];
 
   return (
-    <Section fluid>
+    <Section  fluid>
       <Container>
-        {data.map((item) => {
+        {data.map((item, index) => {
           return (
-            <CardContainer>
+            <CardContainer key={index}>
               <Media>
                 <FeaturedMedia
                   media={item.featuredImage}

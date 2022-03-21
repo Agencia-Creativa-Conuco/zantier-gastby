@@ -1,5 +1,9 @@
 import styled from "@emotion/styled";
 import React from "react";
+import {
+  TextAnimation,
+  ImagesAnimation,
+} from "../../components/animation/animation";
 import Cta from "../../components/cta";
 import FeaturedMedia from "../../components/featured-media";
 import { container, mq } from "../../components/layout/index";
@@ -21,12 +25,14 @@ const HomeCover = () => {
     <Section fluid>
       <Container>
         <Content>
-          <Title>{data.title}</Title>
-          <Copy>{data.copy}</Copy>
-          <Cta to={data.cta.url}>{data.cta.title}</Cta>
+          <Title animate={TextAnimation}>{data.title}</Title>
+          <Copy animate={TextAnimation}>{data.copy}</Copy>
+          <Cta animation={TextAnimation} to={data.cta.url}>
+            {data.cta.title}
+          </Cta>
         </Content>
 
-        <Media>
+        <Media animate={ImagesAnimation}>
           <FeaturedMedia
             media={data.featuredImage}
             size="80%"
@@ -91,13 +97,24 @@ const Content = styled.div`
 
 const Title = styled.h1`
   margin-bottom: 3rem;
+  animation: ${(props) =>
+    props.animate} 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
 `;
 
 const Copy = styled.p`
   color: #838383;
   margin-bottom: 3rem;
+  animation: ${(props) => props.animate} 1.3s
+    cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 `;
 
 const Media = styled.div`
   position: relative;
+
+  img {
+    animation: ${(props) => props.animate} 2.9s
+      cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  }
 `;

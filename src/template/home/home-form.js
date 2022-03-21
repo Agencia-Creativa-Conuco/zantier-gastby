@@ -2,8 +2,23 @@ import styled from "@emotion/styled";
 import React from "react";
 import Form from "../../components/form";
 import { container, mq } from "../../components/layout/index";
+// import { useInView, InView } from 'react-intersection-observer';
 
-const HomeForm = () => {
+
+const HomeForm =(({  ...props }) => {
+
+
+//   const {ref, inView} = useInView({
+//     rootMargin:'-50%'
+//   })
+// useEffect(()=>{
+//   console.log("changes")
+// },[inView])
+
+//     console.log(inView);
+
+
+
   return (
     <Section>
       <Container>
@@ -15,8 +30,13 @@ const HomeForm = () => {
       </Container>
     </Section>
   );
-};
+}
 
+
+)
+
+
+// const HomeForm = React.forwardRef(Button);
 export default HomeForm;
 
 const Section = styled.section`

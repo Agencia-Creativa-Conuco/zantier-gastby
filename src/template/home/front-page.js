@@ -14,7 +14,7 @@ import HomeTestimonials from "./home-testimonials";
 const FrontPage = () => {
 
     return (
-      <section>
+      <section >
        <HomeCover/>
        <HomeService/>
        <HomeAbout/>
@@ -22,8 +22,8 @@ const FrontPage = () => {
        <HomeSlider/>
        <HomeContact/>
        <HomeDescription/>
-       <HomeTestimonials/>
-       <HomeForm/>
+       <HomeTestimonials />
+       <HomeForm />
       </section>
     )
   }

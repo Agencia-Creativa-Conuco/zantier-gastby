@@ -37,10 +37,10 @@ const HomeService = () => {
   ];
 
   return (
-    <Section fluid>
+    <Section fluid >
       {data.map((item, index) => {
         return (
-          <Container direction={index % 2}>
+          <Container key={index} direction={index % 2} >
             <Media>
               <FeaturedMedia media={item.featuredImage} size="80%" />
             </Media>
