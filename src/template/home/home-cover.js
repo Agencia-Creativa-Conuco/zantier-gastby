@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import React from "react";
 import {
   TextAnimation,
-  ImagesAnimation,
+  FadeIn,
 } from "../../components/animation/animation";
 import Cta from "../../components/cta";
 import FeaturedMedia from "../../components/featured-media";
@@ -12,6 +12,12 @@ import { useInView } from 'react-intersection-observer';
 
 const HomeCover = () => {
   const images = useFiles();
+
+  const {ref, inView} = useInView({
+    rootMargin:'-50%'
+  })
+
+  
   const data = {
     title: "En zantier creemos que la felicidad viene de sonrisa en sonrisa",
     copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
@@ -22,9 +28,6 @@ const HomeCover = () => {
     featuredImage: images.home.cover,
   };
 
-  const {ref, inView} = useInView({
-    rootMargin:'-50%'
-  })
 
 
   return (
@@ -38,7 +41,7 @@ const HomeCover = () => {
           </Cta>
         </Content>
 
-        <Media animate={ inView ? ImagesAnimation:"none"}>
+        <Media animate={ inView ? FadeIn:"none"}>
           <FeaturedMedia
             media={data.featuredImage}
             size="80%"

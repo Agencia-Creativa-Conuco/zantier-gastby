@@ -3,9 +3,21 @@ import React from "react";
 import FeaturedMedia from "../../components/featured-media";
 import { container, mq } from "../../components/layout/index";
 import useFiles from "../../hooks/useFiles";
+import {
+  ImagesAnimationLeft,
+  TextAnimationLeft,
+  TextAnimationRight,
+  FadeIn,
+} from "../../components/animation/animation";
+import { useInView } from "react-intersection-observer";
 
 const HomeService = () => {
   const images = useFiles();
+
+  const { ref, inView } = useInView({
+    rootMargin: "50%",
+  });
+
   const data = [
     {
       title: "En zantier creemos que la felicidad viene de sonrisa en sonrisa",
@@ -37,17 +49,19 @@ const HomeService = () => {
   ];
 
   return (
-    <Section fluid >
+    <Section fluid>
       {data.map((item, index) => {
+        let animationText = index % 2 ? TextAnimationLeft : TextAnimationRight;
+
         return (
-          <Container key={index} direction={index % 2} >
-            <Media>
+          <Container key={index} direction={index % 2}>
+            <Media ref={ref} animate={inView ? ImagesAnimationLeft : "none"}>
               <FeaturedMedia media={item.featuredImage} size="80%" />
             </Media>
 
             <Content>
-              <Copy>{item.copy}</Copy>
-              <Deco direction={index % 2} />
+              <Copy animate={inView ? animationText : "none"}>{item.copy}</Copy>
+              <Deco direction={index % 2} animate={inView ? FadeIn : "none"} />
             </Content>
           </Container>
         );
@@ -118,15 +132,24 @@ const Content = styled.div`
   align-self: center;
 `;
 
-const Copy = styled.p``;
+const Copy = styled.p`
+  animation: ${(props) => props.animate} 2.9s
+    cubic-bezier(0.39, 0.575, 0.565, 1) both;
+`;
 
 const Media = styled.div`
   position: relative;
   max-width: 40rem;
+  img {
+    animation: ${(props) => props.animate} 2.9s
+      cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  }
 `;
 
 const Deco = styled.div`
   position: relative;
+  animation: ${(props) => props.animate} 3.9s
+    cubic-bezier(0.39, 0.575, 0.565, 1) both;
   &::before {
     content: "";
     position: absolute;

@@ -1,10 +1,9 @@
 import { keyframes } from "@emotion/react";
 
-
 export const TextAnimation = keyframes`
 
   0% {
-    transform: translateY(100px);
+    transform: translateY(150px);
   }
   100% {
     transform: translateY(0);
@@ -13,14 +12,57 @@ export const TextAnimation = keyframes`
 
 `;
 
+export const TextAnimationRight = keyframes`
 
-export const ImagesAnimation = keyframes`
+  0% {
+    transform: translateX(200px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+`;
+
+export const TextAnimationLeft = keyframes`
+
+  0% {
+    transform: translateX(-200px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+`;
+
+export const FadeIn = keyframes`
 
   0% {
     opacity: 0;
   }
   100% {
     opacity: 1;
+  }
+}
+
+
+`;
+
+export const ImagesAnimationLeft = keyframes`
+
+  0% {
+
+    width: 0;
+    height:0 ;
+    left:0;
+
+  }
+  100% {
+    width: 100%;
+    height:100% ;
+
+
   }
 }
 
