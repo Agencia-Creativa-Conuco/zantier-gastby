@@ -2,41 +2,27 @@ import styled from "@emotion/styled";
 import React from "react";
 import Form from "../../components/form";
 import { container, mq } from "../../components/layout/index";
-// import { useInView, InView } from 'react-intersection-observer';
+import { FadeUp } from "../../components/animation/animation";
+import { useInView } from "react-intersection-observer";
 
-
-const HomeForm =(({  ...props }) => {
-
-
-//   const {ref, inView} = useInView({
-//     rootMargin:'-50%'
-//   })
-// useEffect(()=>{
-//   console.log("changes")
-// },[inView])
-
-//     console.log(inView);
-
-
+const HomeForm = () => {
+  const { ref, inView } = useInView({
+    rootMargin: "-10%",
+  });
 
   return (
-    <Section>
+    <Section ref={ref}>
       <Container>
         <Deco />
-        <Content>
-          <Title>Contáctanos</Title>
+        <Content animate={inView ? FadeUp : "none"}>
+          <Title animate={inView ? FadeUp : "none"}>Contáctanos</Title>
           <Form formId="dd761710-e90b-4d87-a867-c8141db651ce" />
         </Content>
       </Container>
     </Section>
   );
-}
+};
 
-
-)
-
-
-// const HomeForm = React.forwardRef(Button);
 export default HomeForm;
 
 const Section = styled.section`
@@ -65,6 +51,11 @@ const Container = styled.div`
 const Content = styled.div`
   color: white;
   align-self: center;
+
+  iframe {
+    animation: ${(props) => props.animate} 0.7s
+      cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
 `;
 
 const Deco = styled.div`
@@ -83,4 +74,6 @@ const Deco = styled.div`
 
 const Title = styled.h1`
   text-align: center;
+  animation: ${(props) => props.animate} 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+    both;
 `;
