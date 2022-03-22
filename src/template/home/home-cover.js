@@ -8,6 +8,7 @@ import Cta from "../../components/cta";
 import FeaturedMedia from "../../components/featured-media";
 import { container, mq } from "../../components/layout/index";
 import useFiles from "../../hooks/useFiles";
+import { useInView } from 'react-intersection-observer';
 
 const HomeCover = () => {
   const images = useFiles();
@@ -21,18 +22,23 @@ const HomeCover = () => {
     featuredImage: images.home.cover,
   };
 
+  const {ref, inView} = useInView({
+    rootMargin:'-50%'
+  })
+
+
   return (
-    <Section fluid>
+    <Section fluid ref={ref}>
       <Container>
         <Content>
-          <Title animate={TextAnimation}>{data.title}</Title>
-          <Copy animate={TextAnimation}>{data.copy}</Copy>
-          <Cta animation={TextAnimation} to={data.cta.url}>
+          <Title animate={ inView ? TextAnimation:"none"}>{data.title}</Title>
+          <Copy animate={ inView ? TextAnimation:"none"}>{data.copy}</Copy>
+          <Cta animation={ inView ? TextAnimation:"none"} to={data.cta.url}>
             {data.cta.title}
           </Cta>
         </Content>
 
-        <Media animate={ImagesAnimation}>
+        <Media animate={ inView ? ImagesAnimation:"none"}>
           <FeaturedMedia
             media={data.featuredImage}
             size="80%"
