@@ -3,9 +3,17 @@ import styled from "@emotion/styled";
 import { container, mq } from "../../components/layout/index";
 import useFiles from "../../hooks/useFiles";
 import BackgroundImage from "gatsby-background-image";
+import { useInView } from "react-intersection-observer";
+import { FadeIn, FadeUp } from "../../components/animation/animation";
+import { css } from "@emotion/react";
 
 const HomeContact = () => {
   const images = useFiles();
+
+  const { ref, inView } = useInView({
+    rootMargin: "-10%",
+  });
+
   const data = {
     title:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore ",
@@ -30,13 +38,18 @@ const HomeContact = () => {
       fluid={data.featuredImage?.childImageSharp?.fluid}
       id="section_3"
     >
-      <Section>
+      <Section ref={ref}>
         <Container>
-          <Title>{data.title} </Title>
+          <Title animate={inView ? FadeUp : "none"}>{data.title} </Title>
 
           {data.list.map((item, index) => {
+            console.log(index + 2);
             return (
-              <Content key={index}>
+              <Content
+                key={index}
+                time={index + 0.9}
+                animate={inView ? FadeUp : "none"}
+              >
                 <Deco />
                 <Copy>{item.title}</Copy>
               </Content>
@@ -80,24 +93,34 @@ const Container = styled.div`
 `;
 
 const Content = styled.div`
+  ${({ animate, time }) => css`
+
   padding: 1rem 1.5rem;
   position: relative;
   display: flex;
   gap: 2rem;
   justify-content: end;
 
-  * {
-    color: #bc0e03;
-  }
+  animation: ${animate} ${time}s  cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+
+
+`}
 `;
 
 const Title = styled.h2`
   margin-bottom: 4rem;
+  animation: ${(props) =>
+    props.animate} 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
 `;
 
 const Copy = styled.p`
   margin-bottom: 0;
   align-self: center;
+  color: #bc0e03;
 `;
 
 const Deco = styled.div`
