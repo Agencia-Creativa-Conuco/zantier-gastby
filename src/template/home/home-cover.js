@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import React from "react";
 import {
-  TextAnimation,
+  FadeUp,
   FadeIn,
 } from "../../components/animation/animation";
 import Cta from "../../components/cta";
@@ -14,7 +14,7 @@ const HomeCover = () => {
   const images = useFiles();
 
   const {ref, inView} = useInView({
-    rootMargin:'-50%'
+    rootMargin:'-30%'
   })
 
   
@@ -34,9 +34,9 @@ const HomeCover = () => {
     <Section fluid ref={ref}>
       <Container>
         <Content>
-          <Title animate={ inView ? TextAnimation:"none"}>{data.title}</Title>
-          <Copy animate={ inView ? TextAnimation:"none"}>{data.copy}</Copy>
-          <Cta animation={ inView ? TextAnimation:"none"} to={data.cta.url}>
+          <Title animate={ inView ? FadeUp:"none"}>{data.title}</Title>
+          <Copy animate={ inView ? FadeUp:"none"}>{data.copy}</Copy>
+          <Cta animation={ inView ? FadeUp:"none"} to={data.cta.url}>
             {data.cta.title}
           </Cta>
         </Content>

@@ -1,6 +1,6 @@
 import { keyframes } from "@emotion/react";
 
-export const TextAnimation = keyframes`
+export const FadeUp = keyframes`
 
   0% {
     transform: translateY(150px);
