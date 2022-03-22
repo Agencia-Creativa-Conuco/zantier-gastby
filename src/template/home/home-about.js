@@ -60,6 +60,7 @@ const Media = styled.div`
 
 const Card = styled.div`
   background-color: white;
+
   padding: 3rem 5rem;
   ${mq.md} {
     animation: ${(props) => props.animate} 1s ease-in both;

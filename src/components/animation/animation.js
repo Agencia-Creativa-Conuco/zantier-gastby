@@ -3,7 +3,7 @@ import { keyframes } from "@emotion/react";
 export const FadeUp = keyframes`
 
   0% {
-    transform: translateY(150px);
+    transform: translateY(100px);
   }
   100% {
     transform: translateY(0);

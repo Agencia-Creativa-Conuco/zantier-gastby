@@ -3,9 +3,16 @@ import React from "react";
 import FeaturedMedia from "../../components/featured-media";
 import { container, mq } from "../../components/layout/index";
 import useFiles from "../../hooks/useFiles";
+import { useInView } from "react-intersection-observer";
+import { FadeIn, FadeUp } from "../../components/animation/animation";
 
 const HomeTeam = () => {
   const images = useFiles();
+
+  const { ref, inView } = useInView({
+    rootMargin: "10%",
+  });
+
   const data = [
     {
       title: "Maria Celeste Arraraz",
@@ -52,12 +59,12 @@ const HomeTeam = () => {
   ];
 
   return (
-    <Section  fluid>
-      <Container>
+    <Section fluid>
+      <Container ref={ref}>
         {data.map((item, index) => {
           return (
             <CardContainer key={index}>
-              <Media>
+              <Media animate={inView ? FadeUp : "none"}>
                 <FeaturedMedia
                   media={item.featuredImage}
                   size="100%"
@@ -65,9 +72,9 @@ const HomeTeam = () => {
                   bgColor="#bc0e05 "
                 />
               </Media>
-              <Card>
-                <Title>{item.title}</Title>
-                <Copy>{item.copy}</Copy>
+              <Card animate={inView ? FadeUp : "none"}>
+                <Title animate={inView ? FadeUp : "none"}>{item.title}</Title>
+                <Copy animate={inView ? FadeUp : "none"}>{item.copy}</Copy>
               </Card>
             </CardContainer>
           );
@@ -120,6 +127,8 @@ const Media = styled.div`
   background: white;
   padding: 2.5rem;
   border-radius: 100%;
+  animation: ${(props) => props.animate} 0.8s
+    cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
   img {
     z-index: 5;
@@ -130,6 +139,7 @@ const Card = styled.div`
   background-color: rgb(245 246 248);
   margin: -5rem auto 0;
   z-index: 2;
+  animation: ${(props) => props.animate} 2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
   padding: 3.5rem 4rem;
   border-radius: 3.5rem;
@@ -141,9 +151,12 @@ const Card = styled.div`
 const Title = styled.h3`
   color: #bc0e03;
   text-align: center;
+  animation: ${(props) => props.animate} 2.5s
+    cubic-bezier(0.25, 0.46, 0.45, 0.94);
 `;
 
 const Copy = styled.p`
   padding: 0rem 0;
   color: #838383;
+  animation: ${(props) => props.animate} 3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 `;
