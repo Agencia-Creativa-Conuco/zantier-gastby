@@ -6,9 +6,15 @@ import { container, mq } from "../../components/layout/index";
 import useFiles from "../../hooks/useFiles";
 import Carousel from "react-slick";
 import { css } from "@emotion/react";
+import { useInView } from "react-intersection-observer";
+import { BackgroundAnimation } from "../../components/animation/animation";
 
 const HomeSlider = () => {
   const images = useFiles();
+
+  const { ref, inView } = useInView({
+    rootMargin: "10%",
+  });
 
   const data = [
     {
@@ -57,7 +63,7 @@ const HomeSlider = () => {
     return <Arrow {...props} />;
   };
   return (
-    <Section>
+    <Section ref={ref}>
       <Container>
         <Carousel
           prevArrow={
@@ -72,7 +78,15 @@ const HomeSlider = () => {
           }
         >
           {data.map((item, key) => {
-            return <FeaturedMedia key={key} media={item.featuredImage} size="60.25%" />;
+            return (
+              <Media animate={inView ? BackgroundAnimation : "none"}>
+                <FeaturedMedia
+                  key={key}
+                  media={item.featuredImage}
+                  size="60.25%"
+                />
+              </Media>
+            );
           })}
         </Carousel>
       </Container>
@@ -99,8 +113,8 @@ const Container = styled.div`
   img {
     clip-path: ellipse(95% 100% at 50% 100%);
     border-radius: 0 0 4rem 4rem;
+    z-index: 55;
   }
-
   &::before {
     content: "";
     top: 20%;
@@ -112,4 +126,34 @@ const Container = styled.div`
     border-radius: 100%;
     z-index: 44;
   }
+`;
+
+const Media = styled.div`
+
+position:relative ;
+
+
+img{
+  animation: ${(props) =>
+    props.animate} 2.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+
+}
+
+&::after{
+  content:"";
+  left:0 ;
+     top: 0;
+    position: absolute;
+  width:100% ;
+  height:100% ;
+  background-color:#bc0e03;
+  clip-path: ellipse(95% 100% at 50% 100%);
+    border-radius: 0 0 4rem 4rem;
+  animation: ${(props) =>
+    props.animate} 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+
+}
+
+
+}
 `;

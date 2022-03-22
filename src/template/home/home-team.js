@@ -4,7 +4,7 @@ import FeaturedMedia from "../../components/featured-media";
 import { container, mq } from "../../components/layout/index";
 import useFiles from "../../hooks/useFiles";
 import { useInView } from "react-intersection-observer";
-import { FadeIn, FadeUp } from "../../components/animation/animation";
+import { FadeIn, FadeUp, } from "../../components/animation/animation";
 
 const HomeTeam = () => {
   const images = useFiles();
@@ -73,8 +73,8 @@ const HomeTeam = () => {
                 />
               </Media>
               <Card animate={inView ? FadeUp : "none"}>
-                <Title animate={inView ? FadeUp : "none"}>{item.title}</Title>
-                <Copy animate={inView ? FadeUp : "none"}>{item.copy}</Copy>
+                <Title animate={inView ? FadeUp: "none"}>{item.title}</Title>
+                <Copy animate={inView ? FadeUp: "none"}>{item.copy}</Copy>
               </Card>
             </CardContainer>
           );

@@ -68,3 +68,25 @@ export const ImagesAnimationLeft = keyframes`
 
 
 `;
+export const BackgroundAnimation = keyframes`
+
+  0% {
+
+    /* width: 0;
+    height:0 ; */
+    opacity:0 ;
+    transform: scaleX(0);
+
+  }
+  100% {
+    /* width: 100%;
+    height:100% ; */
+    opacity:1;
+
+    transform: scaleX(1);
+
+  }
+}
+
+
+`;
