@@ -6,9 +6,15 @@ import { container, mq } from "../../components/layout/index";
 import useFiles from "../../hooks/useFiles";
 import Carousel from "react-slick";
 import { css } from "@emotion/react";
+import { useInView } from "react-intersection-observer";
+import { FadeUp } from "../../components/animation/animation";
 
 const HomeTestimonials = () => {
   const images = useFiles();
+
+  const { ref, inView } = useInView({
+    rootMargin: "-10%",
+  });
 
   const data = [
     {
@@ -67,8 +73,8 @@ const HomeTestimonials = () => {
     return <Arrow {...props} />;
   };
   return (
-    <Section>
-      <Container>
+    <Section ref={ref} Container>
+      <Container animate={inView ? FadeUp : "none"}>
         <Carousel
           infinite
           slidesToShow={3}
@@ -102,7 +108,7 @@ const HomeTestimonials = () => {
               <Card key={index}>
                 <FeaturedMedia media={item.featuredImage} size="70.25%" />
 
-                <Content>
+                <Content animate={inView ? FadeUp : "none"}>
                   <Copy>{item.copy}</Copy>
                 </Content>
               </Card>
@@ -133,6 +139,8 @@ const Container = styled.div`
 
   img {
     border-radius: 0 0 5rem 5rem;
+    animation: ${(props) => props.animate} 1.5s
+      cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   }
 `;
 
@@ -143,12 +151,18 @@ const Card = styled.div`
   margin: 0 auto;
   overflow: hidden;
   max-width: 30rem;
+  /* animation: ${(props) =>
+    props.animate} 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+   */
 `;
 
 const Content = styled.div`
   padding: 2rem 5rem;
   position: relative;
   gap: 2rem;
+  animation: ${(props) => props.animate} 1.8s
+    cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+
   &::before {
     content: "";
     position: absolute;
