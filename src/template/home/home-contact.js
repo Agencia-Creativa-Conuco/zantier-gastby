@@ -4,7 +4,7 @@ import { container, mq } from "../../components/layout/index";
 import useFiles from "../../hooks/useFiles";
 import BackgroundImage from "gatsby-background-image";
 import { useInView } from "react-intersection-observer";
-import { FadeIn, FadeUp } from "../../components/animation/animation";
+import { FadeUp } from "../../components/animation/animation";
 import { css } from "@emotion/react";
 
 const HomeContact = () => {
@@ -65,6 +65,7 @@ export default HomeContact;
 
 const BImage = styled(BackgroundImage)`
   overflow: hidden;
+
 `;
 
 const Section = styled.div`

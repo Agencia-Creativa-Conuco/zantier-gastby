@@ -6,8 +6,19 @@ import useFiles from "../../hooks/useFiles";
 
 import Cta from "../../components/cta";
 
+import { useInView } from "react-intersection-observer";
+import {
+  FadeUp,
+  TextAnimationRight,
+} from "../../components/animation/animation";
+
 const HomeDescription = () => {
   const images = useFiles();
+
+  const { ref, inView } = useInView({
+    rootMargin: "-10%",
+  });
+
   const data = {
     copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
 
@@ -22,20 +33,19 @@ const HomeDescription = () => {
   };
 
   return (
-    <Section>
+    <Section ref={ref}>
       <Container>
-        <Media>
+        <Media animate={inView ? FadeUp : "none"}>
           <FeaturedMedia
             media={data.featuredImage}
             size="70%"
-            // sizeMD="90%"
             sizeXL="54.25%"
           />
         </Media>
-        <Card>
-          <Copy>{data.copy}</Copy>
+        <Card animate={inView ? TextAnimationRight : "none"}>
+          <Copy animate={inView ? FadeUp : "none"}>{data.copy}</Copy>
         </Card>
-        <Content>
+        <Content animate={inView ? FadeUp : "none"}>
           <p>{data.otherCopy}</p>
 
           <Cta
@@ -43,6 +53,8 @@ const HomeDescription = () => {
             bgColor="white"
             color="#bc0e03"
             bgActiveColor="#dbd8d8"
+            animation={inView ? FadeUp : "none"}
+            timeAnimation="2.9s"
           >
             {data.cta.title}
           </Cta>
@@ -127,9 +139,11 @@ const Card = styled.div`
     position: absolute;
     background-color: white;
     border-radius: 0rem 0 2rem 2rem;
+    animation: ${(props) => props.animate} 1s
+      cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 
     ${mq.md} {
-      width: 140%;
+      width: 130%;
       border-radius: 2rem 0 0 2rem;
     }
   }
@@ -140,6 +154,9 @@ const Copy = styled.p`
   color: #bc0e03;
   position: relative;
   z-index: 2;
+  animation: ${(props) =>
+    props.animate} 2.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
 `;
 
 const Content = styled.div`
@@ -150,5 +167,9 @@ const Content = styled.div`
 
   ${mq.lg} {
     margin-top: -3.5rem;
+  }
+  p {
+    animation: ${(props) => props.animate} 2.5s
+      cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   }
 `;

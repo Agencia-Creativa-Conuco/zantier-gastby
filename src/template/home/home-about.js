@@ -53,7 +53,7 @@ const Media = styled.div`
     clip-path: ellipse(95% 100% at 50% 100%);
 
     ${mq.md} {
-      animation: ${(props) => props.animate} 5s ease-in both;
+      animation: ${(props) => props.animate} 3s ease-in both;
     }
   }
 `;

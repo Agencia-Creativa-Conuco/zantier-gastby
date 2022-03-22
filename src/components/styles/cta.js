@@ -1,5 +1,4 @@
 import { css } from "@emotion/react";
-import { text } from "../animation/animation";
 
 const ctas = ({
   bgColor = "#bc0e03",
@@ -8,7 +7,8 @@ const ctas = ({
   color = "#FFFFFF",
   paddingX = "5rem",
   textShadow = "0.1rem 0.1rem 0.1rem rgb(52,49,49,0.80)",
-  animation = { text },
+  animation,
+  timeAnimation
 }) => css`
   display: inline-block;
   text-align: center;
@@ -27,7 +27,7 @@ const ctas = ({
   transition: all 0.2s ease-in-out;
   /* text-shadow: ${textShadow}; */
 
-  animation: ${animation} 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: ${animation} ${timeAnimation} cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 
   &:focus {
     box-shadow: 0 0 0 0.32rem ${shadowColor};

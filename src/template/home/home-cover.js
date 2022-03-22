@@ -1,23 +1,19 @@
 import styled from "@emotion/styled";
 import React from "react";
-import {
-  FadeUp,
-  FadeIn,
-} from "../../components/animation/animation";
+import { FadeUp, FadeIn } from "../../components/animation/animation";
 import Cta from "../../components/cta";
 import FeaturedMedia from "../../components/featured-media";
 import { container, mq } from "../../components/layout/index";
 import useFiles from "../../hooks/useFiles";
-import { useInView } from 'react-intersection-observer';
+import { useInView } from "react-intersection-observer";
 
 const HomeCover = () => {
   const images = useFiles();
 
-  const {ref, inView} = useInView({
-    rootMargin:'-30%'
-  })
+  const { ref, inView } = useInView({
+    rootMargin: "-30%",
+  });
 
-  
   const data = {
     title: "En zantier creemos que la felicidad viene de sonrisa en sonrisa",
     copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
@@ -28,20 +24,22 @@ const HomeCover = () => {
     featuredImage: images.home.cover,
   };
 
-
-
   return (
     <Section fluid ref={ref}>
       <Container>
         <Content>
-          <Title animate={ inView ? FadeUp:"none"}>{data.title}</Title>
-          <Copy animate={ inView ? FadeUp:"none"}>{data.copy}</Copy>
-          <Cta animation={ inView ? FadeUp:"none"} to={data.cta.url}>
+          <Title animate={inView ? FadeUp : "none"}>{data.title}</Title>
+          <Copy animate={inView ? FadeUp : "none"}>{data.copy}</Copy>
+          <Cta
+            animation={inView ? FadeUp : "none"}
+            timeAnimation="2.5s"
+            to={data.cta.url}
+          >
             {data.cta.title}
           </Cta>
         </Content>
 
-        <Media animate={ inView ? FadeIn:"none"}>
+        <Media animate={inView ? FadeIn : "none"}>
           <FeaturedMedia
             media={data.featuredImage}
             size="80%"
@@ -123,6 +121,6 @@ const Media = styled.div`
   position: relative;
 
   img {
-    animation: ${(props) => props.animate} 3s ease-in both
+    animation: ${(props) => props.animate} 3s ease-in both;
   }
 `;
