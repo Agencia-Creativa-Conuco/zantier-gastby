@@ -1,20 +1,23 @@
-import React from "react";
-import styled from "@emotion/styled";
-import FeaturedMedia from "../../components/featured-media";
-import { LeftArrowIcon, RightArrowIcon } from "../../components/icons";
-import { container, mq } from "../../components/layout/index";
-import useFiles from "../../hooks/useFiles";
-import Carousel from "react-slick";
-import { css } from "@emotion/react";
-import { useInView } from "react-intersection-observer";
-import { BackgroundAnimation } from "../../components/animation/animation";
+import React from 'react'
+import styled from '@emotion/styled'
+import FeaturedMedia from '../../components/featured-media'
+import { LeftArrowIcon, RightArrowIcon } from '../../components/icons'
+import { container, mq } from '../../components/layout/index'
+import useFiles from '../../hooks/useFiles'
+import Carousel from 'react-slick'
+import { css } from '@emotion/react'
+import { useInView } from 'react-intersection-observer'
+import {
+  BackgroundAnimation,
+  prueba,
+} from '../../components/animation/animation'
 
 const HomeSlider = () => {
-  const images = useFiles();
+  const images = useFiles()
 
   const { ref, inView } = useInView({
-    rootMargin: "10%",
-  });
+    rootMargin: '10%',
+  })
 
   const data = [
     {
@@ -23,11 +26,11 @@ const HomeSlider = () => {
     {
       featuredImage: images.home.img2,
     },
-  ];
+  ]
 
   const Arrows = (props) => {
     const Arrow = styled.div`
-      ${({ bgColor = "#9f9f9f", color = "#e5e7e3" }) => css`
+      ${({ bgColor = '#9f9f9f', color = '#e5e7e3' }) => css`
         border-radius: 50%;
         background-color: ${bgColor};
         color: ${color};
@@ -58,10 +61,10 @@ const HomeSlider = () => {
           content: initial;
         }
       `}
-    `;
+    `
 
-    return <Arrow {...props} />;
-  };
+    return <Arrow {...props} />
+  }
   return (
     <Section ref={ref}>
       <Container>
@@ -79,22 +82,27 @@ const HomeSlider = () => {
         >
           {data.map((item, key) => {
             return (
-              <Media animate={inView ? BackgroundAnimation : "none"}>
-                <FeaturedMedia
-                  key={key}
-                  media={item.featuredImage}
-                  size="60.25%"
-                />
+              <Media animate={inView ? BackgroundAnimation : 'none'}>
+                <Prueba>
+                  <MWrapper animate={inView ? BackgroundAnimation : 'none'}>
+                    <Image
+                      key={key}
+                      media={item.featuredImage}
+                      size="56.25%"
+                      position="50% 0%"
+                    />
+                  </MWrapper>
+                </Prueba>
               </Media>
-            );
+            )
           })}
         </Carousel>
       </Container>
     </Section>
-  );
-};
+  )
+}
 
-export default HomeSlider;
+export default HomeSlider
 
 const Section = styled.section`
   padding-bottom: 6.6rem;
@@ -105,18 +113,13 @@ const Section = styled.section`
     padding-bottom: 9.5rem;
     padding-top: 9.5rem;
   }
-`;
+`
 
 const Container = styled.div`
   ${container}
 
-  img {
-    clip-path: ellipse(95% 100% at 50% 100%);
-    border-radius: 0 0 4rem 4rem;
-    z-index: 55;
-  }
   &::before {
-    content: "";
+    content: '';
     top: 20%;
     right: -2.5%;
     position: absolute;
@@ -126,34 +129,45 @@ const Container = styled.div`
     border-radius: 100%;
     z-index: 44;
   }
-`;
+`
 
 const Media = styled.div`
-
-position:relative ;
-
-
-img{
-  animation: ${(props) =>
-    props.animate} 2.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-
-}
-
-&::after{
-  content:"";
-  left:0 ;
-     top: 0;
-    position: absolute;
-  width:100% ;
-  height:100% ;
-  background-color:#bc0e03;
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
   clip-path: ellipse(95% 100% at 50% 100%);
-    border-radius: 0 0 4rem 4rem;
-  animation: ${(props) =>
-    props.animate} 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  border-radius: 0 0 4rem 4rem;
+`
 
-}
+const Prueba = styled.div`
+  background-color: #bc0e03;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  animation: ${prueba} 1.5s ease-in-out;
+  /* clip-path: inset(0% 100% 0% 100%); */
+`
 
+const MWrapper = styled.div`
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  animation: ${prueba} 1.2s ease-in-out;
+  animation-delay: 0.3s;
+  /* clip-path: inset(0% 100% 0% 100%); */
+`
 
-}
-`;
+const Image = styled(FeaturedMedia)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  border-radius: 0 0 4rem 4rem;
+  z-index: 55;
+`

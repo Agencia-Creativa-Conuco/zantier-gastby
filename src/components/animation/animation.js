@@ -1,4 +1,4 @@
-import { keyframes } from "@emotion/react";
+import { keyframes } from '@emotion/react'
 
 export const FadeUp = keyframes`
 
@@ -8,9 +8,8 @@ export const FadeUp = keyframes`
   100% {
     transform: translateY(0);
   }
-}
 
-`;
+`
 
 export const TextAnimationRight = keyframes`
 
@@ -20,9 +19,8 @@ export const TextAnimationRight = keyframes`
   100% {
     transform: translateX(0);
   }
-}
 
-`;
+`
 
 export const TextAnimationLeft = keyframes`
 
@@ -32,9 +30,8 @@ export const TextAnimationLeft = keyframes`
   100% {
     transform: translateX(0);
   }
-}
 
-`;
+`
 
 export const FadeIn = keyframes`
 
@@ -44,10 +41,9 @@ export const FadeIn = keyframes`
   100% {
     opacity: 1;
   }
-}
 
 
-`;
+`
 
 export const ImagesAnimationLeft = keyframes`
 
@@ -64,10 +60,9 @@ export const ImagesAnimationLeft = keyframes`
 
 
   }
-}
 
 
-`;
+`
 export const BackgroundAnimation = keyframes`
 
   0% {
@@ -75,18 +70,29 @@ export const BackgroundAnimation = keyframes`
     /* width: 0;
     height:0 ; */
     opacity:0 ;
-    transform: scaleX(0);
-
+    margin: 0 auto;
+    widht: 0;
   }
   100% {
     /* width: 100%;
     height:100% ; */
     opacity:1;
-
-    transform: scaleX(1);
+    margin: 0 auto;
+    width: 100%;
 
   }
-}
 
+`
 
-`;
+export const prueba = keyframes`
+
+  0% {
+    clip-path: inset(0% 100% 0% 100%);
+    opacity: 0;
+  }
+  100% {
+    clip-path: inset(0% 0% 0% 0%);
+    opacity: 1;
+  }
+
+`
