@@ -84,7 +84,7 @@ export const BackgroundAnimation = keyframes`
 
 `
 
-export const prueba = keyframes`
+export const centerScaleAnimation = keyframes`
 
   0% {
     clip-path: inset(0% 100% 0% 100%);

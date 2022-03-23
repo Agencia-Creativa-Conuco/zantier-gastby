@@ -43,7 +43,6 @@ const HomeContact = () => {
           <Title animate={inView ? FadeUp : "none"}>{data.title} </Title>
 
           {data.list.map((item, index) => {
-            console.log(index + 2);
             return (
               <Content
                 key={index}

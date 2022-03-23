@@ -9,13 +9,13 @@ import { css } from '@emotion/react'
 import { useInView } from 'react-intersection-observer'
 import {
   BackgroundAnimation,
-  prueba,
+  centerScaleAnimation,
 } from '../../components/animation/animation'
 
 const HomeSlider = () => {
   const images = useFiles()
 
-  const { ref, inView } = useInView({
+ const  { ref, inView } = useInView({
     rootMargin: '10%',
   })
 
@@ -83,8 +83,8 @@ const HomeSlider = () => {
           {data.map((item, key) => {
             return (
               <Media animate={inView ? BackgroundAnimation : 'none'}>
-                <Prueba>
-                  <MWrapper animate={inView ? BackgroundAnimation : 'none'}>
+                <CWrapper animate={inView ? centerScaleAnimation : 'none'}>
+                  <MWrapper animate={inView ? centerScaleAnimation : 'none'}>
                     <Image
                       key={key}
                       media={item.featuredImage}
@@ -92,7 +92,7 @@ const HomeSlider = () => {
                       position="50% 0%"
                     />
                   </MWrapper>
-                </Prueba>
+                </CWrapper>
               </Media>
             )
           })}
@@ -140,14 +140,14 @@ const Media = styled.div`
   border-radius: 0 0 4rem 4rem;
 `
 
-const Prueba = styled.div`
+const CWrapper = styled.div`
   background-color: #bc0e03;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  animation: ${prueba} 1.5s ease-in-out;
+  animation: ${props => props.animate} 2.1s ease-in-out;
   /* clip-path: inset(0% 100% 0% 100%); */
 `
 
@@ -156,7 +156,7 @@ const MWrapper = styled.div`
   width: 100%;
   height: 100%;
   overflow: hidden;
-  animation: ${prueba} 1.2s ease-in-out;
+  animation:  ${props => props.animate} 1.8s ease-in-out;
   animation-delay: 0.3s;
   /* clip-path: inset(0% 100% 0% 100%); */
 `
