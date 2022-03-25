@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styled from "@emotion/styled";
 import { LeftArrowIcon, RightArrowIcon } from "../../components/icons";
 import { container, mq } from "../../components/layout/index";
-import useFiles from "../../hooks/useFiles";
 import Carousel from "react-slick";
 import { css } from "@emotion/react";
 import { useInView } from "react-intersection-observer";
@@ -86,6 +85,7 @@ const HomeSlider = () => {
     <Section ref={ref}>
       <Container>
         <Carousel
+        infinite={false}
           prevArrow={
             <Arrows>
               <LeftArrowIcon />
@@ -188,7 +188,6 @@ const Playing = styled.div`
   position: absolute;
   height: calc(100% - 23.7%);
   z-index: 2;
-  background: blue;
 
   ${mq.sm} {
     height: calc(100% - 13.7%);
