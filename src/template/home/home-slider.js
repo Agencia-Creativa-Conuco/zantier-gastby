@@ -1,36 +1,55 @@
-import React from 'react'
-import styled from '@emotion/styled'
-import FeaturedMedia from '../../components/featured-media'
-import { LeftArrowIcon, RightArrowIcon } from '../../components/icons'
-import { container, mq } from '../../components/layout/index'
-import useFiles from '../../hooks/useFiles'
-import Carousel from 'react-slick'
-import { css } from '@emotion/react'
-import { useInView } from 'react-intersection-observer'
+import React, { useState } from "react";
+import styled from "@emotion/styled";
+import FeaturedMedia from "../../components/featured-media";
+import { LeftArrowIcon, RightArrowIcon } from "../../components/icons";
+import { container, mq } from "../../components/layout/index";
+import useFiles from "../../hooks/useFiles";
+import Carousel from "react-slick";
+import { css } from "@emotion/react";
+import { useInView } from "react-intersection-observer";
 import {
   BackgroundAnimation,
   centerScaleAnimation,
-} from '../../components/animation/animation'
+} from "../../components/animation/animation";
+import ReactPlayer from "react-player";
+import { useEffect } from "react";
 
 const HomeSlider = () => {
-  const images = useFiles()
+  const images = useFiles();
 
- const  { ref, inView } = useInView({
-    rootMargin: '10%',
-  })
+  const [state, setSate] = useState(Number);
+  const [isPlaying, setIsPlaying] = useState(Boolean);
+
+
+  useEffect(()=>{
+    setIsPlaying(false)
+  },[state])
+
+
+  const play =()=>{
+    setIsPlaying(!isPlaying)
+    return true
+  }
+
+
+  const { ref, inView } = useInView({
+    rootMargin: "10%",
+  });
 
   const data = [
     {
-      featuredImage: images.home.img,
+      url: "https://www.youtube.com/watch?v=zTlsRe5202o",
     },
     {
-      featuredImage: images.home.img2,
+      url: "https://www.youtube.com/watch?v=dmW68lzaaqs",
     },
-  ]
+  ];
+
+
 
   const Arrows = (props) => {
     const Arrow = styled.div`
-      ${({ bgColor = '#9f9f9f', color = '#e5e7e3' }) => css`
+      ${({ bgColor = "#9f9f9f", color = "#e5e7e3" }) => css`
         border-radius: 50%;
         background-color: ${bgColor};
         color: ${color};
@@ -61,14 +80,15 @@ const HomeSlider = () => {
           content: initial;
         }
       `}
-    `
+    `;
 
-    return <Arrow {...props} />
-  }
+    return <Arrow {...props} />;
+  };
   return (
     <Section ref={ref}>
       <Container>
         <Carousel
+        infinite={false}
           prevArrow={
             <Arrows>
               <LeftArrowIcon />
@@ -79,30 +99,37 @@ const HomeSlider = () => {
               <RightArrowIcon />
             </Arrows>
           }
+          afterChange={play}
         >
           {data.map((item, key) => {
+
+            console.log(item, key)
             return (
-              <Media animate={inView ? BackgroundAnimation : 'none'}>
-                <CWrapper animate={inView ? centerScaleAnimation : 'none'}>
-                  <MWrapper animate={inView ? centerScaleAnimation : 'none'}>
-                    <Image
-                      key={key}
-                      media={item.featuredImage}
-                      size="56.25%"
-                      position="50% 0%"
+              <Media key={key} animate={inView ? BackgroundAnimation : "none"}>
+                <CWrapper animate={inView ? centerScaleAnimation : "none"}>
+                  <Playing onClick={() => setIsPlaying(!isPlaying)} />
+                  <MWrapper animate={inView ? centerScaleAnimation : "none"}>
+                    <Video
+                      width="100%"
+                      height="100%"
+                      controls
+                      url={item.url}
+                      playing={state !== key && isPlaying }
+                      onPause={()=>isPlaying}
+                      onPlay={()=> setSate(key)}
                     />
                   </MWrapper>
                 </CWrapper>
               </Media>
-            )
+            );
           })}
         </Carousel>
       </Container>
     </Section>
-  )
-}
+  );
+};
 
-export default HomeSlider
+export default HomeSlider;
 
 const Section = styled.section`
   padding-bottom: 6.6rem;
@@ -113,13 +140,13 @@ const Section = styled.section`
     padding-bottom: 9.5rem;
     padding-top: 9.5rem;
   }
-`
+`;
 
 const Container = styled.div`
   ${container}
-
+  /* background:red ; */
   &::before {
-    content: '';
+    content: "";
     top: 20%;
     right: -2.5%;
     position: absolute;
@@ -129,7 +156,7 @@ const Container = styled.div`
     border-radius: 100%;
     z-index: 44;
   }
-`
+`;
 
 const Media = styled.div`
   position: relative;
@@ -138,7 +165,7 @@ const Media = styled.div`
   padding-bottom: 56.25%;
   clip-path: ellipse(95% 100% at 50% 100%);
   border-radius: 0 0 4rem 4rem;
-`
+`;
 
 const CWrapper = styled.div`
   background-color: #bc0e03;
@@ -147,21 +174,43 @@ const CWrapper = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  animation: ${props => props.animate} 2.1s ease-in-out;
+  animation: ${(props) => props.animate} 2.1s ease-in-out;
   /* clip-path: inset(0% 100% 0% 100%); */
-`
+`;
 
 const MWrapper = styled.div`
   margin: 0 auto;
   width: 100%;
   height: 100%;
   overflow: hidden;
-  animation:  ${props => props.animate} 1.8s ease-in-out;
+  animation: ${(props) => props.animate} 1.8s ease-in-out;
   animation-delay: 0.3s;
   /* clip-path: inset(0% 100% 0% 100%); */
-`
+`;
 
-const Image = styled(FeaturedMedia)`
+const Playing = styled.div`
+  width: 100%;
+  position: absolute;
+  height: calc(100% - 23.7%);
+  z-index: 2;
+  background: blue;
+
+  ${mq.sm} {
+    height: calc(100% - 13.7%);
+  }
+  ${mq.md} {
+    height: calc(100% - 10.7%);
+  }
+
+  ${mq.lg} {
+    height: calc(100% - 12.2%);
+  }
+  ${mq.xl} {
+    height: calc(100% - 9.2%);
+  }
+`;
+
+const Video = styled(ReactPlayer)`
   position: absolute;
   top: 0;
   left: 0;
@@ -170,4 +219,4 @@ const Image = styled(FeaturedMedia)`
   width: 100%;
   border-radius: 0 0 4rem 4rem;
   z-index: 55;
-`
+`;

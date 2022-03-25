@@ -14,6 +14,7 @@ const HomeAbout = () => {
   });
 
   const data = {
+    title: "Titulo de prueba",
     copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
 
     featuredImage: images.home.img2,
@@ -30,6 +31,7 @@ const HomeAbout = () => {
           sizeXL="80rem"
         />
         <Card animate={inView ? FadeUp : "none"}>
+          <Title>{data.title}</Title>
           <Copy animate={inView ? FadeUp : "none"}>{data.copy}</Copy>
           <Deco animate={inView ? FadeUp : "none"} />
         </Card>
@@ -61,7 +63,7 @@ const Media = styled.div`
 const Card = styled.div`
   background-color: white;
 
-  padding: 3rem 5rem;
+  padding: 5rem 5rem 3rem;
   ${mq.md} {
     animation: ${(props) => props.animate} 1s ease-in both;
 
@@ -73,8 +75,10 @@ const Card = styled.div`
   }
 `;
 
+const Title = styled.h3``;
+
 const Copy = styled.p`
-  padding: 10rem 0;
+  padding: 0 0 10rem;
   color: #bc0e03;
   animation: ${(props) => props.animate} 1.8s ease-in both;
 `;
