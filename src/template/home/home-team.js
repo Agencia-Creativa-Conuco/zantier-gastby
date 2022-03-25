@@ -4,7 +4,7 @@ import FeaturedMedia from "../../components/featured-media";
 import { container, mq } from "../../components/layout/index";
 import useFiles from "../../hooks/useFiles";
 import { useInView } from "react-intersection-observer";
-import { FadeIn, FadeUp, } from "../../components/animation/animation";
+import { FadeUp, } from "../../components/animation/animation";
 
 const HomeTeam = () => {
   const images = useFiles();

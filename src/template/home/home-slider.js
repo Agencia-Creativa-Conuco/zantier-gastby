@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
-import FeaturedMedia from "../../components/featured-media";
 import { LeftArrowIcon, RightArrowIcon } from "../../components/icons";
 import { container, mq } from "../../components/layout/index";
 import useFiles from "../../hooks/useFiles";
@@ -15,22 +14,20 @@ import ReactPlayer from "react-player";
 import { useEffect } from "react";
 
 const HomeSlider = () => {
-  const images = useFiles();
 
   const [state, setSate] = useState(Number);
+
   const [isPlaying, setIsPlaying] = useState(Boolean);
+  const [isObs, setObs] = useState(false);
 
+  useEffect(() => {
+    setIsPlaying(true);
+  }, [state, isPlaying]);
 
-  useEffect(()=>{
-    setIsPlaying(false)
-  },[state])
-
-
-  const play =()=>{
-    setIsPlaying(!isPlaying)
-    return true
-  }
-
+  const play = () => {
+    setIsPlaying(false);
+    setObs(!isObs);
+  };
 
   const { ref, inView } = useInView({
     rootMargin: "10%",
@@ -43,9 +40,10 @@ const HomeSlider = () => {
     {
       url: "https://www.youtube.com/watch?v=dmW68lzaaqs",
     },
+    {
+      url: "https://www.youtube.com/watch?v=Uz7OCoPu8pU",
+    },
   ];
-
-
 
   const Arrows = (props) => {
     const Arrow = styled.div`
@@ -88,7 +86,6 @@ const HomeSlider = () => {
     <Section ref={ref}>
       <Container>
         <Carousel
-        infinite={false}
           prevArrow={
             <Arrows>
               <LeftArrowIcon />
@@ -102,8 +99,6 @@ const HomeSlider = () => {
           afterChange={play}
         >
           {data.map((item, key) => {
-
-            console.log(item, key)
             return (
               <Media key={key} animate={inView ? BackgroundAnimation : "none"}>
                 <CWrapper animate={inView ? centerScaleAnimation : "none"}>
@@ -114,9 +109,9 @@ const HomeSlider = () => {
                       height="100%"
                       controls
                       url={item.url}
-                      playing={state !== key && isPlaying }
-                      onPause={()=>isPlaying}
-                      onPlay={()=> setSate(key)}
+                      playing={state === key && isPlaying}
+                      onPause={() => setSate(data.length + 1)}
+                      onPlay={() => setSate(key)}
                     />
                   </MWrapper>
                 </CWrapper>
