@@ -13,19 +13,15 @@ import ReactPlayer from "react-player";
 import { useEffect } from "react";
 
 const HomeSlider = () => {
-
   const [state, setSate] = useState(Number);
-
   const [isPlaying, setIsPlaying] = useState(Boolean);
-  const [isObs, setObs] = useState(false);
 
   useEffect(() => {
     setIsPlaying(true);
   }, [state, isPlaying]);
 
-  const play = () => {
+  const Pause = () => {
     setIsPlaying(false);
-    setObs(!isObs);
   };
 
   const { ref, inView } = useInView({
@@ -38,9 +34,6 @@ const HomeSlider = () => {
     },
     {
       url: "https://www.youtube.com/watch?v=dmW68lzaaqs",
-    },
-    {
-      url: "https://www.youtube.com/watch?v=Uz7OCoPu8pU",
     },
   ];
 
@@ -85,7 +78,7 @@ const HomeSlider = () => {
     <Section ref={ref}>
       <Container>
         <Carousel
-        infinite={false}
+          infinite={false}
           prevArrow={
             <Arrows>
               <LeftArrowIcon />
@@ -96,13 +89,13 @@ const HomeSlider = () => {
               <RightArrowIcon />
             </Arrows>
           }
-          afterChange={play}
+          afterChange={Pause}
         >
           {data.map((item, key) => {
             return (
               <Media key={key} animate={inView ? BackgroundAnimation : "none"}>
+                <Playing onClick={() => setIsPlaying(!isPlaying)} />
                 <CWrapper animate={inView ? centerScaleAnimation : "none"}>
-                  <Playing onClick={() => setIsPlaying(!isPlaying)} />
                   <MWrapper animate={inView ? centerScaleAnimation : "none"}>
                     <Video
                       width="100%"
@@ -139,7 +132,6 @@ const Section = styled.section`
 
 const Container = styled.div`
   ${container}
-  /* background:red ; */
   &::before {
     content: "";
     top: 20%;
@@ -187,7 +179,7 @@ const Playing = styled.div`
   width: 100%;
   position: absolute;
   height: calc(100% - 23.7%);
-  z-index: 2;
+  z-index: 30;
 
   ${mq.sm} {
     height: calc(100% - 13.7%);
@@ -212,5 +204,5 @@ const Video = styled(ReactPlayer)`
   bottom: 0;
   width: 100%;
   border-radius: 0 0 4rem 4rem;
-  z-index: 55;
+  z-index: 5;
 `;
