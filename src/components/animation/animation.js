@@ -1,4 +1,6 @@
 import { keyframes } from '@emotion/react'
+import { config } from "@react-spring/web";
+
 
 export const FadeUp = keyframes`
 
@@ -10,6 +12,8 @@ export const FadeUp = keyframes`
   }
 
 `
+
+
 
 export const TextAnimationRight = keyframes`
 
@@ -96,3 +100,14 @@ export const centerScaleAnimation = keyframes`
   }
 
 `
+
+
+
+export const FadeUp1 = {
+  from: {
+    opacity: 0,
+    transform: `translateY(15rem)`,
+  },
+  to: { opacity: 1, transform: "translateY(0)" },
+  config: config.wobbly,
+};

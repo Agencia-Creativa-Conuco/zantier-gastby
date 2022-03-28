@@ -1,18 +1,15 @@
 import styled from "@emotion/styled";
 import React from "react";
-import { FadeUp, FadeIn } from "../../components/animation/animation";
+import { FadeUp1 } from "../../components/animation/animation";
 import Cta from "../../components/cta";
 import FeaturedMedia from "../../components/featured-media";
 import { container, mq } from "../../components/layout/index";
 import useFiles from "../../hooks/useFiles";
-import { useInView } from "react-intersection-observer";
+import { InView } from "react-intersection-observer";
+import { Spring, animated, config } from "@react-spring/web";
 
 const HomeCover = () => {
   const images = useFiles();
-
-  const { ref, inView } = useInView({
-    rootMargin: "-30%",
-  });
 
   const data = {
     title: "En zantier creemos que la felicidad viene de sonrisa en sonrisa",
@@ -25,29 +22,50 @@ const HomeCover = () => {
   };
 
   return (
-    <Section fluid ref={ref}>
+    <Section fluid>
       <Container>
         <Content>
-          <Title animate={inView ? FadeUp : "none"}>{data.title}</Title>
-          <Copy animate={inView ? FadeUp : "none"}>{data.copy}</Copy>
-          <Cta
-            animation={inView ? FadeUp : "none"}
-            timeAnimation="2.5s"
-            to={data.cta.url}
-          >
-            {data.cta.title}
-          </Cta>
+          <InView>
+            {({ ref, inView }) => (
+              <Spring reset={inView} reverse={!inView} {...FadeUp1}>
+                {(styles) => (
+                  <animated.div style={styles} ref={ref}>
+                    <Title>{data.title}</Title>
+                    <Copy>{data.copy}</Copy>
+                    <Cta to={data.cta.url}>{data.cta.title}</Cta>
+                  </animated.div>
+                )}
+              </Spring>
+            )}
+          </InView>
         </Content>
-
-        <Media animate={inView ? FadeIn : "none"}>
-          <FeaturedMedia
-            media={data.featuredImage}
-            size="80%"
-            sizeMD="125%"
-            sizeXL="100%"
-            position="50% 0% !important"
-          />
-        </Media>
+        <InView>
+          {({ ref, inView }) => (
+            <Spring
+              config={config.molasses}
+              reset={inView}
+              reverse={!inView}
+              from={{
+                opacity: 0,
+              }}
+              to={{ opacity: 1 }}
+            >
+              {(styles) => (
+                <animated.div style={styles} ref={ref}>
+                  <Media>
+                    <FeaturedMedia
+                      media={data.featuredImage}
+                      size="80%"
+                      sizeMD="125%"
+                      sizeXL="100%"
+                      position="50% 0%"
+                    />
+                  </Media>
+                </animated.div>
+              )}
+            </Spring>
+          )}
+        </InView>
       </Container>
     </Section>
   );
@@ -104,8 +122,8 @@ const Content = styled.div`
 
 const Title = styled.h1`
   margin-bottom: 3rem;
-  animation: ${(props) =>
-    props.animate} 1.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  /* animation: ${(props) =>
+    props.animate} 1.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both; */
 }
 
 `;
@@ -113,14 +131,14 @@ const Title = styled.h1`
 const Copy = styled.p`
   color: #838383;
   margin-bottom: 3rem;
-  animation: ${(props) => props.animate} 1.8s
-    cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  /* animation: ${(props) => props.animate} 1.8s
+    cubic-bezier(0.25, 0.46, 0.45, 0.94) both; */
 `;
 
 const Media = styled.div`
   position: relative;
 
   img {
-    animation: ${(props) => props.animate} 3s ease-in both;
+    /* animation: ${(props) => props.animate} 3s ease-in both; */
   }
 `;
