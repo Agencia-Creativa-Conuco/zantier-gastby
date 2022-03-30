@@ -3,16 +3,12 @@ import styled from "@emotion/styled";
 import { container, mq } from "../../components/layout/index";
 import useFiles from "../../hooks/useFiles";
 import BackgroundImage from "gatsby-background-image";
-import { useInView } from "react-intersection-observer";
-import { FadeUp } from "../../components/animation/animation";
-import { css } from "@emotion/react";
+import { FadeUp1 } from "../../components/animation/animation";
+import { InView } from "react-intersection-observer";
+import { animated, Trail, config, Spring } from "@react-spring/web";
 
 const HomeContact = () => {
   const images = useFiles();
-
-  const { ref, inView } = useInView({
-    rootMargin: "-10%",
-  });
 
   const data = {
     title:
@@ -38,23 +34,43 @@ const HomeContact = () => {
       fluid={data.featuredImage?.childImageSharp?.fluid}
       id="section_3"
     >
-      <Section ref={ref}>
-        <Container>
-          <Title animate={inView ? FadeUp : "none"}>{data.title} </Title>
-
-          {data.list.map((item, index) => {
-            return (
-              <Content
-                key={index}
-                time={index + 0.9}
-                animate={inView ? FadeUp : "none"}
+      <Section>
+        <InView threshold={0.3}>
+          {({ ref, inView }) => (
+            <Container ref={ref}>
+              <Spring
+                reset={inView}
+                reverse={!inView}
+                // config={{ duration: 600 }}
+                {...FadeUp1}
               >
-                <Deco />
-                <Copy>{item.title}</Copy>
-              </Content>
-            );
-          })}
-        </Container>
+                {(styles) => (
+                  <animated.div style={styles}>
+                    <Title>{data.title} </Title>
+                  </animated.div>
+                )}
+              </Spring>
+              <Trail
+                items={data.list}
+                reset={inView}
+                reverse={!inView}
+                config={config.molasses}
+                {...FadeUp1}
+              >
+                {(item, index) => (styles) => {
+                  return (
+                    <animated.div style={styles} key={index}>
+                      <Content>
+                        <Deco />
+                        <Copy>{item.title}</Copy>
+                      </Content>
+                    </animated.div>
+                  );
+                }}
+              </Trail>
+            </Container>
+          )}
+        </InView>
       </Section>
     </BImage>
   );
@@ -64,7 +80,6 @@ export default HomeContact;
 
 const BImage = styled(BackgroundImage)`
   overflow: hidden;
-
 `;
 
 const Section = styled.div`
@@ -93,26 +108,16 @@ const Container = styled.div`
 `;
 
 const Content = styled.div`
-  ${({ animate, time }) => css`
-
   padding: 1rem 1.5rem;
   position: relative;
   display: flex;
   gap: 2rem;
   justify-content: end;
-
-  animation: ${animate} ${time}s  cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-}
-
-
-
-`}
 `;
 
 const Title = styled.h2`
   margin-bottom: 4rem;
-  animation: ${(props) =>
-    props.animate} 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+
 }
 
 `;
