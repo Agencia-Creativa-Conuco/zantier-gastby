@@ -135,5 +135,5 @@ export const FadeIn1 = {
   to: {
     opacity: 1,
   },
-  config: config.molasses,
+  // config: config.molasses,
 };

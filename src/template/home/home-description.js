@@ -6,18 +6,16 @@ import useFiles from "../../hooks/useFiles";
 
 import Cta from "../../components/cta";
 
-import { useInView } from "react-intersection-observer";
 import {
-  FadeUp,
-  TextAnimationRight,
+  FadeIn1,
+  FadeUp1,
+  TextAnimationRight1,
 } from "../../components/animation/animation";
+import { InView } from "react-intersection-observer";
+import { animated, config, Spring } from "@react-spring/web";
 
 const HomeDescription = () => {
   const images = useFiles();
-
-  const { ref, inView } = useInView({
-    rootMargin: "-10%",
-  });
 
   const data = {
     copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
@@ -33,33 +31,67 @@ const HomeDescription = () => {
   };
 
   return (
-    <Section ref={ref}>
-      <Container>
-        <Media animate={inView ? FadeUp : "none"}>
-          <FeaturedMedia
-            media={data.featuredImage}
-            size="70%"
-            sizeXL="54.25%"
-          />
-        </Media>
-        <Card animate={inView ? TextAnimationRight : "none"}>
-          <Copy animate={inView ? FadeUp : "none"}>{data.copy}</Copy>
-        </Card>
-        <Content animate={inView ? FadeUp : "none"}>
-          <p>{data.otherCopy}</p>
+    <Section>
+      <InView threshold={0.3}>
+        {({ ref, inView }) => (
+          <Container ref={ref}>
+            <Media>
+              <Spring
+                reset={inView}
+                reverse={!inView}
+                config={{ duration: 100 }}
+                {...FadeIn1}
+              >
+                {(styles) => (
+                  <animated.div style={styles}>
+                    <FeaturedMedia
+                      media={data.featuredImage}
+                      size="70%"
+                      sizeXL="54.25%"
+                    />
+                  </animated.div>
+                )}
+              </Spring>
+            </Media>
 
-          <Cta
-            to={data.cta.url}
-            bgColor="white"
-            color="#bc0e03"
-            bgActiveColor="#dbd8d8"
-            animation={inView ? FadeUp : "none"}
-            timeAnimation="2.9s"
-          >
-            {data.cta.title}
-          </Cta>
-        </Content>
-      </Container>
+            <Spring reset={inView} reverse={!inView} {...TextAnimationRight1}>
+              {(styles) => (
+                <animated.div style={styles}>
+                  <Card>
+                    <Copy>{data.copy}</Copy>
+                  </Card>
+                </animated.div>
+              )}
+            </Spring>
+
+            <Content>
+              <Spring
+                reset={inView}
+                reverse={!inView}
+                config={config.molasses}
+                {...FadeUp1}
+              >
+                {(styles) => (
+                  <animated.div style={styles}>
+                    <p>{data.otherCopy}</p>
+
+                    <Cta
+                      to={data.cta.url}
+                      bgColor="white"
+                      color="#bc0e03"
+                      bgActiveColor="#dbd8d8"
+                      // animation={inView ? FadeUp : "none"}
+                      // timeAnimation="2.9s"
+                    >
+                      {data.cta.title}
+                    </Cta>
+                  </animated.div>
+                )}
+              </Spring>
+            </Content>
+          </Container>
+        )}
+      </InView>
     </Section>
   );
 };
