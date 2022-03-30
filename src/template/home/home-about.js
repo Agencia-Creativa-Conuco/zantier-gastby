@@ -3,15 +3,12 @@ import React from "react";
 import FeaturedMedia from "../../components/featured-media";
 import { container, mq } from "../../components/layout/index";
 import useFiles from "../../hooks/useFiles";
-import { useInView } from "react-intersection-observer";
-import { FadeIn, FadeUp } from "../../components/animation/animation";
+import { InView } from "react-intersection-observer";
+import { animated, config, Spring } from "@react-spring/web";
+import { FadeUp1 } from "../../components/animation/animation";
 
 const HomeAbout = () => {
   const images = useFiles();
-
-  const { ref, inView } = useInView({
-    rootMargin: "10%",
-  });
 
   const data = {
     title: "Titulo de prueba",
@@ -21,22 +18,37 @@ const HomeAbout = () => {
   };
 
   return (
-    <Section ref={ref} fluid>
-      <Media animate={inView ? FadeIn : "none"}>
-        <FeaturedMedia
-          media={data.featuredImage}
-          size="100%"
-          sizeMD="90%"
-          sizeLG="75%"
-          sizeXL="80rem"
-        />
-        <Card animate={inView ? FadeUp : "none"}>
-          <Title>{data.title}</Title>
-          <Copy animate={inView ? FadeUp : "none"}>{data.copy}</Copy>
-          <Deco animate={inView ? FadeUp : "none"} />
-        </Card>
-      </Media>
-    </Section>
+    <InView threshold={0.3}>
+      {({ ref, inView }) => (
+        <Section ref={ref} fluid>
+          <Media>
+            <FeaturedMedia
+              media={data.featuredImage}
+              size="100%"
+              sizeMD="90%"
+              sizeLG="75%"
+              sizeXL="80rem"
+            />
+            <Card>
+              <Spring
+                reset={inView}
+                reverse={!inView}
+                config={config.molasses}
+                {...FadeUp1}
+              >
+                {(styles) => (
+                  <animated.div style={styles}>
+                    <Title>{data.title}</Title>
+                    <Copy>{data.copy}</Copy>
+                    <Deco />
+                  </animated.div>
+                )}
+              </Spring>
+            </Card>
+          </Media>
+        </Section>
+      )}
+    </InView>
   );
 };
 

@@ -2,23 +2,35 @@ import styled from "@emotion/styled";
 import React from "react";
 import Form from "../../components/form";
 import { container, mq } from "../../components/layout/index";
-import { FadeUp } from "../../components/animation/animation";
-import { useInView } from "react-intersection-observer";
+import { FadeUp1 } from "../../components/animation/animation";
+import { InView } from "react-intersection-observer";
+import { animated, config, Spring } from "@react-spring/web";
 
 const HomeForm = () => {
-  const { ref, inView } = useInView({
-    rootMargin: "-10%",
-  });
-
   return (
-    <Section ref={ref}>
-      <Container>
-        <Deco />
-        <Content animate={inView ? FadeUp : "none"}>
-          <Title animate={inView ? FadeUp : "none"}>Contáctanos</Title>
-          <Form formId="dd761710-e90b-4d87-a867-c8141db651ce" />
-        </Content>
-      </Container>
+    <Section>
+      <InView threshold={0.3}>
+        {({ ref, inView }) => (
+          <Container ref={ref}>
+            <Deco />
+            <Content>
+              <Spring
+                reset={inView}
+                reverse={!inView}
+                config={config.molasses}
+                {...FadeUp1}
+              >
+                {(styles) => (
+                  <animated.div style={styles}>
+                    <Title>Contáctanos</Title>
+                    <Form formId="dd761710-e90b-4d87-a867-c8141db651ce" />
+                  </animated.div>
+                )}
+              </Spring>
+            </Content>
+          </Container>
+        )}
+      </InView>
     </Section>
   );
 };
@@ -51,11 +63,6 @@ const Container = styled.div`
 const Content = styled.div`
   color: white;
   align-self: center;
-
-  iframe {
-    animation: ${(props) => props.animate} 0.7s
-      cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  }
 `;
 
 const Deco = styled.div`
@@ -74,6 +81,5 @@ const Deco = styled.div`
 
 const Title = styled.h1`
   text-align: center;
-  animation: ${(props) => props.animate} 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-    both;
+
 `;
