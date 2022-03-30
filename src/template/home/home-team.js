@@ -5,7 +5,7 @@ import { container, mq } from "../../components/layout/index";
 import useFiles from "../../hooks/useFiles";
 import { FadeUp1 } from "../../components/animation/animation";
 import { InView } from "react-intersection-observer";
-import { animated, Trail, config } from "@react-spring/web";
+import { animated, Trail, config, Spring } from "@react-spring/web";
 
 const HomeTeam = () => {
   const images = useFiles();
@@ -71,18 +71,43 @@ const HomeTeam = () => {
                 return (
                   <animated.div style={styles} key={index}>
                     <CardContainer>
+                      <Deco />
                       <Media>
-                        <FeaturedMedia
-                          media={item.featuredImage}
-                          size="100%"
-                          rounded
-                          bgColor="#bc0e05"
-                        />
+                        <Spring
+                          reset={inView}
+                          reverse={!inView}
+                          config={{ duration: 500 }}
+                          {...FadeUp1}
+                        >
+                          {(styles) => (
+                            <animated.div style={styles}>
+                              <FeaturedMedia
+                                media={item.featuredImage}
+                                size="100%"
+                                rounded
+                                bgColor="#bc0e05"
+                              />
+                            </animated.div>
+                          )}
+                        </Spring>
                       </Media>
-                      <Card>
-                        <Title>{item.title}</Title>
-                        <Copy>{item.copy}</Copy>
-                      </Card>
+
+                      <Spring
+                        reset={inView}
+                        reverse={!inView}
+                        config={{ duration: 600 }}
+                        {...FadeUp1}
+                      >
+                        {(styles) => (
+                          <animated.div style={styles}>
+                            <Card>
+                              <Title>{item.title}</Title>
+
+                              <Copy>{item.copy}</Copy>
+                            </Card>
+                          </animated.div>
+                        )}
+                      </Spring>
                     </CardContainer>
                   </animated.div>
                 );
@@ -135,23 +160,30 @@ const Media = styled.div`
   max-width: 18rem;
   margin: 0 auto;
   width: 18rem;
-  background: white;
-  padding: 2.5rem;
-  border-radius: 100%;
-  /* animation: ${(props) => props.animate} 0.8s
-    cubic-bezier(0.25, 0.46, 0.45, 0.94); */
+  z-index: 5;
 
-  img {
-    z-index: 5;
-  }
+  padding: 2.5rem;
 `;
 
+const Deco = styled.div`
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 1%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    border-radius: 100%;
+    max-width: 17rem;
+    max-height: 17rem;
+  }
+`;
 const Card = styled.div`
   background-color: rgb(245 246 248);
   margin: -5rem auto 0;
   z-index: 2;
-  /* animation: ${(props) => props.animate} 2s cubic-bezier(0.25, 0.46, 0.45, 0.94); */
-
   padding: 3.5rem 4rem;
   border-radius: 3.5rem;
   ${mq.md} {
@@ -162,12 +194,9 @@ const Card = styled.div`
 const Title = styled.h3`
   color: #bc0e03;
   text-align: center;
-  /* animation: ${(props) => props.animate} 2.5s
-    cubic-bezier(0.25, 0.46, 0.45, 0.94); */
 `;
 
 const Copy = styled.p`
   padding: 0rem 0;
   color: #838383;
-  /* animation: ${(props) => props.animate} 3s cubic-bezier(0.25, 0.46, 0.45, 0.94); */
 `;
