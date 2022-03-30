@@ -15,14 +15,52 @@ import { useEffect } from "react";
 const HomeSlider = () => {
   const [state, setSate] = useState(Number);
   const [isPlaying, setIsPlaying] = useState(Boolean);
+  const [isTest, setIsTest] = useState(1);
 
-  useEffect(() => {
-    setIsPlaying(true);
-  }, [state, isPlaying]);
+  useEffect(()=>{
+    // if (state === 0) {
+    //   setIsTest(state + 1);
+    // }
+  },[state])
 
   const Pause = () => {
     setIsPlaying(false);
+
+    console.log(state, isTest)
+console.log(data.length - isTest >= isTest && data.length - isTest >0 )
+// 4 -1 =3 > 1 si  4- 2= 2 >= 2 si es igual 1 >= 3
+    if (data.length - isTest >= 0 ) {
+      setSate(state + 1);
+      setIsTest(state + 1);
+
+ // 4 -2 > 2     
+    } 
+    // else if(data.length  ===  isTest){
+    //   setSate(state - 1);
+    //   setIsTest(state - 1);
+
+    // }
   };
+
+  const otherFuntion = (key) => {
+    // setIsPlaying(false);
+    console.log('Me ejecuto')
+
+  }
+
+
+  // useEffect(() => {
+  //   // setIsPlaying(true);
+
+  //   console.log(isTest)
+  //   return 
+
+
+  // }, [isTest]);
+
+
+
+
 
   const { ref, inView } = useInView({
     rootMargin: "10%",
@@ -34,6 +72,12 @@ const HomeSlider = () => {
     },
     {
       url: "https://www.youtube.com/watch?v=dmW68lzaaqs",
+    },
+    {
+      url: "https://www.youtube.com/watch?v=eKWnPGqqyrw",
+    },
+    {
+      url: "https://www.youtube.com/watch?v=HO73gUhiYe0",
     },
   ];
 
@@ -79,22 +123,26 @@ const HomeSlider = () => {
       <Container>
         <Carousel
           infinite={false}
+          // LeftArrowIcon
           prevArrow={
-            <Arrows>
-              <LeftArrowIcon />
+            
+            <Arrows >
+              <LeftArrowIcon  />
             </Arrows>
           }
           nextArrow={
             <Arrows>
-              <RightArrowIcon />
+              <RightArrowIcon onClick={()=>console.log('me ejecuto')} />
             </Arrows>
           }
           afterChange={Pause}
+          onInit={Pause}
+          // onSwipe={Pause}
         >
           {data.map((item, key) => {
             return (
               <Media key={key} animate={inView ? BackgroundAnimation : "none"}>
-                <Playing onClick={() => setIsPlaying(!isPlaying)} />
+                <Playing onClick={()=>setIsPlaying(!isPlaying)} />
                 <CWrapper animate={inView ? centerScaleAnimation : "none"}>
                   <MWrapper animate={inView ? centerScaleAnimation : "none"}>
                     <Video
@@ -103,8 +151,11 @@ const HomeSlider = () => {
                       controls
                       url={item.url}
                       playing={state === key && isPlaying}
-                      onPause={() => setSate(data.length + 1)}
+                      onPause={() => setSate(key)}
                       onPlay={() => setSate(key)}
+                  
+                      // onReady={()=>setSate(key)}
+                      // autoplay={false}
                     />
                   </MWrapper>
                 </CWrapper>
@@ -141,7 +192,7 @@ const Container = styled.div`
     padding-bottom: 10%;
     background-color: #bc0e03;
     border-radius: 100%;
-    z-index: 44;
+    z-index: 6;
   }
 `;
 

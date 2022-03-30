@@ -20,14 +20,13 @@ const HomeCover = () => {
     },
     featuredImage: images.home.cover,
   };
-
   return (
-    <Section fluid>
-      <Container>
-        <Content>
-          <InView>
-            {({ ref, inView }) => (
-              <Spring reset={inView} reverse={!inView} {...FadeUp1}>
+    <InView threshold={0.6}>
+      {({ ref, inView }) => (
+        <Section fluid>
+          <Container>
+            <Content>
+              <Spring reset={inView} reverse={!inView} {...FadeUp1} >
                 {(styles) => (
                   <animated.div style={styles} ref={ref}>
                     <Title>{data.title}</Title>
@@ -36,11 +35,8 @@ const HomeCover = () => {
                   </animated.div>
                 )}
               </Spring>
-            )}
-          </InView>
-        </Content>
-        <InView>
-          {({ ref, inView }) => (
+            </Content>
+
             <Spring
               config={config.molasses}
               reset={inView}
@@ -64,10 +60,10 @@ const HomeCover = () => {
                 </animated.div>
               )}
             </Spring>
-          )}
-        </InView>
-      </Container>
-    </Section>
+          </Container>
+        </Section>
+      )}
+    </InView>
   );
 };
 

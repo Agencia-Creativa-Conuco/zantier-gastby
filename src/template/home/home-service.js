@@ -4,19 +4,15 @@ import FeaturedMedia from "../../components/featured-media";
 import { container, mq } from "../../components/layout/index";
 import useFiles from "../../hooks/useFiles";
 import {
-  ImagesAnimationLeft,
-  TextAnimationLeft,
-  TextAnimationRight,
-  FadeIn,
+  TextAnimationLeft1,
+  TextAnimationRight1,
 } from "../../components/animation/animation";
-import { useInView } from "react-intersection-observer";
+import { InView } from "react-intersection-observer";
+import { Spring, animated } from "@react-spring/web";
 
 const HomeService = () => {
   const images = useFiles();
 
-  const { ref, inView } = useInView({
-    rootMargin: "50%",
-  });
 
   const data = [
     {
@@ -51,19 +47,39 @@ const HomeService = () => {
   return (
     <Section fluid>
       {data.map((item, index) => {
-        let animationText = index % 2 ? TextAnimationLeft : TextAnimationRight;
-
+        let animationText =
+          index % 2 ? TextAnimationLeft1 : TextAnimationRight1;
         return (
-          <Container key={index} direction={index % 2}>
-            <Media ref={ref} animate={inView ? ImagesAnimationLeft : "none"}>
-              <FeaturedMedia media={item.featuredImage} size="80%" />
-            </Media>
+          <InView threshold={0.4}>
+            {({ ref, inView }) => {
+              return (
+                <Spring reset={inView} reverse={!inView} {...animationText}>
+                  {(styles) => {
+                    return (
+                      <animated.div style={styles} ref={ref}>
+                        <Container key={index} direction={index % 2}>
+                          <Media>
+                            <FeaturedMedia
+                              media={item.featuredImage}
+                              size="80%"
+                            />
+                          </Media>
 
-            <Content>
-              <Copy animate={inView ? animationText : "none"}>{item.copy}</Copy>
-              <Deco direction={index % 2} animate={inView ? FadeIn : "none"} />
-            </Content>
-          </Container>
+                          <Content>
+                            <Copy>{item.copy}</Copy>
+                            <Deco
+                              direction={index % 2}
+                              // animate={inView ? FadeIn : "none"}
+                            />
+                          </Content>
+                        </Container>
+                      </animated.div>
+                    );
+                  }}
+                </Spring>
+              );
+            }}
+          </InView>
         );
       })}
     </Section>
@@ -71,6 +87,7 @@ const HomeService = () => {
 };
 
 export default HomeService;
+
 
 const Section = styled.section`
   ${container}
@@ -133,23 +150,23 @@ const Content = styled.div`
 `;
 
 const Copy = styled.p`
-  animation: ${(props) => props.animate} 2.9s
-    cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  /* animation: ${(props) => props.animate} 2.9s
+    cubic-bezier(0.39, 0.575, 0.565, 1) both; */
 `;
 
 const Media = styled.div`
   position: relative;
   max-width: 40rem;
-  img {
+  /* img {
     animation: ${(props) => props.animate} 2.9s
       cubic-bezier(0.39, 0.575, 0.565, 1) both;
-  }
+  } */
 `;
 
 const Deco = styled.div`
   position: relative;
-  animation: ${(props) => props.animate} 3.9s
-    cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  /* animation: ${(props) => props.animate} 3.9s
+    cubic-bezier(0.39, 0.575, 0.565, 1) both; */
   &::before {
     content: "";
     position: absolute;
