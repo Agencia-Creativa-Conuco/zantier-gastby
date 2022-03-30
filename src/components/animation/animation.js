@@ -101,7 +101,7 @@ export const FadeUp1 = {
     transform: `translateY(20rem)`,
   },
   to: { opacity: 1, transform: "translateY(0)" },
-  config: config.wobbly,
+  // config: config.wobbly,
 };
 
 export const TextAnimationRight1 = {

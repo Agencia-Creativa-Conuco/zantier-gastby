@@ -21,12 +21,12 @@ const HomeCover = () => {
     featuredImage: images.home.cover,
   };
   return (
-    <InView threshold={0.6}>
+    <InView threshold={0.4}>
       {({ ref, inView }) => (
         <Section fluid>
           <Container>
             <Content>
-              <Spring reset={inView} reverse={!inView} {...FadeUp1} >
+              <Spring reset={inView} reverse={!inView} config={config.wobbly} {...FadeUp1} >
                 {(styles) => (
                   <animated.div style={styles} ref={ref}>
                     <Title>{data.title}</Title>
