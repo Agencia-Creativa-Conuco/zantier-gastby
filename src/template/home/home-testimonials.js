@@ -6,15 +6,15 @@ import { container, mq } from "../../components/layout/index";
 import useFiles from "../../hooks/useFiles";
 import Carousel from "react-slick";
 import { css } from "@emotion/react";
-import { useInView } from "react-intersection-observer";
-import { FadeUp } from "../../components/animation/animation";
+import {
+  FadeUp1,
+  centerScaleAnimation1,
+} from "../../components/animation/animation";
+import { InView } from "react-intersection-observer";
+import { animated, config, Spring } from "@react-spring/web";
 
 const HomeTestimonials = () => {
   const images = useFiles();
-
-  const { ref, inView } = useInView({
-    rootMargin: "-10%",
-  });
 
   const data = [
     {
@@ -73,49 +73,77 @@ const HomeTestimonials = () => {
     return <Arrow {...props} />;
   };
   return (
-    <Section ref={ref} Container>
-      <Container animate={inView ? FadeUp : "none"}>
-        <Carousel
-          infinite
-          slidesToShow={3}
-          prevArrow={
-            <Arrows>
-              <LeftArrowIcon />
-            </Arrows>
-          }
-          nextArrow={
-            <Arrows>
-              <RightArrowIcon />
-            </Arrows>
-          }
-          responsive={[
-            {
-              breakpoint: mq.lgv,
-              settings: {
-                slidesToShow: 2,
-              },
-            },
-            {
-              breakpoint: mq.mdv,
-              settings: {
-                slidesToShow: 1,
-              },
-            },
-          ]}
-        >
-          {data.map((item, index) => {
-            return (
-              <Card key={index}>
-                <FeaturedMedia media={item.featuredImage} size="70.25%" />
-
-                <Content animate={inView ? FadeUp : "none"}>
-                  <Copy>{item.copy}</Copy>
-                </Content>
-              </Card>
-            );
-          })}
-        </Carousel>
-      </Container>
+    <Section Container>
+      <InView threshold={0.3}>
+        {({ ref, inView }) => (
+          <Container ref={ref}>
+            <Carousel
+              infinite
+              slidesToShow={3}
+              prevArrow={
+                <Arrows>
+                  <LeftArrowIcon />
+                </Arrows>
+              }
+              nextArrow={
+                <Arrows>
+                  <RightArrowIcon />
+                </Arrows>
+              }
+              responsive={[
+                {
+                  breakpoint: mq.lgv,
+                  settings: {
+                    slidesToShow: 2,
+                  },
+                },
+                {
+                  breakpoint: mq.mdv,
+                  settings: {
+                    slidesToShow: 1,
+                  },
+                },
+              ]}
+            >
+              {data.map((item, index) => {
+                return (
+                  <Card key={index}>
+                    <Spring
+                      reset={inView}
+                      reverse={!inView}
+                      config={config.molasses}
+                      {...centerScaleAnimation1}
+                    >
+                      {(styles) => (
+                        <animated.div style={styles}>
+                          <FeaturedMedia
+                            media={item.featuredImage}
+                            size="70.25%"
+                          />
+                        </animated.div>
+                      )}
+                    </Spring>
+                    <Spring
+                      reset={inView}
+                      reverse={!inView}
+                      config={config.molasses}
+                      {...FadeUp1}
+                    >
+                      {(styles) => (
+                        <animated.div style={styles}>
+                          <Content>
+                            <Copy>{item.copy}</Copy>
+                          </Content>
+                        </animated.div>
+                      )}
+                    </Spring>
+                  </Card>
+                );
+              })}
+            </Carousel>
+          </Container>
+        )}
+      </InView>
     </Section>
   );
 };
@@ -139,8 +167,6 @@ const Container = styled.div`
 
   img {
     border-radius: 0 0 5rem 5rem;
-    animation: ${(props) => props.animate} 1.5s
-      cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   }
 `;
 
@@ -160,8 +186,6 @@ const Content = styled.div`
   padding: 2rem 5rem;
   position: relative;
   gap: 2rem;
-  animation: ${(props) => props.animate} 1.8s
-    cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 
   &::before {
     content: "";
