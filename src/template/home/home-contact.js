@@ -29,17 +29,17 @@ const HomeContact = () => {
   };
 
   return (
-    <InView threshold={0.3}>
+    <InView threshold={0.2}>
       {({ ref, inView }) => (
         <Spring
           from={{
             opacity: 0,
-            transform: `translateY(3rem)`,
+            // transform: `translateY(5rem)`,
           }}
           to={{ opacity: 1, transform: "translateY(0)" }}
           reset={inView}
           reverse={!inView}
-          config={config.gentle}
+          config={config.wobbly}
         >
           {(styles) => (
             <animated.div style={styles}>
@@ -50,7 +50,8 @@ const HomeContact = () => {
               >
                 <Section ref={ref}>
                   <Container>
-                    <Spring reset={inView} reverse={!inView} {...FadeUp1}>
+                      
+                    <Spring reset={inView} reverse={!inView} config={config.molasses}  {...FadeUp1}>
                       {(styles) => (
                         <animated.div style={styles}>
                           <Title>{data.title} </Title>

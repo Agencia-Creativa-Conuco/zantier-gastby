@@ -74,6 +74,21 @@ const HomeDescription = () => {
                   <animated.div style={styles}>
                     <p>{data.otherCopy}</p>
 
+                
+                  </animated.div>
+                )}
+              </Spring>
+              <Spring
+                reset={inView}
+                reverse={!inView}
+                config={config.molasses}
+                delay={200}
+                
+                {...FadeUp1}
+              >
+                {(styles) => (
+                  <animated.div style={styles}>
+
                     <Cta
                       to={data.cta.url}
                       bgColor="white"
