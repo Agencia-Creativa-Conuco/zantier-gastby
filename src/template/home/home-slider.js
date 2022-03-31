@@ -4,9 +4,9 @@ import { LeftArrowIcon, RightArrowIcon } from "../../components/icons";
 import { container, mq } from "../../components/layout/index";
 import Carousel from "react-slick";
 import { css } from "@emotion/react";
-import { BackgroundAnimation } from "../../components/animation/animation";
+import { centerScaleAnimationCss } from "../../components/animation/animation";
 import ReactPlayer from "react-player";
-import { InView } from "react-intersection-observer";
+import { InView, useInView } from "react-intersection-observer";
 
 const HomeSlider = () => {
   const [isPlaying, setIsPlaying] = useState(Boolean);
@@ -14,6 +14,10 @@ const HomeSlider = () => {
   const Pause = () => {
     setIsPlaying(false);
   };
+
+  const  [ isRef, isView ] = useInView({
+    threshold:0
+  })
 
   const data = [
     {
@@ -63,7 +67,7 @@ const HomeSlider = () => {
   };
   return (
     <Section>
-      <Container>
+      <Container ref={isRef}>
         <Carousel
           infinite={false}
           prevArrow={
@@ -85,12 +89,12 @@ const HomeSlider = () => {
                   <Media
                     ref={ref}
                     key={key}
-                    animate={inView ? BackgroundAnimation : "none"}
+                    // animate={inView ? BackgroundAnimation : "none"}
                   >
                     <Playing onClick={() => setIsPlaying(!isPlaying)} />
 
-                    <CWrapper>
-                      <MWrapper>
+                    <CWrapper animate={isView ? centerScaleAnimationCss : 'none'}>
+                      <MWrapper animate={isView ? centerScaleAnimationCss : 'none'}>
                         <Video
                           width="100%"
                           height="100%"

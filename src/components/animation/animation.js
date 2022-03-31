@@ -1,3 +1,18 @@
+import { keyframes } from "@emotion/react";
+
+
+export const centerScaleAnimationCss = keyframes`
+0% {
+  clip-path: inset(0% 100% 0% 100%);
+  opacity: 0;
+}
+100% {
+  clip-path: inset(0% 0% 0% 0%);
+  opacity: 1;
+}
+`;
+
+
 export const centerScaleAnimation = {
   from: {
     opacity: 0,
