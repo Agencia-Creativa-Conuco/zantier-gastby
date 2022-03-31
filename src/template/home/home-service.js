@@ -49,9 +49,9 @@ const HomeService = () => {
         let animationText =
           index % 2 ? TextAnimationLeft1 : TextAnimationRight1;
         return (
-          <InView threshold={0.4}>
+          <InView threshold={0.4} key={index}>
             {({ ref, inView }) => (
-              <Container key={index} direction={index % 2}>
+              <Container  direction={index % 2}>
                 <Spring
                   reset={inView}
                   reverse={!inView}
@@ -76,7 +76,7 @@ const HomeService = () => {
                     {...animationText}
                   >
                     {(styles) => (
-                      <animated.div style={styles} ref={ref}>
+                      <animated.div style={styles} >
                         <Copy>{item.copy}</Copy>
                       </animated.div>
                     )}
@@ -93,7 +93,7 @@ const HomeService = () => {
                     config={config.wobbly}
                   >
                     {(styles) => (
-                      <animated.div style={styles} ref={ref}>
+                      <animated.div style={styles} >
                         <Deco direction={index % 2} />
                       </animated.div>
                     )}

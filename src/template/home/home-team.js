@@ -57,7 +57,7 @@ const HomeTeam = () => {
 
   return (
     <Section fluid>
-      <InView threshold={0.3}>
+      <InView threshold={0.2}>
         {({ ref, inView }) => (
           <Container ref={ref}>
             <Trail

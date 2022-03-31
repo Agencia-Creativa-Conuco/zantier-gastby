@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import React from "react";
-import FeaturedMedia from "../../components/featured-media";
+import BackgroundImage from "gatsby-background-image";
 import { container, mq } from "../../components/layout/index";
 import useFiles from "../../hooks/useFiles";
 import { InView } from "react-intersection-observer";
@@ -16,39 +16,78 @@ const HomeAbout = () => {
 
     featuredImage: images.home.img2,
   };
-
+  console.log(data.featuredImage?.childImageSharp?.fluid);
   return (
-    <InView threshold={0.3}>
-      {({ ref, inView }) => (
-        <Section ref={ref} fluid>
-          <Media>
-            <FeaturedMedia
-              media={data.featuredImage}
-              size="100%"
-              sizeMD="90%"
-              sizeLG="75%"
-              sizeXL="80rem"
-            />
-            <Card>
+    <Section fluid>
+      <Container>
+        <BImage
+          Tag="section"
+          fluid={data.featuredImage?.childImageSharp?.fluid}
+          id="section_3"
+        >
+          <InView>
+            {({ ref, inView }) => (
               <Spring
                 reset={inView}
                 reverse={!inView}
-                config={config.molasses}
-                {...FadeUp1}
+                config={config.gentle}
+                from={{
+                  opacity: 0,
+                  transform: `translateY(3rem)`,
+                }}
+                to={{ opacity: 1, transform: "translateY(0)" }}
               >
                 {(styles) => (
                   <animated.div style={styles}>
-                    <Title>{data.title}</Title>
-                    <Copy>{data.copy}</Copy>
-                    <Deco />
+                    <Card ref={ref}>
+                      <Spring
+                        delay={200}
+                        reset={inView}
+                        reverse={!inView}
+                        config={config.gentle}
+                        {...FadeUp1}
+                      >
+                        {(styles) => (
+                          <animated.div style={styles}>
+                            <Title>{data.title}</Title>
+                          </animated.div>
+                        )}
+                      </Spring>
+                      <Spring
+                        delay={300}
+                        reset={inView}
+                        reverse={!inView}
+                        config={config.gentle}
+                        {...FadeUp1}
+                      >
+                        {(styles) => (
+                          <animated.div style={styles}>
+                            <Copy>{data.copy}</Copy>
+                          </animated.div>
+                        )}
+                      </Spring>
+                      <Spring
+                        delay={400}
+                        reset={inView}
+                        reverse={!inView}
+                        config={config.gentle}
+                        {...FadeUp1}
+                      >
+                        {(styles) => (
+                          <animated.div style={styles}>
+                            <Deco />
+                          </animated.div>
+                        )}
+                      </Spring>
+                    </Card>
                   </animated.div>
                 )}
               </Spring>
-            </Card>
-          </Media>
-        </Section>
-      )}
-    </InView>
+            )}
+          </InView>
+        </BImage>
+      </Container>
+    </Section>
   );
 };
 
@@ -60,31 +99,36 @@ const Section = styled.section`
   padding: 0;
 `;
 
-const Media = styled.div`
+const Container = styled.div`
   position: relative;
   width: 100%;
-  img {
-    clip-path: ellipse(95% 100% at 50% 100%);
+  clip-path: ellipse(95% 100% at 50% 100%) !important;
 
-    ${mq.md} {
-      animation: ${(props) => props.animate} 3s ease-in both;
-    }
+  ${mq.lg}{
+    clip-path: ellipse(85% 100% at 50% 100%) !important;
   }
+`;
+
+const BImage = styled(BackgroundImage)`
+  overflow: hidden;
 `;
 
 const Card = styled.div`
   background-color: white;
 
   padding: 5rem 5rem 3rem;
+  margin: 20% 2rem;
+  position: relative;
+  border-radius: 2rem;
   ${mq.md} {
-    animation: ${(props) => props.animate} 1s ease-in both;
-
-    position: absolute;
     max-width: 36rem;
-    border-radius: 2rem;
-    top: 25%;
+    top: 0;
     left: 13%;
   }
+  ${mq.lg} {
+    margin: 9% 0;
+  }
+
 `;
 
 const Title = styled.h3``;
@@ -103,7 +147,7 @@ const Deco = styled.div`
     position: absolute;
     background: #bc0e03;
     width: 9rem;
-    padding-bottom: 3.5rem;
+    padding-bottom: 2.7rem;
     bottom: 0;
     border-radius: 2.8rem;
   }
@@ -111,8 +155,8 @@ const Deco = styled.div`
     content: "";
     position: absolute;
     background: #bc0e03;
-    width: 3.5rem;
-    padding-bottom: 3.5rem;
+    width: 2.9rem;
+    padding-bottom: 2.9rem;
     left: 10rem;
     bottom: 0;
     border-radius: 100%;
