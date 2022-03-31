@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import React from "react";
 import Form from "../../components/form";
 import { container, mq } from "../../components/layout/index";
-import { FadeUp1 } from "../../components/animation/animation";
+import { FadeUp } from "../../components/animation/animation";
 import { InView } from "react-intersection-observer";
 import { animated, config, Spring } from "@react-spring/web";
 
@@ -17,12 +17,28 @@ const HomeForm = () => {
               <Spring
                 reset={inView}
                 reverse={!inView}
-                config={config.molasses}
-                {...FadeUp1}
+                config={config.wobbly}
+                {...FadeUp}
               >
                 {(styles) => (
                   <animated.div style={styles}>
                     <Title>Contáctanos</Title>
+                  </animated.div>
+                )}
+              </Spring>
+              <Spring
+                from={{
+                  opacity: 0,
+                  transform: `translateY(5rem)`,
+                }}
+                to={{ opacity: 1, transform: "translateY(0)" }}
+                reset={inView}
+                reverse={!inView}
+                config={config.wobbly}
+                delay={500}
+              >
+                {(styles) => (
+                  <animated.div style={styles}>
                     <Form formId="dd761710-e90b-4d87-a867-c8141db651ce" />
                   </animated.div>
                 )}
@@ -81,5 +97,4 @@ const Deco = styled.div`
 
 const Title = styled.h1`
   text-align: center;
-
 `;

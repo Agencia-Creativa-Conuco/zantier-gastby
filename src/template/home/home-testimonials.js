@@ -7,8 +7,8 @@ import useFiles from "../../hooks/useFiles";
 import Carousel from "react-slick";
 import { css } from "@emotion/react";
 import {
-  FadeUp1,
-  centerScaleAnimation1,
+  FadeUp,
+  centerScaleAnimation,
 } from "../../components/animation/animation";
 import { InView } from "react-intersection-observer";
 import { animated, config, Spring } from "@react-spring/web";
@@ -74,45 +74,45 @@ const HomeTestimonials = () => {
   };
   return (
     <Section Container>
-      <InView threshold={0.3}>
-        {({ ref, inView }) => (
-          <Container ref={ref}>
-            <Carousel
-              infinite
-              slidesToShow={3}
-              prevArrow={
-                <Arrows>
-                  <LeftArrowIcon />
-                </Arrows>
-              }
-              nextArrow={
-                <Arrows>
-                  <RightArrowIcon />
-                </Arrows>
-              }
-              responsive={[
-                {
-                  breakpoint: mq.lgv,
-                  settings: {
-                    slidesToShow: 2,
-                  },
-                },
-                {
-                  breakpoint: mq.mdv,
-                  settings: {
-                    slidesToShow: 1,
-                  },
-                },
-              ]}
-            >
-              {data.map((item, index) => {
-                return (
-                  <Card key={index}>
+      <Container>
+        <Carousel
+          infinite={false}
+          slidesToShow={3}
+          prevArrow={
+            <Arrows>
+              <LeftArrowIcon />
+            </Arrows>
+          }
+          nextArrow={
+            <Arrows>
+              <RightArrowIcon />
+            </Arrows>
+          }
+          responsive={[
+            {
+              breakpoint: mq.lgv,
+              settings: {
+                slidesToShow: 2,
+              },
+            },
+            {
+              breakpoint: mq.mdv,
+              settings: {
+                slidesToShow: 1,
+              },
+            },
+          ]}
+        >
+          {data.map((item, index) => {
+            return (
+              <InView threshold={0.3}>
+                {({ ref, inView }) => (
+                  <Card key={index} ref={ref}>
                     <Spring
                       reset={inView}
                       reverse={!inView}
                       config={config.molasses}
-                      {...centerScaleAnimation1}
+                      {...centerScaleAnimation}
                     >
                       {(styles) => (
                         <animated.div style={styles}>
@@ -126,8 +126,8 @@ const HomeTestimonials = () => {
                     <Spring
                       reset={inView}
                       reverse={!inView}
-                      config={config.molasses}
-                      {...FadeUp1}
+                      config={config.wobbly}
+                      {...FadeUp}
                     >
                       {(styles) => (
                         <animated.div style={styles}>
@@ -138,12 +138,12 @@ const HomeTestimonials = () => {
                       )}
                     </Spring>
                   </Card>
-                );
-              })}
-            </Carousel>
-          </Container>
-        )}
-      </InView>
+                )}
+              </InView>
+            );
+          })}
+        </Carousel>
+      </Container>
     </Section>
   );
 };
@@ -177,9 +177,6 @@ const Card = styled.div`
   margin: 0 auto;
   overflow: hidden;
   max-width: 30rem;
-  /* animation: ${(props) =>
-    props.animate} 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-   */
 `;
 
 const Content = styled.div`

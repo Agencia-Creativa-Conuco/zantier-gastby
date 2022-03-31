@@ -3,7 +3,7 @@ import React from "react";
 import FeaturedMedia from "../../components/featured-media";
 import { container, mq } from "../../components/layout/index";
 import useFiles from "../../hooks/useFiles";
-import { FadeUp1 } from "../../components/animation/animation";
+import { FadeUp } from "../../components/animation/animation";
 import { InView } from "react-intersection-observer";
 import { animated, Trail, config, Spring } from "@react-spring/web";
 
@@ -65,7 +65,7 @@ const HomeTeam = () => {
               reset={inView}
               reverse={!inView}
               config={config.gentle}
-              {...FadeUp1}
+              {...FadeUp}
             >
               {(item, index) => (styles) => {
                 return (
@@ -77,7 +77,7 @@ const HomeTeam = () => {
                           reset={inView}
                           reverse={!inView}
                           config={{ duration: 500 }}
-                          {...FadeUp1}
+                          {...FadeUp}
                         >
                           {(styles) => (
                             <animated.div style={styles}>
@@ -96,7 +96,7 @@ const HomeTeam = () => {
                         reset={inView}
                         reverse={!inView}
                         config={{ duration: 600 }}
-                        {...FadeUp1}
+                        {...FadeUp}
                       >
                         {(styles) => (
                           <animated.div style={styles}>

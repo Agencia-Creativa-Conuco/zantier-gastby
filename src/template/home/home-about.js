@@ -5,7 +5,7 @@ import { container, mq } from "../../components/layout/index";
 import useFiles from "../../hooks/useFiles";
 import { InView } from "react-intersection-observer";
 import { animated, config, Spring } from "@react-spring/web";
-import { FadeUp1 } from "../../components/animation/animation";
+import { FadeUp } from "../../components/animation/animation";
 
 const HomeAbout = () => {
   const images = useFiles();
@@ -45,7 +45,7 @@ const HomeAbout = () => {
                         reset={inView}
                         reverse={!inView}
                         config={config.gentle}
-                        {...FadeUp1}
+                        {...FadeUp}
                       >
                         {(styles) => (
                           <animated.div style={styles}>
@@ -58,7 +58,7 @@ const HomeAbout = () => {
                         reset={inView}
                         reverse={!inView}
                         config={config.gentle}
-                        {...FadeUp1}
+                        {...FadeUp}
                       >
                         {(styles) => (
                           <animated.div style={styles}>
@@ -71,7 +71,7 @@ const HomeAbout = () => {
                         reset={inView}
                         reverse={!inView}
                         config={config.gentle}
-                        {...FadeUp1}
+                        {...FadeUp}
                       >
                         {(styles) => (
                           <animated.div style={styles}>
@@ -104,7 +104,7 @@ const Container = styled.div`
   width: 100%;
   clip-path: ellipse(95% 100% at 50% 100%) !important;
 
-  ${mq.lg}{
+  ${mq.lg} {
     clip-path: ellipse(85% 100% at 50% 100%) !important;
   }
 `;
@@ -128,7 +128,6 @@ const Card = styled.div`
   ${mq.lg} {
     margin: 9% 0;
   }
-
 `;
 
 const Title = styled.h3``;

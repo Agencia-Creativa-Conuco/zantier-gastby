@@ -6,9 +6,9 @@ import useFiles from "../../hooks/useFiles";
 
 import Cta from "../../components/cta";
 import {
-  FadeIn1,
-  FadeUp1,
-  TextAnimationRight1,
+  FadeIn,
+  FadeUp,
+  TextAnimationRight,
 } from "../../components/animation/animation";
 import { InView } from "react-intersection-observer";
 import { animated, config, Spring } from "@react-spring/web";
@@ -39,7 +39,7 @@ const HomeDescription = () => {
                 reset={inView}
                 reverse={!inView}
                 config={{ duration: 100 }}
-                {...FadeIn1}
+                {...FadeIn}
               >
                 {(styles) => (
                   <animated.div style={styles}>
@@ -53,7 +53,7 @@ const HomeDescription = () => {
               </Spring>
             </Media>
 
-            <Spring reset={inView} reverse={!inView} {...TextAnimationRight1}>
+            <Spring reset={inView} reverse={!inView} {...TextAnimationRight}>
               {(styles) => (
                 <animated.div style={styles}>
                   <Card>
@@ -68,7 +68,7 @@ const HomeDescription = () => {
                 reset={inView}
                 reverse={!inView}
                 config={config.molasses}
-                {...FadeUp1}
+                {...FadeUp}
               >
                 {(styles) => (
                   <animated.div style={styles}>
@@ -84,7 +84,7 @@ const HomeDescription = () => {
                 config={config.molasses}
                 delay={200}
                 
-                {...FadeUp1}
+                {...FadeUp}
               >
                 {(styles) => (
                   <animated.div style={styles}>

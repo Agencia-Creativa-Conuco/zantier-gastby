@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import React from "react";
-import { FadeUp1 } from "../../components/animation/animation";
+import { FadeUp } from "../../components/animation/animation";
 import Cta from "../../components/cta";
 import FeaturedMedia from "../../components/featured-media";
 import { container, mq } from "../../components/layout/index";
@@ -30,7 +30,7 @@ const HomeCover = () => {
                 reset={inView}
                 reverse={!inView}
                 config={config.gentle}
-                {...FadeUp1}
+                {...FadeUp}
               >
                 {(styles) => (
                   <animated.div style={styles} ref={ref}>
@@ -44,7 +44,7 @@ const HomeCover = () => {
                 delay={200}
                 reverse={!inView}
                 config={config.gentle}
-                {...FadeUp1}
+                {...FadeUp}
               >
                 {(styles) => (
                   <animated.div style={styles} ref={ref}>
@@ -57,7 +57,7 @@ const HomeCover = () => {
                 reverse={!inView}
                 delay={300}
                 config={config.gentle}
-                {...FadeUp1}
+                {...FadeUp}
               >
                 {(styles) => (
                   <animated.div style={styles} ref={ref}>

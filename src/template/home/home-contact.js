@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { container, mq } from "../../components/layout/index";
 import useFiles from "../../hooks/useFiles";
 import BackgroundImage from "gatsby-background-image";
-import { FadeUp1 } from "../../components/animation/animation";
+import { FadeUp } from "../../components/animation/animation";
 import { InView } from "react-intersection-observer";
 import { animated, Trail, config, Spring } from "@react-spring/web";
 
@@ -51,7 +51,7 @@ const HomeContact = () => {
                 <Section ref={ref}>
                   <Container>
                       
-                    <Spring reset={inView} reverse={!inView} config={config.molasses}  {...FadeUp1}>
+                    <Spring reset={inView} reverse={!inView} config={config.molasses}  {...FadeUp}>
                       {(styles) => (
                         <animated.div style={styles}>
                           <Title>{data.title} </Title>
@@ -63,7 +63,7 @@ const HomeContact = () => {
                       reset={inView}
                       reverse={!inView}
                       config={config.molasses}
-                      {...FadeUp1}
+                      {...FadeUp}
                     >
                       {(item, index) => (styles) => {
                         return (

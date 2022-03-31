@@ -4,8 +4,8 @@ import FeaturedMedia from "../../components/featured-media";
 import { container, mq } from "../../components/layout/index";
 import useFiles from "../../hooks/useFiles";
 import {
-  TextAnimationLeft1,
-  TextAnimationRight1,
+  TextAnimationLeft,
+  TextAnimationRight,
 } from "../../components/animation/animation";
 import { InView } from "react-intersection-observer";
 import { Spring, animated, config } from "@react-spring/web";
@@ -47,7 +47,7 @@ const HomeService = () => {
     <Section fluid>
       {data.map((item, index) => {
         let animationText =
-          index % 2 ? TextAnimationLeft1 : TextAnimationRight1;
+          index % 2 ? TextAnimationLeft : TextAnimationRight;
         return (
           <InView threshold={0.4} key={index}>
             {({ ref, inView }) => (
