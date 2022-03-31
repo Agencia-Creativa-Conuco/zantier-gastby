@@ -126,7 +126,7 @@ export const TextAnimationRight1 = {
     opacity: 1,
     transform: `translateX(0)`,
   },
-  config: config.molasses,
+  // config: config.molasses,
 };
 
 export const TextAnimationLeft1 = {
@@ -138,7 +138,7 @@ export const TextAnimationLeft1 = {
     opacity: 1,
     transform: `translateX(0)`,
   },
-  config: config.molasses,
+  // config: config.molasses,
 };
 
 export const FadeIn1 = {

@@ -8,11 +8,10 @@ import {
   TextAnimationRight1,
 } from "../../components/animation/animation";
 import { InView } from "react-intersection-observer";
-import { Spring, animated } from "@react-spring/web";
+import { Spring, animated, config } from "@react-spring/web";
 
 const HomeService = () => {
   const images = useFiles();
-
 
   const data = [
     {
@@ -51,34 +50,57 @@ const HomeService = () => {
           index % 2 ? TextAnimationLeft1 : TextAnimationRight1;
         return (
           <InView threshold={0.4}>
-            {({ ref, inView }) => {
-              return (
-                <Spring reset={inView} reverse={!inView} {...animationText}>
-                  {(styles) => {
-                    return (
-                      <animated.div style={styles} ref={ref}>
-                        <Container key={index} direction={index % 2}>
-                          <Media>
-                            <FeaturedMedia
-                              media={item.featuredImage}
-                              size="80%"
-                            />
-                          </Media>
-
-                          <Content>
-                            <Copy>{item.copy}</Copy>
-                            <Deco
-                              direction={index % 2}
-                              // animate={inView ? FadeIn : "none"}
-                            />
-                          </Content>
-                        </Container>
-                      </animated.div>
-                    );
-                  }}
+            {({ ref, inView }) => (
+              <Container key={index} direction={index % 2}>
+                <Spring
+                  reset={inView}
+                  reverse={!inView}
+                  config={config.gentle}
+                  {...animationText}
+                >
+                  {(styles) => (
+                    <animated.div style={styles} ref={ref}>
+                      <Media>
+                        <FeaturedMedia media={item.featuredImage} size="80%" />
+                      </Media>
+                    </animated.div>
+                  )}
                 </Spring>
-              );
-            }}
+
+                <Content>
+                  <Spring
+                    delay={500}
+                    reset={inView}
+                    reverse={!inView}
+                    config={config.slow}
+                    {...animationText}
+                  >
+                    {(styles) => (
+                      <animated.div style={styles} ref={ref}>
+                        <Copy>{item.copy}</Copy>
+                      </animated.div>
+                    )}
+                  </Spring>
+                  <Spring
+                    from={{
+                      opacity: 0,
+                      transform: `translateY(3rem)`,
+                    }}
+                    to={{ opacity: 1, transform: "translateY(0)" }}
+                    delay={900}
+                    reset={inView}
+                    reverse={!inView}
+                    config={config.wobbly}
+                  >
+                    {(styles) => (
+                      <animated.div style={styles} ref={ref}>
+                        <Deco direction={index % 2} />
+                      </animated.div>
+                    )}
+                  </Spring>
+                </Content>
+              </Container>
+            )}
           </InView>
         );
       })}
@@ -87,7 +109,6 @@ const HomeService = () => {
 };
 
 export default HomeService;
-
 
 const Section = styled.section`
   ${container}
@@ -149,24 +170,16 @@ const Content = styled.div`
   align-self: center;
 `;
 
-const Copy = styled.p`
-  /* animation: ${(props) => props.animate} 2.9s
-    cubic-bezier(0.39, 0.575, 0.565, 1) both; */
-`;
+const Copy = styled.p``;
 
 const Media = styled.div`
   position: relative;
   max-width: 40rem;
-  /* img {
-    animation: ${(props) => props.animate} 2.9s
-      cubic-bezier(0.39, 0.575, 0.565, 1) both;
-  } */
 `;
 
 const Deco = styled.div`
   position: relative;
-  /* animation: ${(props) => props.animate} 3.9s
-    cubic-bezier(0.39, 0.575, 0.565, 1) both; */
+
   &::before {
     content: "";
     position: absolute;
