@@ -80,11 +80,11 @@ const HomeSlider = () => {
         >
           {data.map((item, key) => {
             return (
-              <InView threshold={1}  key={key}>
+              <InView threshold={1}>
                 {({ ref, inView }) => (
                   <Media
                     ref={ref}
-              
+                    key={key}
                     animate={inView ? BackgroundAnimation : "none"}
                   >
                     <Playing onClick={() => setIsPlaying(!isPlaying)} />

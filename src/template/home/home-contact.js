@@ -29,50 +29,60 @@ const HomeContact = () => {
   };
 
   return (
-    <BImage
-      Tag="section"
-      fluid={data.featuredImage?.childImageSharp?.fluid}
-      id="section_3"
-    >
-      <Section>
-        <InView threshold={0.3}>
-          {({ ref, inView }) => (
-            <Container ref={ref}>
-              <Spring
-                reset={inView}
-                reverse={!inView}
-                // config={{ duration: 600 }}
-                {...FadeUp1}
+    <InView threshold={0.3}>
+      {({ ref, inView }) => (
+        <Spring
+          from={{
+            opacity: 0,
+            transform: `translateY(3rem)`,
+          }}
+          to={{ opacity: 1, transform: "translateY(0)" }}
+          reset={inView}
+          reverse={!inView}
+          config={config.gentle}
+        >
+          {(styles) => (
+            <animated.div style={styles}>
+              <BImage
+                Tag="section"
+                fluid={data.featuredImage?.childImageSharp?.fluid}
+                id="section_3"
               >
-                {(styles) => (
-                  <animated.div style={styles}>
-                    <Title>{data.title} </Title>
-                  </animated.div>
-                )}
-              </Spring>
-              <Trail
-                items={data.list}
-                reset={inView}
-                reverse={!inView}
-                config={config.molasses}
-                {...FadeUp1}
-              >
-                {(item, index) => (styles) => {
-                  return (
-                    <animated.div style={styles} key={index}>
-                      <Content>
-                        <Deco />
-                        <Copy>{item.title}</Copy>
-                      </Content>
-                    </animated.div>
-                  );
-                }}
-              </Trail>
-            </Container>
+                <Section ref={ref}>
+                  <Container>
+                    <Spring reset={inView} reverse={!inView} {...FadeUp1}>
+                      {(styles) => (
+                        <animated.div style={styles}>
+                          <Title>{data.title} </Title>
+                        </animated.div>
+                      )}
+                    </Spring>
+                    <Trail
+                      items={data.list}
+                      reset={inView}
+                      reverse={!inView}
+                      config={config.molasses}
+                      {...FadeUp1}
+                    >
+                      {(item, index) => (styles) => {
+                        return (
+                          <animated.div style={styles} key={index}>
+                            <Content>
+                              <Deco />
+                              <Copy>{item.title}</Copy>
+                            </Content>
+                          </animated.div>
+                        );
+                      }}
+                    </Trail>
+                  </Container>
+                </Section>
+              </BImage>
+            </animated.div>
           )}
-        </InView>
-      </Section>
-    </BImage>
+        </Spring>
+      )}
+    </InView>
   );
 };
 
