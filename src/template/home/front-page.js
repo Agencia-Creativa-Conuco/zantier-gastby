@@ -16,7 +16,7 @@ const FrontPage = () => {
       <HomeService />
       <HomeAbout />
       <HomeTeam />
-      {/* <HomeSlider /> */}
+      <HomeSlider />
       <HomeContact />
       <HomeDescription />
       <HomeTestimonials />

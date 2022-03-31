@@ -4,67 +4,16 @@ import { LeftArrowIcon, RightArrowIcon } from "../../components/icons";
 import { container, mq } from "../../components/layout/index";
 import Carousel from "react-slick";
 import { css } from "@emotion/react";
-import { useInView } from "react-intersection-observer";
-import {
-  BackgroundAnimation,
-  centerScaleAnimation,
-} from "../../components/animation/animation";
+import { BackgroundAnimation } from "../../components/animation/animation";
 import ReactPlayer from "react-player";
-import { useEffect } from "react";
+import { InView } from "react-intersection-observer";
 
 const HomeSlider = () => {
-  const [state, setSate] = useState(Number);
   const [isPlaying, setIsPlaying] = useState(Boolean);
-  const [isTest, setIsTest] = useState(1);
-
-  useEffect(()=>{
-    // if (state === 0) {
-    //   setIsTest(state + 1);
-    // }
-  },[state])
 
   const Pause = () => {
     setIsPlaying(false);
-
-    console.log(state, isTest)
-console.log(data.length - isTest >= isTest && data.length - isTest >0 )
-// 4 -1 =3 > 1 si  4- 2= 2 >= 2 si es igual 1 >= 3
-    if (data.length - isTest >= 0 ) {
-      setSate(state + 1);
-      setIsTest(state + 1);
-
- // 4 -2 > 2     
-    } 
-    // else if(data.length  ===  isTest){
-    //   setSate(state - 1);
-    //   setIsTest(state - 1);
-
-    // }
   };
-
-  const otherFuntion = (key) => {
-    // setIsPlaying(false);
-    console.log('Me ejecuto')
-
-  }
-
-
-  // useEffect(() => {
-  //   // setIsPlaying(true);
-
-  //   console.log(isTest)
-  //   return 
-
-
-  // }, [isTest]);
-
-
-
-
-
-  const { ref, inView } = useInView({
-    rootMargin: "10%",
-  });
 
   const data = [
     {
@@ -72,12 +21,6 @@ console.log(data.length - isTest >= isTest && data.length - isTest >0 )
     },
     {
       url: "https://www.youtube.com/watch?v=dmW68lzaaqs",
-    },
-    {
-      url: "https://www.youtube.com/watch?v=eKWnPGqqyrw",
-    },
-    {
-      url: "https://www.youtube.com/watch?v=HO73gUhiYe0",
     },
   ];
 
@@ -119,47 +62,47 @@ console.log(data.length - isTest >= isTest && data.length - isTest >0 )
     return <Arrow {...props} />;
   };
   return (
-    <Section ref={ref}>
+    <Section>
       <Container>
         <Carousel
           infinite={false}
-          // LeftArrowIcon
           prevArrow={
-            
-            <Arrows >
-              <LeftArrowIcon  />
+            <Arrows>
+              <LeftArrowIcon />
             </Arrows>
           }
           nextArrow={
             <Arrows>
-              <RightArrowIcon onClick={()=>console.log('me ejecuto')} />
+              <RightArrowIcon />
             </Arrows>
           }
           afterChange={Pause}
-          onInit={Pause}
-          // onSwipe={Pause}
         >
           {data.map((item, key) => {
             return (
-              <Media key={key} animate={inView ? BackgroundAnimation : "none"}>
-                <Playing onClick={()=>setIsPlaying(!isPlaying)} />
-                <CWrapper animate={inView ? centerScaleAnimation : "none"}>
-                  <MWrapper animate={inView ? centerScaleAnimation : "none"}>
-                    <Video
-                      width="100%"
-                      height="100%"
-                      controls
-                      url={item.url}
-                      playing={state === key && isPlaying}
-                      onPause={() => setSate(key)}
-                      onPlay={() => setSate(key)}
-                  
-                      // onReady={()=>setSate(key)}
-                      // autoplay={false}
-                    />
-                  </MWrapper>
-                </CWrapper>
-              </Media>
+              <InView threshold={1}>
+                {({ ref, inView }) => (
+                  <Media
+                    ref={ref}
+                    key={key}
+                    animate={inView ? BackgroundAnimation : "none"}
+                  >
+                    <Playing onClick={() => setIsPlaying(!isPlaying)} />
+
+                    <CWrapper>
+                      <MWrapper>
+                        <Video
+                          width="100%"
+                          height="100%"
+                          controls
+                          url={item.url}
+                          playing={isPlaying && inView}
+                        />
+                      </MWrapper>
+                    </CWrapper>
+                  </Media>
+                )}
+              </InView>
             );
           })}
         </Carousel>

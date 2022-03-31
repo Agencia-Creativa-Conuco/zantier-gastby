@@ -26,11 +26,41 @@ const HomeCover = () => {
         <Section fluid>
           <Container>
             <Content>
-              <Spring reset={inView} reverse={!inView} config={config.wobbly} {...FadeUp1} >
+              <Spring
+                reset={inView}
+                reverse={!inView}
+                config={config.gentle}
+                {...FadeUp1}
+              >
                 {(styles) => (
                   <animated.div style={styles} ref={ref}>
                     <Title>{data.title}</Title>
+                  </animated.div>
+                )}
+              </Spring>
+
+              <Spring
+                reset={inView}
+                delay={200}
+                reverse={!inView}
+                config={config.gentle}
+                {...FadeUp1}
+              >
+                {(styles) => (
+                  <animated.div style={styles} ref={ref}>
                     <Copy>{data.copy}</Copy>
+                  </animated.div>
+                )}
+              </Spring>
+              <Spring
+                reset={inView}
+                reverse={!inView}
+                delay={300}
+                config={config.gentle}
+                {...FadeUp1}
+              >
+                {(styles) => (
+                  <animated.div style={styles} ref={ref}>
                     <Cta to={data.cta.url}>{data.cta.title}</Cta>
                   </animated.div>
                 )}
