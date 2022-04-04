@@ -3,7 +3,7 @@ import React from "react";
 import FeaturedMedia from "../../components/featured-media";
 import { container, mq } from "../../components/layout/index";
 import useFiles from "../../hooks/useFiles";
-import { FadeUp } from "../../components/animation/animation";
+import { FadeIn, FadeUp } from "../../components/animation/animation";
 import { InView } from "react-intersection-observer";
 import { animated, Trail, config, Spring } from "@react-spring/web";
 
@@ -76,7 +76,7 @@ const HomeTeam = () => {
                         <Spring
                           reset={inView}
                           reverse={!inView}
-                          config={{ duration: 500 }}
+                          config={config.gentle}
                           {...FadeUp}
                         >
                           {(styles) => (
@@ -95,15 +95,33 @@ const HomeTeam = () => {
                       <Spring
                         reset={inView}
                         reverse={!inView}
-                        config={{ duration: 600 }}
-                        {...FadeUp}
+                        config={config.gentle}
+                        delay={200}
+                        {...FadeUp} 
                       >
                         {(styles) => (
                           <animated.div style={styles}>
                             <Card>
-                              <Title>{item.title}</Title>
+                              <Spring
+                                reset={inView}
+                                reverse={!inView}
+                                // config={{ duration: 2000 }}
+                                delay={700}
+                                from={{
+                                  opacity: 0,
+                                  transform: `translateY(3rem)`,
+                                }}
+                                to={{ opacity: 1, transform: "translateY(0)" }}
+                                config={config.wobbly}
+                              >
+                                {(styles) => (
+                                  <animated.div style={styles}>
+                                    <Title>{item.title}</Title>
 
-                              <Copy>{item.copy}</Copy>
+                                    <Copy>{item.copy}</Copy>
+                                  </animated.div>
+                                )}
+                              </Spring>
                             </Card>
                           </animated.div>
                         )}
