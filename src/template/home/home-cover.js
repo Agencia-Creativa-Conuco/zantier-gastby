@@ -29,7 +29,7 @@ const HomeCover = () => {
               <Spring
                 reset={inView}
                 reverse={!inView}
-                config={config.gentle}
+                config={config.molasses}
                 {...FadeUp}
               >
                 {(styles) => (
@@ -43,7 +43,7 @@ const HomeCover = () => {
                 reset={inView}
                 delay={200}
                 reverse={!inView}
-                config={config.gentle}
+                config={config.molasses}
                 {...FadeUp}
               >
                 {(styles) => (
@@ -56,7 +56,7 @@ const HomeCover = () => {
                 reset={inView}
                 reverse={!inView}
                 delay={300}
-                config={config.gentle}
+                config={config.molasses}
                 {...FadeUp}
               >
                 {(styles) => (

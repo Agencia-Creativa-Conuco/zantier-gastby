@@ -84,7 +84,7 @@ const HomeSlider = () => {
         >
           {data.map((item, key) => {
             return (
-              <InView threshold={1}>
+              <InView threshold={1} key={key}>
                 {({ ref, inView }) => (
                   <Media
                     ref={ref}

@@ -29,7 +29,7 @@ const HomeContact = () => {
   };
 
   return (
-    <InView threshold={0.2}>
+    <InView threshold={0.5}>
       {({ ref, inView }) => (
         <Spring
           from={{

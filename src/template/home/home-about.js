@@ -16,7 +16,6 @@ const HomeAbout = () => {
 
     featuredImage: images.home.img2,
   };
-  console.log(data.featuredImage?.childImageSharp?.fluid);
   return (
     <Section fluid>
       <Container>
@@ -25,7 +24,7 @@ const HomeAbout = () => {
           fluid={data.featuredImage?.childImageSharp?.fluid}
           id="section_3"
         >
-          <InView>
+          <InView threshold={0.6}>
             {({ ref, inView }) => (
               <Spring
                 reset={inView}
@@ -33,7 +32,7 @@ const HomeAbout = () => {
                 config={config.gentle}
                 from={{
                   opacity: 0,
-                  transform: `translateY(3rem)`,
+                  transform: `translateY(5rem)`,
                 }}
                 to={{ opacity: 1, transform: "translateY(0)" }}
               >
@@ -41,7 +40,7 @@ const HomeAbout = () => {
                   <animated.div style={styles}>
                     <Card ref={ref}>
                       <Spring
-                        delay={200}
+                        delay={600}
                         reset={inView}
                         reverse={!inView}
                         config={config.gentle}
@@ -54,7 +53,7 @@ const HomeAbout = () => {
                         )}
                       </Spring>
                       <Spring
-                        delay={300}
+                        delay={700}
                         reset={inView}
                         reverse={!inView}
                         config={config.gentle}
@@ -67,7 +66,7 @@ const HomeAbout = () => {
                         )}
                       </Spring>
                       <Spring
-                        delay={400}
+                        delay={900}
                         reset={inView}
                         reverse={!inView}
                         config={config.gentle}

@@ -95,28 +95,28 @@ const HomeTeam = () => {
                       <Spring
                         reset={inView}
                         reverse={!inView}
-                        config={config.gentle}
-                        delay={200}
+                        config={config.molasses}
+                        // delay={500}
                         {...FadeUp} 
                       >
                         {(styles) => (
                           <animated.div style={styles}>
                             <Card>
+                            <Title>{item.title}</Title>
+
                               <Spring
                                 reset={inView}
                                 reverse={!inView}
                                 // config={{ duration: 2000 }}
-                                delay={700}
+                                delay={1000}
                                 from={{
                                   opacity: 0,
-                                  transform: `translateY(3rem)`,
                                 }}
-                                to={{ opacity: 1, transform: "translateY(0)" }}
-                                config={config.wobbly}
+                                to={{ opacity: 1 }}
+                                // config={config.molasses}
                               >
                                 {(styles) => (
                                   <animated.div style={styles}>
-                                    <Title>{item.title}</Title>
 
                                     <Copy>{item.copy}</Copy>
                                   </animated.div>

@@ -31,7 +31,7 @@ const HomeDescription = () => {
 
   return (
     <Section>
-      <InView threshold={0.3}>
+      <InView threshold={0.4}>
         {({ ref, inView }) => (
           <Container ref={ref}>
             <Media>
@@ -73,8 +73,6 @@ const HomeDescription = () => {
                 {(styles) => (
                   <animated.div style={styles}>
                     <p>{data.otherCopy}</p>
-
-                
                   </animated.div>
                 )}
               </Spring>
@@ -83,12 +81,10 @@ const HomeDescription = () => {
                 reverse={!inView}
                 config={config.molasses}
                 delay={200}
-                
                 {...FadeUp}
               >
                 {(styles) => (
                   <animated.div style={styles}>
-
                     <Cta
                       to={data.cta.url}
                       bgColor="white"
@@ -189,8 +185,12 @@ const Card = styled.div`
       cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 
     ${mq.md} {
+      height: 109.5%;
       width: 130%;
       border-radius: 2rem 0 0 2rem;
+    }
+    ${mq.lg} {
+      height: 100%;
     }
   }
 `;

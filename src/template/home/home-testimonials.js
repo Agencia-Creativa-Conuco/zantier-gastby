@@ -9,6 +9,7 @@ import { css } from "@emotion/react";
 import {
   FadeUp,
   centerScaleAnimation,
+  fadeTop,
 } from "../../components/animation/animation";
 import { InView } from "react-intersection-observer";
 import { animated, config, Spring } from "@react-spring/web";
@@ -105,14 +106,14 @@ const HomeTestimonials = () => {
         >
           {data.map((item, index) => {
             return (
-              <InView threshold={0.3}>
+              <InView threshold={0.3} key={index}>
                 {({ ref, inView }) => (
                   <Card key={index} ref={ref}>
                     <Spring
                       reset={inView}
                       reverse={!inView}
                       config={config.molasses}
-                      {...centerScaleAnimation}
+                      {...fadeTop}
                     >
                       {(styles) => (
                         <animated.div style={styles}>
@@ -126,6 +127,7 @@ const HomeTestimonials = () => {
                     <Spring
                       reset={inView}
                       reverse={!inView}
+                      delay={700}
                       config={config.wobbly}
                       {...FadeUp}
                     >

@@ -55,7 +55,7 @@ const HomeService = () => {
                 <Spring
                   reset={inView}
                   reverse={!inView}
-                  config={config.gentle}
+                  config={config.molasses}
                   {...animationText}
                 >
                   {(styles) => (
@@ -69,7 +69,7 @@ const HomeService = () => {
 
                 <Content>
                   <Spring
-                    delay={500}
+                    delay={600}
                     reset={inView}
                     reverse={!inView}
                     config={config.slow}
@@ -87,7 +87,7 @@ const HomeService = () => {
                       transform: `translateY(3rem)`,
                     }}
                     to={{ opacity: 1, transform: "translateY(0)" }}
-                    delay={900}
+                    delay={1000}
                     reset={inView}
                     reverse={!inView}
                     config={config.wobbly}
