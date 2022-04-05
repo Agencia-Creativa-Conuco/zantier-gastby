@@ -128,7 +128,7 @@ const HomeTestimonials = () => {
                       reset={inView}
                       reverse={!inView}
                       delay={700}
-                      config={config.wobbly}
+                      config={config.molasses}
                       {...FadeUp}
                     >
                       {(styles) => (
