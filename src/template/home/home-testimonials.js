@@ -19,19 +19,19 @@ const HomeTestimonials = () => {
 
   const data = [
     {
-      featuredImage: images.home.img,
+      featuredImage: images.home.smile_1,
       copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor  ",
     },
     {
-      featuredImage: images.home.img2,
+      featuredImage: images.home.smile_2,
       copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ",
     },
     {
-      featuredImage: images.home.img,
+      featuredImage: images.home.smile_3,
       copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod ",
     },
     {
-      featuredImage: images.home.img2,
+      featuredImage: images.home.smile_1,
       copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
     },
   ];

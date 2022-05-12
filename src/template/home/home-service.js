@@ -21,7 +21,7 @@ const HomeService = () => {
         title: "Conocer mas",
         url: "/",
       },
-      featuredImage: images.home.img,
+      featuredImage: images.home.service_1,
     },
     {
       title: "En zantier creemos que la felicidad viene de sonrisa en sonrisa",
@@ -30,7 +30,7 @@ const HomeService = () => {
         title: "Conocer mas",
         url: "/",
       },
-      featuredImage: images.home.img,
+      featuredImage: images.home.service_3,
     },
     {
       title: "En zantier creemos que la felicidad viene de sonrisa en sonrisa",
@@ -39,7 +39,7 @@ const HomeService = () => {
         title: "Conocer mas",
         url: "/",
       },
-      featuredImage: images.home.img,
+      featuredImage: images.home.service_1,
     },
   ];
 

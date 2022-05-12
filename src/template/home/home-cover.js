@@ -18,7 +18,7 @@ const HomeCover = () => {
       title: "Conocer mas",
       url: "/",
     },
-    featuredImage: images.home.cover,
+    featuredImage: images.home.chica,
   };
   return (
     <InView threshold={0.4}>
@@ -84,7 +84,7 @@ const HomeCover = () => {
                       size="80%"
                       sizeMD="125%"
                       sizeXL="100%"
-                      position="50% 0%"
+                      position="0% 0%"
                     />
                   </Media>
                 </animated.div>

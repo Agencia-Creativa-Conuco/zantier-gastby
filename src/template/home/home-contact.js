@@ -25,7 +25,7 @@ const HomeContact = () => {
       },
     ],
 
-    featuredImage: images.home.img2,
+    featuredImage: images.home.contact,
   };
 
   return (

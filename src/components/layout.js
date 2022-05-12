@@ -4,9 +4,7 @@ import { Global } from "@emotion/react";
 import styled from "@emotion/styled";
 import globalStyles from "../components/styles/global-styles";
 
-
 const Layout = ({ children }) => {
-
   return (
     <>
       <Helmet
@@ -15,7 +13,10 @@ const Layout = ({ children }) => {
         }}
       >
         <title>Zantier</title>
-        <meta name="description" content="Somos Zantier, Clínica de Odontología Integral comprometidos con tu salud y bienesta"/>
+        <meta
+          name="description"
+          content="Somos Zantier, Clínica de Odontología Integral comprometidos con tu salud y bienesta"
+        />
         <link
           rel="preload"
           href="//js.hs-scripts.com/20627890.js"
