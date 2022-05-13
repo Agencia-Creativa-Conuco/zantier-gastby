@@ -6,13 +6,14 @@ import useFiles from "../../hooks/useFiles";
 import {
   TextAnimationLeft,
   TextAnimationRight,
+  FadeUp,
 } from "../../components/animation/animation";
 import { InView } from "react-intersection-observer";
 import { Spring, animated, config } from "@react-spring/web";
 
 const HomeService = () => {
   const images = useFiles();
-  const sectionTitle = "LA FECILIDAD VIENE DE UNA SONRISA";
+  const sectionTitle = "LA FECILIDAD VIENE DE SONRISA EN SONRISA";
   const data = [
     {
       title: "En zantier creemos que la felicidad viene de sonrisa en sonrisa",
@@ -48,10 +49,29 @@ const HomeService = () => {
       <ImageDeco>
         <FeaturedMedia media={images.home.deco} size="255%" />
       </ImageDeco>
-      <SectionTitle>{sectionTitle}</SectionTitle>
       <Logo>
-        <FeaturedMedia media={images.icons.smile} size="100%" />
+        <FeaturedMedia media={images.icons.smile} sizeMd="100%" />
       </Logo>
+
+      <InView threshold={0.5}>
+        {({ ref, inView }) => (
+          <Spring
+            reset={inView}
+            reverse={!inView}
+            config={config.stiff}
+            from={{
+              opacity: 0,
+            }}
+            to={{ opacity: 1 }}
+          >
+            {(styles) => (
+              <animated.div style={styles}>
+                <SectionTitle ref={ref}>{sectionTitle}</SectionTitle>
+              </animated.div>
+            )}
+          </Spring>
+        )}
+      </InView>
 
       {data.map((item, index) => {
         let animationText = index % 2 ? TextAnimationLeft : TextAnimationRight;
@@ -133,7 +153,7 @@ export default HomeService;
 
 const Section = styled.section`
   ${container}
-  padding: 5rem 0 12rem;
+  padding: 5rem 1.5rem 12rem;
   position: relative;
   background: #bc0e03;
 
@@ -148,6 +168,7 @@ const Section = styled.section`
     height: 30rem;
     clip-path: ellipse(65% 32% at 50% 100%);
     top: -24rem;
+    left: 0;
     z-index: 2;
 
     ${mq.md} {
@@ -159,14 +180,16 @@ const Section = styled.section`
 const Logo = styled.div`
   position: relative;
 
-  right: -65%;
-  top: -17rem;
+  right: -80%;
+  top: -9rem;
   z-index: 89;
-  width: 8rem;
+  width: 5rem;
+
   ${mq.md} {
+    width: 8rem;
     right: -80%;
+    top: -12rem;
   }
-  /* padding: -1rem; */
 
   &::after {
     content: "";
@@ -189,18 +212,26 @@ const SectionTitle = styled.h2`
   text-align: center;
   z-index: 5;
   position: relative;
+  max-width: 56rem;
+  margin: -7.2rem auto 4rem;
 `;
 
 const ImageDeco = styled.div`
+  width: 0;
   position: absolute;
-  width: 45%;
-  top: -1rem;
-  left: -13rem;
-  z-index: 3;
 
-  ${mq.lg} {
+  ${mq.md} {
+    width: 44%;
     top: -10rem;
-    width: 40%;
+    left: -2rem;
+    padding-bottom: 9rem;
+    z-index: 3;
+  }
+  ${mq.lg} {
+    left: -5rem;
+
+    top: -11rem;
+    width: 35%;
   }
 `;
 const Container = styled.div`
@@ -223,7 +254,6 @@ const Container = styled.div`
 
     div:first-of-type {
       order: ${(props) => props.direction === 1 && 2};
-      
     }
   }
 
@@ -247,7 +277,6 @@ const Media = styled.div`
   position: relative;
   max-width: 40rem;
   margin: auto;
-
 `;
 
 const Deco = styled.div`
