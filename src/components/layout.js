@@ -3,7 +3,7 @@ import Helmet from "react-helmet";
 import { Global } from "@emotion/react";
 import styled from "@emotion/styled";
 import globalStyles from "../components/styles/global-styles";
-
+import logo from "../images/icons/logo.png";
 const Layout = ({ children }) => {
   return (
     <>
@@ -17,6 +17,8 @@ const Layout = ({ children }) => {
           name="description"
           content="Somos Zantier, Clínica de Odontología Integral comprometidos con tu salud y bienesta"
         />
+        <meta name="image" content={logo} />
+        <link rel="shortcut icon" href={logo} />
         <link
           rel="preload"
           href="//js.hs-scripts.com/20627890.js"

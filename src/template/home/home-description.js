@@ -19,7 +19,7 @@ const HomeDescription = () => {
   const data = {
     copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
 
-    featuredImage: images.home.description,
+    featuredImage: images.home.img,
     otherCopy:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
 
@@ -186,7 +186,7 @@ const Card = styled.div`
 
     ${mq.md} {
       height: 109.5%;
-      width: 130%;
+      width: 135%;
       border-radius: 2rem 0 0 2rem;
     }
     ${mq.lg} {
@@ -202,7 +202,7 @@ const Copy = styled.p`
   z-index: 2;
   animation: ${(props) =>
     props.animate} 2.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-}
+
 `;
 
 const Content = styled.div`

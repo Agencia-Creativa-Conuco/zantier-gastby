@@ -7,7 +7,6 @@ import { container, mq } from "../../components/layout/index";
 import useFiles from "../../hooks/useFiles";
 import { InView } from "react-intersection-observer";
 import { Spring, animated, config } from "@react-spring/web";
-
 const HomeCover = () => {
   const images = useFiles();
 
@@ -48,6 +47,7 @@ const HomeCover = () => {
               >
                 {(styles) => (
                   <animated.div style={styles} ref={ref}>
+
                     <Copy>{data.copy}</Copy>
                   </animated.div>
                 )}
@@ -110,7 +110,7 @@ const Section = styled.section`
     background: linear-gradient(
       0deg,
       rgba(255, 255, 255, 1) 0%,
-      rgba(255, 255, 255, 0.6615021008403361) 41%,
+      rgba(255 255 255 / 93%) 41%,
       rgba(255, 255, 255, 0.38699229691876746) 64%,
       rgba(255, 255, 255, 0) 100%
     );

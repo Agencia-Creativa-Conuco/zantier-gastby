@@ -12,7 +12,7 @@ import { Spring, animated, config } from "@react-spring/web";
 
 const HomeService = () => {
   const images = useFiles();
-
+  const sectionTitle = "LA FECILIDAD VIENE DE UNA SONRISA";
   const data = [
     {
       title: "En zantier creemos que la felicidad viene de sonrisa en sonrisa",
@@ -45,13 +45,20 @@ const HomeService = () => {
 
   return (
     <Section fluid>
+      <ImageDeco>
+        <FeaturedMedia media={images.home.deco} size="255%" />
+      </ImageDeco>
+      <SectionTitle>{sectionTitle}</SectionTitle>
+      <Logo>
+        <FeaturedMedia media={images.icons.smile} size="100%" />
+      </Logo>
+
       {data.map((item, index) => {
-        let animationText =
-          index % 2 ? TextAnimationLeft : TextAnimationRight;
+        let animationText = index % 2 ? TextAnimationLeft : TextAnimationRight;
         return (
           <InView threshold={0.4} key={index}>
             {({ ref, inView }) => (
-              <Container  direction={index % 2}>
+              <Container direction={index % 2}>
                 <Spring
                   reset={inView}
                   reverse={!inView}
@@ -76,7 +83,21 @@ const HomeService = () => {
                     {...animationText}
                   >
                     {(styles) => (
-                      <animated.div style={styles} >
+                      <animated.div style={styles}>
+                        <Title>{item.title}</Title>
+                      </animated.div>
+                    )}
+                  </Spring>
+
+                  <Spring
+                    delay={600}
+                    reset={inView}
+                    reverse={!inView}
+                    config={config.slow}
+                    {...animationText}
+                  >
+                    {(styles) => (
+                      <animated.div style={styles}>
                         <Copy>{item.copy}</Copy>
                       </animated.div>
                     )}
@@ -93,7 +114,7 @@ const HomeService = () => {
                     config={config.wobbly}
                   >
                     {(styles) => (
-                      <animated.div style={styles} >
+                      <animated.div style={styles}>
                         <Deco direction={index % 2} />
                       </animated.div>
                     )}
@@ -112,30 +133,76 @@ export default HomeService;
 
 const Section = styled.section`
   ${container}
-  padding: 0;
-  padding: 12rem 0;
+  padding: 5rem 0 12rem;
   position: relative;
   background: #bc0e03;
 
+  ${mq.md} {
+    padding: 0 0 12rem;
+  }
   &::before {
     content: "";
     position: absolute;
-    background:#bc0e03;
+    background: #bc0e03;
     width: 100%;
-    height:30rem ;
-    clip-path:ellipse(65% 32% at 50% 100%);
-    top:-24rem;
+    height: 30rem;
+    clip-path: ellipse(65% 32% at 50% 100%);
+    top: -24rem;
     z-index: 2;
 
-    ${mq.md}{
+    ${mq.md} {
       clip-path: ellipse(65% 57% at 50% 100%);
-
     }
-}
   }
-
 `;
 
+const Logo = styled.div`
+  position: relative;
+
+  right: -65%;
+  top: -17rem;
+  z-index: 89;
+  width: 8rem;
+  ${mq.md} {
+    right: -80%;
+  }
+  /* padding: -1rem; */
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #bc0e03;
+    border-radius: 100%;
+    max-width: 150%;
+    max-height: 150%;
+    box-shadow: 0px -6px 42px -12px rgba(255, 0, 0, 0.75);
+    z-index: -1;
+  }
+`;
+const SectionTitle = styled.h2`
+  color: white;
+  text-align: center;
+  z-index: 5;
+  position: relative;
+`;
+
+const ImageDeco = styled.div`
+  position: absolute;
+  width: 45%;
+  top: -1rem;
+  left: -13rem;
+  z-index: 3;
+
+  ${mq.lg} {
+    top: -10rem;
+    width: 40%;
+  }
+`;
 const Container = styled.div`
   ${container}
   z-index: 5;
@@ -156,6 +223,7 @@ const Container = styled.div`
 
     div:first-of-type {
       order: ${(props) => props.direction === 1 && 2};
+      
     }
   }
 
@@ -169,12 +237,17 @@ const Content = styled.div`
   color: white;
   align-self: center;
 `;
+const Title = styled.h4`
+  color: white;
+`;
 
 const Copy = styled.p``;
 
 const Media = styled.div`
   position: relative;
   max-width: 40rem;
+  margin: auto;
+
 `;
 
 const Deco = styled.div`
