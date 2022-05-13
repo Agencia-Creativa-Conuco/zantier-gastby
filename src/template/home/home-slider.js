@@ -4,9 +4,14 @@ import { LeftArrowIcon, RightArrowIcon } from "../../components/icons";
 import { container, mq } from "../../components/layout/index";
 import Carousel from "react-slick";
 import { css } from "@emotion/react";
-import { centerScaleAnimationCss } from "../../components/animation/animation";
+import {
+  centerScaleAnimationCss,
+  FadeIn,
+  FadeUp,
+} from "../../components/animation/animation";
 import ReactPlayer from "react-player";
 import { InView, useInView } from "react-intersection-observer";
+import { animated, config, Spring } from "@react-spring/web";
 
 const HomeSlider = () => {
   const [isPlaying, setIsPlaying] = useState(Boolean);
@@ -14,10 +19,9 @@ const HomeSlider = () => {
   const Pause = () => {
     setIsPlaying(false);
   };
-
-  const  [ isRef, isView ] = useInView({
-    threshold:0
-  })
+  const [isRef, isView] = useInView({
+    threshold: 0,
+  });
 
   const data = [
     {
@@ -67,50 +71,64 @@ const HomeSlider = () => {
   };
   return (
     <Section>
-      <Container ref={isRef}>
-        <Carousel
-          infinite={false}
-          prevArrow={
-            <Arrows>
-              <LeftArrowIcon />
-            </Arrows>
-          }
-          nextArrow={
-            <Arrows>
-              <RightArrowIcon />
-            </Arrows>
-          }
-          afterChange={Pause}
-        >
-          {data.map((item, key) => {
-            return (
-              <InView threshold={1} key={key}>
-                {({ ref, inView }) => (
-                  <Media
-                    ref={ref}
-                    key={key}
-                    // animate={inView ? BackgroundAnimation : "none"}
-                  >
-                    <Playing onClick={() => setIsPlaying(!isPlaying)} />
+      <Spring
+        reset={isView}
+        reverse={!isView}
+        config={config.gentle}
+        delay={300}
+        {...FadeUp}
+      >
+        {(styles) => (
+          <animated.div style={styles}>
+            <Container ref={isRef}>
+              <Carousel
+                infinite={false}
+                prevArrow={
+                  <Arrows>
+                    <LeftArrowIcon />
+                  </Arrows>
+                }
+                nextArrow={
+                  <Arrows>
+                    <RightArrowIcon />
+                  </Arrows>
+                }
+                afterChange={Pause}
+              >
+                {data.map((item, key) => {
+                  return (
+                    <InView threshold={1} key={key}>
+                      {({ ref, inView }) => (
+                        <Media ref={ref} key={key}>
+                          <Playing onClick={() => setIsPlaying(!isPlaying)} />
 
-                    <CWrapper animate={isView ? centerScaleAnimationCss : 'none'}>
-                      <MWrapper animate={isView ? centerScaleAnimationCss : 'none'}>
-                        <Video
-                          width="100%"
-                          height="100%"
-                          controls
-                          url={item.url}
-                          playing={isPlaying && inView}
-                        />
-                      </MWrapper>
-                    </CWrapper>
-                  </Media>
-                )}
-              </InView>
-            );
-          })}
-        </Carousel>
-      </Container>
+                          <CWrapper
+                            animate={isView ? centerScaleAnimationCss : "none"}
+                          >
+                            <MWrapper
+                              animate={
+                                isView ? centerScaleAnimationCss : "none"
+                              }
+                            >
+                              <Video
+                                width="100%"
+                                height="100%"
+                                controls
+                                url={item.url}
+                                playing={isPlaying && inView}
+                              />
+                            </MWrapper>
+                          </CWrapper>
+                        </Media>
+                      )}
+                    </InView>
+                  );
+                })}
+              </Carousel>
+            </Container>
+          </animated.div>
+        )}
+      </Spring>
     </Section>
   );
 };
@@ -130,16 +148,19 @@ const Section = styled.section`
 
 const Container = styled.div`
   ${container}
-  &::before {
-    content: "";
-    top: 20%;
-    right: -2.5%;
-    position: absolute;
-    width: 10%;
-    padding-bottom: 10%;
-    background-color: #bc0e03;
-    border-radius: 100%;
-    z-index: 6;
+
+  ${mq.md} {
+    &::before {
+      content: "";
+      top: 20%;
+      right: -2.5%;
+      position: absolute;
+      width: 10%;
+      padding-bottom: 10%;
+      background-color: #bc0e03;
+      border-radius: 100%;
+      z-index: 6;
+    }
   }
 `;
 

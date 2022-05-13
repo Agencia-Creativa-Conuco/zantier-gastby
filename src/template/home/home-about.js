@@ -6,6 +6,7 @@ import useFiles from "../../hooks/useFiles";
 import { InView } from "react-intersection-observer";
 import { animated, config, Spring } from "@react-spring/web";
 import { FadeUp } from "../../components/animation/animation";
+import FeaturedMedia from "../../components/featured-media";
 
 const HomeAbout = () => {
   const images = useFiles();
@@ -24,7 +25,7 @@ const HomeAbout = () => {
           fluid={data.featuredImage?.childImageSharp?.fluid}
           id="section_3"
         >
-          <InView threshold={0.6}>
+          <InView threshold={0.4}>
             {({ ref, inView }) => (
               <Spring
                 reset={inView}
@@ -39,6 +40,25 @@ const HomeAbout = () => {
                 {(styles) => (
                   <animated.div style={styles}>
                     <Card ref={ref}>
+                      <Spring
+                        delay={500}
+                        reset={inView}
+                        reverse={!inView}
+                        config={config.gentle}
+                        {...FadeUp}
+                      >
+                        {(styles) => (
+                          <animated.div style={styles}>
+                            <Logo>
+                              <FeaturedMedia
+                                media={images.icons.tooth}
+                                sizeMd="100%"
+                              />
+                            </Logo>
+                          </animated.div>
+                        )}
+                      </Spring>
+
                       <Spring
                         delay={600}
                         reset={inView}
@@ -119,13 +139,37 @@ const Card = styled.div`
   margin: 20% 2rem;
   position: relative;
   border-radius: 2rem;
+  max-width: 36rem;
   ${mq.md} {
-    max-width: 36rem;
     top: 0;
     left: 13%;
   }
   ${mq.lg} {
     margin: 9% 0;
+  }
+`;
+
+const Logo = styled.div`
+  position: absolute;
+  width: 20%;
+  left: 0;
+  top: -8rem;
+  z-index: 89;
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #bc0e03;
+    border-radius: 100%;
+    max-width: 150%;
+    max-height: 150%;
+    box-shadow: 0px 10px 59px -12px rgba(255, 0, 0, 0.75);
+    z-index: -1;
   }
 `;
 

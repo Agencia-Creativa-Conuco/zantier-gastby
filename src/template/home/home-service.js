@@ -53,12 +53,12 @@ const HomeService = () => {
         <FeaturedMedia media={images.icons.smile} sizeMd="100%" />
       </Logo>
 
-      <InView threshold={0.5}>
+      <InView threshold={0.6}>
         {({ ref, inView }) => (
           <Spring
             reset={inView}
             reverse={!inView}
-            config={config.stiff}
+            config={config.default}
             from={{
               opacity: 0,
             }}
