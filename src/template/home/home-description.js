@@ -200,9 +200,8 @@ const Copy = styled.p`
   color: #bc0e03;
   position: relative;
   z-index: 2;
-  animation: ${(props) =>
-    props.animate} 2.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-
+  animation: ${(props) => props.animate} 2.5s
+    cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 `;
 
 const Content = styled.div`

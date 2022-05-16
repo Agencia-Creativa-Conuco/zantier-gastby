@@ -52,7 +52,7 @@ const HomeAbout = () => {
                             <Logo>
                               <FeaturedMedia
                                 media={images.icons.tooth}
-                                sizeMd="100%"
+                                size="100%"
                               />
                             </Logo>
                           </animated.div>

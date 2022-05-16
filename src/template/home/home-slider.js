@@ -6,7 +6,6 @@ import Carousel from "react-slick";
 import { css } from "@emotion/react";
 import {
   centerScaleAnimationCss,
-  FadeIn,
   FadeUp,
 } from "../../components/animation/animation";
 import ReactPlayer from "react-player";
@@ -34,15 +33,14 @@ const HomeSlider = () => {
 
   const Arrows = (props) => {
     const Arrow = styled.div`
-      ${({ bgColor = "#9f9f9f", color = "#e5e7e3" }) => css`
+      ${({ bgColor = "#9f9f9f", color = "white" }) => css`
         border-radius: 50%;
-        background-color: ${bgColor};
-        color: ${color};
+        color: ${bgColor};
         margin: 0 3rem;
         z-index: 2;
         position: absolute;
         top: 50%;
-
+        border: 3px solid #9f9f9f;
         ${mq.md} {
           display: block !important;
           width: 5rem;

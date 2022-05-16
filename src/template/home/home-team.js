@@ -47,12 +47,6 @@ const HomeTeam = () => {
 
       featuredImage: images.home.person_4,
     },
-    {
-      title: "Maria Celeste Arraraz",
-      copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-
-      featuredImage: images.home.person_1,
-    },
   ];
 
   return (

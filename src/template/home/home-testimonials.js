@@ -6,11 +6,7 @@ import { container, mq } from "../../components/layout/index";
 import useFiles from "../../hooks/useFiles";
 import Carousel from "react-slick";
 import { css } from "@emotion/react";
-import {
-  FadeUp,
-  centerScaleAnimation,
-  fadeTop,
-} from "../../components/animation/animation";
+import { FadeUp, fadeTop } from "../../components/animation/animation";
 import { InView } from "react-intersection-observer";
 import { animated, config, Spring } from "@react-spring/web";
 
@@ -38,9 +34,10 @@ const HomeTestimonials = () => {
 
   const Arrows = (props) => {
     const Arrow = styled.div`
-      ${({ bgColor = "#9f9f9f", color = "#e5e7e3" }) => css`
+      ${({ bgColor = "#9f9f9f", color = "white" }) => css`
         border-radius: 50%;
-        background-color: ${bgColor};
+        background-color: #bc0e03;
+        border: 3px solid white;
         color: ${color};
         margin: 0 3rem;
         z-index: 2;
@@ -58,11 +55,11 @@ const HomeTestimonials = () => {
           margin: 0 -2%;
         }
         &:focus {
-          background-color: ${bgColor};
+          background-color: #aa1107;
           color: ${color};
         }
         &:hover {
-          background-color: ${bgColor};
+          background-color: #aa1107;
           color: ${color};
         }
         &:before {

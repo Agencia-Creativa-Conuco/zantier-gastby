@@ -6,7 +6,6 @@ import useFiles from "../../hooks/useFiles";
 import {
   TextAnimationLeft,
   TextAnimationRight,
-  FadeUp,
 } from "../../components/animation/animation";
 import { InView } from "react-intersection-observer";
 import { Spring, animated, config } from "@react-spring/web";
@@ -66,7 +65,9 @@ const HomeService = () => {
           >
             {(styles) => (
               <animated.div style={styles}>
-                <SectionTitle ref={ref}>{sectionTitle}</SectionTitle>
+                <div>
+                  <SectionTitle ref={ref}>{sectionTitle}</SectionTitle>
+                </div>
               </animated.div>
             )}
           </Spring>
@@ -166,8 +167,8 @@ const Section = styled.section`
     background: #bc0e03;
     width: 100%;
     height: 30rem;
-    clip-path: ellipse(65% 32% at 50% 100%);
-    top: -24rem;
+    clip-path: ellipse(65% 37% at 50% 100%);
+    top: -23rem;
     left: 0;
     z-index: 2;
 
@@ -188,7 +189,7 @@ const Logo = styled.div`
   ${mq.md} {
     width: 8rem;
     right: -80%;
-    top: -12rem;
+    top: -11rem;
   }
 
   &::after {

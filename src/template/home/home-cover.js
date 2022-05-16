@@ -47,7 +47,6 @@ const HomeCover = () => {
               >
                 {(styles) => (
                   <animated.div style={styles} ref={ref}>
-
                     <Copy>{data.copy}</Copy>
                   </animated.div>
                 )}

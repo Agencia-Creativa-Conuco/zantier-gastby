@@ -50,8 +50,12 @@ const HomeContact = () => {
               >
                 <Section ref={ref}>
                   <Container>
-                      
-                    <Spring reset={inView} reverse={!inView} config={config.molasses}  {...FadeUp}>
+                    <Spring
+                      reset={inView}
+                      reverse={!inView}
+                      config={config.molasses}
+                      {...FadeUp}
+                    >
                       {(styles) => (
                         <animated.div style={styles}>
                           <Title>{data.title} </Title>
