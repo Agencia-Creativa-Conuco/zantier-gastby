@@ -39,66 +39,68 @@ const HomeAbout = () => {
               >
                 {(styles) => (
                   <animated.div style={styles}>
-                    <Card ref={ref}>
-                      <Spring
-                        delay={500}
-                        reset={inView}
-                        reverse={!inView}
-                        config={config.gentle}
-                        {...FadeUp}
-                      >
-                        {(styles) => (
-                          <animated.div style={styles}>
-                            <Logo>
-                              <FeaturedMedia
-                                media={images.icons.tooth}
-                                size="100%"
-                              />
-                            </Logo>
-                          </animated.div>
-                        )}
-                      </Spring>
+                    <CardContainer>
+                      <Card ref={ref}>
+                        <Spring
+                          delay={500}
+                          reset={inView}
+                          reverse={!inView}
+                          config={config.gentle}
+                          {...FadeUp}
+                        >
+                          {(styles) => (
+                            <animated.div style={styles}>
+                              <Logo>
+                                <FeaturedMedia
+                                  media={images.icons.tooth}
+                                  size="100%"
+                                />
+                              </Logo>
+                            </animated.div>
+                          )}
+                        </Spring>
 
-                      <Spring
-                        delay={600}
-                        reset={inView}
-                        reverse={!inView}
-                        config={config.gentle}
-                        {...FadeUp}
-                      >
-                        {(styles) => (
-                          <animated.div style={styles}>
-                            <Title>{data.title}</Title>
-                          </animated.div>
-                        )}
-                      </Spring>
-                      <Spring
-                        delay={700}
-                        reset={inView}
-                        reverse={!inView}
-                        config={config.gentle}
-                        {...FadeUp}
-                      >
-                        {(styles) => (
-                          <animated.div style={styles}>
-                            <Copy>{data.copy}</Copy>
-                          </animated.div>
-                        )}
-                      </Spring>
-                      <Spring
-                        delay={900}
-                        reset={inView}
-                        reverse={!inView}
-                        config={config.gentle}
-                        {...FadeUp}
-                      >
-                        {(styles) => (
-                          <animated.div style={styles}>
-                            <Deco />
-                          </animated.div>
-                        )}
-                      </Spring>
-                    </Card>
+                        <Spring
+                          delay={600}
+                          reset={inView}
+                          reverse={!inView}
+                          config={config.gentle}
+                          {...FadeUp}
+                        >
+                          {(styles) => (
+                            <animated.div style={styles}>
+                              <Title>{data.title}</Title>
+                            </animated.div>
+                          )}
+                        </Spring>
+                        <Spring
+                          delay={700}
+                          reset={inView}
+                          reverse={!inView}
+                          config={config.gentle}
+                          {...FadeUp}
+                        >
+                          {(styles) => (
+                            <animated.div style={styles}>
+                              <Copy>{data.copy}</Copy>
+                            </animated.div>
+                          )}
+                        </Spring>
+                        <Spring
+                          delay={900}
+                          reset={inView}
+                          reverse={!inView}
+                          config={config.gentle}
+                          {...FadeUp}
+                        >
+                          {(styles) => (
+                            <animated.div style={styles}>
+                              <Deco />
+                            </animated.div>
+                          )}
+                        </Spring>
+                      </Card>
+                    </CardContainer>
                   </animated.div>
                 )}
               </Spring>
@@ -121,7 +123,14 @@ const Section = styled.section`
 const Container = styled.div`
   position: relative;
   width: 100%;
-  clip-path: ellipse(95% 100% at 50% 100%) !important;
+  ${mq.xs} {
+    clip-path: ellipse(145% 100% at 50% 100%) !important;
+  }
+
+  ${mq.md}{
+    clip-path: ellipse(100% 100% at 50% 100%) !important;
+
+  }
 
   ${mq.lg} {
     clip-path: ellipse(85% 100% at 50% 100%) !important;
@@ -130,22 +139,29 @@ const Container = styled.div`
 
 const BImage = styled(BackgroundImage)`
   overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat, repeat;
+  text-align: center;
+`;
+
+const CardContainer = styled.div`
+  ${container}
 `;
 
 const Card = styled.div`
   background-color: white;
+  position: relative;
 
   padding: 5rem 5rem 3rem;
-  margin: 20% 2rem;
+  margin: 20% auto;
   position: relative;
   border-radius: 2rem;
   max-width: 36rem;
   ${mq.md} {
-    top: 0;
-    left: 13%;
+    margin-left: 0;
   }
   ${mq.lg} {
-    margin: 9% 0;
+    margin: 12% 0;
   }
 `;
 
@@ -181,7 +197,7 @@ const Copy = styled.p`
   animation: ${(props) => props.animate} 1.8s ease-in both;
 `;
 const Deco = styled.div`
-  position: relative;
+  position: absolute;
   animation: ${(props) => props.animate} 2s ease-in both;
 
   &::before {
