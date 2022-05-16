@@ -27,7 +27,6 @@ const Layout = ({ children }) => {
       </Helmet>
 
       <Global styles={globalStyles} />
-
       <Main>{children}</Main>
     </>
   );

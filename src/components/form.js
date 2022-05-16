@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
-import { mq } from "./layout/index";
+import { mq } from "./grid/index";
 import HubspotForm from "react-hubspot-form";
 import Loading from "./loading";
 import colors from "./styles/colors";

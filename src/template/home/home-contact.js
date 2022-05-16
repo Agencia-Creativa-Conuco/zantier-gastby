@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { container, mq } from "../../components/layout/index";
+import { container, mq } from "../../components/grid/index";
 import useFiles from "../../hooks/useFiles";
 import BackgroundImage from "gatsby-background-image";
 import { FadeUp } from "../../components/animation/animation";

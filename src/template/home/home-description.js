@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import React from "react";
 import FeaturedMedia from "../../components/featured-media";
-import { container, mq } from "../../components/layout/index";
+import { container, mq } from "../../components/grid/index";
 import useFiles from "../../hooks/useFiles";
 
 import Cta from "../../components/cta";

@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import React from "react";
 import Form from "../../components/form";
-import { container, mq } from "../../components/layout/index";
+import { container, mq } from "../../components/grid/index";
 import { FadeUp } from "../../components/animation/animation";
 import { InView } from "react-intersection-observer";
 import { animated, config, Spring } from "@react-spring/web";

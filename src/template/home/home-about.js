@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import React from "react";
 import BackgroundImage from "gatsby-background-image";
-import { container, mq } from "../../components/layout/index";
+import { container, mq } from "../../components/grid/index";
 import useFiles from "../../hooks/useFiles";
 import { InView } from "react-intersection-observer";
 import { animated, config, Spring } from "@react-spring/web";

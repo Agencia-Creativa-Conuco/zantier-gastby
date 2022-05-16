@@ -1,5 +1,5 @@
 import { css } from '@emotion/react'
-import mq from '../layout/mq'
+import mq from '../grid/mq'
 // import colors from './colors'
 
 export const h1 = css`

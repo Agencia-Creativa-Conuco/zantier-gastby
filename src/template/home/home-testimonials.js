@@ -2,7 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import FeaturedMedia from "../../components/featured-media";
 import { LeftArrowIcon, RightArrowIcon } from "../../components/icons";
-import { container, mq } from "../../components/layout/index";
+import { container, mq } from "../../components/grid/index";
 import useFiles from "../../hooks/useFiles";
 import Carousel from "react-slick";
 import { css } from "@emotion/react";
