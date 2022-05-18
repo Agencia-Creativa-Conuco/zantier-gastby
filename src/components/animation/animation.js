@@ -33,6 +33,16 @@ export const FadeUp = {
   // config: config.wobbly,
 };
 
+export const fadeTop = {
+  from: {
+    opacity: 0,
+    transform: `translateY(-20rem)`,
+  },
+  to: { opacity: 1, transform: "translateY(0)" },
+  // config: config.wobbly,
+};
+
+
 export const TextAnimationRight = {
   from: {
     opacity: 0,

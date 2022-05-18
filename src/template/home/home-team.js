@@ -1,9 +1,9 @@
 import styled from "@emotion/styled";
 import React from "react";
 import FeaturedMedia from "../../components/featured-media";
-import { container, mq } from "../../components/layout/index";
+import { container, mq } from "../../components/grid/index";
 import useFiles from "../../hooks/useFiles";
-import { FadeIn, FadeUp } from "../../components/animation/animation";
+import { FadeUp } from "../../components/animation/animation";
 import { InView } from "react-intersection-observer";
 import { animated, Trail, config, Spring } from "@react-spring/web";
 
@@ -15,43 +15,37 @@ const HomeTeam = () => {
       title: "Maria Celeste Arraraz",
       copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
 
-      featuredImage: images.home.cover,
+      featuredImage: images.home.person_1,
     },
     {
       title: "Robert Sosa",
       copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
 
-      featuredImage: images.home.cover,
+      featuredImage: images.home.person_2,
     },
     {
       title: "Robert Sosa",
       copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ",
 
-      featuredImage: images.home.cover,
+      featuredImage: images.home.person_3,
     },
     {
       title: "Maria Celeste Arraraz",
       copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
 
-      featuredImage: images.home.cover,
+      featuredImage: images.home.person_4,
     },
     {
       title: "Maria Celeste Arraraz",
       copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
 
-      featuredImage: images.home.cover,
+      featuredImage: images.home.person_2,
     },
     {
       title: "Robert Sosa",
       copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
 
-      featuredImage: images.home.cover,
-    },
-    {
-      title: "Maria Celeste Arraraz",
-      copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-
-      featuredImage: images.home.cover,
+      featuredImage: images.home.person_4,
     },
   ];
 
@@ -85,7 +79,6 @@ const HomeTeam = () => {
                                 media={item.featuredImage}
                                 size="100%"
                                 rounded
-                                bgColor="#bc0e05"
                               />
                             </animated.div>
                           )}
@@ -95,29 +88,25 @@ const HomeTeam = () => {
                       <Spring
                         reset={inView}
                         reverse={!inView}
-                        config={config.gentle}
-                        delay={200}
-                        {...FadeUp} 
+                        config={config.molasses}
+                        {...FadeUp}
                       >
                         {(styles) => (
                           <animated.div style={styles}>
                             <Card>
+                              <Title>{item.title}</Title>
+
                               <Spring
                                 reset={inView}
                                 reverse={!inView}
-                                // config={{ duration: 2000 }}
-                                delay={700}
+                                delay={1000}
                                 from={{
                                   opacity: 0,
-                                  transform: `translateY(3rem)`,
                                 }}
-                                to={{ opacity: 1, transform: "translateY(0)" }}
-                                config={config.wobbly}
+                                to={{ opacity: 1 }}
                               >
                                 {(styles) => (
                                   <animated.div style={styles}>
-                                    <Title>{item.title}</Title>
-
                                     <Copy>{item.copy}</Copy>
                                   </animated.div>
                                 )}
@@ -175,9 +164,9 @@ const CardContainer = styled.div`
 
 const Media = styled.div`
   position: relative;
-  max-width: 18rem;
+  max-width: 19rem;
   margin: 0 auto;
-  width: 18rem;
+  width: 19rem;
   z-index: 5;
 
   padding: 2.5rem;
@@ -189,13 +178,13 @@ const Deco = styled.div`
     position: absolute;
     width: 100%;
     height: 100%;
-    top: 1%;
+    top: 0%;
     left: 50%;
     transform: translateX(-50%);
     background: white;
     border-radius: 100%;
-    max-width: 17rem;
-    max-height: 17rem;
+    max-width: 21rem;
+    max-height: 21rem;
   }
 `;
 const Card = styled.div`

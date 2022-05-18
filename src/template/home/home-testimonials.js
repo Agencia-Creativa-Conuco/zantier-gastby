@@ -2,14 +2,11 @@ import React from "react";
 import styled from "@emotion/styled";
 import FeaturedMedia from "../../components/featured-media";
 import { LeftArrowIcon, RightArrowIcon } from "../../components/icons";
-import { container, mq } from "../../components/layout/index";
+import { container, mq } from "../../components/grid/index";
 import useFiles from "../../hooks/useFiles";
 import Carousel from "react-slick";
 import { css } from "@emotion/react";
-import {
-  FadeUp,
-  centerScaleAnimation,
-} from "../../components/animation/animation";
+import { FadeUp, fadeTop } from "../../components/animation/animation";
 import { InView } from "react-intersection-observer";
 import { animated, config, Spring } from "@react-spring/web";
 
@@ -18,28 +15,29 @@ const HomeTestimonials = () => {
 
   const data = [
     {
-      featuredImage: images.home.img,
+      featuredImage: images.home.smile_1,
       copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor  ",
     },
     {
-      featuredImage: images.home.img2,
+      featuredImage: images.home.smile_2,
       copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ",
     },
     {
-      featuredImage: images.home.img,
+      featuredImage: images.home.smile_3,
       copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod ",
     },
     {
-      featuredImage: images.home.img2,
+      featuredImage: images.home.smile_1,
       copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
     },
   ];
 
   const Arrows = (props) => {
     const Arrow = styled.div`
-      ${({ bgColor = "#9f9f9f", color = "#e5e7e3" }) => css`
+      ${({ bgColor = "#9f9f9f", color = "white" }) => css`
         border-radius: 50%;
-        background-color: ${bgColor};
+        background-color: #bc0e03;
+        border: 3px solid white;
         color: ${color};
         margin: 0 3rem;
         z-index: 2;
@@ -57,11 +55,11 @@ const HomeTestimonials = () => {
           margin: 0 -2%;
         }
         &:focus {
-          background-color: ${bgColor};
+          background-color: #aa1107;
           color: ${color};
         }
         &:hover {
-          background-color: ${bgColor};
+          background-color: #aa1107;
           color: ${color};
         }
         &:before {
@@ -105,14 +103,14 @@ const HomeTestimonials = () => {
         >
           {data.map((item, index) => {
             return (
-              <InView threshold={0.3}>
+              <InView threshold={0.3} key={index}>
                 {({ ref, inView }) => (
                   <Card key={index} ref={ref}>
                     <Spring
                       reset={inView}
                       reverse={!inView}
                       config={config.molasses}
-                      {...centerScaleAnimation}
+                      {...fadeTop}
                     >
                       {(styles) => (
                         <animated.div style={styles}>
@@ -126,7 +124,8 @@ const HomeTestimonials = () => {
                     <Spring
                       reset={inView}
                       reverse={!inView}
-                      config={config.wobbly}
+                      delay={700}
+                      config={config.molasses}
                       {...FadeUp}
                     >
                       {(styles) => (

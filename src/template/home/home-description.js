@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import React from "react";
 import FeaturedMedia from "../../components/featured-media";
-import { container, mq } from "../../components/layout/index";
+import { container, mq } from "../../components/grid/index";
 import useFiles from "../../hooks/useFiles";
 
 import Cta from "../../components/cta";
@@ -19,7 +19,7 @@ const HomeDescription = () => {
   const data = {
     copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
 
-    featuredImage: images.home.img2,
+    featuredImage: images.home.img,
     otherCopy:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
 
@@ -31,7 +31,7 @@ const HomeDescription = () => {
 
   return (
     <Section>
-      <InView threshold={0.3}>
+      <InView threshold={0.4}>
         {({ ref, inView }) => (
           <Container ref={ref}>
             <Media>
@@ -73,8 +73,6 @@ const HomeDescription = () => {
                 {(styles) => (
                   <animated.div style={styles}>
                     <p>{data.otherCopy}</p>
-
-                
                   </animated.div>
                 )}
               </Spring>
@@ -83,12 +81,10 @@ const HomeDescription = () => {
                 reverse={!inView}
                 config={config.molasses}
                 delay={200}
-                
                 {...FadeUp}
               >
                 {(styles) => (
                   <animated.div style={styles}>
-
                     <Cta
                       to={data.cta.url}
                       bgColor="white"
@@ -189,8 +185,12 @@ const Card = styled.div`
       cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 
     ${mq.md} {
-      width: 130%;
+      height: 109.5%;
+      width: 135%;
       border-radius: 2rem 0 0 2rem;
+    }
+    ${mq.lg} {
+      height: 100%;
     }
   }
 `;
@@ -200,9 +200,8 @@ const Copy = styled.p`
   color: #bc0e03;
   position: relative;
   z-index: 2;
-  animation: ${(props) =>
-    props.animate} 2.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-}
+  animation: ${(props) => props.animate} 2.5s
+    cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 `;
 
 const Content = styled.div`

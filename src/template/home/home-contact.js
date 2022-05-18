@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { container, mq } from "../../components/layout/index";
+import { container, mq } from "../../components/grid/index";
 import useFiles from "../../hooks/useFiles";
 import BackgroundImage from "gatsby-background-image";
 import { FadeUp } from "../../components/animation/animation";
@@ -25,11 +25,11 @@ const HomeContact = () => {
       },
     ],
 
-    featuredImage: images.home.img2,
+    featuredImage: images.home.contact,
   };
 
   return (
-    <InView threshold={0.2}>
+    <InView threshold={0.5}>
       {({ ref, inView }) => (
         <Spring
           from={{
@@ -50,8 +50,12 @@ const HomeContact = () => {
               >
                 <Section ref={ref}>
                   <Container>
-                      
-                    <Spring reset={inView} reverse={!inView} config={config.molasses}  {...FadeUp}>
+                    <Spring
+                      reset={inView}
+                      reverse={!inView}
+                      config={config.molasses}
+                      {...FadeUp}
+                    >
                       {(styles) => (
                         <animated.div style={styles}>
                           <Title>{data.title} </Title>

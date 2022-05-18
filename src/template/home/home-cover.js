@@ -3,11 +3,10 @@ import React from "react";
 import { FadeUp } from "../../components/animation/animation";
 import Cta from "../../components/cta";
 import FeaturedMedia from "../../components/featured-media";
-import { container, mq } from "../../components/layout/index";
+import { container, mq } from "../../components/grid/index";
 import useFiles from "../../hooks/useFiles";
 import { InView } from "react-intersection-observer";
 import { Spring, animated, config } from "@react-spring/web";
-
 const HomeCover = () => {
   const images = useFiles();
 
@@ -18,7 +17,7 @@ const HomeCover = () => {
       title: "Conocer mas",
       url: "/",
     },
-    featuredImage: images.home.cover,
+    featuredImage: images.home.chica,
   };
   return (
     <InView threshold={0.4}>
@@ -29,7 +28,7 @@ const HomeCover = () => {
               <Spring
                 reset={inView}
                 reverse={!inView}
-                config={config.gentle}
+                config={config.molasses}
                 {...FadeUp}
               >
                 {(styles) => (
@@ -43,7 +42,7 @@ const HomeCover = () => {
                 reset={inView}
                 delay={200}
                 reverse={!inView}
-                config={config.gentle}
+                config={config.molasses}
                 {...FadeUp}
               >
                 {(styles) => (
@@ -56,7 +55,7 @@ const HomeCover = () => {
                 reset={inView}
                 reverse={!inView}
                 delay={300}
-                config={config.gentle}
+                config={config.molasses}
                 {...FadeUp}
               >
                 {(styles) => (
@@ -84,7 +83,7 @@ const HomeCover = () => {
                       size="80%"
                       sizeMD="125%"
                       sizeXL="100%"
-                      position="50% 0%"
+                      position="0% 0%"
                     />
                   </Media>
                 </animated.div>
@@ -110,7 +109,7 @@ const Section = styled.section`
     background: linear-gradient(
       0deg,
       rgba(255, 255, 255, 1) 0%,
-      rgba(255, 255, 255, 0.6615021008403361) 41%,
+      rgba(255 255 255 / 93%) 41%,
       rgba(255, 255, 255, 0.38699229691876746) 64%,
       rgba(255, 255, 255, 0) 100%
     );

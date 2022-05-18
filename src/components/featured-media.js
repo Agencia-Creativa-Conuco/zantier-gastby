@@ -2,7 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import { css } from '@emotion/react'
 import Image from 'gatsby-image'
-import { mq } from './layout/index'
+import { mq } from './grid/index'
 import colors from './styles/colors'
 
 const FeaturedMedia = ({
