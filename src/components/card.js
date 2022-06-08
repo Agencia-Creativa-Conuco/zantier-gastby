@@ -27,9 +27,7 @@ const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 100%;
   justify-items: center;
-  div:first-of-type {
-    order: 2;
-  }
+
   ${mq.lg} {
     grid-template-columns: ${(props) => props.value};
     div:last-of-type {
