@@ -15,7 +15,7 @@ const Layout = ({ children }) => {
         <title>Zantier</title>
         <meta
           name="description"
-          content="Somos Zantier, Clínica de Odontología Integral comprometidos con tu salud y bienesta"
+          content="Somos Zantier, Clínica de Odontología Integral comprometidos con tu salud y bienestar"
         />
         <meta name="image" content={logo} />
         <link rel="shortcut icon" href={logo} />
