@@ -7,7 +7,6 @@ import useModal from "../hooks/useModal.js";
 import { FadeUp } from "./animation/animation";
 import FeaturedMedia from "./featured-media";
 
-
 const CardBody = ({ inView, item, styles }) => {
   const { openModal, ModalUI } = useModal();
   return (
@@ -17,7 +16,7 @@ const CardBody = ({ inView, item, styles }) => {
           <Deco />
           <Media onClick={openModal}>
             <Spring
-              reset={inView}
+              // reset={inView}
               reverse={!inView}
               config={config.gentle}
               {...FadeUp}
@@ -35,7 +34,7 @@ const CardBody = ({ inView, item, styles }) => {
           </Media>
 
           <Spring
-            reset={inView}
+            // reset={inView}
             reverse={!inView}
             config={config.molasses}
             {...FadeUp}
@@ -46,7 +45,7 @@ const CardBody = ({ inView, item, styles }) => {
                   <Title>{item.title}</Title>
 
                   <Spring
-                    reset={inView}
+                    // reset={inView}
                     reverse={!inView}
                     delay={1000}
                     from={{

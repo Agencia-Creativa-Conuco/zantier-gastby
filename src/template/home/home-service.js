@@ -15,17 +15,13 @@ const HomeService = () => {
   const sectionTitle = "LA FECILIDAD VIENE DE SONRISA EN SONRISA";
   const data = [
     {
-      title: "En zantier creemos que la felicidad viene de sonrisa en sonrisa",
-      copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
-      cta: {
-        title: "Conocer mas",
-        url: "/",
-      },
+      title: "Diagnóstico",
+      copy: "Conocemos tu caso particular, tus necesidades y requerimientos específicos para lograr esa sonrisa deseada.",
       featuredImage: images.home.service_1,
     },
     {
-      title: "En zantier creemos que la felicidad viene de sonrisa en sonrisa",
-      copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
+      title: "Planificación",
+      copy: "Coordinamos los procesos necesarios y a los especialistas involucrados en la creación de tu sonrisa.",
       cta: {
         title: "Conocer mas",
         url: "/",
@@ -33,8 +29,8 @@ const HomeService = () => {
       featuredImage: images.home.service_3,
     },
     {
-      title: "En zantier creemos que la felicidad viene de sonrisa en sonrisa",
-      copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
+      title: "Inicio",
+      copy: "Aquí empieza el camino hacia tu sonrisa soñada, cada tratamiento puede variar de tiempo según la persona, ya que cada sonrisa es única.",
       cta: {
         title: "Conocer mas",
         url: "/",
