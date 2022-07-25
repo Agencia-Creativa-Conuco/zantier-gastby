@@ -61,7 +61,7 @@ const HomeService = () => {
           >
             {(styles) => (
               <animated.div style={styles}>
-                <div>
+                <div id="infografia">
                   <SectionTitle ref={ref}>{sectionTitle}</SectionTitle>
                 </div>
               </animated.div>

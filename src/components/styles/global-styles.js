@@ -26,6 +26,7 @@ const cssReset = css`
     border: none;
     margin: 0;
     padding: 0;
+    scroll-behavior: smooth;
     /* background: radial-gradient(circle, #FFFFFF, #E3E3E3); */
   }
 

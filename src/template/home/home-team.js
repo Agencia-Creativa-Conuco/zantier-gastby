@@ -9,70 +9,91 @@ import CardBody from "../../components/card-body";
 const HomeTeam = () => {
   const images = useFiles();
 
-
   const data = [
     {
       title: "Dr. Ángel Sánchez",
       specialty: "Estética y Rehabilitación",
-      copy: `Experto en estética y rehabilitación oral con implantes, co- propietario de @zantier.odontologia y docente.
+      copy: `
+      Es experto en rehabilitación estética y rehabilitación oral con implantes, co- propietario de @zantier.odontologia y docente.<br><br>
       “De mi carrera me gusta verla en diferentes aspectos, la odontología me da la oportunidad de intervenir en algo tan especial como una sonrisa con la intención de mejorarla, pero al mismo tiempo me ha dado el chance de compartir mis conocimientos con colegas de cualquier parte del mundo y a la vez construir juntos a todo el equipo lo que es zantier. Supongo que gran parte de eso que me encanta es esa versatilidad de ejercer mi profesión en diferentes áreas”.
       `,
-
       featuredImage: images.home.person_1,
+      contact: "",
     },
     {
-      title: "Diana Estévez",
+      title: "Dra Diana N. Estévez Jiménez",
       specialty: " Ortodoncia",
-      copy: "Experta en odontología, con especialidad en ortodoncia, cirugía maxilar y ortodoncia lingual. Tiene una gran pasión por los viajes y por conocer culturas nuevas. Se caracteriza por su entusiasmo, buena vibra y profesionalismo.",
+      copy: `Doctora en odontología  en la Pontificia Universidad Catolica Madre y Maestra, especialista en Ortodoncia de  Universidad Nacional Autónoma de México (UNAM) 2021. Posee un Diplomado en Habilitación Didáctica para Docencia Universitaria (UAPA).`,
       featuredImage: images.home.person_2,
+      contact: "dradianaestevezj@gmail.com",
     },
     {
       title: "Dr. Marcos Pichardo",
-      specialty: "Rinología y cirugía facial",
-      copy: `Experto en en Rinología y cirugía facial, también realizó un Posgrado de Cirugía Oral y Maxilofacial en la Universidad Nacional Autónoma de México.
+      specialty: "Rinología y Cirugía Facial",
+      copy: `Tiene una alta Especialidad en Rinología y cirugía facial, también realizó un Posgrado de Cirugía Oral y Maxilofacial en la Universidad Nacional Autónoma de México.
       Es miembro del consejo mexicano de Cirugía Oral y Maxilofacial. Se encarga de la prevención, diagnóstico, tratamiento, rehabilitación y del estudio de las patologías que se puedan tener en la cavidad oral. También se especializa en armonización orofacial.
+      
       `,
-
       featuredImage: images.home.person_3,
+      contact: "Dr.marcospichardo@gmail.com",
     },
     {
       title: "Dra. Damelys García",
       specialty: "Odontología General",
-      copy: `Experta en Odontología General y coordinadora clínica
-      Con su trato amable y su pasión te hace sentir seguro en cada visita.
+      copy: `
+      Conoce a la Dra. Damelys García, Odontología General y coordinadora clínica en @zantier.odontologia. Con su trato amable y su pasión te hace sentir seguro en cada visita.<br>
+      “Mi objetivo es adquirir conocimientos nuevos y poder entender el problema de mis pacientes para devolver no solo la estética a los mismos, sino también la funcionalidad que estos necesitan”.
       `,
 
       featuredImage: images.home.person_4,
+      contact: "",
     },
     {
-      title: "Dr. Rolando Álvarez",
+      title: "Dr. Rolando A. Alvarez Pérez",
       specialty: "Periodoncia e Implantología",
-      copy: `Experto en Periodoncia e Implantología, con su basta experiencia en cirugía, se encarga de crear las sonrisas funcionales, para que los pacientes que han perdido los motivos para sonreír, puedan hacerlo con mucho orgullo. Su mayor motivación, aparte de la confianza que depositan sus pacientes en él, es poder compartir momentos de calidad con su familia y amigos.`,
+      copy: `El Dr. Rolando Álvarez, se especializa en Periodoncia e Implantología, con su basta experiencia en cirugía, se encarga de crear las sonrisas funcionales, para que los pacientes que han perdido los motivos para sonreír, puedan hacerlo con mucho orgullo.
+      Su mayor motivación, aparte de la confianza que depositan sus pacientes en él, es poder compartir momentos de calidad con su familia y amigos.`,
 
       featuredImage: images.home.person_2,
+      contact: "rolando.alvarezp@gmail.com",
     },
     {
       title: "Dra. Rossy Cabrera",
       specialty: "Ortodoncia y Ortopedia Maxilar",
-      copy: "Experta en Ortodoncia y Ortopedia Maxilar. Su pasión y dedicación quedan claros en su trato a cada paciente. Le apasiona aprender algo nuevo cada día. Su mayor motivación es poder perfeccionar sus técnicas y ayudar a los demás a través de su trabajo, a que puedan sentirse más confiados y lograr que sus clientes tengan una sonrisa tan feliz como ellos.",
-
+      copy: `
+      Dra. Rossy Cabrera, especializada en Ortodoncia y Ortopedia Maxilar. Su pasión y dedicación quedan claros en su trato a cada paciente. Le apasiona aprender algo nuevo cada día. Su mayor motivación es poder perfeccionar sus técnicas y ayudar a los demás a través de su trabajo, a que puedan sentirse más confiados y lograr que sus clientes tengan una sonrisa tan feliz como ellos
+      `,
       featuredImage: images.home.person_4,
+      contact: "Dra.rossycabrera@gmail.com",
     },
     {
       title: "Dra. Esther Estévez",
       specialty: "Odontología Deportiva",
-      copy: `Experta en Odontología General especializada en Odontología Deportiva
-      Tiene una inmensa pasión por la odontología, por poder devolverle la sonrisa que sus pacientes desean y crear armonía, estética y funcionalidad, al igual que seguir obteniendo conocimientos junto a sus colegas.
+      copy: `
+      Conoce a la Dra. Esther Estévez, Odontóloga General, especializada en Odontología Deportiva.
+      Su energía y entusiasmo están presentes en cada cosa que hace, es una servidora de corazón. Tiene una inmensa pasión por la odontología, por poder devolverle la sonrisa que sus pacientes desean y crear armonía, estética y funcionalidad, al igual que seguir obteniendo conocimientos junto a sus colegas.
+
       `,
 
       featuredImage: images.home.person_4,
+      contact: "",
     },
     {
       title: "Dra. Cindy Lepe",
       specialty: "",
       copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      featuredImage: images.home.person_4,
+      contact: "",
+    },
+    {
+      title: "Dra Melissa Esther Rivera Peña",
+      specialty: "Especialista y Magister en Endodoncia",
+      copy: `Especialista y magister en endodoncia, docente universitaria en la UNPHU
+      Se encarga de todas las afecciones de la pulpa dental y tejido alrededor de la raíz. 
+      `,
 
       featuredImage: images.home.person_4,
+      contact: "endolearningrd@gmail.com",
     },
   ];
 
