@@ -11,11 +11,11 @@ const HomeCover = () => {
   const images = useFiles();
 
   const data = {
-    title: "En zantier creemos que la felicidad viene de sonrisa en sonrisa",
-    copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
+    title: " Expertos en sonrisas",
+    copy: "Existen muchas razones para sonreír, queremos darte la confianza para hacerlo. El diseño de sonrisa es un proceso bucal en el cual se reestructura la formación de toda la parte dental, según las necesidades del paciente, para lograr tener la sonrisa de sus sueños.",
     cta: {
       title: "Conocer mas",
-      url: "/",
+      url: "#infografia",
     },
     featuredImage: images.home.chica,
   };

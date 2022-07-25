@@ -12,8 +12,8 @@ const HomeAbout = () => {
   const images = useFiles();
 
   const data = {
-    title: "Titulo de prueba",
-    copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
+    title: "Una gran sonrisa, requiere de un gran equipo",
+    copy: "El diseño de sonrisa y el blanqueamiento dental son procesos que prometen sonrisas felices y solo expertos pueden hacer que tu sonrisa sea verdadero reflejo de quien eres.",
 
     featuredImage: images.home.about,
   };

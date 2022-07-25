@@ -4,7 +4,13 @@ import FeaturedMedia from "./featured-media";
 import { container, mq } from "./grid";
 
 const CardInfo = ({ item }) => {
-  const { title, featuredImage, copy, specialty } = item;
+  const {
+    title,
+    featuredImage,
+    copy,
+    specialty,
+    contact,
+  } = item;
 
   return (
     <Wrapper>
@@ -14,7 +20,12 @@ const CardInfo = ({ item }) => {
       <Content>
         <Title>{title}</Title>
         <Specialty>{specialty}</Specialty>
-        <Copy>{copy}</Copy>
+        <Copy  dangerouslySetInnerHTML={{__html:copy}}/>
+        {contact !== "" && (
+          <Contact>
+            <span>Contacto:</span> {contact}
+          </Contact>
+        )}
       </Content>
     </Wrapper>
   );
@@ -63,4 +74,11 @@ const Media = styled.div`
   margin: 2rem 0;
   height: fit-content;
   max-width: 22rem;
+`;
+
+const Contact = styled.div`
+  color: #838383;
+  span {
+    font-weight: 700;
+  }
 `;
