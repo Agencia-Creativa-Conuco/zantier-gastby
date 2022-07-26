@@ -12,21 +12,25 @@ const HomeContact = () => {
 
   const data = {
 
-    title:"Zantier",
+    title:"ZANTIER",
     copy:
-      "ZANTIER • Somos una clínica de odontología especializada, donde se proporcionan servicios de salud integral de la mano de la última tecnología, para así ofrecer un cuidado oral de la más alta calidad y brindar una experiencia agradable en un ambiente confortable y acogedor.",
+      "Somos una clínica de odontología especializada, donde se proporcionan servicios de salud integral de la mano de la última tecnología, para así ofrecer un cuidado oral de la más alta calidad y brindar una experiencia agradable en un ambiente confortable y acogedor.",
     list: [
       {
         title:"Ubicación: ",
         copy: "Lic. Genaro Perez 48, Santiago De Los Caballeros 51000",
+        href:'https://goo.gl/maps/amFZoa6QLdrF1PVR7'
       },
       {
         title:"Número",
         copy: "809.582.0222",
+        href:'tel:8095820222'
+
       },
       {
         title: "Correo",
         copy:"info@zantier.com.do",
+        href:'mailto:info@isa.edu.do'
       },
     ],
 
@@ -80,7 +84,14 @@ const HomeContact = () => {
                           <animated.div style={styles} key={index}>
                             <Content>
                               <Deco />
-                              <Copy><span>{item.title}: </span>{item.copy}</Copy>
+                              <Copy>
+                                <span>{item.title}: </span>
+                              
+                               <a href={item.href}         target="_blanck">
+                                {item.copy}
+                                </a>
+                                
+                               </Copy>
                             </Content>
                           </animated.div>
                         );
@@ -135,7 +146,11 @@ const Content = styled.div`
   position: relative;
   display: flex;
   gap: 1rem;
-  justify-content: end;
+  justify-content: flex-start;
+  ${mq.md}{
+    padding-left: 9rem;
+
+  }
 `;
 
 const Title = styled.h2`
@@ -150,7 +165,10 @@ const Copy = styled.p`
   margin-bottom: 0;
   align-self: center;
   color: #bc0e03;
-
+a{
+  text-decoration: none;
+    color: inherit;
+}
   span{
   font-weight: 900;
 

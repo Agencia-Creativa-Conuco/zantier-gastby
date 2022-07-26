@@ -14,8 +14,8 @@ const HomeTeam = () => {
       title: "Dr. Ángel Sánchez",
       specialty: "Estética y Rehabilitación",
       copy: `
-      Es experto en rehabilitación estética y rehabilitación oral con implantes, co- propietario de @zantier.odontologia y docente.<br><br>
-      “De mi carrera me gusta verla en diferentes aspectos, la odontología me da la oportunidad de intervenir en algo tan especial como una sonrisa con la intención de mejorarla, pero al mismo tiempo me ha dado el chance de compartir mis conocimientos con colegas de cualquier parte del mundo y a la vez construir juntos a todo el equipo lo que es zantier. Supongo que gran parte de eso que me encanta es esa versatilidad de ejercer mi profesión en diferentes áreas”.
+      <p>Es experto en rehabilitación estética y rehabilitación oral con implantes, co- propietario de @zantier.odontologia y docente.</p>
+      <p>“De mi carrera me gusta verla en diferentes aspectos, la odontología me da la oportunidad de intervenir en algo tan especial como una sonrisa con la intención de mejorarla, pero al mismo tiempo me ha dado el chance de compartir mis conocimientos con colegas de cualquier parte del mundo y a la vez construir juntos a todo el equipo lo que es zantier. Supongo que gran parte de eso que me encanta es esa versatilidad de ejercer mi profesión en diferentes áreas”.</p>
       `,
       featuredImage: images.home.person_1,
       contact: "",
@@ -41,8 +41,8 @@ const HomeTeam = () => {
       title: "Dra. Damelys García",
       specialty: "Odontología General",
       copy: `
-      Conoce a la Dra. Damelys García, Odontología General y coordinadora clínica en @zantier.odontologia. Con su trato amable y su pasión te hace sentir seguro en cada visita.<br>
-      “Mi objetivo es adquirir conocimientos nuevos y poder entender el problema de mis pacientes para devolver no solo la estética a los mismos, sino también la funcionalidad que estos necesitan”.
+      <p>Conoce a la Dra. Damelys García, Odontología General y coordinadora clínica en @zantier.odontologia. Con su trato amable y su pasión te hace sentir seguro en cada visita.</p>
+      <p>“Mi objetivo es adquirir conocimientos nuevos y poder entender el problema de mis pacientes para devolver no solo la estética a los mismos, sino también la funcionalidad que estos necesitan”.</p>
       `,
 
       featuredImage: images.home.person_4,
