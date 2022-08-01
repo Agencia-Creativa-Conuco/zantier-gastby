@@ -12,7 +12,7 @@ const HomeContact = () => {
 
   const data = {
 
-    title:"ZANTIER",
+    title:"Deja tu sonrisa en manos de expertos",
     copy:
       "Somos una clínica de odontología especializada, donde se proporcionan servicios de salud integral de la mano de la última tecnología, para así ofrecer un cuidado oral de la más alta calidad y brindar una experiencia agradable en un ambiente confortable y acogedor.",
     list: [

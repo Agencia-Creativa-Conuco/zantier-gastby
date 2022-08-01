@@ -23,7 +23,7 @@ module.exports = {
       },
       __key: "images",
     },
-    "gatsby-transformer-sharp",
+    "gatsby-transformer-sharp", 
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -32,6 +32,8 @@ module.exports = {
       },
       __key: "images",
     },
+    
     "gatsby-plugin-emotion",
-  ],
+
+  ]
 };

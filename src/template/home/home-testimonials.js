@@ -34,7 +34,7 @@ const HomeTestimonials = () => {
 
   const Arrows = (props) => {
     const Arrow = styled.div`
-      ${({ bgColor = "#9f9f9f", color = "white" }) => css`
+      ${({color = "white" }) => css`
         border-radius: 50%;
         background-color: #bc0e03;
         border: 3px solid white;
@@ -70,6 +70,7 @@ const HomeTestimonials = () => {
 
     return <Arrow {...props} />;
   };
+
   return (
     <Section Container>
       <Container>
