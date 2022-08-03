@@ -25,7 +25,7 @@ const HomeDescription = () => {
 
     cta: {
       title: "Conocer mas",
-      url: "/",
+      url: "https://www.instagram.com/zantier.odontologia/",
     },
   };
 
@@ -92,6 +92,7 @@ const HomeDescription = () => {
                       bgActiveColor="#dbd8d8"
                       // animation={inView ? FadeUp : "none"}
                       // timeAnimation="2.9s"
+                      target="_blanck"
                     >
                       {data.cta.title}
                     </Cta>
