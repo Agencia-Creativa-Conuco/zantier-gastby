@@ -81,12 +81,13 @@ const ModalWrapper = styled.div`
   &[data-open="true"] {
     display: flex;
     left: 0;
-    /* opacity: 1; */
     right: 0;
-    /* transition: opacity 0.25s ease-out; */
     align-items: baseline;
     justify-content: center;
     animation: opacity ${FadeIn} 0.2s ease-out;
+    & > div {
+      margin: 0 1.5rem;
+    }
   }
 
   &[data-open="false"] {

@@ -4,23 +4,17 @@ import FeaturedMedia from "./featured-media";
 import { container, mq } from "./grid";
 
 const CardInfo = ({ item }) => {
-  const {
-    title,
-    featuredImage,
-    copy,
-    specialty,
-    contact,
-  } = item;
+  const { title, featuredImage, copy, specialty, contact } = item;
 
   return (
     <Wrapper>
       <Media>
-        <FeaturedMedia media={featuredImage} />
+        <FeaturedMedia media={featuredImage} rounded />
       </Media>
       <Content>
         <Title>{title}</Title>
         <Specialty>{specialty}</Specialty>
-        <Copy  dangerouslySetInnerHTML={{__html:copy}}/>
+        <Copy dangerouslySetInnerHTML={{ __html: copy }} />
         {contact !== "" && (
           <Contact>
             <span>Contacto:</span> {contact}

@@ -52,11 +52,16 @@ const CardTestimonials = ({ item }) => {
       </InView>
       <ModalUI>
         <ModalInfo>
-          <h3>Antes y Después</h3>
-          <ReactCompareImage
-            leftImage={item.images.before.publicURL}
-            rightImage={item.images.after.publicURL}
-          />
+          <ModalInfoWrappper>
+            <h3>Antes y Después</h3>
+
+            <ReactCompareImage
+              width={640}
+              height={480}
+              leftImage={item.images.before.publicURL}
+              rightImage={item.images.after.publicURL}
+            />
+          </ModalInfoWrappper>
         </ModalInfo>
       </ModalUI>
     </>
@@ -74,6 +79,9 @@ const Card = styled.div`
   width: 25rem;
   ${mq.sm} {
     width: 30rem;
+  }
+  img {
+    cursor: pointer;
   }
 `;
 
@@ -96,15 +104,24 @@ const Copy = styled.div``;
 
 const ModalInfo = styled.div`
   position: relative;
-  width: 40rem;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  ${mq.xs} {
+    width: 30rem;
+  }
+  ${mq.sm} {
+    width: 40rem;
+  }
+
+  max-width: 40rem;
+`;
+
+const ModalInfoWrappper = styled.div`
+  width: 100%;
+  max-width: 47rem;
   h3 {
     text-align: center;
     margin-bottom: 3rem;
   }
   img {
-    border-radius: initial;
-    width: 100%;
+    border-radius: initial !important;
   }
 `;
