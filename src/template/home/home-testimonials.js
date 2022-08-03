@@ -9,9 +9,12 @@ import { css } from "@emotion/react";
 import { FadeUp, fadeTop } from "../../components/animation/animation";
 import { InView } from "react-intersection-observer";
 import { animated, config, Spring } from "@react-spring/web";
+import useModal from "../../hooks/useModal";
 
 const HomeTestimonials = () => {
   const images = useFiles();
+  const { openModal, ModalUI } = useModal();
+
 
   const data = [
     {
@@ -25,11 +28,7 @@ const HomeTestimonials = () => {
     {
       featuredImage: images.home.smile_3,
       copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod ",
-    },
-    {
-      featuredImage: images.home.smile_1,
-      copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
-    },
+    }
   ];
 
   const Arrows = (props) => {
@@ -118,6 +117,7 @@ const HomeTestimonials = () => {
                           <FeaturedMedia
                             media={item.featuredImage}
                             size="70.25%"
+                            onClick={openModal}
                           />
                         </animated.div>
                       )}
@@ -144,7 +144,11 @@ const HomeTestimonials = () => {
           })}
         </Carousel>
       </Container>
+      <ModalUI>
+       <h2>Hola</h2>
+       </ModalUI>
     </Section>
+ 
   );
 };
 

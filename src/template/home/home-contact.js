@@ -129,7 +129,7 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: 100%;
   justify-content: end;
-  text-align: right;
+  text-align: initial;
   padding: 0 1.5rem;
   color: #bc0e03;
 
@@ -148,7 +148,7 @@ const Content = styled.div`
   gap: 1rem;
   justify-content: flex-start;
   ${mq.md}{
-    padding-left: 9rem;
+    padding-left: 3rem;
 
   }
 `;
