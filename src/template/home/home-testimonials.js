@@ -35,7 +35,7 @@ const HomeTestimonials = () => {
   ];
 
   return (
-    <Section Container>
+    <Section fluid>
       <Container>
         {data.map((item, index) => {
           return (
@@ -55,6 +55,7 @@ const Section = styled.section`
   padding-top: 6.6rem;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+  ${container}
 
   background-color: #bc0e03;
 
@@ -69,6 +70,8 @@ const Container = styled.div`
   padding: 0;
   display: flex;
   gap: 3rem;
+  position: relative;
+  justify-content: center;
   flex-wrap: wrap;
 
   img {

@@ -12,6 +12,8 @@ const CardTestimonials = ({ item }) => {
   const { openModal, ModalUI } = useModalPolaroid();
   return (
     <>
+    <CardContainer>
+
       <InView threshold={0.3}>
         {({ ref, inView }) => (
           <Card ref={ref}>
@@ -49,6 +51,7 @@ const CardTestimonials = ({ item }) => {
           </Card>
         )}
       </InView>
+      </CardContainer>
 
       <ModalUI>
         <ModalInfo>
@@ -69,9 +72,18 @@ const CardTestimonials = ({ item }) => {
 
 export default CardTestimonials;
 
+const CardContainer = styled.div`
+  position: relative;
+  display: grid;
+  grid-template-rows: max-content;
+  grid-template-columns: auto;
+  cursor: pointer;
+`;
+
+
 const Card = styled.div`
   border-radius: 6.5rem;
-  /* display: grid !important; */
+  display: grid !important;
   background-color: white;
   margin: 0 auto;
   overflow: hidden;
