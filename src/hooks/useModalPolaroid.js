@@ -29,8 +29,8 @@ const useModalPolaroid = () => {
         <Spring
           reset={isModalOpen === false && true}
           reverse={!isModalOpen}
-          // config={config.molasses}
-          // {...FadeIn}
+          config={config.molasses}
+          {...FadeIn}
         >
           {(styles) => (
             <animated.div style={styles}>
@@ -39,11 +39,11 @@ const useModalPolaroid = () => {
                   e.stopPropagation();
                 }}
               >
-                  <ModalHeader colors={colors}>
-                    <CloseButton onClick={closeModal} colors={colors}>
-                      <CloseIcon />
-                    </CloseButton>
-                  </ModalHeader>
+                <ModalHeader colors={colors}>
+                  <CloseButton onClick={closeModal} colors={colors}>
+                    <CloseIcon />
+                  </CloseButton>
+                </ModalHeader>
                 <Column>
                   <ModalBody>{children}</ModalBody>
                 </Column>
@@ -105,10 +105,9 @@ const CardModal = styled.div`
   margin-bottom: 15vh;
   animation: ${slideDown} 0.4s ease-out;
   flex: 1;
-  padding:1rem 1rem 3rem;
-  ${mq.md}{
+  padding: 1rem 1rem 3rem;
+  ${mq.md} {
     padding: 1.9rem 1.9rem 4rem;
-
   }
 `;
 
@@ -118,45 +117,41 @@ const Column = styled.div`
 `;
 
 const ModalHeader = styled.div`
-    top: 0;
-    width: 3rem;
-    height: 3rem;
-    background: white;
-    border-radius: 100%;
-    top: -5rem;
-    padding: 0.5rem;
-    position: absolute;
-    right:0;
-
+  width: 3rem;
+  height: 3rem;
+  background: white;
+  border-radius: 100%;
+  top: -5rem;
+  padding: 0.5rem;
+  position: absolute;
+  right: 0;
 `;
 
 const CloseButton = styled.button`
-    background: none;
-    border: none;
-    box-shadow: none;
-    position: absolute;
-    color: ${colors.gray.dark};
-    right: 0rem;
-    top: 0rem;
-    position: relative;
-    z-index: 6;
-    left: 50%;
-    transform: translateX(-50%);
-    &:hover {
-      cursor: pointer;
-      svg {
-        transform: scale(1.3);
-      }
-    }
-
+  background: none;
+  border: none;
+  box-shadow: none;
+  position: absolute;
+  color: ${colors.gray.dark};
+  right: 0rem;
+  top: 0rem;
+  position: relative;
+  z-index: 6;
+  left: 50%;
+  transform: translateX(-50%);
+  &:hover {
+    cursor: pointer;
     svg {
-      /* height: 2rem; */
-      transition: transform 0.15s ease-in-out;
-      fill: currentColor;
-
-      height: 1.5rem;
-      width: 1.5rem;
+      transform: scale(1.2);
     }
+  }
+
+  svg {
+    transition: transform 0.15s ease-in-out;
+    fill: currentColor;
+    height: 1.3rem;
+    width: 1.3rem;
+  }
 `;
 
 const ModalBody = styled.div``;

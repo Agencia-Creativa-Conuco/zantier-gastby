@@ -40,7 +40,7 @@ const HomeTestimonials = () => {
         {data.map((item, index) => {
           return (
             <>
-              <CardTestimonials item={item} key={index} />;
+              <CardTestimonials item={item} key={index} />
             </>
           );
         })}
@@ -67,9 +67,6 @@ const Section = styled.section`
 const Container = styled.div`
   ${container}
   padding: 0;
-  display: grid;
-  /* gap:3rem; */
-  grid-template-columns: 1fr;
   display: flex;
   gap: 3rem;
   flex-wrap: wrap;

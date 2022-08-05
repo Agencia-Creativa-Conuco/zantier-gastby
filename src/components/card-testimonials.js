@@ -71,7 +71,7 @@ export default CardTestimonials;
 
 const Card = styled.div`
   border-radius: 6.5rem;
-  display: grid !important;
+  /* display: grid !important; */
   background-color: white;
   margin: 0 auto;
   overflow: hidden;
