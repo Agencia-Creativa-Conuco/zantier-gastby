@@ -66,7 +66,7 @@ const useModalPolaroid = () => {
 export default useModalPolaroid;
 
 const ModalWrapper = styled.div`
-  background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.5);
   z-index: 1;
   display: none;
   overflow-y: auto;
@@ -75,6 +75,7 @@ const ModalWrapper = styled.div`
   bottom: 0;
   top: 0;
   z-index: 20000;
+  animation: ${FadeIn} 0.2s ease-out;
   display: none;
 
   &[data-open="true"] {

@@ -134,12 +134,10 @@ export default HomeTeam;
 const Section = styled.section`
   ${container}
   margin-bottom: 6.6rem;
-
   ${mq.md} {
     margin-bottom: 9.5rem;
   }
 `;
-
 const Container = styled.div`
   position: relative;
   display: flex;
