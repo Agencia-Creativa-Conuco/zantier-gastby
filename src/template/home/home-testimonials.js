@@ -11,35 +11,38 @@ const HomeTestimonials = () => {
     {
       featuredImage: images.home.smile_1,
       copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.  ",
-      images:{
-        before:images.home.smile_1,
-        after:images.home.smile_2,
-      }
+      images: {
+        before: images.sonrisas.smile_1,
+        after: images.sonrisas.smile_2,
+      },
     },
     {
       featuredImage: images.home.smile_2,
       copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ",
-      images:{
-        before:images.home.smile_1,
-        after:images.home.smile_2,
-      }
+      images: {
+        before: images.sonrisas.smile_1,
+        after: images.sonrisas.smile_2,
+      },
     },
     {
       featuredImage: images.home.smile_3,
       copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod ",
-      images:{
-        before:images.home.smile_1,
-        after:images.home.smile_2,
-      }
+      images: {
+        before: images.home.smile_1,
+        after: images.home.smile_2,
+      },
     },
   ];
-
 
   return (
     <Section Container>
       <Container>
         {data.map((item, index) => {
-          return <CardTestimonials item={item} key={index} />;
+          return (
+            <>
+              <CardTestimonials item={item} key={index} />;
+            </>
+          );
         })}
       </Container>
     </Section>

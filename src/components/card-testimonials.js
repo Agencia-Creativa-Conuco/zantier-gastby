@@ -3,21 +3,20 @@ import styled from "@emotion/styled";
 import { FadeUp, fadeTop } from "./animation/animation";
 import { InView } from "react-intersection-observer";
 import { animated, config, Spring } from "@react-spring/web";
-import useModal from "../hooks/useModal";
+import useModalPolaroid from "../hooks/useModalPolaroid";
 import FeaturedMedia from "./featured-media";
 import { mq } from "./grid";
 import ReactCompareImage from "react-compare-image";
 
 const CardTestimonials = ({ item }) => {
-  const { openModal, ModalUI } = useModal();
-  console.log(item.images.after.publicURL);
+  const { openModal, ModalUI } = useModalPolaroid();
   return (
     <>
       <InView threshold={0.3}>
         {({ ref, inView }) => (
           <Card ref={ref}>
             <Spring
-              // reset={inView}
+              reset={inView}
               reverse={!inView}
               config={config.molasses}
               {...fadeTop}
@@ -50,17 +49,17 @@ const CardTestimonials = ({ item }) => {
           </Card>
         )}
       </InView>
+
       <ModalUI>
         <ModalInfo>
           <ModalInfoWrappper>
-            <h3>Antes y Después</h3>
-
             <ReactCompareImage
               width={640}
               height={480}
               leftImage={item.images.before.publicURL}
               rightImage={item.images.after.publicURL}
             />
+            <h4>Antes y Después</h4>
           </ModalInfoWrappper>
         </ModalInfo>
       </ModalUI>
@@ -105,7 +104,8 @@ const Copy = styled.div``;
 const ModalInfo = styled.div`
   position: relative;
   ${mq.xs} {
-    width: 30rem;
+    width: 90vw;
+    min-height: 30rem;
   }
   ${mq.sm} {
     width: 40rem;
@@ -117,9 +117,11 @@ const ModalInfo = styled.div`
 const ModalInfoWrappper = styled.div`
   width: 100%;
   max-width: 47rem;
-  h3 {
+  h4 {
     text-align: center;
-    margin-bottom: 3rem;
+  }
+  & > div {
+    min-height: 35rem !important;
   }
   img {
     border-radius: initial !important;
