@@ -153,6 +153,8 @@ const Section = styled.section`
   padding: 5rem 1.5rem 12rem;
   position: relative;
   background: #bc0e03;
+  position: relative;
+  z-index: 2;
 
   ${mq.md} {
     padding: 0 0 12rem;

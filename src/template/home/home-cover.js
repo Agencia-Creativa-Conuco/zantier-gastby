@@ -97,20 +97,21 @@ const Section = styled.section`
   background: #eaeef2;
   padding: 0;
   padding-top: 5rem;
+  position: relative;
+  z-index: 1;
   ${mq.lg} {
-    padding: 0 10%;
+    padding: 0 5%;
     padding-top: 10rem;
   }
   &::after {
     content: "";
     position: absolute;
-    background: rgb(255, 255, 255);
     background: linear-gradient(
       0deg,
-      rgba(255, 255, 255, 1) 0%,
-      rgba(255, 255, 255, 1) 20%,
-      rgba(255, 255, 255, 0.9) 40%,
-      rgba(255, 255, 255, 0) 100%
+      #eaeef2ff,
+      #eaeef2ff,
+      #eaeef2aa,
+      #eaeef200
     );
     width: 100%;
     min-height: 30%;
@@ -122,8 +123,11 @@ const Section = styled.section`
 
 const Container = styled.div`
   display: grid;
+  align-items: flex-end;
   grid-template-columns: 100%;
   padding-bottom: 6.6rem;
+  max-width: 1920px;
+  margin: 0 auto;
 
   div:first-of-type {
     order: 2;
@@ -141,7 +145,41 @@ const Content = styled.div`
   align-self: center;
   max-width: 60rem;
   margin: 0 auto;
+  margin-bottom: 10rem;
+  position: relative;
   z-index: 5;
+  &:before {
+    content: "";
+    position: absolute;
+    background-color: #eaeef2ff;
+    border-radius: 50%;
+    width: 300%;
+    padding-bottom: 300%;
+    height: 0;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, -5%);
+    z-index: -1;
+    ${mq.md} {
+      content: none;
+    }
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    background-color: #bc0e03;
+    border-radius: 50%;
+    width: 300%;
+    padding-bottom: 300%;
+    height: 0;
+    top: 0%;
+    left: 50%;
+    transform: translate(-49%, -5.5%);
+    z-index: -2;
+    ${mq.md} {
+      content: none;
+    }
+  }
 `;
 
 const Title = styled.h1`
@@ -157,10 +195,13 @@ const Copy = styled.p`
   margin-bottom: 3rem;
   /* animation: ${(props) => props.animate} 1.8s
     cubic-bezier(0.25, 0.46, 0.45, 0.94) both; */
+  font-weight: normal;
 `;
 
 const Media = styled.div`
   position: relative;
-  max-width: 80%;
-  margin: 0 auto;
+  ${mq.xl} {
+    max-width: 80%;
+    margin: 0 auto;
+  }
 `;
