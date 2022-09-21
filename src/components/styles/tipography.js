@@ -1,54 +1,54 @@
-import { css } from '@emotion/react'
-import mq from '../grid/mq'
+import { css } from "@emotion/react";
+import mq from "../grid/mq";
 // import colors from './colors'
 
 export const h1 = css`
+  font-size: 3rem;
+  ${mq.sm} {
+    font-size: 3.5rem;
+  }
+  ${mq.md} {
+    font-size: 4rem;
+  }
+  ${mq.lg} {
+    font-size: 5rem;
+  }
+  ${mq.xl} {
+    font-size: 6rem;
+  }
+`;
+
+export const h2 = css`
   font-size: 2.2rem;
   ${mq.sm} {
-    font-size: 2.4rem;
+    font-size: 2.5rem;
   }
   ${mq.md} {
     font-size: 3rem;
   }
   ${mq.lg} {
-    font-size: 4rem;
+    font-size: 3.5rem;
   }
   ${mq.xl} {
-    font-size: 4rem;
+    font-size: 4.5rem;
   }
-`
+`;
 
-export const h2 = css`
+export const h3 = css`
   font-size: 2rem;
   ${mq.sm} {
     font-size: 2.2rem;
   }
   ${mq.md} {
-    font-size: 2.5rem;
-  }
-  ${mq.lg} {
-    font-size: 3rem;
-  }
-  ${mq.xl} {
-    font-size: 3rem;
-  }
-`
-
-export const h3 = css`
-  font-size: 1.9rem;
-  ${mq.sm} {
-    font-size: 2rem;
-  }
-  ${mq.md} {
-    font-size: 2.2rem;
+    font-size: 2.4rem;
   }
   ${mq.lg} {
     font-size: 2.5rem;
   }
   ${mq.xl} {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
   }
-`
+`;
 
 export const h4 = css`
   font-size: 1.8rem;
@@ -64,7 +64,7 @@ export const h4 = css`
   ${mq.xl} {
     font-size: 2.2rem;
   }
-`
+`;
 
 export const h5 = css`
   font-size: 1.7rem;
@@ -80,7 +80,7 @@ export const h5 = css`
   ${mq.xl} {
     font-size: 2rem;
   }
-`
+`;
 
 export const h6 = css`
   font-size: 1.6rem;
@@ -96,7 +96,7 @@ export const h6 = css`
   ${mq.xl} {
     font-size: 1.8rem;
   }
-`
+`;
 
 const tipography = () => css`
   h1,
@@ -138,6 +138,6 @@ const tipography = () => css`
     margin-bottom: 1rem;
     margin-top: 1rem;
   }
-`
+`;
 
-export default tipography
+export default tipography;

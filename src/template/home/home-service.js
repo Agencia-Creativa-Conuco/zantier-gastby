@@ -26,7 +26,7 @@ const HomeService = () => {
         title: "Conocer mas",
         url: "/",
       },
-      featuredImage: images.home.service_3,
+      featuredImage: images.home.planificacion,
     },
     {
       title: "Inicio",
@@ -35,7 +35,7 @@ const HomeService = () => {
         title: "Conocer mas",
         url: "/",
       },
-      featuredImage: images.home.service_1,
+      featuredImage: images.home.inicio,
     },
   ];
 
@@ -85,7 +85,7 @@ const HomeService = () => {
                   {(styles) => (
                     <animated.div style={styles} ref={ref}>
                       <Media>
-                        <FeaturedMedia media={item.featuredImage} size="80%" />
+                        <FeaturedMedia media={item.featuredImage} size="120%" />
                       </Media>
                     </animated.div>
                   )}
@@ -257,6 +257,7 @@ const Container = styled.div`
   img {
     border-radius: ${(props) =>
       props.direction ? "25%" : " 1.5rem 30% 30% 30%"};
+    border-radius: 1.5rem 7.5rem 7.5rem 7.5rem;
   }
 `;
 
@@ -264,8 +265,9 @@ const Content = styled.div`
   color: white;
   align-self: center;
 `;
-const Title = styled.h4`
+const Title = styled.h3`
   color: white;
+  text-transform: uppercase;
 `;
 
 const Copy = styled.p``;

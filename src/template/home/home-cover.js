@@ -23,7 +23,7 @@ const HomeCover = () => {
     <InView threshold={0.4}>
       {({ ref, inView }) => (
         <Section fluid>
-          <Container>
+          <Container space top>
             <Content>
               <Spring
                 reset={inView}
@@ -78,13 +78,7 @@ const HomeCover = () => {
               {(styles) => (
                 <animated.div style={styles} ref={ref}>
                   <Media>
-                    <FeaturedMedia
-                      media={data.featuredImage}
-                      size="80%"
-                      sizeMD="125%"
-                      sizeXL="100%"
-                      position="0% 0%"
-                    />
+                    <FeaturedMedia media={data.featuredImage} size="100%" />
                   </Media>
                 </animated.div>
               )}
@@ -102,6 +96,11 @@ const Section = styled.section`
   ${container}
   background: #eaeef2;
   padding: 0;
+  padding-top: 5rem;
+  ${mq.lg} {
+    padding: 0 10%;
+    padding-top: 10rem;
+  }
   &::after {
     content: "";
     position: absolute;
@@ -109,12 +108,12 @@ const Section = styled.section`
     background: linear-gradient(
       0deg,
       rgba(255, 255, 255, 1) 0%,
-      rgba(255 255 255 / 93%) 41%,
-      rgba(255, 255, 255, 0.38699229691876746) 64%,
+      rgba(255, 255, 255, 1) 20%,
+      rgba(255, 255, 255, 0.9) 40%,
       rgba(255, 255, 255, 0) 100%
     );
     width: 100%;
-    min-height: 40%;
+    min-height: 30%;
     bottom: 0;
     left: 0;
     z-index: 2;
@@ -130,7 +129,7 @@ const Container = styled.div`
     order: 2;
   }
   ${mq.md} {
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 2fr 3fr;
     div:last-of-type {
       order: 2;
     }
@@ -162,8 +161,6 @@ const Copy = styled.p`
 
 const Media = styled.div`
   position: relative;
-
-  img {
-    /* animation: ${(props) => props.animate} 3s ease-in both; */
-  }
+  max-width: 80%;
+  margin: 0 auto;
 `;

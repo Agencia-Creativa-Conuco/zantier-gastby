@@ -127,9 +127,8 @@ const Container = styled.div`
     clip-path: ellipse(145% 100% at 50% 100%) !important;
   }
 
-  ${mq.md}{
+  ${mq.md} {
     clip-path: ellipse(100% 100% at 50% 100%) !important;
-
   }
 
   ${mq.lg} {
