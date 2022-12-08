@@ -1,143 +1,110 @@
 import { css } from "@emotion/react";
-import mq from "../grid/mq";
-// import colors from './colors'
-
+import colors from "./colors";
 export const h1 = css`
-  font-size: 3rem;
-  ${mq.sm} {
-    font-size: 3.5rem;
-  }
-  ${mq.md} {
-    font-size: 4rem;
-  }
-  ${mq.lg} {
-    font-size: 5rem;
-  }
-  ${mq.xl} {
-    font-size: 6rem;
-  }
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.138888889;
 `;
 
 export const h2 = css`
-  font-size: 2.2rem;
-  ${mq.sm} {
-    font-size: 2.5rem;
-  }
-  ${mq.md} {
-    font-size: 3rem;
-  }
-  ${mq.lg} {
-    font-size: 3.5rem;
-  }
-  ${mq.xl} {
-    font-size: 4.5rem;
-  }
+  font-size: 1.5rem;
 `;
 
 export const h3 = css`
-  font-size: 2rem;
-  ${mq.sm} {
-    font-size: 2.2rem;
-  }
-  ${mq.md} {
-    font-size: 2.4rem;
-  }
-  ${mq.lg} {
-    font-size: 2.5rem;
-  }
-  ${mq.xl} {
-    font-size: 3.5rem;
-  }
+  font-size: 1.3rem;
 `;
 
 export const h4 = css`
-  font-size: 1.8rem;
-  ${mq.sm} {
-    font-size: 1.9rem;
-  }
-  ${mq.md} {
-    font-size: 2rem;
-  }
-  ${mq.lg} {
-    font-size: 2.2rem;
-  }
-  ${mq.xl} {
-    font-size: 2.2rem;
-  }
+  font-size: 1.2rem;
 `;
 
 export const h5 = css`
-  font-size: 1.7rem;
-  ${mq.sm} {
-    font-size: 1.8rem;
-  }
-  ${mq.md} {
-    font-size: 1.9rem;
-  }
-  ${mq.lg} {
-    font-size: 2rem;
-  }
-  ${mq.xl} {
-    font-size: 2rem;
-  }
+  font-size: 1.1rem;
 `;
 
 export const h6 = css`
-  font-size: 1.6rem;
-  ${mq.sm} {
-    font-size: 1.7rem;
-  }
-  ${mq.md} {
-    font-size: 1.8rem;
-  }
-  ${mq.lg} {
-    font-size: 1.8rem;
-  }
-  ${mq.xl} {
-    font-size: 1.8rem;
-  }
+  font-size: 1rem;
 `;
 
-const tipography = () => css`
+const tipography = css`
+  main {
+    display: block;
+  }
+
   h1,
   h2,
   h3,
   h4,
   h5,
-  h6 {
-    margin-bottom: 1rem;
-    margin-top: 2rem;
-    color: #c02319;
-    font-family: Source Sans Pro, sans-serif;
-    line-height: 1;
+  h6,
+  .faux-heading {
+    font-feature-settings: "lnum";
+    font-variant-numeric: lining-nums;
+    font-weight: 700;
+    letter-spacing: -0.0415625em;
+    line-height: 1.25;
+    margin: 2rem 0 1rem;
+    color: ${colors.primary.base};
   }
-  h1 {
+
+  h1,
+  .heading-size-1 {
     ${h1}
-    text-transform: uppercase;
-    font-weight: 900;
   }
-  h2 {
+
+  h2,
+  .heading-size-2 {
     ${h2}
-    text-transform: uppercase;
-    font-weight: 600;
   }
-  h3 {
+
+  h3,
+  .heading-size-3 {
     ${h3}
-    font-weight: 600;
   }
-  h4 {
+
+  h4,
+  .heading-size-4 {
     ${h4}
   }
-  h5 {
+
+  h5,
+  .heading-size-5 {
     ${h5}
   }
-  h6 {
+
+  h6,
+  .heading-size-6 {
+    letter-spacing: 0.03125em;
+    text-transform: uppercase;
     ${h6}
   }
-  p {
-    margin-bottom: 1rem;
-    margin-top: 1rem;
-  }
+`;
+const subtitle = ({ hideDeco }) => css`
+  ${h2}
+  text-align: center;
+  position: relative;
+  text-transform: uppercase;
+  color: ${colors.text.base};
+  margin: 0;
+  margin-bottom: 2.5rem;
+  ${hideDeco
+    ? css``
+    : css`
+        &:after {
+          content: "_______ __";
+          color: ${colors.yellow.base};
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          transform: translate(-50%, -0.25rem);
+          font-weight: 900;
+          line-height: 0;
+          height: 0;
+          width: 50%;
+        }
+      `}
 `;
 
 export default tipography;
+
+export { subtitle };

@@ -37,32 +37,10 @@ const Form = ({
     scrollTo(`#${id}`);
   };
 
-
   return (
     <FormSwitcher id={id}>
       {forms.length && !submited ? (
         <>
-          <FormDots>
-            {forms.map((form, index) => {
-              const isVisible =
-                displayedForms.includes(index) && displayedForms.length > 1;
-              const isCurrent = index === active;
-
-              return (
-                <Dot
-                  key={index}
-                  onClick={() => {
-                    setActive(index);
-                  }}
-                  hidden={!isVisible}
-                  bgColor={colors.primary.base}
-                  current={isCurrent}
-                >
-                  {index + 1}
-                </Dot>
-              );
-            })}
-          </FormDots>
           {forms.map((form, index) => {
             const isVisible = active === index;
 
@@ -73,20 +51,18 @@ const Form = ({
                 {...{ cardStyle, ...props }}
                 hidden={!isVisible}
               >
-                <FormCut>
-                  <HubspotForm
-                    portalId={idCuentaHubspot}
-                    formId={form}
-                    onReady={() => {
-                      setDisplayedForms(displayedForms.concat(active));
-                    }}
-                    onFormSubmitted={() => {
-                      manageFormSubmit();
-                    }}
-                    inlineMessage={submitedText}
-                    loading={<Loading height={loadingHeight} />}
-                  />
-                </FormCut>
+                <HubspotForm
+                  portalId={idCuentaHubspot}
+                  formId={form}
+                  onReady={() => {
+                    setDisplayedForms(displayedForms.concat(active));
+                  }}
+                  onFormSubmitted={() => {
+                    manageFormSubmit();
+                  }}
+                  inlineMessage={submitedText}
+                  loading={<Loading height={loadingHeight} />}
+                />
               </FormContainer>
             ) : null;
           })}
@@ -105,69 +81,22 @@ export default Form;
 
 const FormSwitcher = styled.div``;
 
-const FormDots = styled.ul`
-  display: flex;
-  margin: 0;
-  margin-bottom: 2rem;
-`;
-
-const Dot = styled.li`
-  ${({ bgColor = "lightblue", current }) => css`
-    list-style: none;
-    padding: 1rem;
-    border-radius: 1rem;
-    line-height: 1.5rem;
-    margin: 0.25rem;
-    cursor: pointer;
-    transition: 0.25s all ease-in-out;
-    ${current
-      ? css`
-          background-color: ${bgColor};
-          color: white;
-        `
-      : css`
-          background-color: #f0f0f0;
-          color: inherit;
-        `}
-    &:first-of-type {
-      margin-left: 0;
-    }
-    &:last-of-type {
-      margin-right: 0;
-    }
-  `}
-`;
-
 const FormContainer = styled.div`
   ${({ cardStyle }) => css`
     ${cardStyle
       ? css`
-          background-color: white;
-          padding: 3rem 1.5rem;
+          padding: 2rem 0;
           max-width: 60rem;
           margin: 0 auto;
-          /* box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.15); */
-          /* border-radius: 2rem; */
           ${mq.sm} {
-            border-radius: 4rem;
-            padding: 3rem;
+            padding: 2rem;
           }
-          ${mq.md} {
-            padding: 4rem;
+          ${mq.lg} {
+            padding: 2rem 0;
           }
         `
       : css``}
   `}
-`;
-
-const FormCut = styled.div`
-  padding: 0 0.1rem;
-  overflow: hidden;
-  iframe {
-    width: 100%;
-    display: block;
-    margin-bottom: -8.5rem;
-  }
 `;
 
 const Message = styled.div``;

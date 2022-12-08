@@ -101,24 +101,21 @@ const HomeTeam = () => {
     <Section fluid>
       <InView threshold={0.2}>
         {({ ref, inView }) => (
-          <Container ref={ref}>
+          <Container fluid ref={ref}>
             <Trail
               items={data}
-              reset={inView}
-              reverse={!inView}
+              pause={!inView}
               config={config.gentle}
               {...FadeUp}
             >
               {(item, index) => (styles) => {
                 return (
-                  <>
-                    <CardBody
-                      inView={inView}
-                      item={item}
-                      styles={styles}
-                      key={index}
-                    />
-                  </>
+                  <CardBody
+                    inView={inView}
+                    item={item}
+                    styles={styles}
+                    key={index}
+                  />
                 );
               }}
             </Trail>
@@ -132,25 +129,19 @@ const HomeTeam = () => {
 export default HomeTeam;
 
 const Section = styled.section`
-  ${container}
+  position: relative;
   margin-bottom: 6.6rem;
   ${mq.md} {
     margin-bottom: 9.5rem;
   }
 `;
 const Container = styled.div`
+  ${container}
   position: relative;
   display: flex;
   padding: 0;
-  gap: 2rem 5rem;
+  gap: 3rem 2rem;
   flex-wrap: wrap;
   justify-content: center;
-
-  ${mq.md} {
-    margin: -5rem auto;
-  }
-
-  ${mq.lg} {
-    max-width: 1280px;
-  }
+  margin-top: -2.5rem;
 `;

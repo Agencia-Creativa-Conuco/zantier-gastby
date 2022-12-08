@@ -31,68 +31,14 @@ const HomeSlider = () => {
     },
   ];
 
-  const Arrows = (props) => {
-    const Arrow = styled.div`
-      ${({ bgColor = "#9f9f9f", color = "white" }) => css`
-        border-radius: 50%;
-        color: ${bgColor};
-        margin: 0 3rem;
-        z-index: 2;
-        position: absolute;
-        top: 50%;
-        border: 3px solid #9f9f9f;
-        ${mq.md} {
-          display: block !important;
-          width: 5rem;
-          height: 5rem;
-          padding: 1rem;
-          margin: 0 1rem;
-        }
-        ${mq.xl} {
-          margin: 0 -6rem;
-        }
-        &:focus {
-          background-color: ${bgColor};
-          color: ${color};
-        }
-        &:hover {
-          background-color: ${bgColor};
-          color: ${color};
-        }
-        &:before {
-          content: initial;
-        }
-      `}
-    `;
-
-    return <Arrow {...props} />;
-  };
   return (
     <Section>
-      <Spring
-        reset={isView}
-        reverse={!isView}
-        config={config.gentle}
-        delay={300}
-        {...FadeUp}
-      >
+      <Spring pause={!isView} config={config.gentle} delay={300} {...FadeUp}>
         {(styles) => (
           <animated.div style={styles}>
             <Container ref={isRef}>
-              <Carousel
-                infinite={false}
-                prevArrow={
-                  <Arrows>
-                    <LeftArrowIcon />
-                  </Arrows>
-                }
-                nextArrow={
-                  <Arrows>
-                    <RightArrowIcon />
-                  </Arrows>
-                }
-                afterChange={Pause}
-              >
+              <Title>Experiencia Zantier</Title>
+              <Carousel infinite={false} afterChange={Pause} fade>
                 {data.map((item, key) => {
                   return (
                     <InView threshold={1} key={key}>
@@ -134,13 +80,37 @@ const HomeSlider = () => {
 export default HomeSlider;
 
 const Section = styled.section`
-  padding-bottom: 6.6rem;
-  padding-top: 6.6rem;
+  padding-bottom: 5rem;
+  padding-top: 5rem;
   background: #f4f7fc;
 
-  ${mq.md} {
-    padding-bottom: 9.5rem;
-    padding-top: 9.5rem;
+  .slick-list {
+  }
+  /* #9f9f9f */
+  .slick-arrow {
+    z-index: 2;
+    width: 3rem;
+    height: 3rem;
+    line-height: 3rem;
+    font-size: 0;
+    display: flex;
+    align-items: center;
+    &:before {
+      font-size: 3rem;
+      color: #bc0e03;
+    }
+  }
+  .slick-next {
+    transform: translate(0%, 0);
+    ${mq.lg} {
+      transform: translate(100%, 0);
+    }
+  }
+  .slick-prev {
+    transform: translate(-0%, 0);
+    ${mq.lg} {
+      transform: translate(-100%, 0);
+    }
   }
 `;
 
@@ -160,6 +130,13 @@ const Container = styled.div`
       z-index: 6;
     }
   }
+`;
+
+const Title = styled.h2`
+  text-align: center;
+  text-transform: uppercase;
+  margin: 0;
+  margin-bottom: 2rem;
 `;
 
 const Media = styled.div`

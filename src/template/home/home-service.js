@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { css } from "@emotion/react";
 import React from "react";
 import FeaturedMedia from "../../components/featured-media";
 import { container, mq } from "../../components/grid/index";
@@ -17,7 +18,7 @@ const HomeService = () => {
     {
       title: "Diagnóstico",
       copy: "Conocemos tu caso particular, tus necesidades y requerimientos específicos para lograr esa sonrisa deseada.",
-      featuredImage: images.home.service_1,
+      featuredImage: images.home.diagnostico,
     },
     {
       title: "Planificación",
@@ -41,107 +42,114 @@ const HomeService = () => {
 
   return (
     <Section fluid>
-      <ImageDeco>
-        <FeaturedMedia media={images.home.deco} size="255%" maxWidth="70rem" />
-      </ImageDeco>
       <Logo>
         <FeaturedMedia media={images.icons.smile} sizeMd="100%" />
       </Logo>
-
-      <InView threshold={0.6}>
-        {({ ref, inView }) => (
-          <Spring
-            reset={inView}
-            reverse={!inView}
-            config={config.default}
-            from={{
-              opacity: 0,
-            }}
-            to={{ opacity: 1 }}
-          >
-            {(styles) => (
-              <animated.div style={styles}>
-                <div id="infografia">
-                  <SectionTitle ref={ref}>{sectionTitle}</SectionTitle>
-                </div>
-              </animated.div>
-            )}
-          </Spring>
-        )}
-      </InView>
-
-      {data.map((item, index) => {
-        let animationText = index % 2 ? TextAnimationLeft : TextAnimationRight;
-        return (
-          <InView threshold={0.4} key={index}>
+      <Wrapper>
+        <ImageDeco>
+          <FeaturedMedia media={images.home.deco} size="255%" />
+        </ImageDeco>
+        <Container>
+          <InView threshold={0.6}>
             {({ ref, inView }) => (
-              <Container direction={index % 2}>
-                <Spring
-                  reset={inView}
-                  reverse={!inView}
-                  config={config.molasses}
-                  {...animationText}
-                >
-                  {(styles) => (
-                    <animated.div style={styles} ref={ref}>
-                      <Media>
-                        <FeaturedMedia media={item.featuredImage} size="120%" />
-                      </Media>
-                    </animated.div>
-                  )}
-                </Spring>
-
-                <Content>
-                  <Spring
-                    delay={600}
-                    reset={inView}
-                    reverse={!inView}
-                    config={config.slow}
-                    {...animationText}
-                  >
-                    {(styles) => (
-                      <animated.div style={styles}>
-                        <Title>{item.title}</Title>
-                      </animated.div>
-                    )}
-                  </Spring>
-
-                  <Spring
-                    delay={600}
-                    reset={inView}
-                    reverse={!inView}
-                    config={config.slow}
-                    {...animationText}
-                  >
-                    {(styles) => (
-                      <animated.div style={styles}>
-                        <Copy>{item.copy}</Copy>
-                      </animated.div>
-                    )}
-                  </Spring>
-                  <Spring
-                    from={{
-                      opacity: 0,
-                      transform: `translateY(3rem)`,
-                    }}
-                    to={{ opacity: 1, transform: "translateY(0)" }}
-                    delay={1000}
-                    reset={inView}
-                    reverse={!inView}
-                    config={config.wobbly}
-                  >
-                    {(styles) => (
-                      <animated.div style={styles}>
-                        <Deco direction={index % 2} />
-                      </animated.div>
-                    )}
-                  </Spring>
-                </Content>
-              </Container>
+              <Spring
+                pause={!inView}
+                // reverse={!inView}
+                config={config.default}
+                from={{
+                  opacity: 0,
+                }}
+                to={{ opacity: 1 }}
+              >
+                {(styles) => (
+                  <animated.div style={styles}>
+                    <div id="infografia">
+                      <SectionTitle ref={ref}>{sectionTitle}</SectionTitle>
+                    </div>
+                  </animated.div>
+                )}
+              </Spring>
             )}
           </InView>
-        );
-      })}
+
+          {data.map((item, index) => {
+            let animationText =
+              index % 2 ? TextAnimationLeft : TextAnimationRight;
+            return (
+              <InView threshold={0.4} key={index}>
+                {({ ref, inView }) => (
+                  <Info direction={index % 2}>
+                    <Spring
+                      pause={!inView}
+                      // reverse={!inView}
+                      config={config.molasses}
+                      {...animationText}
+                    >
+                      {(styles) => (
+                        <animated.div style={styles} ref={ref}>
+                          <InfoMedia>
+                            <FeaturedMedia
+                              media={item.featuredImage}
+                              size="80%"
+                            />
+                          </InfoMedia>
+                        </animated.div>
+                      )}
+                    </Spring>
+
+                    <Content>
+                      <Spring
+                        delay={600}
+                        pause={!inView}
+                        // reverse={!inView}
+                        config={config.slow}
+                        {...animationText}
+                      >
+                        {(styles) => (
+                          <animated.div style={styles}>
+                            <Title>{item.title}</Title>
+                          </animated.div>
+                        )}
+                      </Spring>
+
+                      <Spring
+                        delay={600}
+                        pause={!inView}
+                        // reverse={!inView}
+                        config={config.slow}
+                        {...animationText}
+                      >
+                        {(styles) => (
+                          <animated.div style={styles}>
+                            <Copy>{item.copy}</Copy>
+                          </animated.div>
+                        )}
+                      </Spring>
+                      <Spring
+                        from={{
+                          opacity: 0,
+                          transform: `translateY(3rem)`,
+                        }}
+                        to={{ opacity: 1, transform: "translateY(0)" }}
+                        delay={1000}
+                        pause={!inView}
+                        // reverse={!inView}
+                        config={config.wobbly}
+                      >
+                        {(styles) => (
+                          <animated.div style={styles}>
+                            <Deco direction={index % 2} />
+                          </animated.div>
+                        )}
+                      </Spring>
+                    </Content>
+                  </Info>
+                )}
+              </InView>
+            );
+          })}
+        </Container>
+      </Wrapper>
     </Section>
   );
 };
@@ -149,47 +157,37 @@ const HomeService = () => {
 export default HomeService;
 
 const Section = styled.section`
-  ${container}
-  padding: 5rem 1.5rem 12rem;
+  position: relative;
+`;
+
+const Wrapper = styled.div`
   position: relative;
   background: #bc0e03;
   position: relative;
+  padding-top: 5rem;
+  padding-bottom: 3rem;
   z-index: 2;
+  clip-path: ellipse(250% 100% at 50% 100%) !important;
 
-  ${mq.md} {
-    padding: 0 0 12rem;
-  }
-  &::before {
-    content: "";
-    position: absolute;
-    background: #bc0e03;
-    width: 100%;
-    height: 30rem;
-    clip-path: ellipse(65% 37% at 50% 100%);
-    top: -23rem;
-    left: 0;
-    z-index: 2;
-
-    ${mq.md} {
-      clip-path: ellipse(65% 57% at 50% 100%);
-    }
+  ${mq.lg} {
+    margin-top: -10%;
+    padding-top: 10%;
+    z-index: initial;
+    clip-path: ellipse(145% 100% at 50% 100%) !important;
   }
 `;
 
 const Logo = styled.div`
-  position: relative;
-
-  right: -80%;
-  top: -9rem;
-  z-index: 89;
-  width: 5rem;
-
-  ${mq.md} {
-    width: 8rem;
-    right: -80%;
-    top: -11rem;
+  position: absolute;
+  right: 10%;
+  top: 0;
+  width: 8vw;
+  transform: translate(0, 0%);
+  z-index: 4;
+  ${mq.lg} {
+    width: 5vw;
+    transform: translate(0, 25%);
   }
-
   &::after {
     content: "";
     position: absolute;
@@ -211,55 +209,71 @@ const SectionTitle = styled.h2`
   text-align: center;
   z-index: 5;
   position: relative;
-  max-width: 56rem;
-  margin: -7.2rem auto 4rem;
+  margin-bottom: 3rem;
+  ${mq.lg} {
+    margin-bottom: 5rem;
+  }
 `;
 
 const ImageDeco = styled.div`
-  width: 0;
+  width: 35%;
   position: absolute;
-
-  ${mq.md} {
-    width: 44%;
-    top: -10rem;
-    left: -2rem;
-    padding-bottom: 9rem;
-    z-index: 3;
-  }
-  ${mq.lg} {
-    left: -5rem;
-
-    top: -11rem;
-    width: 35%;
-  }
+  top: 3.5vw;
+  left: 0;
 `;
+
 const Container = styled.div`
   ${container}
-  z-index: 5;
-  display: grid;
-  grid-template-columns: 100%;
-  padding-bottom: 6.6rem;
-  gap: 3rem;
-  div:last-of-type {
-    order: ${(props) => props.direction};
-  }
-  ${mq.md} {
-    gap: 5rem;
-    margin-bottom: 5rem;
-    justify-content: ${(props) => (props.direction ? "end" : "start")};
-    grid-template-columns: ${(props) =>
-      props.direction === 0 ? "35% 50%" : "50% 35%;"};
-    text-align: ${(props) => props.direction && "end"};
+`;
 
-    div:first-of-type {
-      order: ${(props) => props.direction === 1 && 2};
+const Info = styled.div`
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+  z-index: 5;
+  max-width: 30rem;
+  margin-bottom: 7.5rem;
+  margin-left: auto;
+  margin-right: auto;
+
+  ${mq.lg} {
+    gap: 2rem;
+    margin-bottom: 5rem;
+    max-width: initial;
+    &:nth-of-type(odd) {
+      justify-content: end;
+      grid-template-columns: 3fr 4fr;
+      text-align: left;
+      & > div {
+        &:first-of-type {
+          order: 1;
+        }
+        &:last-of-type {
+          order: 2;
+        }
+      }
+    }
+    &:nth-of-type(even) {
+      justify-content: start;
+      grid-template-columns: 4fr 3fr;
+      text-align: right;
+      & > div {
+        &:first-of-type {
+          order: 2;
+        }
+        &:last-of-type {
+          order: 1;
+        }
+      }
     }
   }
 
   img {
     border-radius: ${(props) =>
       props.direction ? "25%" : " 1.5rem 30% 30% 30%"};
-    border-radius: 1.5rem 7.5rem 7.5rem 7.5rem;
+    border-radius: 1rem 3.5rem 3.5rem 3.5rem;
   }
 `;
 
@@ -270,42 +284,37 @@ const Content = styled.div`
 const Title = styled.h3`
   color: white;
   text-transform: uppercase;
+  margin-top: 0;
 `;
 
 const Copy = styled.p``;
 
-const Media = styled.div`
+const InfoMedia = styled.div`
   position: relative;
-  max-width: 40rem;
   margin: auto;
 `;
 
 const Deco = styled.div`
   position: relative;
+  display: inline-block;
 
   &::before {
     content: "";
-    position: absolute;
+    display: inline-block;
+    position: relative;
     background: white;
-    width: 7%;
-    padding-bottom: 7%;
-    ${mq.md} {
-      ${(props) => (props.direction === 1 ? "right: 0" : " left:0")};
-    }
+    width: 2rem;
+    padding-bottom: 2rem;
     border-radius: 100%;
   }
   &::after {
     content: "";
-    position: absolute;
+    display: inline-block;
+    position: relative;
     background: white;
-    width: 15%;
-    padding-bottom: 7%;
+    width: 3.5rem;
+    padding-bottom: 2rem;
     left: 10%;
-    ${mq.md} {
-      ${(props) =>
-        props.direction === 1 ? "right:10%; left:auto;" : " left:10%"};
-    }
-
     border-radius: 2.8rem;
   }
 `;

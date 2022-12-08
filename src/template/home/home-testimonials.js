@@ -37,13 +37,16 @@ const HomeTestimonials = () => {
   return (
     <Section fluid>
       <Container>
-        {data.map((item, index) => {
-          return (
-            <>
-              <CardTestimonials item={item} key={index} />
-            </>
-          );
-        })}
+        <Title>Before & After</Title>
+        <Body>
+          {data.map((item, index) => {
+            return (
+              <>
+                <CardTestimonials item={item} key={index} />
+              </>
+            );
+          })}
+        </Body>
       </Container>
     </Section>
   );
@@ -52,21 +55,15 @@ const HomeTestimonials = () => {
 export default HomeTestimonials;
 
 const Section = styled.section`
-  padding-top: 6.6rem;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  ${container}
-
+  padding-bottom: 18rem;
   background-color: #bc0e03;
-
-  padding-bottom: 30rem;
-  ${mq.md} {
-    padding-top: 9.5rem;
-  }
 `;
 
 const Container = styled.div`
   ${container}
+`;
+
+const Body = styled.div`
   padding: 0;
   display: flex;
   gap: 3rem;
@@ -77,4 +74,12 @@ const Container = styled.div`
   img {
     border-radius: 0 0 5rem 5rem;
   }
+`;
+
+const Title = styled.h2`
+  text-align: center;
+  color: white;
+  margin-top: initial;
+  margin-bottom: 3rem;
+  text-transform: uppercase;
 `;
