@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
-import { LeftArrowIcon, RightArrowIcon } from "../../components/icons";
 import { container, mq } from "../../components/grid/index";
 import Carousel from "react-slick";
-import { css } from "@emotion/react";
 import {
   centerScaleAnimationCss,
   FadeUp,

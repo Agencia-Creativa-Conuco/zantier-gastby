@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { container, mq } from "../../components/grid/index";
+import { container } from "../../components/grid/index";
 import useFiles from "../../hooks/useFiles";
 import CardTestimonials from "../../components/card-testimonials";
 

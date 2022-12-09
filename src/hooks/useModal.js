@@ -86,7 +86,7 @@ const ModalWrapper = styled.div`
     justify-content: center;
     animation: opacity ${FadeIn} 0.2s ease-out;
     & > div {
-      margin: 0 1.5rem;
+      margin: 0 0.8rem;
     }
   }
 
@@ -99,24 +99,18 @@ const ModalWrapper = styled.div`
 
 const CardModal = styled.div`
   ${container}
-  max-width: 69rem !important;
+  max-width: 28rem !important;
   background: #fff;
   margin: 0 auto;
-  margin-top: 15vh;
-  margin-bottom: 15vh;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
   border-radius: 5px;
   animation: ${slideDown} 0.4s ease-out;
   flex: 1;
 
   padding: 1.5rem;
-  ${mq.sm} {
-    padding: 3rem;
-  }
   ${mq.md} {
-    padding: 3.5rem;
-  }
-  ${mq.xl} {
-    padding: 4.5rem;
+    padding: 2rem;
   }
 `;
 
@@ -132,7 +126,7 @@ const ModalHeader = styled.div`
     text-align: left;
     color: ${colors.green.base};
     font-weight: bold;
-    margin-bottom: 2rem;
+    margin-bottom: 0.8rem;
     padding-right: 5rem;
     position: relative;
   `}
@@ -148,12 +142,12 @@ const CloseButton = styled.button`
     right: 0rem;
     top: 0rem;
     padding: 1rem;
-    transform: translate(0, -1rem);
+    transform: translate(1rem, -2rem);
     z-index: 6;
     &:hover {
       cursor: pointer;
       svg {
-        transform: scale(1.3);
+        transform: scale(1.2);
       }
     }
 
@@ -162,8 +156,8 @@ const CloseButton = styled.button`
       transition: transform 0.15s ease-in-out;
       fill: currentColor;
 
-      height: 2.5rem;
-      width: 2rem;
+      height: 1.5rem;
+      width: 1rem;
     }
   `}
 `;

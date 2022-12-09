@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { css } from "@emotion/react";
 import React from "react";
 import FeaturedMedia from "../../components/featured-media";
 import { container, mq } from "../../components/grid/index";

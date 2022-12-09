@@ -69,7 +69,7 @@ const CardContainer = styled.div`
   position: relative;
   display: flex;
   flex-wrap: wrap;
-  gap: 3rem 2rem;
+  gap: 2rem 2rem;
   cursor: pointer;
 `;
 
@@ -80,16 +80,7 @@ const Card = styled.div`
   margin: 0 auto;
   overflow: hidden;
   width: 100%;
-  ${mq.sm} {
-    max-width: 14rem;
-    border-radius: 2rem;
-  }
-  ${mq.lg} {
-    max-width: 19rem;
-  }
-  ${mq.xl} {
-    max-width: 15rem;
-  }
+  max-width: 16rem;
   img {
     cursor: pointer;
   }
@@ -108,25 +99,19 @@ const Copy = styled.div``;
 
 const ModalInfo = styled.div`
   position: relative;
-  ${mq.xs} {
-    width: 90vw;
-    min-height: 30rem;
-  }
-  ${mq.sm} {
-    width: 40rem;
-  }
-
-  max-width: 40rem;
+  width: 17rem;
+  max-width: 25rem;
 `;
 
 const ModalInfoWrappper = styled.div`
   width: 100%;
-  max-width: 47rem;
+  max-width: 28rem;
   h4 {
     text-align: center;
+    margin-top: 0.7rem;
   }
   & > div {
-    min-height: 35rem !important;
+    min-height: 10rem !important;
   }
   img {
     border-radius: initial !important;
