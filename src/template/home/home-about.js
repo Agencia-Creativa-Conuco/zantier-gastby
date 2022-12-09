@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import React from "react";
 import BackgroundImage from "gatsby-background-image";
-import { container, mq } from "../../components/grid/index";
+import { container } from "../../components/grid/index";
 import useFiles from "../../hooks/useFiles";
 import { InView } from "react-intersection-observer";
 import { animated, config, Spring } from "@react-spring/web";
@@ -18,95 +18,92 @@ const HomeAbout = () => {
     featuredImage: images.home.about,
   };
   return (
-    <Section fluid>
+    <Section>
       <Container>
-        <BImage
-          Tag="section"
+        <BackgroundImage
+          Tag="div"
           fluid={data.featuredImage?.childImageSharp?.fluid}
           id="section_3"
         >
-          <InView threshold={0.4}>
-            {({ ref, inView }) => (
-              <Spring
-                reset={inView}
-                reverse={!inView}
-                config={config.gentle}
-                from={{
-                  opacity: 0,
-                  transform: `translateY(3rem)`,
-                }}
-                to={{ opacity: 1, transform: "translateY(0)" }}
-              >
-                {(styles) => (
-                  <animated.div style={styles}>
-                    <CardContainer>
-                      <Card ref={ref}>
-                        <Spring
-                          delay={500}
-                          reset={inView}
-                          reverse={!inView}
-                          config={config.gentle}
-                          {...FadeUp}
-                        >
-                          {(styles) => (
-                            <animated.div style={styles}>
-                              <Logo>
-                                <FeaturedMedia
-                                  media={images.icons.tooth}
-                                  size="100%"
-                                />
-                              </Logo>
-                            </animated.div>
-                          )}
-                        </Spring>
+          <Content>
+            <InView threshold={0.4}>
+              {({ ref, inView }) => (
+                <Spring
+                  pause={!inView}
+                  config={config.gentle}
+                  from={{
+                    opacity: 0,
+                    transform: `translateY(3rem)`,
+                  }}
+                  to={{ opacity: 1, transform: "translateY(0)" }}
+                >
+                  {(styles) => (
+                    <animated.div style={styles}>
+                      <CardContainer>
+                        <Card ref={ref}>
+                          <Spring
+                            delay={500}
+                            pause={!inView}
+                            config={config.gentle}
+                            {...FadeUp}
+                          >
+                            {(styles) => (
+                              <animated.div style={styles}>
+                                <Logo>
+                                  <FeaturedMedia
+                                    media={images.icons.tooth}
+                                    size="100%"
+                                  />
+                                </Logo>
+                              </animated.div>
+                            )}
+                          </Spring>
 
-                        <Spring
-                          delay={600}
-                          reset={inView}
-                          reverse={!inView}
-                          config={config.gentle}
-                          {...FadeUp}
-                        >
-                          {(styles) => (
-                            <animated.div style={styles}>
-                              <Title>{data.title}</Title>
-                            </animated.div>
-                          )}
-                        </Spring>
-                        <Spring
-                          delay={700}
-                          reset={inView}
-                          reverse={!inView}
-                          config={config.gentle}
-                          {...FadeUp}
-                        >
-                          {(styles) => (
-                            <animated.div style={styles}>
-                              <Copy>{data.copy}</Copy>
-                            </animated.div>
-                          )}
-                        </Spring>
-                        <Spring
-                          delay={900}
-                          reset={inView}
-                          reverse={!inView}
-                          config={config.gentle}
-                          {...FadeUp}
-                        >
-                          {(styles) => (
-                            <animated.div style={styles}>
-                              <Deco />
-                            </animated.div>
-                          )}
-                        </Spring>
-                      </Card>
-                    </CardContainer>
-                  </animated.div>
-                )}
-              </Spring>
-            )}
-          </InView>
-        </BImage>
+                          <Spring
+                            delay={600}
+                            pause={!inView}
+                            config={config.gentle}
+                            {...FadeUp}
+                          >
+                            {(styles) => (
+                              <animated.div style={styles}>
+                                <Title>{data.title}</Title>
+                              </animated.div>
+                            )}
+                          </Spring>
+                          <Spring
+                            delay={700}
+                            pause={!inView}
+                            config={config.gentle}
+                            {...FadeUp}
+                          >
+                            {(styles) => (
+                              <animated.div style={styles}>
+                                <Copy>{data.copy}</Copy>
+                              </animated.div>
+                            )}
+                          </Spring>
+                          <Spring
+                            delay={900}
+                            pause={!inView}
+                            config={config.gentle}
+                            {...FadeUp}
+                          >
+                            {(styles) => (
+                              <animated.div style={styles}>
+                                <Deco />
+                              </animated.div>
+                            )}
+                          </Spring>
+                        </Card>
+                      </CardContainer>
+                    </animated.div>
+                  )}
+                </Spring>
+              )}
+            </InView>
+          </Content>
+        </BackgroundImage>
       </Container>
     </Section>
   );
@@ -116,31 +113,15 @@ export default HomeAbout;
 
 const Section = styled.section`
   background: #bc0e03;
-  ${container}
-  padding: 0;
 `;
 
 const Container = styled.div`
   position: relative;
-  width: 100%;
-  ${mq.xs} {
-    clip-path: ellipse(145% 100% at 50% 100%) !important;
-  }
-
-  ${mq.md} {
-    clip-path: ellipse(100% 100% at 50% 100%) !important;
-  }
-
-  ${mq.lg} {
-    clip-path: ellipse(85% 100% at 50% 100%) !important;
-  }
+  clip-path: ellipse(145% 100% at 50% 100%) !important;
 `;
 
-const BImage = styled(BackgroundImage)`
-  overflow: hidden;
-  background-size: cover;
-  background-repeat: no-repeat, repeat;
-  text-align: center;
+const Content = styled.div`
+  padding: 10rem 0;
 `;
 
 const CardContainer = styled.div`
@@ -150,26 +131,19 @@ const CardContainer = styled.div`
 const Card = styled.div`
   background-color: white;
   position: relative;
-
-  padding: 5rem 5rem 3rem;
-  margin: 20% auto;
-  position: relative;
+  padding: 2rem;
   border-radius: 2rem;
-  max-width: 36rem;
-  ${mq.md} {
-    margin-left: 0;
-  }
-  ${mq.lg} {
-    margin: 12% 0;
-  }
+  max-width: 25rem;
 `;
 
 const Logo = styled.div`
   position: absolute;
-  width: 20%;
+  width: 3.5rem;
+  height: 3.5rem;
+
   left: 0;
-  top: -8rem;
-  z-index: 89;
+  top: 0;
+  transform: translate(0, -100%);
 
   &::after {
     content: "";

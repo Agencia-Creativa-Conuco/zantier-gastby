@@ -1,24 +1,25 @@
-import { css } from '@emotion/react'
-import typography from './tipography'
-import normalize from './normalize'
-import slickcss from 'slick-carousel/slick/slick.css'
-import slickcssTheme from 'slick-carousel/slick/slick-theme.css'
+import { css } from "@emotion/react";
+import typography from "./tipography";
+import normalize from "./normalize";
+import slickcss from "slick-carousel/slick/slick.css";
+import slickcssTheme from "slick-carousel/slick/slick-theme.css";
+import { mq } from "../grid";
 
-import colors from './colors'
+import colors from "./colors";
 
 const auxiliarCSS = ({ settings }) => {
-//   // Get Gutenberg css url
-//   const apiURL = new URL(settings.url)
+  //   // Get Gutenberg css url
+  //   const apiURL = new URL(settings.url)
 
-//   const blockStyle =
-//     apiURL.origin + '/wp-includes/css/dist/block-library/style.min.css'
-//   // const blockTheme = apiURL.origin + "/wp-includes/css/dist/block-library/theme.min.css";
+  //   const blockStyle =
+  //     apiURL.origin + '/wp-includes/css/dist/block-library/style.min.css'
+  //   // const blockTheme = apiURL.origin + "/wp-includes/css/dist/block-library/theme.min.css";
 
   return css`
     ${slickcss}
     ${slickcssTheme}
-  `
-}
+  `;
+};
 
 const cssReset = css`
   html,
@@ -72,23 +73,24 @@ const cssReset = css`
 
   blockquote::before,
   blockquote::after {
-    content: '';
+    content: "";
   }
 
   a,
   path {
     transition: all 0.15s linear;
   }
-`
+`;
 
 const documentSetup = () => css`
   html {
-    font-size: 62.5%; /* 1rem = 10px */
-    box-sizing: border-box;
-    *,
-    *:before,
-    *:after {
-      box-sizing: inherit;
+    //font-size: 62.5%; /* 1rem = 10px */
+    font-size: calc(11px + 1vw);
+    ${mq.lg} {
+      font-size: calc(6.4px + 1vw);
+    }
+    ${mq.xl} {
+      font-size: calc(4.6px + 1vw);
     }
   }
 
@@ -96,10 +98,9 @@ const documentSetup = () => css`
     background: ${colors.bodyBg};
     box-sizing: border-box;
     color: ${colors.text_main};
-    font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-      'Helvetica Neue', Helvetica, sans-serif;
-    font-size: 1.6rem;
-    line-height: 1.5;
+    font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont,
+      "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 1rem;
     letter-spacing: -0.015em;
     text-align: left;
   }
@@ -116,7 +117,7 @@ const documentSetup = () => css`
   #site-content {
     overflow: hidden;
   }
-`
+`;
 
 const accessibilitySettings = css`
   @media (prefers-reduced-motion: reduce) {
@@ -125,7 +126,7 @@ const accessibilitySettings = css`
       transition-duration: 0s !important;
     }
   }
-`
+`;
 
 const elementBase = () => css`
   main {
@@ -211,7 +212,7 @@ const elementBase = () => css`
   a:focus {
     text-decoration: none;
   }
-`
+`;
 
 const listStyle = css`
   ul,
@@ -280,7 +281,7 @@ const listStyle = css`
   dd + dt {
     margin-top: 1.5rem;
   }
-`
+`;
 
 const quoteStyle = () => css`
   blockquote {
@@ -313,7 +314,7 @@ const quoteStyle = () => css`
   blockquote p:last-child {
     margin: 0;
   }
-`
+`;
 
 const codeStyle = () => css`
   code,
@@ -345,7 +346,7 @@ const codeStyle = () => css`
     background: transparent;
     padding: 0;
   }
-`
+`;
 
 const mediaStyle = () => css`
   figure {
@@ -385,7 +386,7 @@ const mediaStyle = () => css`
   .wp-caption-text a {
     color: inherit;
   }
-`
+`;
 
 const tableStyles = () => css`
   table {
@@ -432,7 +433,7 @@ const tableStyles = () => css`
   th {
     font-weight: 700;
   }
-`
+`;
 
 const globalStyle = (props) =>
   css([
@@ -441,13 +442,13 @@ const globalStyle = (props) =>
     normalize,
     documentSetup(),
     accessibilitySettings,
-    typography(),
+    typography,
     elementBase(),
     listStyle,
     quoteStyle(),
     codeStyle(),
     mediaStyle(),
     tableStyles(),
-  ])
+  ]);
 
-export default globalStyle
+export default globalStyle;

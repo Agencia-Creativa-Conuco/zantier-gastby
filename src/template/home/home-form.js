@@ -5,14 +5,22 @@ import { container, mq } from "../../components/grid/index";
 import { FadeUp } from "../../components/animation/animation";
 import { InView } from "react-intersection-observer";
 import { animated, config, Spring } from "@react-spring/web";
+import useFiles from "../../hooks/useFiles";
+import FeaturedMedia from "../../components/featured-media";
 
 const HomeForm = () => {
+  const images = useFiles();
+
+  const imagen = images.home.contacto;
+
   return (
     <Section>
       <InView threshold={0.3}>
         {({ ref, inView }) => (
           <Container ref={ref}>
-            <Deco />
+            <Deco>
+              <FeaturedMedia media={imagen} size="100%" />
+            </Deco>
             <Content>
               <Spring
                 reset={inView}
@@ -60,41 +68,53 @@ const Section = styled.section`
 
 const Container = styled.div`
   ${container}
-  z-index: 5;
   display: grid;
   background: white;
-  border-radius: 20rem 20rem 0 0;
-  margin-top: -15rem;
+  border-radius: 10rem 10rem 0 0;
+  margin-top: -10rem;
   justify-content: center;
   grid-template-columns: 100%;
   padding: 0;
-  gap: 7rem;
+  gap: 2rem;
   padding: 2rem;
   ${mq.lg} {
-    padding: 8rem;
-    grid-template-columns: 45% 50%;
+    padding: 3rem;
+
+    grid-template-columns: 1fr 1fr;
   }
 `;
 
 const Content = styled.div`
   color: white;
   align-self: center;
-`;
-
-const Deco = styled.div`
-  width: 25rem;
-  height: 25rem;
-  border-radius: 40% 40% 40% 0;
-  background-color: #dc4545;
-  margin: 5rem auto 0;
-  ${mq.lg} {
-    margin: 0 auto;
-
-    width: 40rem;
-    height: 45rem;
+  margin: 0 -2rem;
+  ${mq.md} {
+    margin: initial;
   }
 `;
 
-const Title = styled.h1`
+const Deco = styled.div`
+  img {
+    width: 25rem;
+    height: 25rem;
+    border-radius: 10rem 10rem 10rem 0;
+    background-color: #dc4545;
+    margin: 1rem auto 0;
+    margin-top: 0;
+    ${mq.lg} {
+      margin: 0 auto;
+
+      width: 40rem;
+      height: 45rem;
+    }
+  }
+`;
+
+const Title = styled.h2`
   text-align: center;
+  margin: 0;
+  text-transform: uppercase;
+  ${mq.lg} {
+    text-align: left;
+  }
 `;

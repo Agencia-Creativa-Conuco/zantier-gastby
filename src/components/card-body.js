@@ -6,6 +6,7 @@ import { mq } from "./grid";
 import useModal from "../hooks/useModal.js";
 import { FadeUp } from "./animation/animation";
 import FeaturedMedia from "./featured-media";
+import { h5 } from "./styles/tipography";
 
 const CardBody = ({ inView, item, styles }) => {
   const { openModal, ModalUI } = useModal();
@@ -13,14 +14,8 @@ const CardBody = ({ inView, item, styles }) => {
     <>
       <animated.div style={styles}>
         <CardContainer>
-          <Deco />
           <Media onClick={openModal}>
-            <Spring
-              // reset={inView}
-              reverse={!inView}
-              config={config.gentle}
-              {...FadeUp}
-            >
+            <Spring pause={!inView} config={config.gentle} {...FadeUp}>
               {(styles) => (
                 <animated.div style={styles}>
                   <FeaturedMedia
@@ -33,20 +28,14 @@ const CardBody = ({ inView, item, styles }) => {
             </Spring>
           </Media>
 
-          <Spring
-            // reset={inView}
-            reverse={!inView}
-            config={config.molasses}
-            {...FadeUp}
-          >
+          <Spring pause={!inView} config={config.molasses} {...FadeUp}>
             {(styles) => (
               <animated.div style={styles}>
                 <Card onClick={openModal}>
                   <Title>{item.title}</Title>
 
                   <Spring
-                    // reset={inView}
-                    reverse={!inView}
+                    pause={!inView}
                     delay={1000}
                     from={{
                       opacity: 0,
@@ -78,55 +67,53 @@ export default CardBody;
 const CardContainer = styled.div`
   position: relative;
   display: grid;
-  grid-template-rows: max-content;
-  grid-template-columns: auto;
+  grid-template-columns: 1fr;
   cursor: pointer;
+  flex: 1;
+  width: 15rem;
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    width: 60%;
+    padding-bottom: 60%;
+    height: 0;
+    background-color: white;
+    border-radius: 50%;
+    transform: translate(-50%, -0%) scale(1.2);
+    z-index: -15;
+  }
 `;
 
 const Media = styled.div`
-  position: relative;
-  max-width: 19rem;
+  width: 60%;
   margin: 0 auto;
-  width: 19rem;
-  z-index: 5;
-
-  padding: 2.5rem;
-`;
-
-const Deco = styled.div`
-  &::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: white;
-    border-radius: 100%;
-    max-width: 21rem;
-    max-height: 21rem;
-  }
+  margin-bottom: -1.5rem;
+  z-index: 1;
+  font-size: 0;
 `;
 
 const Card = styled.div`
   background-color: rgb(245 246 248);
-  margin: -5rem auto 0;
   z-index: 2;
-  padding: 3.5rem 4rem;
-  border-radius: 3.5rem;
+  padding: 2rem 2rem;
+  padding-top: 2.5rem;
+  border-radius: 2rem;
   ${mq.md} {
     max-width: 28rem;
   }
 `;
 
 const Title = styled.h3`
+  ${h5}
   color: #bc0e03;
   text-align: center;
+  margin: 0;
 `;
 
 const Specialty = styled.p`
-  padding: 0rem 0;
+  margin: 0;
   color: #838383;
   text-align: center;
 `;

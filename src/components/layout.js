@@ -4,6 +4,7 @@ import { Global } from "@emotion/react";
 import styled from "@emotion/styled";
 import globalStyles from "../components/styles/global-styles";
 import logo from "../images/icons/logo.png";
+import Header from "./header";
 const Layout = ({ children }) => {
   return (
     <>
@@ -27,6 +28,7 @@ const Layout = ({ children }) => {
       </Helmet>
 
       <Global styles={globalStyles} />
+      <Header/>
       <Main>{children}</Main>
     </>
   );

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { css, Global } from "@emotion/react";
+import {  Global } from "@emotion/react";
 import { CloseIcon } from "../components/icons";
 import colors from "../components/styles/colors";
 import { container, mq } from "../components/grid";
@@ -99,16 +99,16 @@ const ModalWrapper = styled.div`
 
 const CardModal = styled.div`
   ${container}
-  max-width: 69rem !important;
+  max-width: 28rem !important;
   background: #fff;
   margin: 0 auto;
-  margin-top: 15vh;
-  margin-bottom: 15vh;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
   animation: ${slideDown} 0.4s ease-out;
   flex: 1;
-  padding: 1rem 1rem 3rem;
+  padding: 1rem 1rem 1.5rem;
   ${mq.md} {
-    padding: 1.9rem 1.9rem 4rem;
+    /* padding: 1.9rem 1.9rem 4rem; */
   }
 `;
 
@@ -118,11 +118,11 @@ const Column = styled.div`
 `;
 
 const ModalHeader = styled.div`
-  width: 3rem;
-  height: 3rem;
+  width: 2rem;
+  height: 2rem;
   background: white;
   border-radius: 100%;
-  top: -5rem;
+  top: -3rem;
   padding: 0.5rem;
   position: absolute;
   right: 0;
@@ -143,15 +143,15 @@ const CloseButton = styled.button`
   &:hover {
     cursor: pointer;
     svg {
-      transform: scale(1.2);
+      transform: scale(1.1);
     }
   }
 
   svg {
     transition: transform 0.15s ease-in-out;
     fill: currentColor;
-    height: 1.3rem;
-    width: 1.3rem;
+    height: 1rem;
+    width: 1rem;
   }
 `;
 

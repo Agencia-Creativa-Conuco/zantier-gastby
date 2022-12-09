@@ -17,11 +17,11 @@ const HomeDescription = () => {
   const images = useFiles();
 
   const data = {
-    copy: "Síguenos en Instagram. Descubre todo lo que tenemos para ofrecer en nuestra clínica odontológica Zantier.",
+    title: "Síguenos en Instagram",
+    copy: "Descubre todo lo que tenemos para ofrecer en nuestra clínica odontológica Zantier.",
 
-    featuredImage: images.home.img,
-    otherCopy:
-      " Sé parte de nuestra comunidad",
+    featuredImage: images.home.redes,
+    otherCopy: " Sé parte de nuestra comunidad",
 
     cta: {
       title: "Conocer mas",
@@ -35,28 +35,20 @@ const HomeDescription = () => {
         {({ ref, inView }) => (
           <Container ref={ref}>
             <Media>
-              <Spring
-                reset={inView}
-                reverse={!inView}
-                config={{ duration: 100 }}
-                {...FadeIn}
-              >
+              <Spring pause={!inView} config={{ duration: 100 }} {...FadeIn}>
                 {(styles) => (
                   <animated.div style={styles}>
-                    <FeaturedMedia
-                      media={data.featuredImage}
-                      size="70%"
-                      sizeXL="54.25%"
-                    />
+                    <FeaturedMedia media={data.featuredImage} size="100%" />
                   </animated.div>
                 )}
               </Spring>
             </Media>
 
-            <Spring reset={inView} reverse={!inView} {...TextAnimationRight}>
+            <Spring pause={!inView} {...TextAnimationRight}>
               {(styles) => (
                 <animated.div style={styles}>
                   <Card>
+                    <Title>{data.title}</Title>
                     <Copy>{data.copy}</Copy>
                   </Card>
                 </animated.div>
@@ -64,12 +56,7 @@ const HomeDescription = () => {
             </Spring>
 
             <Content>
-              <Spring
-                reset={inView}
-                reverse={!inView}
-                config={config.molasses}
-                {...FadeUp}
-              >
+              <Spring pause={!inView} config={config.molasses} {...FadeUp}>
                 {(styles) => (
                   <animated.div style={styles}>
                     <p>{data.otherCopy}</p>
@@ -77,8 +64,7 @@ const HomeDescription = () => {
                 )}
               </Spring>
               <Spring
-                reset={inView}
-                reverse={!inView}
+                pause={!inView}
                 config={config.molasses}
                 delay={200}
                 {...FadeUp}
@@ -111,19 +97,12 @@ export default HomeDescription;
 
 const Section = styled.section`
   background: #bc0e03;
-
-  padding-bottom: 6.6rem;
-  padding-top: 6.6rem;
-
-  ${mq.md} {
-    padding-bottom: 9.5rem;
-    padding-top: 9.5rem;
-  }
+  padding-bottom: 5rem;
+  padding-top: 5rem;
 `;
 
 const Container = styled.div`
   ${container}
-  padding-top:10rem;
   display: grid;
   grid-template-columns: 100%;
   grid-template-areas:
@@ -153,13 +132,7 @@ const Media = styled.div`
     z-index: 2;
 
     ${mq.md} {
-      max-width: 40rem;
-      border-radius: 0 2rem 2rem 0%;
-    }
-
-    ${mq.lg} {
-      max-width: 40rem;
-      border-radius: 40% 0 40% 40%;
+      border-radius: 50% 0 50% 50%;
     }
   }
 `;
@@ -167,10 +140,12 @@ const Media = styled.div`
 const Card = styled.div`
   position: relative;
   grid-area: col_1;
-  padding: 3rem;
+  padding: 2rem 1.5rem;
+  ${mq.md} {
+    text-align: right;
+  }
   ${mq.lg} {
-    padding: 6rem 5rem;
-    max-height: 70%;
+    padding: 4rem 1.5rem;
   }
 
   &::before {
@@ -184,25 +159,29 @@ const Card = styled.div`
     border-radius: 0rem 0 2rem 2rem;
     animation: ${(props) => props.animate} 1s
       cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-
+    z-index: -1;
     ${mq.md} {
-      height: 109.5%;
-      width: 135%;
+      width: 150%;
       border-radius: 2rem 0 0 2rem;
-    }
-    ${mq.lg} {
-      height: 100%;
     }
   }
 `;
 
+const Title = styled.h2`
+  margin-top: 0;
+  text-transform: uppercase;
+`;
+
 const Copy = styled.p`
-  padding: 0rem 0;
   color: #bc0e03;
   position: relative;
+  margin-bottom: 0;
   z-index: 2;
   animation: ${(props) => props.animate} 2.5s
     cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  ${mq.md} {
+    text-align: right;
+  }
 `;
 
 const Content = styled.div`

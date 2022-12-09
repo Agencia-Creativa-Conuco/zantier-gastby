@@ -12,45 +12,38 @@ const CardTestimonials = ({ item }) => {
   const { openModal, ModalUI } = useModalPolaroid();
   return (
     <>
-    <CardContainer>
-
-      <InView threshold={0.3}>
-        {({ ref, inView }) => (
-          <Card ref={ref}>
-            <Spring
-              reset={inView}
-              reverse={!inView}
-              config={config.molasses}
-              {...fadeTop}
-            >
-              {(styles) => (
-                <animated.div style={styles}>
-                  <FeaturedMedia
-                    media={item.featuredImage}
-                    size="70.25%"
-                    onClick={openModal}
-                  />
-                </animated.div>
-              )}
-            </Spring>
-            <Spring
-              reset={inView}
-              reverse={!inView}
-              delay={700}
-              config={config.molasses}
-              {...FadeUp}
-            >
-              {(styles) => (
-                <animated.div style={styles}>
-                  <Content>
-                    <Copy>{item.copy}</Copy>
-                  </Content>
-                </animated.div>
-              )}
-            </Spring>
-          </Card>
-        )}
-      </InView>
+      <CardContainer>
+        <InView threshold={0.3}>
+          {({ ref, inView }) => (
+            <Card ref={ref}>
+              <Spring pause={!inView} config={config.molasses} {...fadeTop}>
+                {(styles) => (
+                  <animated.div style={styles}>
+                    <FeaturedMedia
+                      media={item.featuredImage}
+                      size="70.25%"
+                      onClick={openModal}
+                    />
+                  </animated.div>
+                )}
+              </Spring>
+              <Spring
+                pause={!inView}
+                delay={700}
+                config={config.molasses}
+                {...FadeUp}
+              >
+                {(styles) => (
+                  <animated.div style={styles}>
+                    <Content>
+                      <Copy>{item.copy}</Copy>
+                    </Content>
+                  </animated.div>
+                )}
+              </Spring>
+            </Card>
+          )}
+        </InView>
       </CardContainer>
 
       <ModalUI>
@@ -74,66 +67,51 @@ export default CardTestimonials;
 
 const CardContainer = styled.div`
   position: relative;
-  display: grid;
-  grid-template-rows: max-content;
-  grid-template-columns: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem 2rem;
   cursor: pointer;
 `;
 
-
 const Card = styled.div`
-  border-radius: 6.5rem;
+  border-radius: 3rem;
   display: grid !important;
   background-color: white;
   margin: 0 auto;
   overflow: hidden;
-  width: 25rem;
-  ${mq.sm} {
-    width: 30rem;
-  }
+  width: 100%;
+  max-width: 16rem;
   img {
     cursor: pointer;
   }
 `;
 
 const Content = styled.div`
-  padding: 2rem 5rem;
+  padding: 2rem;
+  padding-bottom: 3rem;
   position: relative;
   gap: 2rem;
-
-  &::before {
-    content: "";
-    position: absolute;
-    left: 1rem;
-    width: 3rem;
-    padding-bottom: 3rem;
-    border-radius: 100%;
-    background-color: #bc0e03;
+  ${mq.sm} {
+    padding: 1.5rem 1rem;
   }
 `;
 const Copy = styled.div``;
 
 const ModalInfo = styled.div`
   position: relative;
-  ${mq.xs} {
-    width: 90vw;
-    min-height: 30rem;
-  }
-  ${mq.sm} {
-    width: 40rem;
-  }
-
-  max-width: 40rem;
+  width: 17rem;
+  max-width: 25rem;
 `;
 
 const ModalInfoWrappper = styled.div`
   width: 100%;
-  max-width: 47rem;
+  max-width: 28rem;
   h4 {
     text-align: center;
+    margin-top: 0.7rem;
   }
   & > div {
-    min-height: 35rem !important;
+    min-height: 10rem !important;
   }
   img {
     border-radius: initial !important;

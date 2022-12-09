@@ -28,10 +28,11 @@ const CardInfo = ({ item }) => {
 export default CardInfo;
 
 const Wrapper = styled.div`
-  ${container};
+  /* ${container}; */
   display: grid;
   grid-template-columns: 100%;
   justify-items: center;
+  gap: 1rem;
 
   ${mq.lg} {
     grid-template-columns: ${(props) => props.value};
@@ -42,32 +43,35 @@ const Wrapper = styled.div`
 `;
 
 const Content = styled.div`
-  padding: 0 1.5rem;
+  padding: 0;
 `;
 
 const Title = styled.h2`
   text-align: center;
+  margin-top: 0;
 `;
 
 const Specialty = styled.h5`
   padding: 0rem 0;
   color: #838383;
   text-align: center;
-  margin-bottom: 3rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
 `;
 
 const Copy = styled.p`
   margin: 0 auto;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
   color: #838383;
+  font-size: 0.9rem;
 `;
 
 const Media = styled.div`
   width: 100%;
   align-self: center;
-  margin: 2rem 0;
+  margin: 0;
   height: fit-content;
-  max-width: 22rem;
+  max-width: 10rem;
 `;
 
 const Contact = styled.div`
