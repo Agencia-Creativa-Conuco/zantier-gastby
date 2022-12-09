@@ -22,7 +22,7 @@ const HomeCover = () => {
   return (
     <InView threshold={0.4}>
       {({ ref, inView }) => (
-        <Section fluid>
+        <Section fluid id="inicio">
           <Container fluid>
             <Content>
               <Spring pause={!inView} config={config.molasses} {...FadeUp}>
