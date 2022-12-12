@@ -7,6 +7,9 @@ import useModalPolaroid from "../hooks/useModalPolaroid";
 import FeaturedMedia from "./featured-media";
 import { mq } from "./grid";
 import ReactCompareImage from "react-compare-image";
+import Cta from "./cta";
+import ctas from "./styles/cta";
+import colors from "./styles/colors";
 
 const CardTestimonials = ({ item }) => {
   const { openModal, ModalUI } = useModalPolaroid();
@@ -15,15 +18,11 @@ const CardTestimonials = ({ item }) => {
       <CardContainer>
         <InView threshold={0.3}>
           {({ ref, inView }) => (
-            <Card ref={ref}>
+            <Card ref={ref} onClick={openModal}>
               <Spring pause={!inView} config={config.molasses} {...fadeTop}>
                 {(styles) => (
                   <animated.div style={styles}>
-                    <FeaturedMedia
-                      media={item.featuredImage}
-                      size="70.25%"
-                      onClick={openModal}
-                    />
+                    <FeaturedMedia media={item.featuredImage} size="100%" />
                   </animated.div>
                 )}
               </Spring>
@@ -37,6 +36,7 @@ const CardTestimonials = ({ item }) => {
                   <animated.div style={styles}>
                     <Content>
                       <Copy>{item.copy}</Copy>
+                      <Button>Ver antes y después</Button>
                     </Content>
                   </animated.div>
                 )}
@@ -91,11 +91,27 @@ const Content = styled.div`
   padding-bottom: 3rem;
   position: relative;
   gap: 2rem;
+  text-align: center;
   ${mq.sm} {
     padding: 1.5rem 1rem;
   }
 `;
-const Copy = styled.div``;
+const Copy = styled.div`
+  text-align: left;
+`;
+
+const Button = styled.button`
+  display: inline-block;
+  color: ${colors.primary.base};
+  cursor: pointer;
+  background-color: initial;
+  border-radius: initial;
+  border: initial;
+  outline: initial;
+  padding: initial;
+  margin: initial;
+  margin-top: 1rem;
+`;
 
 const ModalInfo = styled.div`
   position: relative;

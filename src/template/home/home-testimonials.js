@@ -9,29 +9,37 @@ const HomeTestimonials = () => {
 
   const data = [
     {
-      featuredImage: images.home.smile_1,
-      copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.  ",
+      featuredImage: images.home.caso_1_portada,
+      copy: "Diseño de sonrisa y blanqueamiento.",
       images: {
-        before: images.sonrisas.smile_1,
-        after: images.sonrisas.smile_2,
+        before: images.home.caso_1_b,
+        after: images.home.caso_1_a,
       },
     },
     {
-      featuredImage: images.home.smile_2,
-      copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ",
+      featuredImage: images.home.caso_4_portada,
+      copy: "Paciente presentaba desgaste dental y manchas intrínsicas por consumo de tabaco prolongado, se realizó un diseño de sonrisa con carillas en porcelanas hechas en Brasil.",
       images: {
-        before: images.sonrisas.smile_1,
-        after: images.sonrisas.smile_2,
+        before: images.home.caso_4_b,
+        after: images.home.caso_4_a,
       },
     },
     {
-      featuredImage: images.home.smile_3,
-      copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod ",
+      featuredImage: images.home.caso_5_portada,
+      copy: "Diseño de sonrisa con carillas en resina compuesta.",
       images: {
-        before: images.home.smile_1,
-        after: images.home.smile_2,
+        before: images.home.caso_5_b,
+        after: images.home.caso_5_a,
       },
     },
+    // {
+    //   featuredImage: images.home.caso_3_portada,
+    //   copy: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod ",
+    //   images: {
+    //     before: images.home.caso_3_b,
+    //     after: images.home.caso_3_a,
+    //   },
+    // },
   ];
 
   return (
@@ -70,6 +78,7 @@ const Body = styled.div`
   position: relative;
   justify-content: center;
   flex-wrap: wrap;
+  align-items: baseline;
 
   img {
     border-radius: 0 0 5rem 5rem;
