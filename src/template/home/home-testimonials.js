@@ -48,11 +48,7 @@ const HomeTestimonials = () => {
         <Title>Before & After</Title>
         <Body>
           {data.map((item, index) => {
-            return (
-              <>
-                <CardTestimonials item={item} key={index} />
-              </>
-            );
+            return <CardTestimonials item={item} key={index} />;
           })}
         </Body>
       </Container>

@@ -22,7 +22,7 @@ const CardTestimonials = ({ item }) => {
               <Spring pause={!inView} config={config.molasses} {...fadeTop}>
                 {(styles) => (
                   <animated.div style={styles}>
-                    <FeaturedMedia media={item.featuredImage} size="100%" />
+                    <FeaturedMedia  media={item.featuredImage} size="100%" />
                   </animated.div>
                 )}
               </Spring>

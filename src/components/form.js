@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 import { mq } from "./grid/index";
 import HubspotForm from "react-hubspot-form";
 import Loading from "./loading";
 import scrollTo from "gatsby-plugin-smoothscroll";
+import { useInView } from "react-intersection-observer";
 
 const Form = ({
   formId,
@@ -19,6 +20,7 @@ const Form = ({
   const [submited, setSubmited] = useState(false);
   const [active, setActive] = useState(0);
   const [displayedForms, setDisplayedForms] = useState([]);
+  const [hsFormLoaded, setHsFormLoaded] = useState(false);
 
   const forms = formIds.length ? formIds : [formId];
 
@@ -26,6 +28,7 @@ const Form = ({
 
   const manageFormSubmit = () => {
     // const element = document.getElementById(id);
+    console.log("entra");
 
     if (active < forms.length - 1) {
       setActive(active + 1);
@@ -36,41 +39,54 @@ const Form = ({
     scrollTo(`#${id}`);
   };
 
-  return (
-    <FormSwitcher id={id}>
-      {forms.length && !submited ? (
-        <>
-          {forms.map((form, index) => {
-            const isVisible = active === index;
+  const [ref, inView] = useInView({ initialInView: false });
+  useEffect(() => {
+    if (inView) {
+      setTimeout(() => {
+        setHsFormLoaded(true);
+      }, 5000);
+    }
+  }, [hsFormLoaded, setHsFormLoaded, inView]);
 
-            return isVisible ? (
-              <FormContainer
-                key={index}
-                id={index}
-                {...{ cardStyle, ...props }}
-                hidden={!isVisible}
-              >
-                <HubspotForm
-                  portalId={idCuentaHubspot}
-                  formId={form}
-                  onReady={() => {
-                    setDisplayedForms(displayedForms.concat(active));
-                  }}
-                  onFormSubmitted={() => {
-                    manageFormSubmit();
-                  }}
-                  inlineMessage={submitedText}
-                  loading={<Loading height={loadingHeight} />}
-                />
-              </FormContainer>
-            ) : null;
-          })}
-        </>
+  return (
+    <FormSwitcher id={id} ref={ref}>
+      {hsFormLoaded ? (
+        forms.length && !submited ? (
+          <>
+            {forms.map((form, index) => {
+              const isVisible = active === index;
+
+              return isVisible ? (
+                <FormContainer
+                  key={index}
+                  id={index}
+                  {...{ cardStyle, ...props }}
+                  hidden={!isVisible}
+                >
+                  <HubspotForm
+                    portalId={idCuentaHubspot}
+                    formId={form}
+                    onReady={() => {
+                      setDisplayedForms(displayedForms.concat(active));
+                    }}
+                    onFormSubmitted={() => {
+                      manageFormSubmit();
+                    }}
+                    inlineMessage={submitedText}
+                    loading={<Loading height={loadingHeight} />}
+                  />
+                </FormContainer>
+              ) : null;
+            })}
+          </>
+        ) : (
+          <Message id="form">
+            <h3>{submitedTitle}</h3>
+            <p>{submitedText}</p>
+          </Message>
+        )
       ) : (
-        <Message id="form">
-          <h3>{submitedTitle}</h3>
-          <p>{submitedText}</p>
-        </Message>
+        <h1>Loanding</h1>
       )}
     </FormSwitcher>
   );
