@@ -7,8 +7,6 @@ import useModalPolaroid from "../hooks/useModalPolaroid";
 import FeaturedMedia from "./featured-media";
 import { mq } from "./grid";
 import ReactCompareImage from "react-compare-image";
-import Cta from "./cta";
-import ctas from "./styles/cta";
 import colors from "./styles/colors";
 
 const CardTestimonials = ({ item }) => {

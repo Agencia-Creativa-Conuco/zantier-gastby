@@ -1,4 +1,4 @@
-import { useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql } from "gatsby";
 
 const useFiles = () => {
   //Obtiene las imágenes localmente desde la ruta "images/home"
@@ -12,14 +12,19 @@ const useFiles = () => {
           relativeDirectory
           sourceInstanceName
           childImageSharp {
-            fluid(maxWidth: 1200, quality:100) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
+            gatsbyImageData(
+              width: 1920
+              placeholder: BLURRED
+              formats: [AUTO, WEBP, AVIF]
+            )
+            fluid(maxWidth: 1200, quality: 100) {
+              ...GatsbyImageSharpFluid_withWebp
             }
           }
         }
       }
     }
-  `)
+  `);
 
   return allFile.nodes.reduce((obj, item) => {
     if (obj[item.relativeDirectory]) {
@@ -27,15 +32,15 @@ const useFiles = () => {
         [item.relativeDirectory]: Object.assign(obj[item.relativeDirectory], {
           [item.name]: item,
         }),
-      })
+      });
     }
 
     return Object.assign(obj, {
       [item.relativeDirectory]: {
         [item.name]: item,
       },
-    })
-  }, {})
-}
+    });
+  }, {});
+};
 
-export default useFiles
+export default useFiles;

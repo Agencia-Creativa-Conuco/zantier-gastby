@@ -23,6 +23,7 @@ const CardBody = ({ inView, item, styles }) => {
                     media={item.featuredImage}
                     size="100%"
                     rounded
+                    bgColor
                   />
                 </animated.div>
               )}
