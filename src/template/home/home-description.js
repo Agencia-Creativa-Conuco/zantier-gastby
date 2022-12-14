@@ -7,11 +7,10 @@ import useFiles from "../../hooks/useFiles";
 import Cta from "../../components/cta";
 import {
   FadeIn,
-  FadeUp,
   TextAnimationRight,
 } from "../../components/animation/animation";
 import { InView } from "react-intersection-observer";
-import { animated, config, Spring } from "@react-spring/web";
+import { animated, Spring } from "@react-spring/web";
 import colors from "../../components/styles/colors";
 
 const HomeDescription = () => {
@@ -156,17 +155,17 @@ const Copy = styled.p`
   }
 `;
 
-const Content = styled.div`
-  grid-area: col_3;
+// const Content = styled.div`
+//   grid-area: col_3;
 
-  color: white;
-  margin-top: 2.5rem;
+//   color: white;
+//   margin-top: 2.5rem;
 
-  ${mq.lg} {
-    margin-top: -3.5rem;
-  }
-  p {
-    animation: ${(props) => props.animate} 2.5s
-      cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  }
-`;
+//   ${mq.lg} {
+//     margin-top: -3.5rem;
+//   }
+//   p {
+//     animation: ${(props) => props.animate} 2.5s
+//       cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+//   }
+// `;
