@@ -16,6 +16,7 @@ const useFiles = () => {
               width: 1920
               placeholder: BLURRED
               formats: [AUTO, WEBP, AVIF]
+              breakpoints: [540, 720, 960, 1140, 1920]
             )
             fluid(maxWidth: 1200, quality: 100) {
               ...GatsbyImageSharpFluid_withWebp

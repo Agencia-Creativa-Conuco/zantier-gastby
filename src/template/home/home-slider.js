@@ -73,6 +73,7 @@ const HomeSlider = () => {
                                 poster={
                                   item?.portada?.childImageSharp?.fluid?.srcWebp
                                 }
+                                preload="none"
                               >
                                 <source src={item.video} type="video/webm" />
                               </Video>
