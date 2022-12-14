@@ -13,10 +13,10 @@ const useFiles = () => {
           sourceInstanceName
           childImageSharp {
             gatsbyImageData(
-              width: 1920
+              quality: 50
               placeholder: BLURRED
               formats: [AUTO, WEBP, AVIF]
-              breakpoints: [540, 720, 960, 1140, 1920]
+              breakpoints: [750, 1080, 1366, 1920]
             )
             fluid(maxWidth: 1200, quality: 100) {
               ...GatsbyImageSharpFluid_withWebp
