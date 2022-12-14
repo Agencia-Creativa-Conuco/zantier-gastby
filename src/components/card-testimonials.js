@@ -6,7 +6,6 @@ import { animated, config, Spring } from "@react-spring/web";
 import useModalPolaroid from "../hooks/useModalPolaroid";
 import FeaturedMedia from "./featured-media";
 import { mq } from "./grid";
-import ReactCompareImage from "react-compare-image";
 import colors from "./styles/colors";
 import { ReactCompareSlider } from "react-compare-slider";
 
