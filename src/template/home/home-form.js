@@ -7,6 +7,7 @@ import { InView } from "react-intersection-observer";
 import { animated, config, Spring } from "@react-spring/web";
 import useFiles from "../../hooks/useFiles";
 import FeaturedMedia from "../../components/featured-media";
+import colors from "../../components/styles/colors";
 
 const HomeForm = () => {
   const images = useFiles();
@@ -14,7 +15,7 @@ const HomeForm = () => {
   const imagen = images.home.contacto;
 
   return (
-    <Section>
+    <Section id="contacto">
       <InView threshold={0.3}>
         {({ ref, inView }) => (
           <Container ref={ref}>
@@ -98,7 +99,7 @@ const Deco = styled.div`
     width: 25rem;
     height: 25rem;
     border-radius: 10rem 10rem 10rem 0;
-    background-color: #dc4545;
+    background-color: ${colors.red.base};
     margin: 1rem auto 0;
     margin-top: 0;
     ${mq.lg} {

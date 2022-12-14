@@ -6,6 +6,8 @@ import BackgroundImage from "gatsby-background-image";
 import { FadeUp } from "../../components/animation/animation";
 import { InView } from "react-intersection-observer";
 import { animated, Trail, config, Spring } from "@react-spring/web";
+import colors from "../../components/styles/colors";
+import Cta from "../../components/cta";
 
 const HomeContact = () => {
   const images = useFiles();
@@ -64,7 +66,7 @@ const HomeContact = () => {
                         {(styles) => (
                           <animated.div style={styles}>
                             <Title>{data.title} </Title>
-                            <p>{data.copy}</p>
+                            <Copy>{data.copy}</Copy>
                           </animated.div>
                         )}
                       </Spring>
@@ -79,18 +81,21 @@ const HomeContact = () => {
                             <animated.div style={styles} key={index}>
                               <Content>
                                 <Deco />
-                                <Copy>
+                                <Item>
                                   <span>{item.title}: </span>
 
                                   <a href={item.href} target="_blanck">
                                     {item.copy}
                                   </a>
-                                </Copy>
+                                </Item>
                               </Content>
                             </animated.div>
                           );
                         }}
                       </Trail>
+                      <ButtonBox>
+                        <Cta to="#contacto">Contáctanos</Cta>
+                      </ButtonBox>
                     </ContentWrapper>
                   </Container>
                 </Section>
@@ -120,7 +125,7 @@ const Container = styled.div`
   grid-template-columns: 100%;
   justify-content: end;
   text-align: initial;
-  color: #bc0e03;
+  color: ${colors.red.base};
 
   ${mq.md} {
     grid-template-columns: 70%;
@@ -154,14 +159,14 @@ const Content = styled.div`
 
 const Title = styled.h2`
   margin-top: 0;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   text-transform: uppercase;
 `;
 
-const Copy = styled.p`
+const Item = styled.p`
   margin-bottom: 0;
   align-self: center;
-  color: #bc0e03;
+  color: ${colors.red.base};
   a {
     text-decoration: none;
     color: inherit;
@@ -178,5 +183,14 @@ const Deco = styled.div`
   width: 1.5rem;
   height: 1.5rem;
   border-radius: 100%;
-  background-color: #bc0e03;
+  background-color: ${colors.red.base};
+`;
+
+const Copy = styled.p`
+  color: ${colors.gray.base};
+`;
+
+const ButtonBox = styled.div`
+  margin-top: 1rem;
+  text-align: center;
 `;

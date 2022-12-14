@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import { container } from "../../components/grid/index";
 import useFiles from "../../hooks/useFiles";
 import CardTestimonials from "../../components/card-testimonials";
+import colors from "../../components/styles/colors";
 
 const HomeTestimonials = () => {
   const images = useFiles();
@@ -43,8 +44,8 @@ const HomeTestimonials = () => {
   ];
 
   return (
-    <Section fluid>
-      <Container>
+    <Section>
+      <Container fluid>
         <Title>Before & After</Title>
         <Body>
           {data.map((item, index) => {
@@ -60,7 +61,7 @@ export default HomeTestimonials;
 
 const Section = styled.section`
   padding-bottom: 18rem;
-  background-color: #bc0e03;
+  background-color: ${colors.red.base};
 `;
 
 const Container = styled.div`

@@ -17,14 +17,14 @@ const HomeTeam = () => {
       <p>Es experto en rehabilitación estética y rehabilitación oral con implantes, co- propietario de @zantier.odontologia y docente.</p>
       <p>“De mi carrera me gusta verla en diferentes aspectos, la odontología me da la oportunidad de intervenir en algo tan especial como una sonrisa con la intención de mejorarla, pero al mismo tiempo me ha dado el chance de compartir mis conocimientos con colegas de cualquier parte del mundo y a la vez construir juntos a todo el equipo lo que es zantier. Supongo que gran parte de eso que me encanta es esa versatilidad de ejercer mi profesión en diferentes áreas”.</p>
       `,
-      featuredImage: images.home.person_1,
+      featuredImage: images.doctores.Dr_Angel,
       contact: "",
     },
     {
       title: "Dra Diana N. Estévez Jiménez",
       specialty: " Ortodoncia",
       copy: `Doctora en odontología  en la Pontificia Universidad Catolica Madre y Maestra, especialista en Ortodoncia de  Universidad Nacional Autónoma de México (UNAM) 2021. Posee un Diplomado en Habilitación Didáctica para Docencia Universitaria (UAPA).`,
-      featuredImage: images.home.person_2,
+      featuredImage: images.doctores.Dra_Diana,
       contact: "dradianaestevezj@gmail.com",
     },
     {
@@ -63,7 +63,7 @@ const HomeTeam = () => {
       copy: `
       Dra. Rossy Cabrera, especializada en Ortodoncia y Ortopedia Maxilar. Su pasión y dedicación quedan claros en su trato a cada paciente. Le apasiona aprender algo nuevo cada día. Su mayor motivación es poder perfeccionar sus técnicas y ayudar a los demás a través de su trabajo, a que puedan sentirse más confiados y lograr que sus clientes tengan una sonrisa tan feliz como ellos
       `,
-      featuredImage: images.home.person_4,
+      featuredImage: images.doctores.Dra_Rossy,
       contact: "Dra.rossycabrera@gmail.com",
     },
     {
