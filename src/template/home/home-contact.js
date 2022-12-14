@@ -31,6 +31,7 @@ const HomeContact = () => {
         copy: "info@zantier.com.do",
         href: "mailto:info@isa.edu.do",
       },
+      {},
     ],
 
     featuredImage: images.home.contact,
@@ -73,29 +74,32 @@ const HomeContact = () => {
                       <Trail
                         items={data.list}
                         pause={!inView}
-                        config={config.molasses}
+                        config={config.slow}
                         {...FadeUp}
                       >
                         {(item, index) => (styles) => {
                           return (
                             <animated.div style={styles} key={index}>
-                              <Content>
-                                <Deco />
-                                <Item>
-                                  <span>{item.title}: </span>
+                              {data.list.length - 1 !== index ? (
+                                <Content>
+                                  <Deco />
+                                  <Item>
+                                    <span>{item.title}: </span>
 
-                                  <a href={item.href} target="_blanck">
-                                    {item.copy}
-                                  </a>
-                                </Item>
-                              </Content>
+                                    <a href={item.href} target="_blanck">
+                                      {item.copy}
+                                    </a>
+                                  </Item>
+                                </Content>
+                              ) : (
+                                <ButtonBox>
+                                  <Cta to="#contacto">Contáctanos</Cta>
+                                </ButtonBox>
+                              )}
                             </animated.div>
                           );
                         }}
                       </Trail>
-                      <ButtonBox>
-                        <Cta to="#contacto">Contáctanos</Cta>
-                      </ButtonBox>
                     </ContentWrapper>
                   </Container>
                 </Section>
