@@ -7,6 +7,8 @@ import { InView } from "react-intersection-observer";
 import { animated, config, Spring } from "@react-spring/web";
 import { FadeUp } from "../../components/animation/animation";
 import FeaturedMedia from "../../components/featured-media";
+import colors from "../../components/styles/colors";
+import Cta from "../../components/cta";
 
 const HomeAbout = () => {
   const images = useFiles();
@@ -84,6 +86,18 @@ const HomeAbout = () => {
                             )}
                           </Spring>
                           <Spring
+                            delay={700}
+                            pause={!inView}
+                            config={config.gentle}
+                            {...FadeUp}
+                          >
+                            {(styles) => (
+                              <animated.div style={styles}>
+                                <Cta to="#contacto">Contáctanos</Cta>
+                              </animated.div>
+                            )}
+                          </Spring>
+                          <Spring
                             delay={900}
                             pause={!inView}
                             config={config.gentle}
@@ -112,7 +126,7 @@ const HomeAbout = () => {
 export default HomeAbout;
 
 const Section = styled.section`
-  background: #bc0e03;
+  background: ${colors.red.base};
 `;
 
 const Container = styled.div`
@@ -153,42 +167,46 @@ const Logo = styled.div`
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    background: #bc0e03;
+    background: ${colors.red.base};
     border-radius: 100%;
     max-width: 150%;
     max-height: 150%;
-    box-shadow: 0px 10px 59px -12px rgba(255, 0, 0, 0.75);
+    box-shadow: 0px 10px 59px -12px ${colors.red.light};
     z-index: -1;
   }
 `;
 
-const Title = styled.h3``;
+const Title = styled.h3`
+  text-transform: uppercase;
+`;
 
 const Copy = styled.p`
-  padding: 0 0 10rem;
-  color: #bc0e03;
+  color: ${colors.gray.base};
   animation: ${(props) => props.animate} 1.8s ease-in both;
 `;
 const Deco = styled.div`
-  position: absolute;
+  position: relative;
+  margin-top: 4rem;
+  height: 1.5rem;
   animation: ${(props) => props.animate} 2s ease-in both;
 
   &::before {
     content: "";
     position: absolute;
-    background: #bc0e03;
-    width: 9rem;
-    padding-bottom: 2.7rem;
+    background: ${colors.red.base};
+    width: 5rem;
+    padding-bottom: 1.5rem;
     bottom: 0;
     border-radius: 2.8rem;
+    right: 0;
   }
   &::after {
     content: "";
     position: absolute;
-    background: #bc0e03;
-    width: 2.9rem;
-    padding-bottom: 2.9rem;
-    left: 10rem;
+    background: ${colors.red.base};
+    width: 1.5rem;
+    padding-bottom: 1.5rem;
+    right: 5.5rem;
     bottom: 0;
     border-radius: 100%;
   }

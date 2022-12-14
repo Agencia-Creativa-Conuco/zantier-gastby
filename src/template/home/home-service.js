@@ -9,10 +9,12 @@ import {
 } from "../../components/animation/animation";
 import { InView } from "react-intersection-observer";
 import { Spring, animated, config } from "@react-spring/web";
+import colors from "../../components/styles/colors";
 
 const HomeService = () => {
   const images = useFiles();
-  const sectionTitle = "LA FECILIDAD VIENE DE SONRISA EN SONRISA";
+  const sectionTitle =
+    "La felicidad se transmite de persona a persona a través de sonrisas";
   const data = [
     {
       title: "Diagnóstico",
@@ -40,7 +42,7 @@ const HomeService = () => {
   ];
 
   return (
-    <Section fluid>
+    <Section fluid id="infografia">
       <Logo>
         <FeaturedMedia media={images.icons.smile} sizeMd="100%" />
       </Logo>
@@ -62,7 +64,7 @@ const HomeService = () => {
               >
                 {(styles) => (
                   <animated.div style={styles}>
-                    <div id="infografia">
+                    <div>
                       <SectionTitle ref={ref}>{sectionTitle}</SectionTitle>
                     </div>
                   </animated.div>
@@ -161,7 +163,7 @@ const Section = styled.section`
 
 const Wrapper = styled.div`
   position: relative;
-  background: #bc0e03;
+  background: ${colors.red.base};
   position: relative;
   padding-top: 5rem;
   padding-bottom: 3rem;
@@ -195,11 +197,11 @@ const Logo = styled.div`
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    background: #bc0e03;
+    background: ${colors.red.base};
     border-radius: 100%;
     max-width: 150%;
     max-height: 150%;
-    box-shadow: 0px -6px 42px -12px rgba(255, 0, 0, 0.75);
+    box-shadow: 0px -6px 42px -12px ${colors.red.light};
     z-index: -1;
   }
 `;
@@ -208,6 +210,10 @@ const SectionTitle = styled.h2`
   text-align: center;
   z-index: 5;
   position: relative;
+  text-transform: uppercase;
+  max-width: 39rem;
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 3rem;
   ${mq.lg} {
     margin-bottom: 5rem;

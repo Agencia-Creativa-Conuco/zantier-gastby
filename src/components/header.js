@@ -27,28 +27,10 @@ const HeaderUI = styled.header`
 `;
 
 const Logo = styled.div`
-  position: fixed;
-  left: 1rem;
+  position: absolute;
+  left: 5%;
   top: 1rem;
-  width: 5rem;
+  width: 4rem;
   transform: translate(0, 0%);
   z-index: 4;
-
-  ${mq.md} {
-    left: 3rem;
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    width: 5.5rem;
-    height: 5.5rem;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background: white;
-    border-radius: 30%;
-
-    z-index: -1;
-  }
 `;

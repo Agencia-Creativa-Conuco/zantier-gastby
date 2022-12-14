@@ -124,7 +124,7 @@ const ModalHeader = styled.div`
     background-color: ${colors.gray.lighter};
     align-self: baseline;
     text-align: left;
-    color: ${colors.green.base};
+    color: ${colors.red.base};
     font-weight: bold;
     margin-bottom: 0.8rem;
     padding-right: 5rem;

@@ -22,7 +22,7 @@ const CardTestimonials = ({ item }) => {
               <Spring pause={!inView} config={config.molasses} {...fadeTop}>
                 {(styles) => (
                   <animated.div style={styles}>
-                    <FeaturedMedia  media={item.featuredImage} size="100%" />
+                    <FeaturedMedia media={item.featuredImage} size="110%" />
                   </animated.div>
                 )}
               </Spring>
@@ -70,6 +70,11 @@ const CardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 2rem 2rem;
+  width: 100%;
+  max-width: 25rem;
+  ${mq.md} {
+    max-width: 16rem;
+  }
   cursor: pointer;
 `;
 
@@ -80,7 +85,10 @@ const Card = styled.div`
   margin: 0 auto;
   overflow: hidden;
   width: 100%;
-  max-width: 16rem;
+  max-width: 25rem;
+  ${mq.md} {
+    max-width: 16rem;
+  }
   img {
     cursor: pointer;
   }
@@ -102,7 +110,7 @@ const Copy = styled.div`
 
 const Button = styled.button`
   display: inline-block;
-  color: ${colors.primary.base};
+  color: ${colors.red.base};
   cursor: pointer;
   background-color: initial;
   border-radius: initial;
