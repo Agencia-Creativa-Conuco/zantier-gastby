@@ -13,7 +13,7 @@ const useFiles = () => {
           sourceInstanceName
           childImageSharp {
             fluid(maxWidth: 1200, quality:100) {
-              ...GatsbyImageSharpFluid_withWebp
+              ...GatsbyImageSharpFluid_withWebp_noBase64
             }
           }
         }
