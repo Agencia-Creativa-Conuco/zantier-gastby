@@ -44,7 +44,7 @@ const tipography = css`
     letter-spacing: -0.0415625em;
     line-height: 1.25;
     margin: 2rem 0 1rem;
-    color: ${colors.primary.base};
+    color: ${colors.red.base};
   }
 
   h1,

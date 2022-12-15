@@ -7,11 +7,11 @@ import useFiles from "../../hooks/useFiles";
 import Cta from "../../components/cta";
 import {
   FadeIn,
-  FadeUp,
   TextAnimationRight,
 } from "../../components/animation/animation";
 import { InView } from "react-intersection-observer";
-import { animated, config, Spring } from "@react-spring/web";
+import { animated, Spring } from "@react-spring/web";
+import colors from "../../components/styles/colors";
 
 const HomeDescription = () => {
   const images = useFiles();
@@ -50,42 +50,13 @@ const HomeDescription = () => {
                   <Card>
                     <Title>{data.title}</Title>
                     <Copy>{data.copy}</Copy>
+                    <Cta to={data.cta.url} target="_blank">
+                      Conoce más
+                    </Cta>
                   </Card>
                 </animated.div>
               )}
             </Spring>
-
-            <Content>
-              <Spring pause={!inView} config={config.molasses} {...FadeUp}>
-                {(styles) => (
-                  <animated.div style={styles}>
-                    <p>{data.otherCopy}</p>
-                  </animated.div>
-                )}
-              </Spring>
-              <Spring
-                pause={!inView}
-                config={config.molasses}
-                delay={200}
-                {...FadeUp}
-              >
-                {(styles) => (
-                  <animated.div style={styles}>
-                    <Cta
-                      to={data.cta.url}
-                      bgColor="white"
-                      color="#bc0e03"
-                      bgActiveColor="#dbd8d8"
-                      // animation={inView ? FadeUp : "none"}
-                      // timeAnimation="2.9s"
-                      target="_blanck"
-                    >
-                      {data.cta.title}
-                    </Cta>
-                  </animated.div>
-                )}
-              </Spring>
-            </Content>
           </Container>
         )}
       </InView>
@@ -96,7 +67,7 @@ const HomeDescription = () => {
 export default HomeDescription;
 
 const Section = styled.section`
-  background: #bc0e03;
+  background: ${colors.red.base};
   padding-bottom: 5rem;
   padding-top: 5rem;
 `;
@@ -173,9 +144,9 @@ const Title = styled.h2`
 `;
 
 const Copy = styled.p`
-  color: #bc0e03;
+  color: ${colors.gray.base};
   position: relative;
-  margin-bottom: 0;
+  margin-bottom: 1.5rem;
   z-index: 2;
   animation: ${(props) => props.animate} 2.5s
     cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
@@ -184,17 +155,17 @@ const Copy = styled.p`
   }
 `;
 
-const Content = styled.div`
-  grid-area: col_3;
+// const Content = styled.div`
+//   grid-area: col_3;
 
-  color: white;
-  margin-top: 2.5rem;
+//   color: white;
+//   margin-top: 2.5rem;
 
-  ${mq.lg} {
-    margin-top: -3.5rem;
-  }
-  p {
-    animation: ${(props) => props.animate} 2.5s
-      cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  }
-`;
+//   ${mq.lg} {
+//     margin-top: -3.5rem;
+//   }
+//   p {
+//     animation: ${(props) => props.animate} 2.5s
+//       cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+//   }
+// `;

@@ -204,7 +204,7 @@ const elementBase = () => css`
   }
 
   a {
-    color: ${colors.primary.base};
+    color: ${colors.red.base};
     text-decoration: underline;
   }
 
@@ -285,7 +285,7 @@ const listStyle = css`
 
 const quoteStyle = () => css`
   blockquote {
-    border-color: ${colors.primary.base};
+    border-color: ${colors.red.base};
     border-style: solid;
 
     /*rtl:ignore*/

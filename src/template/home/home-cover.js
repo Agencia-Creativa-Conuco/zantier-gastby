@@ -7,6 +7,7 @@ import { container, mq } from "../../components/grid/index";
 import useFiles from "../../hooks/useFiles";
 import { InView } from "react-intersection-observer";
 import { Spring, animated, config } from "@react-spring/web";
+import colors from "../../components/styles/colors";
 const HomeCover = () => {
   const images = useFiles();
 
@@ -70,7 +71,11 @@ const HomeCover = () => {
               {(styles) => (
                 <animated.div style={styles} ref={ref}>
                   <Media>
-                    <FeaturedMedia media={data.featuredImage} size="100%" />
+                    <FeaturedMedia
+                      media={data.featuredImage}
+                      size="100%"
+                      loading="eager"
+                    />
                   </Media>
                 </animated.div>
               )}
@@ -85,28 +90,12 @@ const HomeCover = () => {
 export default HomeCover;
 
 const Section = styled.section`
-  background: #eaeef2;
+  background: ${colors.gray.light};
   position: relative;
   padding-bottom: 5rem;
   ${mq.lg} {
     padding-bottom: initial;
   }
-  /* &::after {
-    content: "";
-    position: absolute;
-    background: linear-gradient(
-      0deg,
-      #eaeef2ff,
-      #eaeef2ff,
-      #eaeef2aa,
-      #eaeef200
-    );
-    width: 100%;
-    min-height: 30%;
-    bottom: 0;
-    left: 0;
-    z-index: 2;
-  } */
 `;
 
 const Container = styled.div`
@@ -140,7 +129,7 @@ const Content = styled.div`
   &:before {
     content: "";
     position: absolute;
-    background-color: #eaeef2ff;
+    background-color: ${colors.gray.light};
     border-radius: 50%;
     width: 300%;
     padding-bottom: 300%;
@@ -156,7 +145,7 @@ const Content = styled.div`
   &:after {
     content: "";
     position: absolute;
-    background-color: #bc0e03;
+    background-color: ${colors.red.base};
     border-radius: 50%;
     width: 300%;
     padding-bottom: 300%;
@@ -179,7 +168,7 @@ const Title = styled.h1`
 `;
 
 const Copy = styled.p`
-  color: #838383;
+  color: ${colors.gray.base};
   margin-bottom: 2rem;
   /* animation: ${(props) => props.animate} 1.8s
     cubic-bezier(0.25, 0.46, 0.45, 0.94) both; */

@@ -6,7 +6,8 @@ import { animated, config, Spring } from "@react-spring/web";
 import useModalPolaroid from "../hooks/useModalPolaroid";
 import FeaturedMedia from "./featured-media";
 import { mq } from "./grid";
-import ReactCompareImage from "react-compare-image";
+import colors from "./styles/colors";
+import { ReactCompareSlider } from "react-compare-slider";
 
 const CardTestimonials = ({ item }) => {
   const { openModal, ModalUI } = useModalPolaroid();
@@ -15,15 +16,11 @@ const CardTestimonials = ({ item }) => {
       <CardContainer>
         <InView threshold={0.3}>
           {({ ref, inView }) => (
-            <Card ref={ref}>
+            <Card ref={ref} onClick={openModal}>
               <Spring pause={!inView} config={config.molasses} {...fadeTop}>
                 {(styles) => (
                   <animated.div style={styles}>
-                    <FeaturedMedia
-                      media={item.featuredImage}
-                      size="70.25%"
-                      onClick={openModal}
-                    />
+                    <FeaturedMedia media={item.featuredImage} size="110%" />
                   </animated.div>
                 )}
               </Spring>
@@ -37,6 +34,7 @@ const CardTestimonials = ({ item }) => {
                   <animated.div style={styles}>
                     <Content>
                       <Copy>{item.copy}</Copy>
+                      <Button>Ver antes y después</Button>
                     </Content>
                   </animated.div>
                 )}
@@ -49,11 +47,17 @@ const CardTestimonials = ({ item }) => {
       <ModalUI>
         <ModalInfo>
           <ModalInfoWrappper>
-            <ReactCompareImage
-              width={640}
-              height={480}
-              leftImage={item.images.before.publicURL}
-              rightImage={item.images.after.publicURL}
+            <ReactCompareSlider
+              itemOne={
+                <div>
+                  <FeaturedMedia media={item.images.before} size="125%" />
+                </div>
+              }
+              itemTwo={
+                <div>
+                  <FeaturedMedia media={item.images.after} size="125%" />
+                </div>
+              }
             />
             <h4>Antes y Después</h4>
           </ModalInfoWrappper>
@@ -70,6 +74,11 @@ const CardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 2rem 2rem;
+  width: 100%;
+  max-width: 25rem;
+  ${mq.md} {
+    max-width: 16rem;
+  }
   cursor: pointer;
 `;
 
@@ -80,7 +89,10 @@ const Card = styled.div`
   margin: 0 auto;
   overflow: hidden;
   width: 100%;
-  max-width: 16rem;
+  max-width: 25rem;
+  ${mq.md} {
+    max-width: 16rem;
+  }
   img {
     cursor: pointer;
   }
@@ -91,11 +103,27 @@ const Content = styled.div`
   padding-bottom: 3rem;
   position: relative;
   gap: 2rem;
+  text-align: center;
   ${mq.sm} {
     padding: 1.5rem 1rem;
   }
 `;
-const Copy = styled.div``;
+const Copy = styled.div`
+  text-align: left;
+`;
+
+const Button = styled.button`
+  display: inline-block;
+  color: ${colors.red.base};
+  cursor: pointer;
+  background-color: initial;
+  border-radius: initial;
+  border: initial;
+  outline: initial;
+  padding: initial;
+  margin: initial;
+  margin-top: 1rem;
+`;
 
 const ModalInfo = styled.div`
   position: relative;

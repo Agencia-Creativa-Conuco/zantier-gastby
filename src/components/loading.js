@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { css, keyframes} from "@emotion/react";
+import { css, keyframes } from "@emotion/react";
 import colors from "./styles/colors";
 
 const addAlpha = (hex, alpha) => {
@@ -51,9 +51,9 @@ const wrapper = (width, height, color) =>
   `;
 
 const Loading = ({ state, height }) => (
-  <Container height={height} >
-    <div css={wrapper(240, 4, colors.primary.base)}>
-      <div css={style(1, colors.primary.base)} />
+  <Container height={height}>
+    <div css={wrapper(240, 4, colors.red.base)}>
+      <div css={style(1, colors.red.base)} />
     </div>
   </Container>
 );
@@ -61,9 +61,9 @@ const Loading = ({ state, height }) => (
 export default Loading;
 
 const Container = styled.div`
-  ${({height}) => css`
+  ${({ height }) => css`
     width: 100%;
-    height: ${height? height: `80vh`};
+    height: ${height ? height : `80vh`};
     margin: 0;
     padding: 24px;
     display: flex;

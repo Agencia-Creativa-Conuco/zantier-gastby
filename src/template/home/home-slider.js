@@ -6,12 +6,18 @@ import {
   centerScaleAnimationCss,
   FadeUp,
 } from "../../components/animation/animation";
-import ReactPlayer from "react-player";
 import { InView, useInView } from "react-intersection-observer";
 import { animated, config, Spring } from "@react-spring/web";
+import Comercial from "../../videos/comercial.webm";
+import Testimonio from "../../videos/testimonio.webm";
+import Video1 from "../../videos/video1.webm";
+import Video2 from "../../videos/video2.webm";
+import colors from "../../components/styles/colors";
+import useFiles from "../../hooks/useFiles";
 
 const HomeSlider = () => {
   const [isPlaying, setIsPlaying] = useState(Boolean);
+  const images = useFiles();
 
   const Pause = () => {
     setIsPlaying(false);
@@ -22,10 +28,20 @@ const HomeSlider = () => {
 
   const data = [
     {
-      url: "https://www.youtube.com/watch?v=zTlsRe5202o",
+      video: Comercial,
+      portada: images.portadas.virtual,
     },
     {
-      url: "https://www.youtube.com/watch?v=dmW68lzaaqs",
+      video: Testimonio,
+      portada: images.portadas.complicidad,
+    },
+    {
+      video: Video1,
+      portada: images.portadas.timida,
+    },
+    {
+      video: Video2,
+      portada: images.portadas.proceso,
     },
   ];
 
@@ -36,13 +52,13 @@ const HomeSlider = () => {
           <animated.div style={styles}>
             <Container ref={isRef}>
               <Title>Experiencia Zantier</Title>
-              <Carousel infinite={false} afterChange={Pause} fade>
+              <Carousel infinite={false} afterChange={Pause}>
                 {data.map((item, key) => {
                   return (
                     <InView threshold={1} key={key}>
                       {({ ref, inView }) => (
                         <Media ref={ref} key={key}>
-                          <Playing onClick={() => setIsPlaying(!isPlaying)} />
+                          {/* <Playing onClick={() => setIsPlaying(!isPlaying)} /> */}
 
                           <CWrapper
                             animate={isView ? centerScaleAnimationCss : "none"}
@@ -53,12 +69,17 @@ const HomeSlider = () => {
                               }
                             >
                               <Video
-                                width="100%"
-                                height="100%"
                                 controls
-                                url={item.url}
-                                playing={isPlaying && inView}
-                              />
+                                onClick={(e) => {
+                                  e.target.play = !e.target.play;
+                                }}
+                                poster={
+                                  item?.portada?.childImageSharp?.fluid?.srcWebp
+                                }
+                                preload="none"
+                              >
+                                <source src={item.video} type="video/webm" />
+                              </Video>
                             </MWrapper>
                           </CWrapper>
                         </Media>
@@ -80,11 +101,12 @@ export default HomeSlider;
 const Section = styled.section`
   padding-bottom: 5rem;
   padding-top: 5rem;
-  background: #f4f7fc;
+  background: ${colors.gray.light};
 
   .slick-list {
+    border-radius: 1rem;
+    overflow: hidden;
   }
-  /* #9f9f9f */
   .slick-arrow {
     z-index: 2;
     width: 3rem;
@@ -95,7 +117,7 @@ const Section = styled.section`
     align-items: center;
     &:before {
       font-size: 3rem;
-      color: #bc0e03;
+      color: ${colors.red.base};
     }
   }
   .slick-next {
@@ -118,14 +140,27 @@ const Container = styled.div`
   ${mq.md} {
     &::before {
       content: "";
-      top: 20%;
-      right: -2.5%;
       position: absolute;
+      top: 0;
+      right: 0;
+      transform: translate(50%, 150%);
       width: 10%;
       padding-bottom: 10%;
-      background-color: #bc0e03;
+      background-color: ${colors.red.light};
       border-radius: 100%;
-      z-index: 6;
+      z-index: -1;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      transform: translate(-50%, -100%);
+      width: 5%;
+      padding-bottom: 5%;
+      background-color: ${colors.red.light};
+      border-radius: 100%;
+      z-index: -1;
     }
   }
 `;
@@ -142,12 +177,10 @@ const Media = styled.div`
   width: 100%;
   height: 0;
   padding-bottom: 56.25%;
-  clip-path: ellipse(95% 100% at 50% 100%);
-  border-radius: 0 0 4rem 4rem;
 `;
 
 const CWrapper = styled.div`
-  background-color: #bc0e03;
+  background-color: ${colors.red.base};
   position: absolute;
   top: 0;
   left: 0;
@@ -188,13 +221,12 @@ const Playing = styled.div`
   }
 `;
 
-const Video = styled(ReactPlayer)`
+const Video = styled.video`
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   width: 100%;
-  border-radius: 0 0 4rem 4rem;
   z-index: 5;
 `;

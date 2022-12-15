@@ -2,18 +2,23 @@ import React from "react";
 import styled from "styled-components";
 import useFiles from "../hooks/useFiles";
 import FeaturedMedia from "./featured-media";
-import { mq } from "./grid";
 import Link from "./link";
 
 const URIHEADER = "#inicio";
 const Header = () => {
   const images = useFiles();
 
+  console.log("ALGO", images.icons.logo2);
+
   return (
     <HeaderUI>
       <Logo>
         <Link to={URIHEADER}>
-          <FeaturedMedia media={images.icons.logo2} sizeMd="100%" />
+          <FeaturedMedia
+            media={images.icons.logo2}
+            size="100%"
+            loading="eager"
+          />
         </Link>
       </Logo>
     </HeaderUI>
@@ -27,28 +32,10 @@ const HeaderUI = styled.header`
 `;
 
 const Logo = styled.div`
-  position: fixed;
-  left: 1rem;
+  position: absolute;
+  left: 5%;
   top: 1rem;
-  width: 5rem;
+  width: 4rem;
   transform: translate(0, 0%);
   z-index: 4;
-
-  ${mq.md} {
-    left: 3rem;
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    width: 5.5rem;
-    height: 5.5rem;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background: white;
-    border-radius: 30%;
-
-    z-index: -1;
-  }
 `;

@@ -7,6 +7,7 @@ import useModal from "../hooks/useModal.js";
 import { FadeUp } from "./animation/animation";
 import FeaturedMedia from "./featured-media";
 import { h5 } from "./styles/tipography";
+import colors from "./styles/colors";
 
 const CardBody = ({ inView, item, styles }) => {
   const { openModal, ModalUI } = useModal();
@@ -22,6 +23,7 @@ const CardBody = ({ inView, item, styles }) => {
                     media={item.featuredImage}
                     size="100%"
                     rounded
+                    bgColor
                   />
                 </animated.div>
               )}
@@ -95,7 +97,7 @@ const Media = styled.div`
 `;
 
 const Card = styled.div`
-  background-color: rgb(245 246 248);
+  background-color: ${colors.gray.light};
   z-index: 2;
   padding: 2rem 2rem;
   padding-top: 2.5rem;
@@ -107,13 +109,13 @@ const Card = styled.div`
 
 const Title = styled.h3`
   ${h5}
-  color: #bc0e03;
+  color: ${colors.red.base};
   text-align: center;
   margin: 0;
 `;
 
 const Specialty = styled.p`
   margin: 0;
-  color: #838383;
+  color: ${colors.gray.base};
   text-align: center;
 `;
