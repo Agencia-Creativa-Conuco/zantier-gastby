@@ -23,12 +23,16 @@ const HomeTeam = () => {
         "https://www.instagram.com/reel/Cgwkq58lKFX/?utm_source=ig_web_copy_link",
     },
     {
-      title: "Dra Diana N. Estévez Jiménez",
-      specialty: " Ortodoncia",
-      copy: `<p>Doctora en odontología  en la Pontificia Universidad Catolica Madre y Maestra, especialista en Ortodoncia de  Universidad Nacional Autónoma de México (UNAM) 2021. Posee un Diplomado en Habilitación Didáctica para Docencia Universitaria (UAPA).</p>`,
-      featuredImage: images.doctores.Dra_Diana,
-      contact: "dradianaestevezj@gmail.com",
-      meetTheDoctor: "https://www.instagram.com/p/CiK1x_BMBae/",
+      title: "Dra. Cindy Lepe",
+      specialty: "Experta en-prótesis dental e implantología",
+      copy: `
+        <p>Es Especialista en Prótesis Dental y tiene una Maestría en Rehabilitación con implantes dentales.</p>
+        <p>"Una área que me apasiona y es complemento a mi profesión, es la enseñanza; es una forma de hablar de lo que me gusta y salir de la rutina clínica. Soy apasionada con la tecnología, trato de incorporarla tanto en mi ambiente profesional y personal, buscando a través de ella eficientizar procesos y facilitar mi día a día. Hablar en público no es mi fuerte, sin embargo doy lo mejor."</p>
+      `,
+      featuredImage: images.doctores.Dra_Cindy,
+      contact: "",
+      meetTheDoctor:
+        "https://www.instagram.com/reel/ChH9HyNlkF-/?utm_source=ig_web_copy_link",
     },
     {
       title: "Dr. Marcos Pichardo",
@@ -39,6 +43,25 @@ const HomeTeam = () => {
       contact: "Dr.marcospichardo@gmail.com",
       meetTheDoctor:
         "https://www.instagram.com/reel/CgKGU8uF5Vi/?utm_source=ig_web_copy_link",
+    },
+    {
+      title: "Dra Diana N. Estévez Jiménez",
+      specialty: " Ortodoncia",
+      copy: `<p>Doctora en odontología  en la Pontificia Universidad Catolica Madre y Maestra, especialista en Ortodoncia de  Universidad Nacional Autónoma de México (UNAM) 2021. Posee un Diplomado en Habilitación Didáctica para Docencia Universitaria (UAPA).</p>`,
+      featuredImage: images.doctores.Dra_Diana,
+      contact: "dradianaestevezj@gmail.com",
+      meetTheDoctor: "https://www.instagram.com/p/CiK1x_BMBae/",
+    },
+    {
+      title: "Dr. Rolando Alvarez Pérez",
+      specialty: "Experto en Periodoncia e implantología",
+      copy: `<p>El Dr. Rolando Álvarez, se especializa en Periodoncia e Implantología, con su basta experiencia en cirugía, se encarga de crear las sonrisas funcionales, para que los pacientes que han perdido los motivos para sonreír, puedan hacerlo con mucho orgullo.
+      Su mayor motivación, aparte de la confianza que depositan sus pacientes en él, es poder compartir momentos de calidad con su familia y amigos.</p>`,
+
+      featuredImage: images.doctores.Dr_Rolando,
+      contact: "rolando.alvarezp@gmail.com",
+      meetTheDoctor:
+        "https://www.instagram.com/reel/Ce64LiSJJSY/?utm_source=ig_web_copy_link",
     },
     {
       title: "Dra. Damelys García",
@@ -52,17 +75,7 @@ const HomeTeam = () => {
       contact: "",
       meetTheDoctor: "https://www.instagram.com/p/CeW82tFluI5/",
     },
-    {
-      title: "Dr. Rolando Alvarez Pérez",
-      specialty: "Experto en Periodoncia e implantología",
-      copy: `<p>El Dr. Rolando Álvarez, se especializa en Periodoncia e Implantología, con su basta experiencia en cirugía, se encarga de crear las sonrisas funcionales, para que los pacientes que han perdido los motivos para sonreír, puedan hacerlo con mucho orgullo.
-      Su mayor motivación, aparte de la confianza que depositan sus pacientes en él, es poder compartir momentos de calidad con su familia y amigos.</p>`,
 
-      featuredImage: images.doctores.Dr_Rolando,
-      contact: "rolando.alvarezp@gmail.com",
-      meetTheDoctor:
-        "https://www.instagram.com/reel/Ce64LiSJJSY/?utm_source=ig_web_copy_link",
-    },
     {
       title: "Dra. Rossy Cabrera",
       specialty: "Ortodoncia y Ortopedia Maxilar",
@@ -83,15 +96,7 @@ const HomeTeam = () => {
       meetTheDoctor:
         "https://www.instagram.com/reel/CfXWvvhJXi7/?utm_source=ig_web_copy_link",
     },
-    {
-      title: "Dra. Cindy Lepe",
-      specialty: "Experta en-prótesis dental e implantología",
-      copy: "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>",
-      featuredImage: images.doctores.Dra_Cindy,
-      contact: "",
-      meetTheDoctor:
-        "https://www.instagram.com/reel/ChH9HyNlkF-/?utm_source=ig_web_copy_link",
-    },
+
     {
       title: "Dra Melissa Esther Rivera Peña",
       specialty: "Experta en Endodoncia",

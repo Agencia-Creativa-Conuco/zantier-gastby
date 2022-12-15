@@ -19,7 +19,7 @@ const HomeService = () => {
     {
       title: "Diagnóstico",
       copy: "Conocemos tu caso particular, tus necesidades y requerimientos específicos para lograr esa sonrisa deseada.",
-      featuredImage: images.home.diagnostico,
+      featuredImage: images.home.planificacion,
     },
     {
       title: "Planificación",
@@ -28,10 +28,10 @@ const HomeService = () => {
         title: "Conocer mas",
         url: "/",
       },
-      featuredImage: images.home.planificacion,
+      featuredImage: images.home.diagnostico,
     },
     {
-      title: "Inicio",
+      title: "Ejecución",
       copy: "Aquí empieza el camino hacia tu sonrisa soñada, cada tratamiento puede variar de tiempo según la persona, ya que cada sonrisa es única.",
       cta: {
         title: "Conocer mas",
