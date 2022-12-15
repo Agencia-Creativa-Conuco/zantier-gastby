@@ -76,10 +76,6 @@ const Body = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   align-items: baseline;
-
-  img {
-    border-radius: 0 0 5rem 5rem;
-  }
 `;
 
 const Title = styled.h2`
