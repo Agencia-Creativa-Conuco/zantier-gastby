@@ -3,15 +3,16 @@ import styled from "@emotion/styled";
 import FeaturedMedia from "./featured-media";
 import { container, mq } from "./grid";
 import colors from "./styles/colors";
+import Cta from "./cta";
 
 const CardInfo = ({ item }) => {
-  const { title, featuredImage, copy, specialty, contact } = item;
-
+  const { title, featuredImage, copy, specialty, contact, meetTheDoctor } =
+    item;
 
   return (
     <Wrapper>
       <Media>
-        <FeaturedMedia media={featuredImage} rounded  size="100%"/>
+        <FeaturedMedia media={featuredImage} rounded size="100%" />
       </Media>
       <Content>
         <Title>{title}</Title>
@@ -22,6 +23,11 @@ const CardInfo = ({ item }) => {
             <span>Contacto:</span> {contact}
           </Contact>
         )}
+        <CtaBox>
+          <Cta to={meetTheDoctor} target="_blank">
+            Meet the doctor
+          </Cta>
+        </CtaBox>
       </Content>
     </Wrapper>
   );
@@ -61,9 +67,8 @@ const Specialty = styled.p`
   margin-bottom: 1rem;
 `;
 
-const Copy = styled.p`
+const Copy = styled.div`
   margin: 0 auto;
-  margin-bottom: 2rem;
   color: ${colors.gray.base};
   font-size: 0.9rem;
 `;
@@ -81,4 +86,9 @@ const Contact = styled.div`
   span {
     font-weight: 700;
   }
+`;
+
+const CtaBox = styled.div`
+  text-align: center;
+  margin-top: 2rem;
 `;
