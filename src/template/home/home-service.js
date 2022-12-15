@@ -159,6 +159,7 @@ export default HomeService;
 
 const Section = styled.section`
   position: relative;
+  z-index: 1;
 `;
 
 const Wrapper = styled.div`
