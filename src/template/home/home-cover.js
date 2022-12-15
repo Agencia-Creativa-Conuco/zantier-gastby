@@ -60,26 +60,28 @@ const HomeCover = () => {
               </Spring>
             </Content>
 
-            <Spring
-              config={config.molasses}
-              pause={!inView}
-              from={{
-                opacity: 0,
-              }}
-              to={{ opacity: 1 }}
-            >
-              {(styles) => (
-                <animated.div style={styles} ref={ref}>
-                  <Media>
-                    <FeaturedMedia
-                      media={data.featuredImage}
-                      size="100%"
-                      loading="eager"
-                    />
-                  </Media>
-                </animated.div>
-              )}
-            </Spring>
+            <MediaWrapper>
+              <Spring
+                config={config.molasses}
+                pause={!inView}
+                from={{
+                  opacity: 0,
+                }}
+                to={{ opacity: 1 }}
+              >
+                {(styles) => (
+                  <animated.div style={styles} ref={ref}>
+                    <Media>
+                      <FeaturedMedia
+                        media={data.featuredImage}
+                        size="100%"
+                        loading="eager"
+                      />
+                    </Media>
+                  </animated.div>
+                )}
+              </Spring>
+            </MediaWrapper>
           </Container>
         </Section>
       )}
@@ -92,6 +94,7 @@ export default HomeCover;
 const Section = styled.section`
   background: ${colors.gray.light};
   position: relative;
+  z-index: 1;
   padding-bottom: 5rem;
   ${mq.lg} {
     padding-bottom: initial;
@@ -121,7 +124,7 @@ const Container = styled.div`
 const Content = styled.div`
   align-self: center;
   position: relative;
-  z-index: 1;
+  z-index: 2;
   padding-top: 1.5rem;
   ${mq.lg} {
     padding-top: initial;
@@ -173,6 +176,11 @@ const Copy = styled.p`
   /* animation: ${(props) => props.animate} 1.8s
     cubic-bezier(0.25, 0.46, 0.45, 0.94) both; */
   font-weight: normal;
+`;
+
+const MediaWrapper = styled.div`
+  position: relative;
+  z-index: -3;
 `;
 
 const Media = styled.div`
