@@ -71,7 +71,11 @@ const HomeCover = () => {
               {(styles) => (
                 <animated.div style={styles} ref={ref}>
                   <Media>
-                    <FeaturedMedia media={data.featuredImage} size="100%" />
+                    <FeaturedMedia
+                      media={data.featuredImage}
+                      size="100%"
+                      loading="eager"
+                    />
                   </Media>
                 </animated.div>
               )}

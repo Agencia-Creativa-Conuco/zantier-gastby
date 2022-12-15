@@ -14,7 +14,11 @@ const Header = () => {
     <HeaderUI>
       <Logo>
         <Link to={URIHEADER}>
-          <FeaturedMedia media={images.icons.logo2} size="100%" />
+          <FeaturedMedia
+            media={images.icons.logo2}
+            size="100%"
+            loading="eager"
+          />
         </Link>
       </Logo>
     </HeaderUI>

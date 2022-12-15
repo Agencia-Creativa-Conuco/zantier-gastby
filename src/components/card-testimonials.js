@@ -6,8 +6,8 @@ import { animated, config, Spring } from "@react-spring/web";
 import useModalPolaroid from "../hooks/useModalPolaroid";
 import FeaturedMedia from "./featured-media";
 import { mq } from "./grid";
-import ReactCompareImage from "react-compare-image";
 import colors from "./styles/colors";
+import { ReactCompareSlider } from "react-compare-slider";
 
 const CardTestimonials = ({ item }) => {
   const { openModal, ModalUI } = useModalPolaroid();
@@ -47,11 +47,17 @@ const CardTestimonials = ({ item }) => {
       <ModalUI>
         <ModalInfo>
           <ModalInfoWrappper>
-            <ReactCompareImage
-              width={640}
-              height={480}
-              leftImage={item.images.before.publicURL}
-              rightImage={item.images.after.publicURL}
+            <ReactCompareSlider
+              itemOne={
+                <div>
+                  <FeaturedMedia media={item.images.before} size="125%" />
+                </div>
+              }
+              itemTwo={
+                <div>
+                  <FeaturedMedia media={item.images.after} size="125%" />
+                </div>
+              }
             />
             <h4>Antes y Después</h4>
           </ModalInfoWrappper>

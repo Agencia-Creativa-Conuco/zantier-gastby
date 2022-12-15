@@ -8,10 +8,10 @@ import {
 } from "../../components/animation/animation";
 import { InView, useInView } from "react-intersection-observer";
 import { animated, config, Spring } from "@react-spring/web";
-import Comercial from "../../images/videos/comercial.webm";
-import Testimonio from "../../images/videos/testimonio.webm";
-import Video1 from "../../images/videos/video1.webm";
-import Video2 from "../../images/videos/video2.webm";
+import Comercial from "../../videos/comercial.webm";
+import Testimonio from "../../videos/testimonio.webm";
+import Video1 from "../../videos/video1.webm";
+import Video2 from "../../videos/video2.webm";
 import colors from "../../components/styles/colors";
 import useFiles from "../../hooks/useFiles";
 
@@ -29,16 +29,19 @@ const HomeSlider = () => {
   const data = [
     {
       video: Comercial,
-      portada: images.videos.comercial,
+      portada: images.portadas.virtual,
     },
     {
       video: Testimonio,
+      portada: images.portadas.complicidad,
     },
     {
       video: Video1,
+      portada: images.portadas.timida,
     },
     {
       video: Video2,
+      portada: images.portadas.proceso,
     },
   ];
 
@@ -49,7 +52,7 @@ const HomeSlider = () => {
           <animated.div style={styles}>
             <Container ref={isRef}>
               <Title>Experiencia Zantier</Title>
-              <Carousel infinite={false} afterChange={Pause} fade>
+              <Carousel infinite={false} afterChange={Pause}>
                 {data.map((item, key) => {
                   return (
                     <InView threshold={1} key={key}>
@@ -73,6 +76,7 @@ const HomeSlider = () => {
                                 poster={
                                   item?.portada?.childImageSharp?.fluid?.srcWebp
                                 }
+                                preload="none"
                               >
                                 <source src={item.video} type="video/webm" />
                               </Video>
@@ -100,6 +104,8 @@ const Section = styled.section`
   background: ${colors.gray.light};
 
   .slick-list {
+    border-radius: 1rem;
+    overflow: hidden;
   }
   .slick-arrow {
     z-index: 2;
@@ -171,8 +177,6 @@ const Media = styled.div`
   width: 100%;
   height: 0;
   padding-bottom: 56.25%;
-  border-radius: 1rem;
-  overflow: hidden;
 `;
 
 const CWrapper = styled.div`
