@@ -7,10 +7,11 @@ import colors from "./styles/colors";
 const CardInfo = ({ item }) => {
   const { title, featuredImage, copy, specialty, contact } = item;
 
+
   return (
     <Wrapper>
       <Media>
-        <FeaturedMedia media={featuredImage} rounded />
+        <FeaturedMedia media={featuredImage} rounded  size="100%"/>
       </Media>
       <Content>
         <Title>{title}</Title>
