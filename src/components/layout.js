@@ -13,10 +13,10 @@ const Layout = ({ children }) => {
           lang: "en",
         }}
       >
-        <title>Zantier</title>
+        <title>Zantier Odontología</title>
         <meta
           name="description"
-          content="Somos Zantier, Clínica de Odontología Integral comprometidos con tu salud y bienestar"
+          content="Expertos en sonrisas. Somos una clínica de odontología especializada, donde se proporcionan servicios de salud integral de la mano de la última tecnología."
         />
         <meta name="image" content={logo} />
         <link rel="shortcut icon" href={logo} />
@@ -28,7 +28,7 @@ const Layout = ({ children }) => {
       </Helmet>
 
       <Global styles={globalStyles} />
-      <Header/>
+      <Header />
       <Main>{children}</Main>
     </>
   );

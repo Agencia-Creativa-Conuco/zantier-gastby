@@ -23,12 +23,7 @@ const HomeForm = () => {
               <FeaturedMedia media={imagen} size="100%" />
             </Deco>
             <Content>
-              <Spring
-                reset={inView}
-                reverse={!inView}
-                config={config.wobbly}
-                {...FadeUp}
-              >
+              <Spring pause={!inView} config={config.wobbly} {...FadeUp}>
                 {(styles) => (
                   <animated.div style={styles}>
                     <Title>Contáctanos</Title>
@@ -41,8 +36,7 @@ const HomeForm = () => {
                   transform: `translateY(5rem)`,
                 }}
                 to={{ opacity: 1, transform: "translateY(0)" }}
-                reset={inView}
-                reverse={!inView}
+                pause={!inView}
                 config={config.wobbly}
                 delay={500}
               >

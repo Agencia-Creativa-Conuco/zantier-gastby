@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Zantier`,
+    title: `Zantier Odontología`,
     siteUrl: `https://www.yourdomain.tld`,
   },
   plugins: [
@@ -23,7 +23,7 @@ module.exports = {
       },
       __key: "images",
     },
-    "gatsby-transformer-sharp", 
+    "gatsby-transformer-sharp",
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -32,8 +32,7 @@ module.exports = {
       },
       __key: "images",
     },
-    
-    "gatsby-plugin-emotion",
 
-  ]
+    "gatsby-plugin-emotion",
+  ],
 };

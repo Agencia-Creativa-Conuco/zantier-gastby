@@ -26,7 +26,11 @@ const HomeCover = () => {
         <Section fluid id="inicio">
           <Container fluid>
             <Content>
-              <Spring pause={!inView} config={config.molasses} {...FadeUp}>
+              <Spring
+                // pause={!inView}
+                config={config.molasses}
+                {...FadeUp}
+              >
                 {(styles) => (
                   <animated.div style={styles} ref={ref}>
                     <Title>{data.title}</Title>
@@ -35,7 +39,7 @@ const HomeCover = () => {
               </Spring>
 
               <Spring
-                pause={!inView}
+                // pause={!inView}
                 delay={200}
                 config={config.molasses}
                 {...FadeUp}
@@ -47,7 +51,7 @@ const HomeCover = () => {
                 )}
               </Spring>
               <Spring
-                pause={!inView}
+                // pause={!inView}
                 delay={300}
                 config={config.molasses}
                 {...FadeUp}
@@ -63,7 +67,7 @@ const HomeCover = () => {
             <MediaWrapper>
               <Spring
                 config={config.molasses}
-                pause={!inView}
+                // pause={!inView}
                 from={{
                   opacity: 0,
                 }}
@@ -93,6 +97,12 @@ export default HomeCover;
 
 const Section = styled.section`
   background: ${colors.gray.light};
+  background: rgb(229, 229, 229);
+  background: radial-gradient(
+    circle,
+    rgba(229, 229, 229, 1) 0%,
+    rgba(245, 245, 245, 1) 100%
+  );
   position: relative;
   z-index: 1;
   padding-bottom: 5rem;
