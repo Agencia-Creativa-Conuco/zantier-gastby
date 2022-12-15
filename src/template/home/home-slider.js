@@ -55,7 +55,7 @@ const HomeSlider = () => {
 
   return (
     <Section>
-      <Spring pause={!isView} config={config.gentle} delay={300} {...FadeUp}>
+      <Spring pause={!isView} config={config.stiff} delay={500} {...FadeUp}>
         {(styles) => (
           <animated.div style={styles}>
             <Container ref={isRef}>
@@ -195,7 +195,8 @@ const CWrapper = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  animation: ${(props) => props.animate} 2.1s ease-in-out;
+  animation: ${(props) => props.animate} 1.8s ease-in-out;
+  /* animation-delay: 0.1s; */
   /* clip-path: inset(0% 100% 0% 100%); */
 `;
 
@@ -205,7 +206,7 @@ const MWrapper = styled.div`
   height: 100%;
   overflow: hidden;
   animation: ${(props) => props.animate} 1.8s ease-in-out;
-  animation-delay: 0.3s;
+  animation-delay: 0.2s;
   /* clip-path: inset(0% 100% 0% 100%); */
 `;
 
