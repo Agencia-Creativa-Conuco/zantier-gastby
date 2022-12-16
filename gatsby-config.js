@@ -38,7 +38,15 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-      trackingId: 'G-YG7S9JMD29'
+        trackingId: "G-YG7S9JMD29",
+      },
+    },
+    {
+      resolve: `gatsby-plugin-hubspot`,
+      options: {
+        trackingCode: "19524537",
+        respectDNT: true,
+        productionOnly: true,
       },
     },
   ],

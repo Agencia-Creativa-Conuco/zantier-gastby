@@ -7,9 +7,6 @@ import Link from "./link";
 const URIHEADER = "#inicio";
 const Header = () => {
   const images = useFiles();
-
-  console.log("ALGO", images.icons.logo2);
-
   return (
     <HeaderUI>
       <Logo>
