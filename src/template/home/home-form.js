@@ -20,7 +20,12 @@ const HomeForm = () => {
         {({ ref, inView }) => (
           <Container ref={ref}>
             <Deco>
-              <FeaturedMedia media={imagen} size="100%" />
+              <FeaturedMedia
+                media={imagen}
+                size="125%"
+                sizeMD="100%"
+                sizeLG="125%"
+              />
             </Deco>
             <Content>
               <Spring pause={!inView} config={config.wobbly} {...FadeUp}>
@@ -89,19 +94,10 @@ const Content = styled.div`
 `;
 
 const Deco = styled.div`
+  border-radius: 10rem 10rem 10rem 0;
+  overflow: hidden;
   img {
-    width: 25rem;
-    height: 25rem;
-    border-radius: 10rem 10rem 10rem 0;
-    background-color: ${colors.red.base};
-    margin: 1rem auto 0;
-    margin-top: 0;
-    ${mq.lg} {
-      margin: 0 auto;
-
-      width: 40rem;
-      height: 45rem;
-    }
+    object-position: top center !important;
   }
 `;
 
