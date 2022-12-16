@@ -8,6 +8,7 @@ import { InView } from "react-intersection-observer";
 import { animated, Trail, config, Spring } from "@react-spring/web";
 import colors from "../../components/styles/colors";
 import Cta from "../../components/cta";
+import { LocationIcon, MailIcon, PhoneIcon } from "../../components/icons";
 
 const HomeContact = () => {
   const images = useFiles();
@@ -20,16 +21,19 @@ const HomeContact = () => {
         title: "Ubicación: ",
         copy: "Lic. Genaro Perez 48, Santiago De Los Caballeros 51000",
         href: "https://goo.gl/maps/amFZoa6QLdrF1PVR7",
+        icon: LocationIcon,
       },
       {
         title: "Número",
         copy: "809.582.0222",
         href: "tel:8095820222",
+        icon: PhoneIcon,
       },
       {
         title: "Correo",
         copy: "info@zantier.com.do",
         href: "mailto:info@isa.edu.do",
+        icon: MailIcon,
       },
       {},
     ],
@@ -78,11 +82,15 @@ const HomeContact = () => {
                         {...FadeUp}
                       >
                         {(item, index) => (styles) => {
+                          const Icon = item?.icon;
+                          console.log(item);
                           return (
                             <animated.div style={styles} key={index}>
                               {data.list.length - 1 !== index ? (
                                 <Content>
-                                  <Deco />
+                                  <Icons>
+                                    <Icon />
+                                  </Icons>
                                   <Item>
                                     <span>{item.title}: </span>
 
@@ -180,14 +188,15 @@ const Item = styled.p`
   }
 `;
 
-const Deco = styled.div`
-  position: relative;
-  top: 0;
-  left: 0;
-  width: 1.5rem;
-  height: 1.5rem;
-  border-radius: 100%;
+const Icons = styled.span`
   background-color: ${colors.red.base};
+  padding: 0.5rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  overflow: hidden;
+  color: white;
+  display: block;
 `;
 
 const Copy = styled.p`
