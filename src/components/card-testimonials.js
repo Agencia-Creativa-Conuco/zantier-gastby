@@ -33,7 +33,7 @@ const CardTestimonials = ({ item }) => {
                 {(styles) => (
                   <animated.div style={styles}>
                     <Content>
-                      <Copy>{item.copy}</Copy>
+                      <Copy dangerouslySetInnerHTML={{ __html: item.copy }} />
                       <Button>Ver antes y después</Button>
                     </Content>
                   </animated.div>
