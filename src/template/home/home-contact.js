@@ -13,7 +13,7 @@ import { LocationIcon, MailIcon, PhoneIcon } from "../../components/icons";
 const HomeContact = () => {
   const images = useFiles();
 
-  const WSCHAT = " https://wa.me/";
+  const WSCHAT = " https://wa.me/+1";
 
   const data = {
     title: "Deja tu sonrisa en manos de expertos",
