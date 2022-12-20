@@ -44,7 +44,7 @@ const HomeService = () => {
   return (
     <Section fluid id="infografia">
       <Logo>
-        <FeaturedMedia media={images.icons.smile} sizeMd="100%" />
+        <FeaturedMedia media={images.icons.smile} size="100%" />
       </Logo>
       <Wrapper>
         <ImageDeco>

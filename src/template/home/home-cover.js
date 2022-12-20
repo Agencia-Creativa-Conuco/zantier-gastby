@@ -124,7 +124,9 @@ const Container = styled.div`
     order: 2;
   }
   ${mq.lg} {
+    padding-top: initial;
     grid-template-columns: 2fr 4fr;
+    gap: 7rem;
     div:last-of-type {
       order: 2;
     }
@@ -196,7 +198,6 @@ const MediaWrapper = styled.div`
 const Media = styled.div`
   position: relative;
   ${mq.xl} {
-    max-width: 80%;
     margin: 0 auto;
   }
 `;

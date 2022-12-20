@@ -28,7 +28,7 @@ const HomeContact = () => {
       {
         title: "Número",
         copy: "809.582.0222",
-        href: `${WSCHAT}8095820222`,
+        href: `${WSCHAT}18095820222`,
         icon: PhoneIcon,
       },
       {
