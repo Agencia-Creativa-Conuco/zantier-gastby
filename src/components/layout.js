@@ -6,8 +6,9 @@ import globalStyles from "../components/styles/global-styles";
 import logo from "../images/icons/logo.png";
 import Header from "./header";
 import { WhatsappIcon } from "./icons";
-import { colors } from "@react-spring/shared";
 import { mq } from "./grid";
+import Link from "./link";
+const WSPHONE = "8095820222";
 const Layout = ({ children }) => {
   return (
     <>
@@ -32,12 +33,11 @@ const Layout = ({ children }) => {
 
       <Global styles={globalStyles} />
       {/* <!-- Google tag (gtag.js) --> */}
-{/* <Content>
-
-<Icons>
-  <WhatsappIcon/>
-</Icons>
-</Content> */}
+      <ContentLink to={`https://wa.me/+1${WSPHONE}`} target="_blanck">
+        <Icons>
+          <WhatsappIcon />
+        </Icons>
+      </ContentLink>
 
       <Header />
       <Main>{children}</Main>
@@ -51,9 +51,7 @@ const Main = styled.main`
   overflow: hidden;
 `;
 
-
-
-const Content = styled.div`
+const ContentLink = styled(Link)`
   /* position: relative;
   display: grid;
   grid-template-columns: auto 1fr;
@@ -65,21 +63,24 @@ const Content = styled.div`
   } */
 `;
 
-
-
 const Icons = styled.span`
-position: fixed;
-  background-color: ${colors.red.base};
-  padding: 0.5rem;
-  width: 4rem;
-  height: 4rem;
+  position: fixed;
+  width: 3rem;
+  height: 3rem;
+  bottom: 1.5rem;
+  right: 1.5rem;
   border-radius: 50%;
-  overflow: hidden;
-  color: green;
-  display: block;
-  z-index: 33678;
-  bottom: 0;
-    right: 0;
+  background-color: #25d366;
+  box-shadow: 2px 3px 3px #0000004f;
+  color: white;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3333;
 
+  svg {
+    height: 2rem;
+    width: 2rem;
+  }
 `;
-
