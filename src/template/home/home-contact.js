@@ -26,7 +26,7 @@ const HomeContact = () => {
         icon: LocationIcon,
       },
       {
-        title: "Número",
+        title: " Whatsapp",
         copy: "809.582.0222",
         href: `${WSCHAT}8095820222`,
         icon: PhoneIcon,
