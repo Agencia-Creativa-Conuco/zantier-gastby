@@ -65,8 +65,8 @@ const ContentLink = styled(Link)`
 
 const Icons = styled.span`
   position: fixed;
-  width: 3rem;
-  height: 3rem;
+  width: 2rem;
+  height: 2rem;
   bottom: 1.5rem;
   right: 1.5rem;
   border-radius: 50%;
@@ -78,9 +78,13 @@ const Icons = styled.span`
   align-items: center;
   justify-content: center;
   z-index: 3333;
+  ${mq} {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
 
   svg {
-    height: 2rem;
-    width: 2rem;
+    height: 80%;
+    width: 80%;
   }
 `;
