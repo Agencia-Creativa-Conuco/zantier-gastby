@@ -8,7 +8,12 @@ import { InView } from "react-intersection-observer";
 import { animated, Trail, config, Spring } from "@react-spring/web";
 import colors from "../../components/styles/colors";
 import Cta from "../../components/cta";
-import { LocationIcon, MailIcon, PhoneIcon, WhatsappIcon } from "../../components/icons";
+import {
+  LocationIcon,
+  MailIcon,
+  PhoneIcon,
+  WhatsappIcon,
+} from "../../components/icons";
 
 const HomeContact = () => {
   const images = useFiles();
