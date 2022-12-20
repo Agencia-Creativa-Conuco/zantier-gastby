@@ -8,12 +8,17 @@ import { InView } from "react-intersection-observer";
 import { animated, Trail, config, Spring } from "@react-spring/web";
 import colors from "../../components/styles/colors";
 import Cta from "../../components/cta";
-import { LocationIcon, MailIcon, PhoneIcon } from "../../components/icons";
+import {
+  LocationIcon,
+  MailIcon,
+  PhoneIcon,
+  WhatsappIcon,
+} from "../../components/icons";
 
 const HomeContact = () => {
   const images = useFiles();
 
-  const WSCHAT = " https://wa.me/";
+  const WSCHAT = " https://wa.me/+1";
 
   const data = {
     title: "Deja tu sonrisa en manos de expertos",
@@ -26,10 +31,10 @@ const HomeContact = () => {
         icon: LocationIcon,
       },
       {
-        title: "Número",
+        title: " Whatsapp",
         copy: "809.582.0222",
         href: `${WSCHAT}18095820222`,
-        icon: PhoneIcon,
+        icon: WhatsappIcon,
       },
       {
         title: "Correo",
