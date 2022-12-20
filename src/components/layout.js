@@ -28,32 +28,10 @@ const Layout = ({ children }) => {
       </Helmet>
 
       <Global styles={globalStyles} />
-
       {/* <!-- Google tag (gtag.js) --> */}
-      <script
-        async
-        src="https://www.googletagmanager.com/gtag/js?id=G-YG7S9JMD29"
-      ></script>
-      <script>
-        {`
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
 
-              gtag('config', 'G-YG7S9JMD29');
-              `}
-      </script>
 
-      {/* <!-- Start of HubSpot Embed Code --> */}
-      <script
-        type="text/javascript"
-        id="hs-script-loader"
-        async
-        defer
-        src="//js.hs-scripts.com/19524537.js"
-      ></script>
-      {/* <!-- End of HubSpot Embed Code --> */}
-
+      
       <Header />
       <Main>{children}</Main>
     </>

@@ -13,6 +13,8 @@ import { LocationIcon, MailIcon, PhoneIcon } from "../../components/icons";
 const HomeContact = () => {
   const images = useFiles();
 
+  const WSCHAT = " https://wa.me/";
+
   const data = {
     title: "Deja tu sonrisa en manos de expertos",
     copy: "Somos una clínica de odontología especializada, donde se proporcionan servicios de salud integral de la mano de la última tecnología, para así ofrecer un cuidado oral de la más alta calidad y brindar una experiencia agradable en un ambiente confortable y acogedor.",
@@ -26,7 +28,7 @@ const HomeContact = () => {
       {
         title: "Número",
         copy: "809.582.0222",
-        href: "tel:8095820222",
+        href: `${WSCHAT}8095820222`,
         icon: PhoneIcon,
       },
       {
