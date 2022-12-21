@@ -26,7 +26,11 @@ const HomeCover = () => {
         <Section fluid id="inicio">
           <Container fluid>
             <Content>
-              <Spring pause={!inView} config={config.molasses} {...FadeUp}>
+              <Spring
+                // pause={!inView}
+                config={config.molasses}
+                {...FadeUp}
+              >
                 {(styles) => (
                   <animated.div style={styles} ref={ref}>
                     <Title>{data.title}</Title>
@@ -35,7 +39,7 @@ const HomeCover = () => {
               </Spring>
 
               <Spring
-                pause={!inView}
+                // pause={!inView}
                 delay={200}
                 config={config.molasses}
                 {...FadeUp}
@@ -47,7 +51,7 @@ const HomeCover = () => {
                 )}
               </Spring>
               <Spring
-                pause={!inView}
+                // pause={!inView}
                 delay={300}
                 config={config.molasses}
                 {...FadeUp}
@@ -60,26 +64,28 @@ const HomeCover = () => {
               </Spring>
             </Content>
 
-            <Spring
-              config={config.molasses}
-              pause={!inView}
-              from={{
-                opacity: 0,
-              }}
-              to={{ opacity: 1 }}
-            >
-              {(styles) => (
-                <animated.div style={styles} ref={ref}>
-                  <Media>
-                    <FeaturedMedia
-                      media={data.featuredImage}
-                      size="100%"
-                      loading="eager"
-                    />
-                  </Media>
-                </animated.div>
-              )}
-            </Spring>
+            <MediaWrapper>
+              <Spring
+                config={config.molasses}
+                // pause={!inView}
+                from={{
+                  opacity: 0,
+                }}
+                to={{ opacity: 1 }}
+              >
+                {(styles) => (
+                  <animated.div style={styles} ref={ref}>
+                    <Media>
+                      <FeaturedMedia
+                        media={data.featuredImage}
+                        size="100%"
+                        loading="eager"
+                      />
+                    </Media>
+                  </animated.div>
+                )}
+              </Spring>
+            </MediaWrapper>
           </Container>
         </Section>
       )}
@@ -91,7 +97,14 @@ export default HomeCover;
 
 const Section = styled.section`
   background: ${colors.gray.light};
+  background: rgb(229, 229, 229);
+  background: radial-gradient(
+    circle,
+    rgba(229, 229, 229, 1) 0%,
+    rgba(245, 245, 245, 1) 100%
+  );
   position: relative;
+  z-index: 1;
   padding-bottom: 5rem;
   ${mq.lg} {
     padding-bottom: initial;
@@ -111,7 +124,9 @@ const Container = styled.div`
     order: 2;
   }
   ${mq.lg} {
+    padding-top: initial;
     grid-template-columns: 2fr 4fr;
+    gap: 7rem;
     div:last-of-type {
       order: 2;
     }
@@ -121,7 +136,7 @@ const Container = styled.div`
 const Content = styled.div`
   align-self: center;
   position: relative;
-  z-index: 1;
+  z-index: 2;
   padding-top: 1.5rem;
   ${mq.lg} {
     padding-top: initial;
@@ -175,10 +190,14 @@ const Copy = styled.p`
   font-weight: normal;
 `;
 
+const MediaWrapper = styled.div`
+  position: relative;
+  z-index: -3;
+`;
+
 const Media = styled.div`
   position: relative;
   ${mq.xl} {
-    max-width: 80%;
     margin: 0 auto;
   }
 `;

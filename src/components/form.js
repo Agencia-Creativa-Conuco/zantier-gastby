@@ -5,6 +5,7 @@ import { mq } from "./grid/index";
 import HubspotForm from "react-hubspot-form";
 import Loading from "./loading";
 import scrollTo from "gatsby-plugin-smoothscroll";
+import colors from "./styles/colors";
 
 const Form = ({
   formId,
@@ -12,8 +13,8 @@ const Form = ({
   id = "form",
   loadingHeight = "100%",
   cardStyle = true,
-  submitedTitle = "¡Gracias por enviar el formulario!",
-  submitedText = "Hola, gracias por contactar Universidad ISA, responderemos su requerimiento en cuanto nos sea posible. Siempre a la orden.",
+  submitedTitle = "¡Gracias por contactarnos!",
+  submitedText = "Hoy inicia el camino hacia la sonrisa de tus sueños. Nos comunicaremos contigo a la brevedad posible.",
   ...props
 }) => {
   const [submited, setSubmited] = useState(false);
@@ -98,4 +99,6 @@ const FormContainer = styled.div`
   `}
 `;
 
-const Message = styled.div``;
+const Message = styled.div`
+  color: ${colors.gray.base};
+`;

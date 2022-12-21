@@ -33,7 +33,7 @@ const CardTestimonials = ({ item }) => {
                 {(styles) => (
                   <animated.div style={styles}>
                     <Content>
-                      <Copy>{item.copy}</Copy>
+                      <Copy dangerouslySetInnerHTML={{ __html: item.copy }} />
                       <Button>Ver antes y después</Button>
                     </Content>
                   </animated.div>
@@ -83,11 +83,11 @@ const CardContainer = styled.div`
 `;
 
 const Card = styled.div`
-  border-radius: 3rem;
   display: grid !important;
   background-color: white;
   margin: 0 auto;
   overflow: hidden;
+  border-radius: 3rem;
   width: 100%;
   max-width: 25rem;
   ${mq.md} {
@@ -95,6 +95,7 @@ const Card = styled.div`
   }
   img {
     cursor: pointer;
+    border-radius: 3rem;
   }
 `;
 
@@ -127,8 +128,8 @@ const Button = styled.button`
 
 const ModalInfo = styled.div`
   position: relative;
-  width: 17rem;
-  max-width: 25rem;
+  width: 28rem;
+  max-width: 20rem;
 `;
 
 const ModalInfoWrappper = styled.div`

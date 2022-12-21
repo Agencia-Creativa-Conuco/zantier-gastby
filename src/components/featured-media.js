@@ -100,6 +100,7 @@ const Container = styled.div`
   }) => css`
     ${rounded
       ? css`
+          clip-path: circle(50%);
           border-radius: 50%;
           overflow: hidden;
         `

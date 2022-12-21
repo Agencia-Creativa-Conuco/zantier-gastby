@@ -9,9 +9,13 @@ import {
 import { InView, useInView } from "react-intersection-observer";
 import { animated, config, Spring } from "@react-spring/web";
 import Comercial from "../../videos/comercial.webm";
+import ComercialMp4 from "../../videos/comercial.mp4";
 import Testimonio from "../../videos/testimonio.webm";
+import TestimonioMp4 from "../../videos/testimonio.mp4";
 import Video1 from "../../videos/video1.webm";
+import Video1Mp4 from "../../videos/video1.mp4";
 import Video2 from "../../videos/video2.webm";
+import Video2Mp4 from "../../videos/video2.mp4";
 import colors from "../../components/styles/colors";
 import useFiles from "../../hooks/useFiles";
 
@@ -29,25 +33,29 @@ const HomeSlider = () => {
   const data = [
     {
       video: Comercial,
+      mp4: ComercialMp4,
       portada: images.portadas.virtual,
     },
     {
       video: Testimonio,
+      mp4: TestimonioMp4,
       portada: images.portadas.complicidad,
     },
     {
       video: Video1,
+      mp4: Video1Mp4,
       portada: images.portadas.timida,
     },
     {
       video: Video2,
+      mp4: Video2Mp4,
       portada: images.portadas.proceso,
     },
   ];
 
   return (
     <Section>
-      <Spring pause={!isView} config={config.gentle} delay={300} {...FadeUp}>
+      <Spring pause={!isView} config={config.stiff} delay={500} {...FadeUp}>
         {(styles) => (
           <animated.div style={styles}>
             <Container ref={isRef}>
@@ -79,6 +87,7 @@ const HomeSlider = () => {
                                 preload="none"
                               >
                                 <source src={item.video} type="video/webm" />
+                                <source src={item.mp4} type="video/mp4" />
                               </Video>
                             </MWrapper>
                           </CWrapper>
@@ -186,7 +195,8 @@ const CWrapper = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  animation: ${(props) => props.animate} 2.1s ease-in-out;
+  animation: ${(props) => props.animate} 1.8s ease-in-out;
+  /* animation-delay: 0.1s; */
   /* clip-path: inset(0% 100% 0% 100%); */
 `;
 
@@ -196,7 +206,7 @@ const MWrapper = styled.div`
   height: 100%;
   overflow: hidden;
   animation: ${(props) => props.animate} 1.8s ease-in-out;
-  animation-delay: 0.3s;
+  animation-delay: 0.2s;
   /* clip-path: inset(0% 100% 0% 100%); */
 `;
 

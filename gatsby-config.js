@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Zantier`,
+    title: `Zantier Odontología`,
     siteUrl: `https://www.yourdomain.tld`,
   },
   plugins: [
@@ -23,7 +23,7 @@ module.exports = {
       },
       __key: "images",
     },
-    "gatsby-transformer-sharp", 
+    "gatsby-transformer-sharp",
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -32,8 +32,35 @@ module.exports = {
       },
       __key: "images",
     },
-    
+
     "gatsby-plugin-emotion",
 
-  ]
+    // {
+    //   resolve: `gatsby-plugin-google-analytics`,
+    //   options: {
+    //     trackingId: "G-YG7S9JMD29",
+    //   },
+    // },
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: [
+          "G-YG7S9JMD29", // Google Analytics / GA
+        ],
+        pluginConfig: {
+          // Puts tracking script in the head instead of the body
+          head: true,
+        },
+      },
+    },
+
+    {
+      resolve: `gatsby-plugin-hubspot`,
+      options: {
+        trackingCode: "19524537",
+        respectDNT: true,
+        productionOnly: true,
+      },
+    },
+  ],
 };
