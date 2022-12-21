@@ -24,11 +24,11 @@ const Layout = ({ children }) => {
         />
         <meta name="image" content={logo} />
         <link rel="shortcut icon" href={logo} />
-        <link
+        {/* <link
           rel="preload"
           href="//js.hs-scripts.com/20627890.js"
           as="script"
-        ></link>
+        ></link> */}
       </Helmet>
 
       <Global styles={globalStyles} />
