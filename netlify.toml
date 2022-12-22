@@ -1,3 +1,7 @@
 [[redirects]]
   from = "/webmail"
   to = "https://cp20.intodomain.com:2096/"
+
+[[redirects]]
+from = "/cpanel"
+to = "https://cpanel.zantier.com.do/"
