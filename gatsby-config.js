@@ -54,7 +54,7 @@ module.exports = {
           head: false,
           anonymize: true,
           respectDNT: true,
-          delayOnRouteUpdate: 1000,
+          delayOnRouteUpdate: 0,
         },
       },
     },
