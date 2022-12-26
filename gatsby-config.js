@@ -47,7 +47,7 @@ module.exports = {
           "G-YG7S9JMD29", // Google Analytics / GA
         ],
         pluginConfig: {
-          head: true,
+          head: false,
         },
       },
     },
