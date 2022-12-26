@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 import { mq } from "./grid/index";
@@ -20,10 +20,11 @@ const Form = ({
   const [submited, setSubmited] = useState(false);
   const [active, setActive] = useState(0);
   const [displayedForms, setDisplayedForms] = useState([]);
-
   const forms = formIds.length ? formIds : [formId];
+  const formContainerRef = useRef(null);
 
   const idCuentaHubspot = 19524537;
+  const [uploaded, setUploaded] = useState(false);
 
   const manageFormSubmit = () => {
     // const element = document.getElementById(id);
@@ -37,8 +38,19 @@ const Form = ({
     scrollTo(`#${id}`);
   };
 
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (
+        formContainerRef.current.getBoundingClientRect().top <
+        window.innerHeight
+      ) {
+        setUploaded(true);
+      }
+    });
+  }, [uploaded]);
+
   return (
-    <FormSwitcher id={id}>
+    <FormSwitcher id={id} ref={formContainerRef}>
       {forms.length && !submited ? (
         <>
           {forms.map((form, index) => {
@@ -51,18 +63,20 @@ const Form = ({
                 {...{ cardStyle, ...props }}
                 hidden={!isVisible}
               >
-                <HubspotForm
-                  portalId={idCuentaHubspot}
-                  formId={form}
-                  onReady={() => {
-                    setDisplayedForms(displayedForms.concat(active));
-                  }}
-                  onFormSubmitted={() => {
-                    manageFormSubmit();
-                  }}
-                  inlineMessage={submitedText}
-                  loading={<Loading height={loadingHeight} />}
-                />
+                {uploaded ? (
+                  <HubspotForm
+                    portalId={idCuentaHubspot}
+                    formId={form}
+                    onReady={() => {
+                      setDisplayedForms(displayedForms.concat(active));
+                    }}
+                    onFormSubmitted={() => {
+                      manageFormSubmit();
+                    }}
+                    inlineMessage={submitedText}
+                    loading={<Loading height={loadingHeight} />}
+                  />
+                ):<Loading height={loadingHeight} />}
               </FormContainer>
             ) : null;
           })}

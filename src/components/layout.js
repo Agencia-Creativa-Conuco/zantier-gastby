@@ -24,21 +24,22 @@ const Layout = ({ children }) => {
         />
         <meta name="image" content={logo} />
         <link rel="shortcut icon" href={logo} />
-        {/* <link
+        <link
           rel="preload"
-          href="//js.hs-scripts.com/20627890.js"
+          href="//js.hs-scripts.com/19524537.js"
+          key="hubspot-lazy-load"
           as="script"
-        ></link> */}
+        ></link>
       </Helmet>
 
       <Global styles={globalStyles} />
       {/* <!-- Google tag (gtag.js) --> */}
+      {/* <script id="hs-script-loader" async  defer src="https://js.hs-scripts.com/19524537.js"></script> */}
       <ContentLink to={`https://wa.me/+1${WSPHONE}`} target="_blanck">
         <Icons>
           <WhatsappIcon />
         </Icons>
       </ContentLink>
-
       <Header />
       <Main>{children}</Main>
     </>

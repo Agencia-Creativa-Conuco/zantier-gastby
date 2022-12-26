@@ -10,8 +10,9 @@ import HomeTeam from "./home-team";
 import HomeTestimonials from "./home-testimonials";
 
 const FrontPage = () => {
+
   return (
-    <section>
+    <section  >
       <HomeCover />
       <HomeService />
       <HomeAbout />

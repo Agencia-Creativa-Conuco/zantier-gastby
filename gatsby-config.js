@@ -54,13 +54,13 @@ module.exports = {
       },
     },
 
-    {
-      resolve: `gatsby-plugin-hubspot`,
-      options: {
-        trackingCode: "19524537",
-        respectDNT: true,
-        productionOnly: true,
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-hubspot`,
+    //   options: {
+    //     trackingCode: "19524537",
+    //     respectDNT: true,
+    //     productionOnly: true,
+    //   },
+    // },
   ],
 };

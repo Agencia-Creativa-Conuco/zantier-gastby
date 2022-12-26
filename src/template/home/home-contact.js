@@ -90,7 +90,7 @@ const HomeContact = () => {
                       >
                         {(item, index) => (styles) => {
                           const Icon = item?.icon;
-                          console.log(item);
+                          // console.log(item);
                           return (
                             <animated.div style={styles} key={index}>
                               {data.list.length - 1 !== index ? (
