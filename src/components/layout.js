@@ -33,8 +33,6 @@ const Layout = ({ children }) => {
       </Helmet>
 
       <Global styles={globalStyles} />
-      {/* <!-- Google tag (gtag.js) --> */}
-      {/* <script id="hs-script-loader" async  defer src="https://js.hs-scripts.com/19524537.js"></script> */}
       <ContentLink to={`https://wa.me/+1${WSPHONE}`} target="_blanck">
         <Icons>
           <WhatsappIcon />
