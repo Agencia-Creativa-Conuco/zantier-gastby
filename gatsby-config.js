@@ -40,24 +40,15 @@ module.exports = {
     //     trackingId: "G-YG7S9JMD29",
     //   },
     // },
-    // {
-    //   resolve: `gatsby-plugin-google-gtag`,
-    //   options: {
-    //     trackingIds: [
-    //       "G-YG7S9JMD29", // Google Analytics / GA
-    //     ],
-    //     pluginConfig: {
-    //       head: false,
-    //     },
-    //   },
-    // },
-
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-google-gtag`,
       options: {
-        trackingId: "G-YG7S9JMD29",
-        head: true,
-        defer: true,
+        trackingIds: [
+          "G-YG7S9JMD29", // Google Analytics / GA
+        ],
+        pluginConfig: {
+          head: false,
+        },
       },
     },
 

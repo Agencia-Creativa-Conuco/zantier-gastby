@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React  from "react";
 import HomeAbout from "./home-about";
 import HomeContact from "./home-contact";
 import HomeCover from "./home-cover";
@@ -11,11 +11,7 @@ import HomeTestimonials from "./home-testimonials";
 
 const FrontPage = () => {
 
-  useEffect(() => {
-    if (window.ga) {
-      window.ga("send", "pageview")
-    }
-  }, [])
+
   return (
     <section  >
       <HomeCover />
