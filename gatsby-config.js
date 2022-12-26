@@ -48,6 +48,8 @@ module.exports = {
         ],
         pluginConfig: {
           head: false,
+          anonymize: true,
+          respectDNT: true,
         },
       },
     },
