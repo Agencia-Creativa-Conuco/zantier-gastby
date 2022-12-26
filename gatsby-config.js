@@ -46,6 +46,10 @@ module.exports = {
         trackingIds: [
           "G-YG7S9JMD29", // Google Analytics / GA
         ],
+        gtagConfig: {
+          anonymize_ip: true,
+          cookie_expires: 0,
+        },
         pluginConfig: {
           head: false,
           anonymize: true,
