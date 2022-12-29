@@ -34,7 +34,6 @@ module.exports = {
     },
 
     "gatsby-plugin-emotion",
-
     // {
     //   resolve: `gatsby-plugin-google-analytics`,
     //   options: {
@@ -47,20 +46,26 @@ module.exports = {
         trackingIds: [
           "G-YG7S9JMD29", // Google Analytics / GA
         ],
+        gtagConfig: {
+          anonymize_ip: true,
+          cookie_expires: 0,
+        },
         pluginConfig: {
-          // Puts tracking script in the head instead of the body
-          head: true,
+          head: false,
+          anonymize: true,
+          respectDNT: true,
+          delayOnRouteUpdate: 0,
         },
       },
     },
 
-    {
-      resolve: `gatsby-plugin-hubspot`,
-      options: {
-        trackingCode: "19524537",
-        respectDNT: true,
-        productionOnly: true,
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-hubspot`,
+    //   options: {
+    //     trackingCode: "19524537",
+    //     respectDNT: true,
+    //     productionOnly: true,
+    //   },
+    // },
   ],
 };

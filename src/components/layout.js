@@ -26,19 +26,18 @@ const Layout = ({ children }) => {
         <link rel="shortcut icon" href={logo} />
         <link
           rel="preload"
-          href="//js.hs-scripts.com/20627890.js"
+          href="//js.hs-scripts.com/19524537.js"
+          key="hubspot-lazy-load"
           as="script"
         ></link>
       </Helmet>
 
       <Global styles={globalStyles} />
-      {/* <!-- Google tag (gtag.js) --> */}
       <ContentLink to={`https://wa.me/+1${WSPHONE}`} target="_blanck">
         <Icons>
           <WhatsappIcon />
         </Icons>
       </ContentLink>
-
       <Header />
       <Main>{children}</Main>
     </>
