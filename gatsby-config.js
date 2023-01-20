@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Zantier Odontología`,
-    siteUrl: `https://www.yourdomain.tld`,
+    siteUrl: `https://zantier.com.do`,
   },
   plugins: [
     //   {
