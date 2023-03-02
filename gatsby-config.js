@@ -58,6 +58,12 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: `gatsby-plugin-facebook-pixel`,
+      options: {
+        pixelId: "310609983759396",
+      },
+    },
 
     // {
     //   resolve: `gatsby-plugin-hubspot`,
