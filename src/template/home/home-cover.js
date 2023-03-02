@@ -15,8 +15,12 @@ const HomeCover = () => {
     title: " Expertos en sonrisas",
     copy: "Existen muchas razones para sonreír, queremos darte la confianza para hacerlo. El diseño de sonrisa es un proceso bucal en el cual se reestructura la formación de toda la parte dental, según las necesidades del paciente, para lograr tener la sonrisa de sus sueños.",
     cta: {
-      title: "Conocer mas",
+      title: "Conoce más",
       url: "#infografia",
+    },
+    ctaTestimonios: {
+      title: "Casos de éxito",
+      url: "#before_and_after",
     },
     featuredImage: images.home.chica,
   };
@@ -57,9 +61,21 @@ const HomeCover = () => {
                 {...FadeUp}
               >
                 {(styles) => (
-                  <animated.div style={styles} ref={ref}>
-                    <Cta to={data.cta.url}>{data.cta.title}</Cta>
-                  </animated.div>
+                  <CtaBox>
+                    <animated.div style={styles} ref={ref}>
+                      <Cta bgColor={colors.red.base} to={data.cta.url}>
+                        {data.cta.title}
+                      </Cta>
+                    </animated.div>
+                    <animated.div style={styles} ref={ref}>
+                      <Cta
+                        bgColor={colors.red.light}
+                        to={data.ctaTestimonios.url}
+                      >
+                        {data.ctaTestimonios.title}
+                      </Cta>
+                    </animated.div>
+                  </CtaBox>
                 )}
               </Spring>
             </Content>
@@ -200,4 +216,10 @@ const Media = styled.div`
   ${mq.xl} {
     margin: 0 auto;
   }
+`;
+
+const CtaBox = styled.div`
+  display: flex;
+  gap: 0.5rem;
+  flex-flow: row wrap;
 `;

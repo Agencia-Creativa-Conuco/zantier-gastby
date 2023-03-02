@@ -62,7 +62,7 @@ const HomeTestimonials = () => {
   ];
 
   return (
-    <Section>
+    <Section id="before_and_after">
       <Container fluid>
         <Title>Before & After</Title>
         <Body>
