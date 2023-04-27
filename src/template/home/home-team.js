@@ -77,15 +77,6 @@ const HomeTeam = () => {
     },
 
     {
-      title: "Dra. Rossy Cabrera",
-      specialty: "Ortodoncia y Ortopedia Maxilar",
-      copy: `<p>Dra. Rossy Cabrera, especializada en Ortodoncia y Ortopedia Maxilar. Su pasión y dedicación quedan claros en su trato a cada paciente. Le apasiona aprender algo nuevo cada día. Su mayor motivación es poder perfeccionar sus técnicas y ayudar a los demás a través de su trabajo, a que puedan sentirse más confiados y lograr que sus clientes tengan una sonrisa tan feliz como ellos</p>`,
-      featuredImage: images.doctores.Dra_Rossy,
-      contact: "Dra.rossycabrera@gmail.com",
-      meetTheDoctor:
-        "https://www.instagram.com/reel/CfxElnDJQmt/?utm_source=ig_web_copy_link",
-    },
-    {
       title: "Dra. Esther Estévez",
       specialty: "Experta Odontología General",
       copy: `<p>Conoce a la Dra. Esther Estévez, Odontóloga General, especializada en Odontología Deportiva.
