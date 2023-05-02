@@ -46,7 +46,7 @@ const HomeTeam = () => {
     },
     {
       title: "Dra Diana N. Estévez Jiménez",
-      specialty: " Ortodoncia",
+      specialty: " Experta en Ortodoncia y Ortopedia Maxilar",
       copy: `<p>Doctora en odontología  en la Pontificia Universidad Catolica Madre y Maestra, especialista en Ortodoncia de  Universidad Nacional Autónoma de México (UNAM) 2021. Posee un Diplomado en Habilitación Didáctica para Docencia Universitaria (UAPA).</p>`,
       featuredImage: images.doctores.Dra_Diana,
       contact: "dradianaestevezj@gmail.com",
